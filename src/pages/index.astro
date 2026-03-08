@@ -1,17 +1,372 @@
 ---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPostDate } from '../utils/date';
+import { marked } from 'marked';
 
+const allPosts = (await getCollection('blog'))
+  .sort((a, b) => getPostDate(b).valueOf() - getPostDate(a).valueOf());
+
+const allMicroposts = (await getCollection('microblog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const recentMicroposts = allMicroposts.slice(0, 3);
+const moreMicroposts = allMicroposts.slice(3, 9);
+
+const recentPosts = allPosts.slice(0, 3).map(post => {
+  const parts = (post.body ?? '').split(/<!--\s*more\s*-->/i);
+  const preview = marked(parts[0]) as string;
+  const hasMore = parts.length > 1;
+  return { post, preview, hasMore };
+});
+const morePosts = allPosts.slice(3, 9);
+
+const renderedMicroposts = await Promise.all(
+  recentMicroposts.map(async post => {
+    const { Content } = await render(post);
+    return { post, Content };
+  })
+);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Inicio">
+  <div class="home-wrapper">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Plataforma Educativa Informática</h1>
+        <p>Bienvenidos a la página personal de José Domingo Muñoz Rodríguez, aquí podrás encontrar recursos educativos, entradas de blog y materiales de cursos de informática.</p>
+      </div>
+    </section>
+
+   
+  
+    <!-- Blog -->
+    <section class="home-section">
+      <h2 class="section-title">Blog</h2>
+      <div class="post-list">
+        {recentPosts.map(({ post, preview, hasMore }) => {
+          const slug = post.data.slug ?? post.id;
+          const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
+          const date = getPostDate(post);
+          return (
+            <article class="post-preview">
+              {post.data.cover && (
+                <img src={post.data.cover} alt={post.data.title} class="cover" />
+              )}
+              <h3><a href={url}>{post.data.title}</a></h3>
+              <time datetime={date.toISOString()}>
+                {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
+              </time>
+              <div class="post-body" set:html={preview} />
+              {hasMore && <a href={url} class="detail-link">Seguir leyendo →</a>}
+            </article>
+          );
+        })}
+      </div>
+      <div class="more-list">
+        <p class="more-title">Más posts en el Blog...</p>
+        <ul>
+          {morePosts.map(post => {
+            const slug = post.data.slug ?? post.id;
+            const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
+            const date = getPostDate(post);
+            return (
+              <li>
+                <a href={url}>{post.data.title}</a>
+                <span class="date">({date.toLocaleDateString('es-ES', { dateStyle: 'medium' })})</span>
+              </li>
+            );
+          })}
+        </ul>
+        <a href="/pledin/blog/" class="ver-todos">Ver todos →</a>
+      </div>
+    </section>
+
+     <!-- Microblog -->
+    <section class="home-section">
+      <h2 class="section-title">Microblog</h2>
+      <div class="micropost-list">
+        {renderedMicroposts.map(({ post, Content }) => {
+          const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
+          const url = match
+            ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
+            : `/pledin/microblog/${post.id}/`;
+          return (
+            <article class="micropost">
+              <h3><a href={url}>{post.data.title}</a></h3>
+              <div class="micropost-body"><Content /></div>
+              <a href={url} class="detail-link">Detalle →</a>
+            </article>
+          );
+        })}
+      </div>
+      <div class="more-list">
+        <p class="more-title">Más posts en el Microblog...</p>
+        <ul>
+          {moreMicroposts.map(post => {
+            const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
+            const url = match
+              ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
+              : `/pledin/microblog/${post.id}/`;
+            const date = post.data.date;
+            return (
+              <li>
+                <a href={url}>{post.data.title}</a>
+                <span class="date">({date.toLocaleDateString('es-ES', { dateStyle: 'medium' })})</span>
+              </li>
+            );
+          })}
+        </ul>
+        <a href="/pledin/microblog/" class="ver-todos">Ver todos →</a>
+      </div>
+    </section>
+
+
+    <!-- Licencia -->
+    <section class="license">
+      <p>Licencia: Puedes copiar y modificar todos los contenidos, pero siempre respetando los términos de la licencia <a href="https://creativecommons.org/licenses/by-sa/3.0/es/">CC-BY-SA</a>.</p>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+ .home-wrapper {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 3rem;
+}
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 0 0 2rem;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 40rem;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  
+  /* Secciones */
+  .home-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  /* Microposts */
+  .micropost-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .micropost {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    background: var(--color-bg-nav);
+  }
+
+  .micropost h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .micropost h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .micropost h3 a:hover {
+    color: var(--color-accent-high);
+  }
+
+  .micropost-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .micropost-body :global(p) { margin-bottom: 0.75rem; }
+  .micropost-body :global(ul),
+.micropost-body :global(ol) {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding-left: 1rem;
+}
+
+.micropost-body :global(li) {
+  margin-bottom: 0.3rem;
+ 
+}
+  .micropost-body :global(a) { color: var(--color-accent); text-decoration: underline; }
+
+  /* Blog posts */
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .post-preview {
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  background: var(--color-bg-nav);
+  transition: border-color 0.2s;
+}
+
+.post-preview:hover {
+  border-color: var(--color-accent);
+}
+
+  .post-preview .cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-preview h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .post-preview h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .post-preview h3 a:hover { color: var(--color-accent-high); }
+
+  .post-preview time {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .post-body :global(p) { margin-bottom: 0.75rem; }
+  .post-body :global(ul),
+.post-body :global(ol) {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding-left: 1rem;
+}
+
+.post-body :global(li) {
+  margin-bottom: 0.3rem;
+  padding-left: 0.25rem;
+}
+  .post-body :global(img) { border-radius: 0.5rem; margin: 1rem auto; }
+  .post-body :global(a) { color: var(--color-accent); text-decoration: underline; }
+  .post-body :global(code) { font-family: var(--font-mono); font-size: 0.875em; }
+  .post-body :global(pre) { border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; }
+
+  .detail-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+
+  .detail-link:hover { color: var(--color-accent-high); }
+
+  /* Más posts */
+  .more-list {
+    background: var(--color-bg-sidebar);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .more-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .more-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .more-list li {
+    font-size: 0.9rem;
+  }
+
+  .more-list li a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .more-list li a:hover { color: var(--color-accent); }
+
+  .date {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    margin-left: 0.4rem;
+  }
+
+  .ver-todos {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .ver-todos:hover { color: var(--color-accent-high); }
+
+  /* Licencia */
+  .license {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  
+
+</style>

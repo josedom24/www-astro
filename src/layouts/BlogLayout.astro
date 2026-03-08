@@ -1,0 +1,122 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  headings?: { depth: number; slug: string; text: string }[];
+}
+
+const { title, description, headings = [] } = Astro.props;
+const filteredHeadings = headings.filter(h => h.depth <= 3);
+---
+
+<BaseLayout {title} {description}>
+  <div class:list={['page-wrapper', { 'with-toc': filteredHeadings.length > 0 }]}>
+    <aside class="sidebar">
+      <slot name="sidebar" />
+    </aside>
+    <main class="main-content">
+      <slot />
+    </main>
+    {filteredHeadings.length > 0 && (
+      <aside class="toc">
+        <div class="toc-inner">
+          <p class="toc-title">En esta página</p>
+          <ul>
+            {filteredHeadings.map(h => (
+              <li class:list={[`depth-${h.depth}`]}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-wrapper {
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 4rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    min-height: calc(100vh - var(--nav-height));
+  }
+
+  .page-wrapper.with-toc {
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 16rem + 4rem);
+    grid-template-columns: var(--sidebar-width) 1fr 14rem;
+  }
+
+  .sidebar {
+    border-right: 1px solid var(--color-border);
+    padding-right: 2rem;
+  }
+
+  .main-content {
+    min-width: 0;
+  }
+
+  .toc {
+    position: sticky;
+    top: calc(var(--nav-height) + 1rem);
+    align-self: start;
+  }
+
+  .toc-inner {
+    border-left: 2px solid var(--color-border);
+    padding-left: 1rem;
+  }
+
+  .toc-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .toc li a {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .toc li a:hover {
+    color: var(--color-accent);
+  }
+
+  .toc li.depth-3 {
+    padding-left: 0.75rem;
+  }
+
+  @media (max-width: 70rem) {
+    .page-wrapper.with-toc {
+      grid-template-columns: var(--sidebar-width) 1fr;
+    }
+    .toc { display: none; }
+  }
+
+  @media (max-width: 50rem) {
+    .page-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .sidebar { display: none; }
+  }
+</style>

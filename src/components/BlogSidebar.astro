@@ -1,0 +1,165 @@
+---
+import { getCollection } from 'astro:content';
+import { getPostDate } from '../utils/date';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => getPostDate(b).valueOf() - getPostDate(a).valueOf());
+
+const tagCount: Record<string, number> = {};
+for (const post of posts) {
+  for (const tag of post.data.tags ?? []) {
+    tagCount[tag] = (tagCount[tag] ?? 0) + 1;
+  }
+}
+const tags = Object.entries(tagCount).sort((a, b) => b[1] - a[1]);
+
+const recentPosts = posts.slice(0, 5);
+
+const yearCount: Record<string, number> = {};
+for (const post of posts) {
+  const year = getPostDate(post).getFullYear().toString();
+  yearCount[year] = (yearCount[year] ?? 0) + 1;
+}
+const years = Object.entries(yearCount).sort((a, b) => Number(b[0]) - Number(a[0]));
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="blog-sidebar">
+  <a href="/pledin/blog/"
+     class:list={['sidebar-all', { active: currentPath === '/pledin/blog/' }]}>
+    Todas las entradas
+  </a>
+
+  <div class="sidebar-section">
+    <h3>Entradas recientes</h3>
+    <ul>
+      {recentPosts.map(post => {
+        const slug = post.id.replace(/^blog\//, '');
+        const url = `/pledin/${slug}/`;
+        return (
+          <li>
+            <a href={url} class:list={[{ active: currentPath === url }]}>
+              {post.data.title}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+ 
+
+  <div class="sidebar-section">
+    <h3>Etiquetas</h3>
+    <ul class="tags">
+      {tags.map(([tag, count]) => (
+        <li>
+             <a href={`/pledin/tags/${tag.toLowerCase().replace(/ /g, '-')}/`}
+             class:list={[{ active: currentPath === `/pledin/tags/${tag.toLowerCase().replace(/ /g, '-')}/` }]}>
+      {tag} ({count})
+    </a>
+  </li>
+
+      ))}
+    </ul>
+  </div>
+
+ <div class="sidebar-section">
+  <h3>Años</h3>
+  <ul>
+    {years.map(([year, count]) => (
+      <li>
+        <a href={`/pledin/blog/#${year}`}
+           class:list={[{ active: currentPath === '/pledin/blog/' }]}>
+          {year} ({count})
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+  <a href="/pledin/feed/feed.xml" aria-label="RSS">RSS</a>
+</nav>
+
+<style>
+  .blog-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: calc(var(--nav-height) + 1rem);
+  align-self: start;
+  max-height: calc(100vh - var(--nav-height) - 2rem);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.blog-sidebar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+  .sidebar-all {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-bg);
+    background: var(--color-accent);
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .sidebar-all:hover,
+  .sidebar-all.active {
+    background: var(--color-accent-high);
+    text-decoration: none;
+    color: var(--color-bg);
+  }
+
+  .sidebar-section h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  ul.tags {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  li a {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  li a:hover,
+  li a.active {
+    color: var(--color-accent-high);
+  }
+
+  .sidebar-rss {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .sidebar-rss:hover {
+    color: var(--color-accent-high);
+  }
+</style>

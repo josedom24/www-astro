@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import BlogSidebar from '../../components/BlogSidebar.astro';
+import { getExcerpt } from '../../utils/excerpt.ts';
+import { getPostDate } from '../../utils/date';
+
+const allPosts = (await getCollection('blog'))
+  .sort((a, b) => getPostDate(b).valueOf() - getPostDate(a).valueOf());
+
+// Agrupar por año
+const postsByYear = new Map<number, typeof allPosts>();
+for (const post of allPosts) {
+  const year = getPostDate(post).getFullYear();
+  if (!postsByYear.has(year)) postsByYear.set(year, []);
+  postsByYear.get(year)!.push(post);
+}
+const years = [...postsByYear.keys()].sort((a, b) => b - a);
+---
+
+<BlogLayout title="Blog">
+  <BlogSidebar slot="sidebar" />
+  
+  <img src="/pledin/assets/logo_blog.png" alt="Pledin" class="blog-banner" />
+ 
+  {years.map(year => (
+    <section class="year-section" id={String(year)}>
+      <h2 class="year-title">{year}</h2>
+      <div class="post-list">
+        {postsByYear.get(year)!.map(post => {
+          const slug = post.data.slug ?? post.id;
+          const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
+          const date = getPostDate(post);
+          return (
+            <article class="post-preview">
+              {post.data.cover && (
+                <a href={url}>
+                  <img src={post.data.cover} alt={post.data.title} class="cover" />
+                </a>
+              )}
+              <div class="post-content">
+                <h3><a href={url}>{post.data.title}</a></h3>
+                <time datetime={date.toISOString()}>
+                  {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
+                </time>
+                <p class="excerpt">{post.data.excerpt ?? getExcerpt(post.body ?? '')}</p>
+                {post.data.tags && (
+                  <div class="tags">
+                    {post.data.tags.map(tag => (
+                      <a href={`/pledin/tags/${tag.toLowerCase().replace(/ /g, '-')}/`} class="tag">
+                        {tag}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+</BlogLayout>
+
+<style>
+  .year-section {
+    margin-bottom: 3rem;
+  }
+
+  .year-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-accent-high);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .post-preview {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2rem;
+  }
+
+  .cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    color: var(--color-accent-high);
+  }
+
+  time {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .excerpt {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    background: var(--color-bg-sidebar);
+    color: var(--color-text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .tag:hover {
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+  }
+ .year-section {
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.blog-banner {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2rem auto;
+}
+}
+</style>

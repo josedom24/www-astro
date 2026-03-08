@@ -1,0 +1,270 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = (await getCollection('microblog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const tagCount: Record<string, number> = {};
+for (const post of allPosts) {
+  for (const tag of post.data.tags ?? []) {
+    tagCount[tag] = (tagCount[tag] ?? 0) + 1;
+  }
+}
+const tags = Object.entries(tagCount).sort((a, b) => b[1] - a[1]);
+
+const renderedPosts = await Promise.all(
+  allPosts.map(async post => {
+    const { Content } = await render(post);
+    return { post, Content };
+  })
+);
+
+const INITIAL = 10;
+---
+
+<BaseLayout title="Microblog">
+  <div class="microblog-wrapper">
+    <div class="microblog-header">
+      <img src="/pledin/assets/logo_microblog.png" alt="Pledin" class="blog-banner" />
+
+      <div class="tag-filter">
+        {tags.map(([tag, count]) => (
+          <a href={`/pledin/microblog/tags/${tag.toLowerCase().replace(/ /g, '-')}/`} class="tag">
+            {tag} ({count})
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="posts" id="posts">
+      {renderedPosts.map(({ post, Content }, index) => {
+        const date = post.data.date;
+        const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
+        const url = match
+          ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
+          : `/pledin/microblog/${post.id}/`;
+        return (
+          <article class="micropost" data-index={index} style={index >= INITIAL ? 'display:none' : ''}>
+            <div class="micropost-meta">
+              <time datetime={date.toISOString()}>
+                {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
+              </time>
+              {post.data.tags && (
+                <div class="tags">
+                  {post.data.tags.map(tag => (
+                    <a href={`/pledin/microblog/tags/${tag.toLowerCase().replace(/ /g, '-')}/`} class="tag">
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <h2><a href={url}>{post.data.title}</a></h2>
+            <div class="micropost-body">
+              <Content />
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    {renderedPosts.length > INITIAL && (
+      <div class="load-more-wrapper">
+        <button id="load-more">Cargar más entradas</button>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<script>
+  const BATCH = 10;
+  const posts = document.querySelectorAll('.micropost');
+  const btn = document.getElementById('load-more');
+  let shown = BATCH;
+
+  btn?.addEventListener('click', () => {
+    const next = shown + BATCH;
+    for (let i = shown; i < next && i < posts.length; i++) {
+      (posts[i] as HTMLElement).style.display = '';
+    }
+    shown = next;
+    if (shown >= posts.length) btn.style.display = 'none';
+  });
+</script>
+
+<style>
+  .microblog-wrapper {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .microblog-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .micropost {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    background: var(--color-bg-nav);
+    transition: border-color 0.2s;
+  }
+
+  .micropost:hover {
+    border-color: var(--color-accent);
+  }
+
+  .micropost-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  time {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    background: var(--color-bg-sidebar);
+    color: var(--color-text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .tag:hover {
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    color: var(--color-accent-high);
+  }
+
+  .micropost-body {
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .micropost-body :global(p) { margin-bottom: 1.25rem; }
+
+  .micropost-body :global(ul),
+  .micropost-body :global(ol) {
+    margin: 1rem 0 1.25rem 1.5rem;
+  }
+
+  .micropost-body :global(li) {
+    margin-bottom: 0.4rem;
+  }
+
+  .micropost-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .micropost-body :global(blockquote) {
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    margin: 1.5rem 0;
+  }
+
+  .load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  #load-more {
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  #load-more:hover {
+    background: var(--color-accent-high);
+  }
+  .load-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+#load-more {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  padding: 0.75rem 3rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+
+#load-more:hover {
+  background: var(--color-accent);
+  color: white;
+}
+
+
+.blog-banner {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+}
+</style>
