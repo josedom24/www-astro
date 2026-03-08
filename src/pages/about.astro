@@ -1,6 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Comments from '../components/Comments.astro';
+const comments = [
+  
+  { "name": "Alberto Molina", "date": "2010-04-15", "message": "Enhorabuena por el cambio, me gusta! Ahora que has cogido ritmo sólo falta que hagas lo mismo en el Instituto.", "email": "68c0903a5d4600776c1b1f876e43f7e4" },
+  { "name": "ifanlo", "date": "2010-05-13", "message": "Hola, José!<br/>Buscando cursos sobre OOo Base, he llegado hasta aquí (en Guadalinex no hay manera de entrar al curso online).<br/> No conocía este sitio, te felicito por él, está bien lleno de recursos (y no pones trampas publicitarias como hago yo).<br/> Mira, sobre OOo Base, no sé si ya conocías éste: http://superalumnos.net/tutorial-de-openoffice-org-base<br/> Lo pasé a ODF y PDF a partir de unos materiales online originales de un profesor de la U. de Extremadura: http://tutorialopenofficebase.wordpress.com/<br/> <br/> Dispone de ello a tu comodidad. Saludos." },
+  { "name": "Valeria Delgado", "date": "2010-06-25", "message": "Hola! la pagina esta muy bueno. Gracias." },
+  { "name": "Antonio Jiménez", "date": "2010-07-20", "message": "Muy Wenas Fenómeno !!!<br/>llevo un rato intentando tirarte la Web pero es dura !!! jajajajaja, solo kería ponerte a prueba, prueba superada !!! jejeje<br/>Que tal como va todo? Espero que bien, aver si en Septiembre me paso a veros. Que vaya todo bien, y a pasar buen Verano.<br/>un saludo, Antoñito." },
+  { "name": "Alfredo", "date": "2010-09-27", "message": "Saludos, me gusto mucho la pagina, tengo rato queriendo registrarme pero no encuentro la forma.<br/> ¿Como me registro?" },
+  { "name": "José Domingo", "date": "2010-09-29", "message": "Desde hace unos meses he quitado la posibilidad del registro, pero se puede acceder a todo el material de forma libre sin estar registrado. Un saludo", "email": "2424fbdd076dfc091fbc90e4ecccb9aa" },
+  { "name": "Juan Carlos", "date": "2011-01-11", "message": "Pues una felicitacion, es demasiado el esfuerzo y trabajo que se ve reflejado en el contenido, recien estoy tratando de apoyar a un amigo a que construya su sitio con un esquema similar para apoyar a sus alumnos. Una pregunta, proque Moodle y no Dokeos.<br/>Gracias por comaprtir.<br/>Salu2" },
+  { "name": "yovana", "date": "2011-06-17", "message": "Esta buena la Pág..." },
+  { "name": "José Ramos", "date": "2012-01-23", "message": "Te felicito por todo el trabajo y esfuerzo realizado, encontré aquí un curso de joomla excelente trabajo pero desafortunadamente la version es antigua todavia se ve como mambot, no tendras la version 1.5 saludos" },
+  { "name": "Andrés Freire Muñoz", "date": "2012-02-21", "message": "Quisiera que pudieras registrarme por favor, esta muy buena la página, saludos<br/>Ing. Andrés Freire Muñoz, saludos – Ecuador." },
+  { "name": "José Domingo", "date": "2012-02-24", "message": "Hola Andrés,<br/>no es necesario el registro, si no puedes acceder a algún documento, mándame un email y te lo paso.<br/>Un saludo", "email": "2424fbdd076dfc091fbc90e4ecccb9aa" },
+  { "name": "Luis Rodriguez", "date": "2012-11-10", "message": "Hermano un 20 lo felicito por su iniciativa, es de gran ayuda estoy haciendo una base datos para una escuela Gracias la mejor de la surte" },
+  { "name": "Alejandra", "date": "2014-02-03", "message": "Excelentes materiales muchas gracias por compartir!!" },
+  { "name": "Juan Carlos Lorenzo", "date": "2019-05-13", "message": "<p>Enhorabuena. ¡Que gran sitio web! me gusta mucho y ademas sin propaganda.<br>Solo quería decirte que personas con talento, como tu, construis Internet. Tim Berners-Lee estará orgulloso ;-)</p>" },
+  { "name": "José Domingo", "date": "2019-05-14", "message": "Muchas gracias. Mensajes como el tuyo me dan el subidón necesario para seguir escribiendo y difundiendo el conocimiento. Gracias y un saludo.", "email": "2424fbdd076dfc091fbc90e4ecccb9aa" },
+  { "name": "Roxana", "date": "2021-07-08", "message": "Gracias por tu generosidad", "email": "96b0172d6916f177027b4e1b05277918" },
+  { "name": "Oscar", "date": "2022-07-12", "message": "Muchas gracias por compartir este valioso material, mil gracias.", "email": "a953800b78c567a1b04120cf6e7862c1" },
+  { "name": "Alejandro Gutiérrez Oróstica", "date": "2022-07-25", "message": "Hola José Domingo!, quería agradecerte por tu excelente trabajo, verdaderamente lo encuentro excepcional. El último tiempo he buscado muchos sitios con los contenidos que tu nos entregas, sin embargo, en ningún caso he logrado encontrar un sitio de tan buen nivel y calidad en la información como el que tú nos ofreces. A la distancia desde Chile un gran abrazo.\nAlejandro Gutiérrez Oróstica", "email": "84d59239cfff2c70d4b944509c871731" },
+  { "name": "Daniel Osorio", "date": "2022-10-09", "message": "Super! Que buenos recursos. Ojalá sigas subiendo contenido para aprender a programar y analizar datos.", "email": "c61a801dd65a46a1911b8310a5a25610" },
+  { "name": "Alexander Figueroa", "date": "2022-11-10", "message": "Un cordial saludo amigo, gracias por tus aportes y por actualizar el contenido.\nUn saludo desde Guatemala.", "email": "e477ca1f33b014d3d365ef50a2d3001a" },
+  { "name": "Salazar_Ven23", "date": "2022-12-13", "message": "Un cordial saludo amigo, gracias por tus aportes y por actualizar el contenido. Un saludo desde Venezuela, felicitarte por este extraordinari pagina me ha sido de mucha ayuda en mi nueva travesia me encuentro en estos m omentos cursando el 1er semestre de ingenieria en sistemas muchisimas gracias por toda esta informacion ta valiosa", "email": "c0ed3722f25ccab229e73f9289678cac" },
+  { "name": "HERNÁN DARÍO PABÓN BLANDÓN", "date": "2023-01-07", "message": "Excelente página, he aprendido mucho", "email": "6c7ded9db08a02997e8c1c05bc821dbf" },
+  { "name": "Jose Miguel", "date": "2023-03-18", "message": "Excelente maestro muchas gracias por sus aportes gracias a personas como usted podemos los que no tenemos la oportunidad de acceder a conocimiento libre y de calidad", "email": "e5e72d05993042d8b2b8a971c3306858" },
+  { "name": "Leandri", "date": "2023-10-12", "message": "Hola José te saludo desde Argentina muy agradecido de todo lo que compartis!!! gracias", "email": "55fa3eab4ff924b0635600befc6c5f32" },
+  { "name": "csg", "date": "2024-03-01", "message": "Enhorabuena José, material de mucha calidad!! gracias por compartir tu conocimiento", "email": "9e7e3e6765684ef90725f83dc3983a14" }
+
+];
 ---
+
 
 <BaseLayout title="Presentación">
   <div class="about-wrapper">
@@ -28,6 +59,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>Si cualquier material o documento colgado en esta página no tiene la licencia necesaria para su libre distribución, por favor <a href="mailto:josedom24@josedomingo.org">escríbeme</a> inmediatamente para retirarlo del sitio.</p>
       <p>Espero que os guste y que os sea útil, si queréis colaborar con este proyecto o simplemente hacerme cualquier comentario, por favor, <a href="mailto:josedom24@josedomingo.org">escríbeme</a>.</p>
 
+<Comments comments={comments} />
       <div class="license">
         <p>Licencia: Puedes copiar y modificar todos los contenidos, pero siempre respetando los términos de la licencia <a href="https://creativecommons.org/licenses/by-sa/3.0/es/">CC-BY-SA</a>.</p>
       </div>
