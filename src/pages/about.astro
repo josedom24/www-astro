@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Comments from '../components/Comments.astro';
+import Giscus from '../components/Giscus.astro';
 const comments = [
   
   { "name": "Alberto Molina", "date": "2010-04-15", "message": "Enhorabuena por el cambio, me gusta! Ahora que has cogido ritmo sólo falta que hagas lo mismo en el Instituto.", "email": "68c0903a5d4600776c1b1f876e43f7e4" },
@@ -58,8 +59,10 @@ const comments = [
       <p>En esta página quiero ir recopilando información y recursos sobre informática y sobre la aplicación de las nuevas tecnologías en la educación.</p>
       <p>Si cualquier material o documento colgado en esta página no tiene la licencia necesaria para su libre distribución, por favor <a href="mailto:josedom24@josedomingo.org">escríbeme</a> inmediatamente para retirarlo del sitio.</p>
       <p>Espero que os guste y que os sea útil, si queréis colaborar con este proyecto o simplemente hacerme cualquier comentario, por favor, <a href="mailto:josedom24@josedomingo.org">escríbeme</a>.</p>
+ <h2 class="giscus-title">Nuevos comentarios</h2>
+<Giscus />
 
-<Comments comments={comments} />
+  <Comments comments={comments} title="Comentarios antiguos" />
       <div class="license">
         <p>Licencia: Puedes copiar y modificar todos los contenidos, pero siempre respetando los términos de la licencia <a href="https://creativecommons.org/licenses/by-sa/3.0/es/">CC-BY-SA</a>.</p>
       </div>
@@ -172,4 +175,15 @@ const comments = [
   object-fit: cover;
   flex-shrink: 0;
 }
+
+  .giscus-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-border);
+    color: var(--color-text) !important;
+  }
+
 </style>

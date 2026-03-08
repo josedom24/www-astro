@@ -1,4 +1,6 @@
 ---
+import { marked } from 'marked';
+
 interface Comment {
   name: string;
   date: string;
@@ -11,14 +13,23 @@ interface Props {
   comments: Comment[];
 }
 
-const { comments } = Astro.props;
+interface Props {
+  comments: Comment[];
+  title?: string;
+}
+
+const { comments, title = 'Comentarios' } = Astro.props;
+const parsedComments = comments.map(c => ({
+  ...c,
+  message: marked(c.message ?? '') as string
+}));
 ---
 
 {comments && comments.length > 0 && (
   <section class="comments">
-    <h2>Comentarios ({comments.length})</h2>
+    <h2>{title} ({comments.length})</h2>
     <div class="comment-list">
-      {comments.map(comment => (
+      {parsedComments.map(comment => (
         <article class="comment">
           <div class="comment-header">
             <div class="avatar">

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "pablo",
+    "date": "2023-10-02",
+    "message": "hola jose,\nestoy pegandome con las codificaciones tras hacer un requests en python3, no se si funcionaran igual que en python 2 (que usas en tus ejemplos):\n\n<pre>\nen el ejemplo1 de tu articulo:\n>>> cad=\"josé\"\n>>> cad me devuel josé y no su codificacion UTF8\n\nen el ejemplo2 de tu articulo:\n>>> cad_uni = u'josé'\n>>> type (cad_uni) me devuelve str y no unicode, por que puede ser??\n</pre>\n\nSaludos",
+    "email": "f972a3a4e202739783b0a1b81e84bf38"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2023-10-09",
+    "message": "Hola Pablo\nEn python3 es distinto, porque la codificación por defecto en python3 la clase string está codificada con Unicode.\n\nPara más información: https://docs.python.org/es/3/howto/unicode.html\n\nUn saludo\n\n<pre>",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  }
+]

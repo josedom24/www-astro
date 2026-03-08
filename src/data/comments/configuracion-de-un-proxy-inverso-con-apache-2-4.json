@@ -1,0 +1,20 @@
+[
+  {
+    "name": "yosdagar",
+    "date": "2021-08-06",
+    "message": "Que pasa cuando trabajo con muchos sub dominios:\nejemplo1.eje.com\nejemplo2.eje.com \ny hago una busqueda de ejemplo3.eje.com me muestra  ejemplo1.eje.com\ncómo puedo evitar eso?",
+    "email": "b04afc2fd69ec01329dbfeeef6413fb2"
+  },
+  {
+    "name": "José Domingo",
+    "date": "2021-08-11",
+    "message": "Realmente ese problema no tiene que ver con el proxy inverso. Tiene que ver con el tratamiento de virtualhosting por parte de apache2: Si tenemos varios virtualhosting donde hemos indicados distintos subdominios, si indicamos un subdominio que no existe, se mostrará el primer virtualhost. El primer virtualhost será aquel cuyo nombre del fichero de configuración es el primero al ordenarlo alfabéticamente.\nNo se puede solucionar, pero se puede crear un virtualhost, con un nombre de fichero, que al ordenarlo alfabéticamente sea el primero (por ejemplo con el nombre 000-default.conf) y que muestre algún contenido, aunque no sea significativo.\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  },
+  {
+    "name": "Andres Bou",
+    "date": "2023-06-05",
+    "message": "Hola. He montado un proxy inverso como indicas, pero en algunas páginas no me reescribe las rutas bien, y en otras si. Me he fijado que las páginas que empiezan por `<!DOCTYPE html><html>` fallan, apache no modifica las rutas. Y las que empiezan directamente con `<html>` hace el cambio de las rutas y funcionan perfectamente.",
+    "email": "681309e20731a5d63c88593bf7983286"
+  }
+]

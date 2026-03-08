@@ -1,0 +1,14 @@
+[
+  {
+    "name": "German",
+    "date": "2022-04-19",
+    "message": "Hola, tengo una consulta, estoy iniciando en el mundo de la programacion... y en el Pseint, el siguiente simbolo \" <-\" se transforma como en una flechita en el pseint, y quiero saber que representa/significa o para que es? porfavor, ya que no esta en las descripciones de signos.",
+    "email": "c48b693ba8cc0f65c402fa6df5bc9702"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2022-05-11",
+    "message": "Ese es el operador de asignación y nos permite asignar valores a una variable.\n\nhttps://plataforma.josedomingo.org/pledin/cursos/programacion/curso/u09/",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  }
+]

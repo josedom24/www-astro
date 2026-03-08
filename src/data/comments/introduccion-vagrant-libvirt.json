@@ -1,0 +1,32 @@
+[
+  {
+    "name": "José",
+    "date": "2022-07-03",
+    "message": "Excelente explicación. Gracias",
+    "email": "0c911b7f4731a2cf166cd9e31029d547"
+  },
+  {
+    "name": "Asier",
+    "date": "2022-09-03",
+    "message": "Muy pero que muy buena explicación. Chapó, de verdad.",
+    "email": "7e7c320e54b2a02e91133a44084b1d7c"
+  },
+  {
+    "name": "Mingo DevSec",
+    "date": "2022-12-02",
+    "message": "Muchas gracias, excelente trabajo",
+    "email": "1dc55ef4cc7c7d2e114367cfc2da0cc2"
+  },
+  {
+    "name": "Carlos Chavana",
+    "date": "2022-12-05",
+    "message": "Gracias por la explicación es muy buena\nUna duda, sabrás si se puede fijar el tamaño del disco de root?",
+    "email": "a8efb3eab8e73bfd6b88a912bbe4afca"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2022-12-05",
+    "message": "Hola Carlos,\nSi se puede usando el parámetro machine_virtual_size, para más [información](https://github.com/vagrant-libvirt/vagrant-libvirt/blob/main/docs/configuration.markdown).\nTambién puedes ver este artículo [Expand disk size of Rocky Linux 8 Vagrant box for libvirt provider](https://medium.com/@panda1100/expand-disk-size-of-rocky-linux-8-vagrant-box-for-libvirt-provider-e51b87ef497).\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  }
+]

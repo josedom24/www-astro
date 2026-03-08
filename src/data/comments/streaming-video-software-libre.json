@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Rubén",
+    "date": "2021-08-16",
+    "message": "Hola José Domingo,\n\nEstamos intentando montar un sistema similar para retransmitir varias cámaras IP. Tenemos todo corriendo con el docker, pero viendo el consumo con sólo tres cámaras nos está asustando un poco. Estamos con un Celeron dual core y 4GB de RAM, pero nuestro objetivo es pasar 60 cámaras por aquí, pero vemos que ni con el nginx.conf de ejemplo sin transcoding baja el consumo del contenedor.\n¿Tienes alguna referencia del hardware a usar?",
+    "email": "31c5b62ceb4ce2556b30e76b24c90888"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2021-08-20",
+    "message": "Hola Rubén,\nLo siento, no puedo ayudarte. No he seguido profundizando en el tema, y sólo hice algunas pruebas con una sola cámara.\n\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  },
+  {
+    "name": "kevin",
+    "date": "2022-10-04",
+    "message": "Hola José que línea debo modificar en los archivos de player?",
+    "email": "13aadff3b9aa575f3f7cfd49a4076688"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2022-10-10",
+    "message": "Hola Kevin\n\nLos archivos en el directorio players están escritos en html. Simplemente lo que comento es que puedes modificar el html para añadirle alguna información en concreto o cambiar el estilo de la página.\n\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  },
+  {
+    "name": "Guille",
+    "date": "2022-10-24",
+    "message": "Hola José!.  He seguido todos los pasos y me encuentro con el docker instalado y funcionando. Retransmito con OBS y soy capaz de verlo a través de VLC en mi propio PC, pero no desde otro PC. Los PC's están conectados a  la misma subred y hacen ping entre ellos, pero no soy capaz de ver el vídeo desde el segundo PC. ¿Alguna idea de que puede ser?. Los puertos 1935 y 8080 los tengo abiertos.",
+    "email": "681a1cf1ad1cb5880acce3eb4d55c5b9"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2022-10-29",
+    "message": "Hola Gille\n\nNo se si lo estás haciendo bien, te recuerdo que tienes que acceder desde el segundo PC a la dirección IP del primer PC. Si eso lo estás haciendo bien, no se que podría estar fallando.\n\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  },
+  {
+    "name": "Gerardo Ferraro",
+    "date": "2023-08-17",
+    "message": "buenas esta configuración funcionaría para una página web alojada en un hosting?? o funciona solo en intranet?",
+    "email": "de0d49f6d3db719942680afe172489e7"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2023-10-09",
+    "message": "Hola Gerardo,\nSi en el servidor remoto / hosting puedes instalar docker no creo que tengas problemas.\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  }
+]

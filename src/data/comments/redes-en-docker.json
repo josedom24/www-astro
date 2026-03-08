@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Andrés Gorostidi Pulgar",
+    "date": "2021-09-24",
+    "message": "Tengo una duda.  Imaginemos que yo tenga un Centos con varias IPs,  y que estoy corriendo varios dockers.\nEn principio, cuando haga el port mapping al levantar el docker acceder por la IP principal al servicio que me brinde el docker  (imaginemos un apache, corriendo en un docker, en el puerto 80).   Y si ahora quiere levantar otro docker,  corriendo en el mismo puerto, usando otra de las IPs del host ?   Como le digo que usa una IP diferente del host y no la misma ?    El proposito es tener en la misma maquina ambos dockers, ambos escuchando en el mismo puerto, con IPs diferentes...\n\nGracias!",
+    "email": "15626b27e68979c4212c9106c46bec94"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2021-09-26",
+    "message": "Hola Andrés, podrías ejecutar los siguientes comandos para ejecutar dos servidores web (he usado nginx en la prueba) y que cada uno responda en el puerto 80 de cada una de las direcciones ip que tiene la máquina:\n\n```bash\ndocker run -d --name web1 -p 192.168.121.65:80:80 nginx\ndocker run -d --name web2 -p 192.168.122.79:80:80 nginx\n```\n\nY comprobamos que  están corriendo los dos contenedores:\n\n```bash\ndocker ps -a\nCONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                       NAMES\n4b330d9bc911   nginx     \"/docker-entrypoint.…\"   4 seconds ago    Up 3 seconds    192.168.122.79:80->80/tcp   web2\n658b74e65ffe   nginx     \"/docker-entrypoint.…\"   21 seconds ago   Up 20 seconds   192.168.121.65:80->80/tcp   web1\n```\n\nPrueba a entrar en las distintas ip y verás que tiene acceso a cada uno de los servidores web.\nUn saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  },
+  {
+    "name": "Emil",
+    "date": "2022-05-28",
+    "message": "Hola. Estoy recién empezando con Docker y tengo una duda. En una maquina virtual tengo dos SO, Ubuntu Desktop y Ubuntu Server. En los dos sistemas he configurado una red interna para que se puedan comunicar. En Ubuntu Server, he instalado docker y mediante docker-compose he creado una imagen mysql, que en el archivo docker-compose.yml he puesto \"ports: 3306:3306\", con la idea desde Ubuntu Desktop acceder a información al servidor. Todo parece estar bien, incluso cuando hago \"sudo docker ps\", me aparece mysql funcionando y con el port 3306 configurado. Pero, desde el host (Ubuntu Desktop) intento verificar el funcionamiento, escribiendo en la terminal \"sudo nmap -p- --open -n <ip_guest>\" o \"nc -z4nv <ip_guest> 3306\", no funciona. El primer comando me devuelve el port 22 en lugar de 3306, y el segundo comando si escribo 22, si me reconoce la ip_guest. Cualquier ayuda me seria útil.\n\nGracias",
+    "email": "b565cbcc69932ad1f7e4387fc6ad9f46"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2022-06-01",
+    "message": "Hola Emil,\n\nIntenta acceder desde el ubuntu Desktop al servidor de base de datos. Para ello, instala el cliente de mysql y ejecuta:\n\n```\nmysql -u usuario -p -h <ip_ubuntu_server>\n```\n\nUn saludo, espero que te sirva.",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  },
+  {
+    "name": "Gleiver Fndez. Harria.",
+    "date": "2023-01-25",
+    "message": "Hola José, leyendo tu artículo me surge una duda. Como puedo mediante una archivo docker-compose.yml especificar que un servicio dentro de un determinado contenedor se emita por una determinada interfaz de red determinada asumiendo que en el host anfitrión tenga 2.el escenario que quiero interpretar en un archivo .yml de docker-compose es el siguiente: docker run --detach --volume mi-data:/data --network host --name X --restart unless-stopped imagen-servicio etho. El network lo puedo modificar y declarar directamente en el yml como un bridge pero la interfaz eth0 del host anfitrión como lo declaró??",
+    "email": "c2e0f7ba4c79da6c07e128264e8287e1"
+  },
+  {
+    "name": "José Domingo Muñoz",
+    "date": "2023-02-08",
+    "message": "Hola Gleiver,\nHe estado buscando por internet y por la documentación de docker y yo no he encontrado ninguna solución a tu problema. <br/> Entiendo que cuando usas el tipo de red host en docker el contenedor está ofreciendo el servicio en el mismo host, y por lo tanto ofrece el servicio en todas las interfaces de red de la máquina. <br/> Una posible solución que se me ocurre, y que no se si es válida para tu caso es usar el cortafuego para restringir el acceso al servicio desde una determina interfaz. <br/> Siento no poder ayudar más. Un saludo",
+    "email": "2424fbdd076dfc091fbc90e4ecccb9aa"
+  }
+]

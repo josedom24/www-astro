@@ -3,6 +3,9 @@ import { getCollection, render } from 'astro:content';
 import BlogLayout from '../../../../layouts/BlogLayout.astro';
 import BlogSidebar from '../../../../components/BlogSidebar.astro';
 import { getPostDate } from '../../../../utils/date';
+import Comments from '../../../../components/Comments.astro';
+import Giscus from '../../../../components/Giscus.astro';
+
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -21,11 +24,16 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const date = getPostDate(post);
+
+const allComments = import.meta.glob('/src/data/comments/*.json', { eager: true });
+const postSlug = post.id.split('/').pop();
+const comments = (allComments[`/src/data/comments/${postSlug}.json`] as any)?.default ?? [];
+console.log('postSlug:', postSlug);
+console.log('comments length:', comments.length);
+console.log('available keys:', Object.keys(allComments).slice(0, 3));
 ---
 
 <BlogLayout title={post.data.title} description={post.data.excerpt} headings={headings}>
-
-
   <BlogSidebar slot="sidebar" />
 
   <article class="post">
@@ -53,7 +61,13 @@ const date = getPostDate(post);
       <Content />
     </div>
   </article>
+  <h2 class="giscus-title">Nuevos comentarios</h2>
+  <Giscus />
+
+  <Comments comments={comments} title="Comentarios antiguos" />
+  
 </BlogLayout>
+
 
 <style>
   .post-header {
@@ -175,4 +189,15 @@ const date = getPostDate(post);
 .post-body :global(h3) {
   scroll-margin-top: calc(var(--nav-height) + 1rem);
 }
+
+  .giscus-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-border);
+    color: var(--color-text);
+  }
+
 </style>

@@ -1,0 +1,8 @@
+[
+  {
+    "name": "kato",
+    "date": "2022-04-26",
+    "message": "AAGHH....maldito LXC. Uno de la vieja escuela reniega con la containerizacion viniendo mas de la virtualizacion. Aprende como puede docker y casi que se acostumbra y me toca migrar un container LXC productivo y trato de tirarlo en otro servidor host volviendome loco con la parte de red, y leyendo diferentes documentaciones para intentar hacer una red nateada...\n\nPor suerte me encontré con tu nota, que va al grano, claro y conciso, para leer, entender y hacer. Y funcionar, claro.\n\nGracias por hacerme ganar tiempo!",
+    "email": "d623d4530cb7653f816fbc783fabc838"
+  }
+]
