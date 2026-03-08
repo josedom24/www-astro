@@ -113,9 +113,9 @@ pre code {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background: var(--color-accent);
-  color: white;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0.2rem 0.6rem;
   border-radius: 0.25rem;
   font-size: 0.75rem;
@@ -126,5 +126,5 @@ pre code {
 }
 
 .copy-btn:hover {
-  background: var(--color-accent-high);
+  background: rgba(255, 255, 255, 0.25);
 }
