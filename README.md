@@ -41,3 +41,20 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+Funcionalidad:
+
+Botón "Copiar" en los bloques de código
+Navegación anterior/siguiente post
+Posts relacionados por etiquetas
+Progreso de lectura (barra en la parte superior)
+
+SEO y metadatos:
+
+Open Graph y Twitter Cards para compartir en redes
+Schema.org para artículos
+
+UX:
+
+Botón "volver arriba"
+Imágenes con zoom al hacer clic
