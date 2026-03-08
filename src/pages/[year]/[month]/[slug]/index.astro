@@ -33,6 +33,18 @@ const postSlug = post.id.split('/').pop();
 const comments = (allComments[`/src/data/comments/${postSlug}.json`] as any)?.default ?? [];
 
 const readingTime = getReadingTime(post.body ?? '');
+
+const allPosts = (await getCollection('blog'))
+  .sort((a, b) => getPostDate(a).valueOf() - getPostDate(b).valueOf());
+
+const currentIndex = allPosts.findIndex(p => p.id === post.id);
+const prevPost = allPosts[currentIndex - 1];
+const nextPost = allPosts[currentIndex + 1];
+
+const getPostUrl = (p: typeof post) => {
+  const slug = p.data.slug ?? p.id;
+  return `/pledin/${slug.replace(/^blog\//, '')}/`;
+};
 ---
 
 <BlogLayout title={post.data.title} description={post.data.excerpt} headings={headings}>
@@ -72,6 +84,22 @@ const readingTime = getReadingTime(post.body ?? '');
       <Content />
     </div>
   </article>
+
+  <nav class="post-nav">
+  {prevPost && (
+    <a href={getPostUrl(prevPost)} class="post-nav-item prev">
+      <span class="nav-label">← Anterior</span>
+      <span class="nav-title">{prevPost.data.title}</span>
+    </a>
+  )}
+  {nextPost && (
+    <a href={getPostUrl(nextPost)} class="post-nav-item next">
+      <span class="nav-label">Siguiente →</span>
+      <span class="nav-title">{nextPost.data.title}</span>
+    </a>
+  )}
+</nav>
+
   <h2 class="giscus-title">Nuevos comentarios</h2>
   <Giscus />
 
@@ -226,6 +254,50 @@ const readingTime = getReadingTime(post.body ?? '');
   gap: 0.3rem;
   font-size: 0.875rem;
   color: var(--color-text-muted);
+}
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.post-nav-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 45%;
+  text-decoration: none;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-bg-nav);
+  transition: border-color 0.2s;
+}
+
+.post-nav-item:hover {
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+.post-nav-item.next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.nav-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.nav-title {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 </style>
