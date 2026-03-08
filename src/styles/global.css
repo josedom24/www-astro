@@ -88,3 +88,24 @@ pre code {
   color: white !important;
   text-decoration: none !important;
 }
+
+.micropost-body code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-bg-sidebar);
+  padding: 0.1em 0.3em;
+  border-radius: 0.25rem;
+}
+
+.micropost-body pre {
+  background: var(--color-bg-sidebar);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.micropost-body pre code {
+  background: none;
+  padding: 0;
+}

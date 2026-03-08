@@ -5,6 +5,7 @@ import BlogSidebar from '../../../../components/BlogSidebar.astro';
 import { getPostDate } from '../../../../utils/date';
 import Comments from '../../../../components/Comments.astro';
 import Giscus from '../../../../components/Giscus.astro';
+import { getReadingTime } from '../../../../utils/readingTime';
 
 
 export async function getStaticPaths() {
@@ -21,6 +22,8 @@ export async function getStaticPaths() {
   });
 }
 
+
+
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const date = getPostDate(post);
@@ -28,9 +31,8 @@ const date = getPostDate(post);
 const allComments = import.meta.glob('/src/data/comments/*.json', { eager: true });
 const postSlug = post.id.split('/').pop();
 const comments = (allComments[`/src/data/comments/${postSlug}.json`] as any)?.default ?? [];
-console.log('postSlug:', postSlug);
-console.log('comments length:', comments.length);
-console.log('available keys:', Object.keys(allComments).slice(0, 3));
+
+const readingTime = getReadingTime(post.body ?? '');
 ---
 
 <BlogLayout title={post.data.title} description={post.data.excerpt} headings={headings}>
@@ -39,9 +41,18 @@ console.log('available keys:', Object.keys(allComments).slice(0, 3));
   <article class="post">
     <header class="post-header">
       <h1>{post.data.title}</h1>
-      <time datetime={date.toISOString()}>
-        {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
-      </time>
+      <div class="post-meta">
+      <span class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <time datetime={date.toISOString()}>
+          {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
+        </time>
+      </span>
+      <span class="meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="reading-time">{readingTime} minutos de lectura</span>
+      </span>
+    </div>
       {post.data.tags && (
         <div class="tags">
           {post.data.tags.map(tag => (
@@ -199,5 +210,22 @@ console.log('available keys:', Object.keys(allComments).slice(0, 3));
     border-top: 2px solid var(--color-border);
     color: var(--color-text);
   }
+  .reading-time {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
 
 </style>
