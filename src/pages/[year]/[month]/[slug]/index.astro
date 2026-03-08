@@ -45,6 +45,17 @@ const getPostUrl = (p: typeof post) => {
   const slug = p.data.slug ?? p.id;
   return `/pledin/${slug.replace(/^blog\//, '')}/`;
 };
+
+const relatedPosts = allPosts
+  .filter(p => p.id !== post.id)
+  .filter(p => p.data.tags?.some(tag => post.data.tags?.includes(tag)))
+  .sort((a, b) => {
+    const aMatches = a.data.tags?.filter(tag => post.data.tags?.includes(tag)).length ?? 0;
+    const bMatches = b.data.tags?.filter(tag => post.data.tags?.includes(tag)).length ?? 0;
+    if (bMatches !== aMatches) return bMatches - aMatches;
+    return getPostDate(b).valueOf() - getPostDate(a).valueOf();
+  })
+  .slice(0, 3);
 ---
 
 <BlogLayout title={post.data.title} description={post.data.excerpt} headings={headings}>
@@ -99,6 +110,21 @@ const getPostUrl = (p: typeof post) => {
     </a>
   )}
 </nav>
+{relatedPosts.length > 0 && (
+  <section class="related-posts">
+    <h2>Posts relacionados</h2>
+    <div class="related-list">
+      {relatedPosts.map(p => (
+        <a href={getPostUrl(p)} class="related-item">
+          <span class="related-title">{p.data.title}</span>
+          <span class="related-date">
+            {getPostDate(p).toLocaleDateString('es-ES', { dateStyle: 'long' })}
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
 
   <h2 class="giscus-title">Nuevos comentarios</h2>
   <Giscus />
@@ -299,5 +325,50 @@ const getPostUrl = (p: typeof post) => {
   font-weight: 600;
   line-height: 1.4;
 }
+.related-posts {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
 
+.related-posts h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.related-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-bg-nav);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.related-item:hover {
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+.related-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.related-date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
 </style>
