@@ -70,8 +70,8 @@ const currentPath = Astro.url.pathname;
   <ul>
     {years.map(([year, count]) => (
       <li>
-        <a href={`/pledin/blog/#${year}`}
-           class:list={[{ active: currentPath === '/pledin/blog/' }]}>
+        <a href={`/pledin/blog/#${year}`}>
+           
           {year} ({count})
         </a>
       </li>
