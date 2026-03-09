@@ -4,6 +4,8 @@ import BlogLayout from '../../../../layouts/BlogLayout.astro';
 import BlogSidebar from '../../../../components/BlogSidebar.astro';
 import PostMeta from '../../../../components/PostMeta.astro';
 import TagList from '../../../../components/TagList.astro';
+import PostNav from '../../../../components/PostNav.astro';
+import RelatedPosts from '../../../../components/RelatedPosts.astro';
 import { getPostDate } from '../../../../utils/date';
 import Comments from '../../../../components/Comments.astro';
 import Giscus from '../../../../components/Giscus.astro';
@@ -79,35 +81,14 @@ const relatedPosts = allPosts
     </div>
   </article>
 
-  <nav class="post-nav">
-  {prevPost && (
-    <a href={getPostUrl(prevPost)} class="post-nav-item prev">
-      <span class="nav-label">← Anterior</span>
-      <span class="nav-title">{prevPost.data.title}</span>
-    </a>
-  )}
-  {nextPost && (
-    <a href={getPostUrl(nextPost)} class="post-nav-item next">
-      <span class="nav-label">Siguiente →</span>
-      <span class="nav-title">{nextPost.data.title}</span>
-    </a>
-  )}
-</nav>
-{relatedPosts.length > 0 && (
-  <section class="related-posts">
-    <h2>Posts relacionados</h2>
-    <div class="related-list">
-      {relatedPosts.map(p => (
-        <a href={getPostUrl(p)} class="related-item">
-          <span class="related-title">{p.data.title}</span>
-          <span class="related-date">
-            {getPostDate(p).toLocaleDateString('es-ES', { dateStyle: 'long' })}
-          </span>
-        </a>
-      ))}
-    </div>
-  </section>
-)}
+  <PostNav
+    prevUrl={prevPost ? getPostUrl(prevPost) : undefined}
+    prevTitle={prevPost?.data.title}
+    nextUrl={nextPost ? getPostUrl(nextPost) : undefined}
+    nextTitle={nextPost?.data.title}
+  />
+
+  <RelatedPosts posts={relatedPosts} getUrl={getPostUrl} />
 
   <h2 class="giscus-title">Nuevos comentarios</h2>
   <Giscus />
@@ -225,94 +206,5 @@ const relatedPosts = allPosts
     border-top: 2px solid var(--color-border);
     color: var(--color-text);
   }
-  .post-nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
-}
 
-.post-nav-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  max-width: 45%;
-  text-decoration: none;
-  padding: 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-bg-nav);
-  transition: border-color 0.2s;
-}
-
-.post-nav-item:hover {
-  border-color: var(--color-accent);
-  text-decoration: none;
-}
-
-.post-nav-item.next {
-  margin-left: auto;
-  text-align: right;
-}
-
-.nav-label {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  font-weight: 600;
-}
-
-.nav-title {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  font-weight: 600;
-  line-height: 1.4;
-}
-.related-posts {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
-}
-
-.related-posts h2 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--color-text);
-}
-
-.related-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.related-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-bg-nav);
-  text-decoration: none;
-  transition: border-color 0.2s;
-}
-
-.related-item:hover {
-  border-color: var(--color-accent);
-  text-decoration: none;
-}
-
-.related-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.related-date {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
 </style>
