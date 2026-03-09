@@ -23,7 +23,7 @@ Un **Subnet Router** es un nodo de nuestra red que actúa como pasarela, permiti
 
 El escenario desde el que partimos es el siguiente:
 
-```
+```bash
 docker exec headscale headscale nodes list
 ID | Hostname | Name    | MachineKey | NodeKey | User | Tags | IP addresses                  | Ephemeral | Last seen           | Expiration          | Connected | Expired
 1  |  nodo1   | nodo1   | [qatKd]    | [fMe1N] | vpn1 |      | 100.64.0.1, fd7a:115c:a1e0::1 | false     | 2026-02-13 18:09:45 | N/A                 | online    | no     
@@ -35,7 +35,7 @@ ID | Hostname | Name    | MachineKey | NodeKey | User | Tags | IP addresses     
 
 Vamos a suponer que el `nodo2` es el **Subnet Router**. Para configurar este nodo lo primero es habilitar el reenvío de paquetes en ese nodo, para ello activamos el bit de forwarding en `nodo2`:
 
-```
+```bash
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
@@ -44,19 +44,19 @@ sudo sysctl -p
 
 A continuación, el `nodo2` tiene que **anunciar la ruta**, suponemos que la red local a la que nos da acceso el `nodo2` es la `192.168.18.0/24`. Para anunciar la ruta de encaminamiento que permita a los otros nodos acceder a dicha red, ejecutamos en `nodo2`:
 
-```
+```bash
 sudo tailscale up --login-server https://vpn.example.org --advertise-routes=192.168.18.0/24
 ```
 
 Si el nodo ya estaba iniciado:
 
-```
+```bash
 sudo tailscale set --advertise-routes=192.168.18.0/24
 ```
 
 Podemos comprobar que el nodo está anunciando nuevas rutas desde el servidor Headscale, ejecutando:
 
-```
+```bash
 docker exec headscale headscale nodes list-routes
 ID | Hostname | Approved        | Available       | Serving (Primary)
 2  | nodo2    | 192.168.18.0/24 | 192.168.18.0/24 |   
@@ -70,13 +70,13 @@ La **forma automática** está pensada cuando tenemos pensado añadir muchos nod
 
 En nuestro caso estudiaremos la **aprobación manual**. Desde el servidor Headscale, ejecutamos la siguiente instrucción para habilitar la ruta que se está anunciando:
 
-```
+```bash
 docker exec headscale headscale nodes approve-routes --identifier 2 --routes 192.168.18.0/24
 ```
 
 Si volvemos a ver las rutas desde el servidor, comprobamos que se ha aprobado:
 
-```
+```bash
 docker exec headscale headscale nodes list-routes
 ID | Hostname | Approved        | Available       | Serving (Primary)
 2  | nodo2    | 192.168.18.0/24 | 192.168.18.0/24 | 192.168.18.0/24
@@ -86,13 +86,13 @@ ID | Hostname | Approved        | Available       | Serving (Primary)
 
 Una vez que la ruta está aprobada en el servidor, los clientes (nodos) de la VPN ya saben que esa red existe, pero los clientes Linux son precavidos y **no** la añadirán a su tabla de rutas local a menos que se lo pidas. Por ejemplo en el `nodo1` ejecutamos:
 
-```
+```bash
 sudo tailscale up    --login-server=https://vpn.example.org
 ```
 
 Si el cliente ya está iniciado, podemos ejecutar:
 
-```
+```bash
 sudo tailscale set --accept-routes
 ```
 
@@ -109,7 +109,7 @@ ping 192.168.18.1  # La IP del router de tu casa
 
 Veamos donde se declara la ruta de encaminamiento. Tailscale crea una nueva tabla de encaminamiento para introducir las rutas que necesita, para ver las tablas de encaminamiento ejecutamos: `ip rule show`. Entre varias tablas que encontramos, tenemos que tener en cuenta que la tabla de encaminamiento por defecto se llama **main** y la tabla de encaminamiento de Tailscale es la llamada **52**. Por lo tanto si vemos las rutas de esta tabla, encontramos la ruta de encaminamiento que hemos aceptado:
 
-```
+```bash
 ip route show table 52
 ... 
 192.168.18.0/24 dev tailscale0 
@@ -129,7 +129,7 @@ Al configurar un **Exit Node**, puedes indicar a tus dispositivos que **todo** s
 
 En nuestro ejemplo, vamos a configurar como **exit node** nuestro nodo `nodo3`. Lo primero activaremos el bit de forwarding en ese nodo:
 
-```
+```bash
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
@@ -142,13 +142,13 @@ sudo tailscale up --login-server https://vpn.example.org --advertise-exit-node
 
 Si el nodo ya está funcionando, podemos ejecutar:
 
-```
+```bash
 sudo tailscale set --advertise-exit-node
 ```
 
 Podemos comprobar que el nodo está anunciando nuevas rutas desde el servidor Headscale, ejecutando:
 
-```
+```bash
 docker exec headscale headscale nodes list-routes
 ID | Hostname | Approved        | Available       | Serving (Primary)
 2  | nodo2    | 192.168.18.0/24 | 192.168.18.0/24 | 192.168.18.0/24
@@ -160,13 +160,13 @@ ID | Hostname | Approved        | Available       | Serving (Primary)
 
 Al igual que con los subnet routers, ahora debemos aprobar la ruta por defecto desde el servidor Headscale. A aunque podemos hacerlo de [forma automática](https://headscale.net/stable/ref/routes/#automatically-approve-an-exit-node-with-auto-approvers), vamos a ver el procedimiento manual. Para ello ejecutamos desde el servidor Headscale:
 
-```
+```bash
 docker exec headscale headscale nodes approve-routes --identifier 3 --routes 0.0.0.0/0,::/0
 ```
 
 Y volvemos a comprobar las rutas aprobadas:
 
-```
+```bash
 docker exec headscale headscale nodes list-routes
 ID | Hostname | Approved        | Available       | Serving (Primary)
 2  | nodo2    | 192.168.18.0/24 | 192.168.18.0/24 | 192.168.18.0/24
@@ -178,13 +178,13 @@ ID | Hostname | Approved        | Available       | Serving (Primary)
 
 Una vez aprobado, el nodo de salida  **no se usa automáticamente**. Cada cliente debe elegir activarlo. Para empezar a navegar a través del nodo de salida, ejecutamos en el `nodo1`:
 
-```
+```bash
 sudo tailscale up --exit-node=nodo3 --login-server https://vpn.example.org 
 ```
 
 Si el nodo ya está funcionando, ejecutamos:
 
-```
+```bash
 sudo tailscale set --exit-node nodo3
 ```
 
@@ -201,7 +201,7 @@ curl ifconfig.me
 La dirección IP devuelta debería ser la IP pública de tu **Exit Node**, no la de la red a la que estás conectado físicamente.
 Además podemos ver que se ha creado una ruta por defecto en la tabla de encaminamiento **52**:
 
-```
+```bash
 ip route show table 52
 default dev tailscale0 
 ```
@@ -240,7 +240,7 @@ Con esta configuración tenemos un servidor DNS en la dirección `100.100.100.10
 
 Podemos comprobar la configuración del servidor DNS de uno de nuestro nodos:
 
-```
+```bash
 cat /etc/resolv.conf
 
 nameserver 100.100.100.100
@@ -249,7 +249,7 @@ search vpn.example.org
 
 Y podemos acceder a los nodos usando su nombre FQDN o hostname, ya que tenemos configurado el parámetro `search`:
 
-```
+```bash
 ping nodo2
 PING nodo2.vpn.example.org (100.64.0.2) 56(84) bytes of data.
 64 bytes from nodo2.vpn.example.org (100.64.0.2): icmp_seq=1 ttl=64 time=17.7 ms
@@ -279,7 +279,7 @@ Recuerda que para que el cliente pueda alcanzar la IP `192.168.18.3` (que es el 
 
 Para comprobar el funcionamiento, podemos hacer una consulta desde el `nodo1`:
 
-```
+```bash
 dig home.josedomingo.org +short
 192.168.18.3
 ```

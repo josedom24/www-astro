@@ -47,27 +47,27 @@ Headscale es extremadamente ligero. Para una red pequeña o mediana, una máquin
 
 En la página anterior puedes encontrar distintos métodos de instalación, en este artículo utilizaremos un contenedor Docker para realizar la instalación, para ello y siguiendo la documentación [Running headscale in a container](https://headscale.net/stable/setup/install/container/):
 
-```
+```bash
 mkdir -p ./headscale/{config,lib}
 cd headscale
 ```
 
 Bajamos el fichero de configuración por defecto según la versión con la que vamos a trabajar, podemos encontrar las instrucciones para descargarlo en la [documentación](https://headscale.net/stable/ref/configuration/). En este caso usamos la versión 0.28.0:
 
-```
+```bash
 cd config
 curl -o config.yaml https://raw.githubusercontent.com/juanfont/headscale/v0.28.0-beta.2/config-example.yaml
 ```
 
 A continuación modificamos la configuración para que el servidor escuche en todos las direcciones, para ello en el fichero `config/config.yaml` modificamos el siguiente parámetro de la siguiente forma:
 
-```
+```bash
 listen_addr: 0.0.0.0:8080
 ``` 
 
 Ahora creamos el fichero `docker-compose.yaml`:
 
-```
+```dockerfile
 services:
   headscale:
     image: docker.io/headscale/headscale:${HEADSCALE_VERSION}
@@ -89,7 +89,7 @@ services:
 
 Y el fichero `.env`:
 
-```
+```bash
 # La versión de headscale que deseas utilizar
 HEADSCALE_VERSION=0.28.0
 
@@ -99,8 +99,8 @@ HEADSCALE_PATH=.
 
 Iniciamos el contenedor y comprobamos que funciona:
 
-```
- docker-compose up -d
+```bash
+docker-compose up -d
 Starting headscale ... done
 
 curl http://127.0.0.1:8080/health
@@ -109,20 +109,20 @@ curl http://127.0.0.1:8080/health
 
 Ahora configuramos el proxy inverso, para ello tenemos ejemplos de configuración en [Running headscale behind a reverse proxy](https://headscale.net/stable/ref/integration/reverse-proxy/). Y comprobamos que funciona:
 
-```
+```bash
 curl https://vpn.example.org/health
 {"status":"pass"}
 ```
 
 Finalmente cambiamos el parámetro de la configuración para indicar la url de acceso, para ello en el fichero `config/config.yaml` modificamos:
 
-```
+```bash
 server_url: https://vpn.example.org
 ```
 
 Reiniciamos el contenedor:
 
-```
+```bash
 docker-compose restart
 ```
 
@@ -135,7 +135,7 @@ En Headscale, un **usuario** es una entidad lógica que agrupa un conjunto de di
 
 No puedes registrar ningún nodo (dispositivo) en Headscale si no existe al menos un usuario al que asignárselo. Para crear tu primer usuario (por ejemplo, "mi-red"), utiliza el siguiente comando:
 
-```
+```bash
 docker exec headscale headscale users create vpn1
 User created
 
@@ -146,7 +146,7 @@ ID | Name | Username | Email | Created
 
 Podemos eliminar un usuario ejecutando:
 
-```
+```bash
 docker exec headscale headscale users destroy vpn1
 ```
 
@@ -180,7 +180,8 @@ Este es el método estándar para estaciones de trabajo o dispositivos con inter
 Veamos un ejemplo:
 
 Desde el cliente solicitamos el registro:
-``` 
+
+```bash
 sudo tailscale up --login-server https://vpn.example.org
 
 To authenticate, visit:
@@ -190,20 +191,20 @@ To authenticate, visit:
 
 Abrimos el enlace en un navegador web y nos dará la instrucción (que incluye el `nodekey`) que tenemos que ejecutar en Headscale para autorizar el dispositivo:
 
-```
+```bash
 headscale nodes register --key STqfQR4wnKr-eerDXam3_RYi --user USERNAME
 ``` 
 
 En nuestro caso, ejecutamos:
 
-```
+```bash
 docker exec headscale headscale nodes register --key STqfQR4wnKr-eerDXam3_RYi --user vpn1
 Node registered
 ```
 
 En headscale podemos ver los nodos registrados:
 
-```
+```bash
 docker exec headscale headscale nodes list
 ID | Hostname | Name    | MachineKey | NodeKey | User | Tags | IP addresses                  | Ephemeral | Last seen           | Expiration | Connected | Expired
 1  |  nodo1   | nodo1   | [qatKd]    | [fMe1N] | vpn1 |      | 100.64.0.1, fd7a:115c:a1e0::1 | false     | 2026-02-13 18:09:45 | N/A        | online    | no     ``` 
@@ -211,7 +212,7 @@ ID | Hostname | Name    | MachineKey | NodeKey | User | Tags | IP addresses     
 
 Y podemos comprobar que el cliente tiene la ip asignada en la VPN:
 
-```
+```bash
 ip addr show tailscale0
 2: tailscale0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1280 qdisc pfifo_fast state UNKNOWN group default qlen 500
     link/none 
@@ -232,7 +233,7 @@ Veamos un ejemplo:
 
 En primer lugar generamos la clave en el Control Plane:
 
-```
+```bash
 docker exec headscale headscale preauthkeys create --user 1 --reusable
 hskey-auth-Db1RF5n7gSk3-NzIu0vDgXi8yewFjq5w4rczR-uZD-J_RfYnUDSjCmrgRHKXnGaXj_HK3jJfvnhk0
 ``` 
@@ -245,13 +246,13 @@ Con el parámetro `--user` debemos indicar el ID del usuario.
 
 Y luego la usamos para conectar el cliente:
 
-```
+```bash
 sudo tailscale up --login-server https://vpn.example.org --authkey hskey-auth-Db1RF5n7gSk3-NzIu0vDgXi8yewFjq5w4rczR-uZD-J_RfYnUDSjCmrgRHKXnGaXj_HK3jJfvnhk0
 ```
 
 Y comprobamos que el cliente se ha conectado:
 
-```
+```bash
 docker exec headscale headscale nodes list
 ID | Hostname | Name    | MachineKey | NodeKey | User | Tags | IP addresses                  | Ephemeral | Last seen           | Expiration          | Connected | Expired
 1  |  nodo1   | nodo1   | [qatKd]    | [fMe1N] | vpn1 |      | 100.64.0.1, fd7a:115c:a1e0::1 | false     | 2026-02-13 18:09:45 | N/A                 | online    | no     
