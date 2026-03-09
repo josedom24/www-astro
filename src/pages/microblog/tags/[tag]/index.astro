@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PostMeta from '../../../../components/PostMeta.astro';
+import TagList from '../../../../components/TagList.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('microblog');
@@ -50,18 +52,8 @@ const renderedPosts = await Promise.all(
         return (
           <article class="micropost">
             <div class="micropost-meta">
-              <time datetime={date.toISOString()}>
-                {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
-              </time>
-              {post.data.tags && (
-                <div class="tags">
-                  {post.data.tags.map(t => (
-                    <a href={`/pledin/microblog/tags/${t.toLowerCase().replace(/ /g, '-')}/`} class="tag">
-                      {t}
-                    </a>
-                  ))}
-                </div>
-              )}
+              <PostMeta date={date} />
+              <TagList tags={post.data.tags ?? []} baseUrl="/pledin/microblog/tags/" />
             </div>
             <h2><a href={url}>{post.data.title}</a></h2>
             <div class="micropost-body">
@@ -130,33 +122,6 @@ const renderedPosts = await Promise.all(
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.5rem;
-  }
-
-  time {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    background: var(--color-bg-sidebar);
-    color: var(--color-text-muted);
-    padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .tag:hover {
-    background: var(--color-accent);
-    color: white;
-    text-decoration: none;
   }
 
   h2 {

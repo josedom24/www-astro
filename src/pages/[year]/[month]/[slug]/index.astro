@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import BlogLayout from '../../../../layouts/BlogLayout.astro';
 import BlogSidebar from '../../../../components/BlogSidebar.astro';
+import PostMeta from '../../../../components/PostMeta.astro';
+import TagList from '../../../../components/TagList.astro';
 import { getPostDate } from '../../../../utils/date';
 import Comments from '../../../../components/Comments.astro';
 import Giscus from '../../../../components/Giscus.astro';
@@ -64,27 +66,8 @@ const relatedPosts = allPosts
   <article class="post">
     <header class="post-header">
       <h1>{post.data.title}</h1>
-      <div class="post-meta">
-      <span class="meta-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <time datetime={date.toISOString()}>
-          {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
-        </time>
-      </span>
-      <span class="meta-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span class="reading-time">{readingTime} minutos de lectura</span>
-      </span>
-    </div>
-      {post.data.tags && (
-        <div class="tags">
-          {post.data.tags.map(tag => (
-            <a href={`/pledin/tags/${tag.toLowerCase().replace(/ /g, '-')}/`} class="tag">
-              {tag}
-            </a>
-          ))}
-        </div>
-      )}
+      <PostMeta date={date} readingTime={readingTime} />
+      <TagList tags={post.data.tags ?? []} baseUrl="/pledin/tags/" />
     </header>
 
     {post.data.cover && (
@@ -154,28 +137,6 @@ const relatedPosts = allPosts
   time {
     font-size: 0.875rem;
     color: var(--color-text-muted);
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    background: var(--color-bg-sidebar);
-    color: var(--color-text-muted);
-    padding: 0.2rem 0.6rem;
-    border-radius: 1rem;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .tag:hover {
-    background: var(--color-accent);
-    color: white;
-    text-decoration: none;
   }
 
   .cover {
@@ -264,24 +225,7 @@ const relatedPosts = allPosts
     border-top: 2px solid var(--color-border);
     color: var(--color-text);
   }
-  .reading-time {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-}
-.post-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-}
-.post-nav {
+  .post-nav {
   display: flex;
   justify-content: space-between;
   gap: 1rem;

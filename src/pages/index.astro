@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PostMeta from '../components/PostMeta.astro';
 import { getPostDate } from '../utils/date';
+import { getReadingTime } from '../utils/readingTime';
 import { marked } from 'marked';
 
 const allPosts = (await getCollection('blog'))
@@ -56,9 +58,7 @@ const renderedMicroposts = await Promise.all(
                 <img src={post.data.cover} alt={post.data.title} class="cover" />
               )}
               <h3><a href={url}>{post.data.title}</a></h3>
-              <time datetime={date.toISOString()}>
-                {date.toLocaleDateString('es-ES', { dateStyle: 'long' })}
-              </time>
+              <PostMeta date={date} readingTime={getReadingTime(post.body ?? '')} />
               <div class="post-body" set:html={preview} />
               {hasMore && <a href={url} class="detail-link">Seguir leyendo →</a>}
             </article>
@@ -269,13 +269,6 @@ const renderedMicroposts = await Promise.all(
   }
 
   .post-preview h3 a:hover { color: var(--color-accent-high); }
-
-  .post-preview time {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    display: block;
-    margin-bottom: 0.5rem;
-  }
 
   .post-body {
     font-size: 0.95rem;
