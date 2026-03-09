@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Introducción a Podman",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/podman2024/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a Podman",
+    "children": [
+      {
+        "title": "Introducción a los contenedores OCI",
+        "url": "/cursos/podman2024/contenido/modulo1/01_contenedores/"
+      },
+      {
+        "title": "Aplicaciones para trabajar con contenedores OCI",
+        "url": "/cursos/podman2024/contenido/modulo1/02_aplicaciones/"
+      },
+      {
+        "title": "Introducción de Podman",
+        "url": "/cursos/podman2024/contenido/modulo1/03_podman/"
+      },
+      {
+        "title": "Instalación de Podman en Linux",
+        "url": "/cursos/podman2024/contenido/modulo1/04_linux/"
+      },
+      {
+        "title": "Instalación de Podman en Windows/macOS",
+        "url": "/cursos/podman2024/contenido/modulo1/05_windows/"
+      }
+    ]
+  },
+  {
+    "title": "Ejecución de contenedores OCI con Podman",
+    "children": [
+      {
+        "title": "El 'Hola Mundo' en Podman",
+        "url": "/cursos/podman2024/contenido/modulo2/01_holamundo/"
+      },
+      {
+        "title": "Ejecución simple de contenedores",
+        "url": "/cursos/podman2024/contenido/modulo2/02_contenedor/"
+      },
+      {
+        "title": "Ejecución de contenedores interactivos",
+        "url": "/cursos/podman2024/contenido/modulo2/03_interactivo/"
+      }
+    ]
+  }
+]

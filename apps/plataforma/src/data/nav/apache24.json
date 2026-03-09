@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Curso Apache 2.4",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/apache24/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a los servidores web",
+    "children": [
+      {
+        "title": "Protocolo HTTP",
+        "url": "/cursos/apache24/curso/u01/"
+      },
+      {
+        "title": "Introducción al servidor web Apache 2.4",
+        "url": "/cursos/apache24/curso/u02/"
+      }
+    ]
+  }
+]

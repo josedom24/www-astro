@@ -1,0 +1,120 @@
+---
+export interface NavItem {
+  title: string;
+  url?: string;
+  children?: NavItem[];
+}
+
+export interface Props {
+  nav: NavItem[];
+  currentPath?: string;
+}
+
+const { nav, currentPath = '' } = Astro.props;
+
+// Normaliza URL: elimina .html, añade trailing slash
+function normUrl(url: string): string {
+  return url.replace(/\.html$/, '/').replace(/\/+$/, '/');
+}
+
+function isActive(url: string): boolean {
+  if (!url) return false;
+  const norm = normUrl(url);
+  return currentPath.startsWith(norm) || currentPath === norm.replace(/\/$/, '');
+}
+---
+
+<nav class="doc-sidebar" aria-label="Navegación del curso">
+  {nav.map((section) => (
+    <div class="sidebar-section">
+      {section.url ? (
+        <a
+          href={normUrl(section.url)}
+          class:list={['sidebar-section-title', 'sidebar-section-link', { active: isActive(section.url) }]}
+        >
+          {section.title}
+        </a>
+      ) : (
+        <p class="sidebar-section-title">{section.title}</p>
+      )}
+      {section.children && section.children.length > 0 && (
+        <ul class="sidebar-list">
+          {section.children.map((item) => (
+            <li>
+              <a
+                href={item.url ? normUrl(item.url) : '#'}
+                class:list={['sidebar-link', { active: item.url ? isActive(item.url) : false }]}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  ))}
+</nav>
+
+<style>
+  .doc-sidebar {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .sidebar-section {
+    margin-bottom: 1.25rem;
+  }
+
+  .sidebar-section-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted, #6b7280);
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  a.sidebar-section-title {
+    text-decoration: none;
+    color: var(--color-text-muted, #6b7280);
+    transition: color 0.15s;
+  }
+  a.sidebar-section-title:hover {
+    color: var(--color-accent, #2563eb);
+  }
+  a.sidebar-section-title.active {
+    color: var(--color-accent, #2563eb);
+  }
+
+  .sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar-link {
+    display: block;
+    padding: 0.3rem 0.5rem 0.3rem 0.75rem;
+    color: var(--color-text, #374151);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 0.25rem 0.25rem 0;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    line-height: 1.4;
+  }
+
+  .sidebar-link:hover {
+    background: var(--color-hover-bg, #f3f4f6);
+    color: var(--color-accent, #2563eb);
+    border-left-color: var(--color-accent-light, #93c5fd);
+  }
+
+  .sidebar-link.active {
+    background: var(--color-active-bg, #eff6ff);
+    color: var(--color-accent, #2563eb);
+    border-left-color: var(--color-accent, #2563eb);
+    font-weight: 600;
+  }
+</style>

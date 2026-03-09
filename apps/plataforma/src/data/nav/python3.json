@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Curso Python3",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/python3/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción",
+    "children": [
+      {
+        "title": "Introducción a python",
+        "url": "/cursos/python3/curso/u01/"
+      },
+      {
+        "title": "Mi primer programa en python3",
+        "url": "/cursos/python3/curso/u05/"
+      }
+    ]
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "title": "OpenWebinars",
+    "courses": [
+      {
+        "title": "Introducción a la programación con pseudocódigo (2018)",
+        "url": "pledin/cursos/programacion/",
+        "year": "2018",
+        "external": false
+      },
+      {
+        "title": "Curso Apache2.4 (2018)",
+        "url": "pledin/cursos/apache24/",
+        "year": "2018",
+        "external": false
+      },
+      {
+        "title": "Curso sobre Flask (Miniframework python) (2017)",
+        "url": "pledin/cursos/flask/",
+        "year": "2017",
+        "external": false
+      },
+      {
+        "title": "Curso de python3 (2017)",
+        "url": "pledin/cursos/python3/",
+        "year": "2017",
+        "external": false
+      }
+    ]
+  },
+  {
+    "title": "Contenedores y Cloud",
+    "courses": [
+      {
+        "title": "Introducción a Docker (2024)",
+        "url": "pledin/cursos/docker2024/",
+        "year": "2024",
+        "external": false
+      },
+      {
+        "title": "Introducción a Podman (2024)",
+        "url": "pledin/cursos/podman2024/",
+        "year": "2024",
+        "external": false
+      },
+      {
+        "title": "OpenShift v4 como PaaS (2023)",
+        "url": "pledin/cursos/osv4_paas/",
+        "year": "2023",
+        "external": false
+      },
+      {
+        "title": "Aprende Kubernetes con OpenShift v4 (2023)",
+        "url": "pledin/cursos/osv4_k8s/",
+        "year": "2023",
+        "external": false
+      },
+      {
+        "title": "Jornadas Cloud Computing (2013)",
+        "url": "pledin/cursos/cloud2013/",
+        "year": "2013",
+        "external": false
+      },
+      {
+        "title": "Proyecto Cloud Computing (2012)",
+        "url": "pledin/cursos/cloud2012/",
+        "year": "2012",
+        "external": false
+      }
+    ]
+  },
+  {
+    "title": "Servicios y TIC",
+    "courses": [
+      {
+        "title": "Servicios en GNU/Linux (Nivel Intermedio) (2011)",
+        "url": "pledin/cursos/servicios2011/",
+        "year": "2011",
+        "external": false
+      },
+      {
+        "title": "Servicios en GNU/Linux. Portal Educativo (2010)",
+        "url": "pledin/cursos/servicios2010/",
+        "year": "2010",
+        "external": false
+      },
+      {
+        "title": "Introducción a los Servicios en GNU/Linux (2008)",
+        "url": "pledin/cursos/servicios2008/",
+        "year": "2008",
+        "external": false
+      },
+      {
+        "title": "Máquinas virtuales para portal educativo (2006)",
+        "url": "pledin/cursos/mv2006/",
+        "year": "2006",
+        "external": false
+      }
+    ]
+  }
+]

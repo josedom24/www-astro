@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Curso Flask",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/flask/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a la programación web",
+    "children": [
+      {
+        "title": "Protocolo HTTP",
+        "url": "/cursos/flask/curso/u01/"
+      },
+      {
+        "title": "Programación web dinámica",
+        "url": "/cursos/flask/curso/u02/"
+      },
+      {
+        "title": "Patrón modelo-vista-controlador",
+        "url": "/cursos/flask/curso/u03/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a flask",
+    "children": [
+      {
+        "title": "Introducción a flask",
+        "url": "/cursos/flask/curso/u05/"
+      },
+      {
+        "title": "Instalación de flask",
+        "url": "/cursos/flask/curso/u06/"
+      }
+    ]
+  }
+]

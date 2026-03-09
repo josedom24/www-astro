@@ -1,0 +1,95 @@
+---
+import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
+import CourseCard from '@pledin/ui/components/CourseCard.astro';
+import catalog from '../data/catalog.json';
+
+const title = 'PLEDIN 3.0 — Catálogo de Cursos';
+const description = 'Plataforma Educativa Informática. Cursos de José Domingo Muñoz.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="catalog-hero">
+    <h1>Catálogo de Cursos</h1>
+    <p>Plataforma Educativa Informática · <a href="https://www.josedomingo.org">José Domingo Muñoz</a></p>
+  </div>
+
+  <div class="catalog-body">
+    {catalog.map((section) => (
+      <section class="catalog-section">
+        <h2 class="section-heading">{section.title}</h2>
+        <div class="course-grid">
+          {section.courses.map((course) => (
+            <CourseCard
+              title={course.title}
+              url={course.url}
+              year={course.year ?? undefined}
+              external={course.external}
+            />
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .catalog-hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    color: white;
+    padding: 3rem 2rem;
+    margin: -2rem -2rem 2rem;
+    border-radius: 0;
+  }
+
+  .catalog-hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+  }
+
+  .catalog-hero p {
+    margin: 0;
+    opacity: 0.85;
+    font-size: 1rem;
+  }
+
+  .catalog-hero a {
+    color: #93c5fd;
+    text-decoration: underline;
+  }
+
+  .catalog-body {
+    max-width: 1000px;
+  }
+
+  .catalog-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 600px) {
+    .course-grid {
+      grid-template-columns: 1fr;
+    }
+    .catalog-hero {
+      padding: 2rem 1rem;
+      margin: -1rem -1rem 1.5rem;
+    }
+  }
+</style>

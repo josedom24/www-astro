@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Introducción a la programación en pseudocódigo",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/programacion/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a la programación",
+    "children": [
+      {
+        "title": "Resolución de problemas",
+        "url": "/cursos/programacion/curso/u01/"
+      }
+    ]
+  }
+]

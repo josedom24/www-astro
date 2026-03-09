@@ -4,7 +4,7 @@ title: 'Cursos de C++'
 slug: 2021/02/cursos-c++
 tags:
   - Cursos
-  - c ++
+  - C++
   - Programación
 ---
 

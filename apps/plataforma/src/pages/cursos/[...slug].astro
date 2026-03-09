@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocLayout from '@pledin/ui/layouts/DocLayout.astro';
+
+// Importar todos los navs disponibles
+// En producción se cargan dinámicamente según el curso
+const navModules = import.meta.glob('../../data/nav/*.json', { eager: true });
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cursos');
+  return entries.map((entry) => {
+    // El slug del glob loader usa el path relativo al base
+    // e.g. "flask/curso/u01/index" o "docker2024/contenido/modulo1/01_contenedores"
+    return {
+      params: { slug: entry.id },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Extraer el nombre del curso del primer segmento del slug
+const slugParts = entry.id.split('/');
+const courseName = slugParts[0];
+
+// Cargar el nav del curso
+let nav = [];
+const navPath = `../../data/nav/${courseName}.json`;
+if (navModules[navPath]) {
+  nav = (navModules[navPath] as { default: unknown }).default as typeof nav;
+}
+
+// URL actual (para marcar activo en sidebar)
+const currentPath = `/cursos/${entry.id.replace(/\/index$/, '/').replace(/([^/])$/, '$1/')}`;
+
+// Título del curso (primera sección del nav, o del frontmatter)
+const courseTitle = nav[0]?.title || courseName;
+---
+
+<DocLayout
+  title={entry.data.title}
+  courseTitle={courseTitle}
+  nav={nav}
+  currentPath={currentPath}
+  description={entry.data.description}
+>
+  <Content />
+</DocLayout>

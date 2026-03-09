@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Introducción a Docker",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/docker2024/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a Docker",
+    "children": [
+      {
+        "title": "Introducción a los contenedores",
+        "url": "/cursos/docker2024/contenido/modulo1/01_contenedores/"
+      },
+      {
+        "title": "Introducción a Docker",
+        "url": "/cursos/docker2024/contenido/modulo1/02_docker/"
+      },
+      {
+        "title": "Instalación de Docker Engine en Linux",
+        "url": "/cursos/docker2024/contenido/modulo1/03_instalacion_linux/"
+      }
+    ]
+  },
+  {
+    "title": "Ejecución de contenedores",
+    "children": [
+      {
+        "title": "El 'Hola Mundo' de Docker",
+        "url": "/cursos/docker2024/contenido/modulo2/01_holamundo/"
+      },
+      {
+        "title": "Ejecución simple de contenedores",
+        "url": "/cursos/docker2024/contenido/modulo2/02_contenedor/"
+      }
+    ]
+  }
+]

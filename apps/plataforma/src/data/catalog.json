@@ -1,0 +1,279 @@
+[
+  {
+    "title": "Programación",
+    "courses": [
+      {
+        "title": "Curso de preparación para el examen Pythonn PCEP - PCAP (2025)",
+        "url": "https://github.com/josedom24/python_pcep_pcap",
+        "year": "2025",
+        "external": "github",
+        "ow": true
+      },
+      {
+        "title": "Curso de C++: Introducción a C++ (2020)",
+        "url": "pledin/cursos/curso_cpp1/",
+        "year": "2020",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Curso de C++: Estructuras de control y tipos de datos (2020)",
+        "url": "pledin/cursos/curso_cpp2/",
+        "year": "2020",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Curso de C++: Programación estructurada y orientación a objetos (2020)",
+        "url": "pledin/cursos/curso_cpp3/",
+        "year": "2020",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Introducción a la programación con python3 (2019)",
+        "url": "pledin/cursos/programacion_python3/",
+        "year": "2019",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Introducción a la programación con pseudocódigo (2018)",
+        "url": "pledin/cursos/programacion/",
+        "year": "2018",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Curso sobre Flask (Miniframework python para desarrollar páginas web) (2017)",
+        "url": "pledin/cursos/flask/",
+        "year": "2017",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Curso de python3 (2017)",
+        "url": "pledin/cursos/python3/",
+        "year": "2017",
+        "external": "none",
+        "ow": true
+      }
+    ]
+  },
+  {
+    "title": "Virtualización",
+    "courses": [
+      {
+        "title": "Curso: Profundización a la virtualización con KVM/libvirt (2025)",
+        "url": "https://github.com/josedom24/curso_kvm_ow/blob/main/curso2",
+        "year": "2025",
+        "external": "github",
+        "ow": true
+      },
+      {
+        "title": "Curso: Introducción a la virtualización con KVM/libvirt usando virt-manager (2025)",
+        "url": "https://github.com/josedom24/curso_kvm_ow/blob/main/curso1",
+        "year": "2025",
+        "external": "github",
+        "ow": true
+      },
+      {
+        "title": "Curso: Introducción a Proxmox VE. CEP Castilleja de la Cuesta. (2022)",
+        "url": "https://github.com/iesgn/curso_proxmox_cep",
+        "year": "2022",
+        "external": "github",
+        "ow": false
+      }
+    ]
+  },
+  {
+    "title": "Contenedores",
+    "courses": [
+      {
+        "title": "Introducción a Podman (2024)",
+        "url": "pledin/cursos/podman2024/",
+        "year": "2024",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Introducción a Docker (2024)",
+        "url": "pledin/cursos/docker2024/",
+        "year": "2024",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "OpenShift v4 como PaaS (2023)",
+        "url": "pledin/cursos/osv4_paas/",
+        "year": "2023",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Aprende Kubernetes con OpenShift v4 (2023)",
+        "url": "pledin/cursos/osv4_k8s/",
+        "year": "2023",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Curso: Introducción a Docker. CPR Badajoz (2022)",
+        "url": "https://josedom24.github.io/curso_docker_2022/",
+        "year": "2022",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Curso: Introducción a Kubernetes. CEP Castilleja de la Cuesta (2022)",
+        "url": "https://github.com/iesgn/curso_kubernetes_cep",
+        "year": "2022",
+        "external": "github",
+        "ow": false
+      },
+      {
+        "title": "Curso: Introducción a Docker. CPR Zafra (2021)",
+        "url": "https://iesgn.github.io/curso_docker_2021/",
+        "year": "2021",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Curso de Openshift (2019)",
+        "url": "pledin/cursos/openshift/",
+        "year": "2019",
+        "external": "none",
+        "ow": true
+      }
+    ]
+  },
+  {
+    "title": "Cloud Computing y OpenStack",
+    "courses": [
+      {
+        "title": "“Mini” Curso: Virtualización y Cloud Computing en el IES Gonzalo Nazareno (2022)",
+        "url": "https://www.josedomingo.org/pledin/2022/05/curso-cloud-iesgn",
+        "year": "2022",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Curso de infraestructura Cloud con OpenStack. Universidad de Almería (2017)",
+        "url": "https://github.com/iesgn/curso-ual17",
+        "year": "2017",
+        "external": "github",
+        "ow": false
+      },
+      {
+        "title": "Curso OpenStack (2016)",
+        "url": "http://iesgn.github.io/emergya/",
+        "year": "2016",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Curso de Cloud Computing con OpenStack (2015)",
+        "url": "http://iesgn.github.io/ow1/",
+        "year": "2015",
+        "external": "web",
+        "ow": true
+      },
+      {
+        "title": "Introducción al Cloud Computing con OpenStack y OpenShift (2015)",
+        "url": "http://iesgn.github.io/cloud3/",
+        "year": "2015",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Administración de infraestructura en la nube con OpenStack (2015)",
+        "url": "http://iesgn.github.io/cloud2/",
+        "year": "2015",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Fundamentos de Cloud Computing con OpenStack y OpenShift (2014)",
+        "url": "http://iesgn.github.io/cloud",
+        "year": "2014",
+        "external": "web",
+        "ow": false
+      },
+      {
+        "title": "Jornadas Cloud Computing (2013)",
+        "url": "pledin/cursos/cloud2013/",
+        "year": "2013",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Proyecto Cloud Computing (2012)",
+        "url": "pledin/cursos/cloud2012/",
+        "year": "2012",
+        "external": "none",
+        "ow": false
+      }
+    ]
+  },
+  {
+    "title": "Servicios y TIC",
+    "courses": [
+      {
+        "title": "Curso Apache2.4 (2018)",
+        "url": "pledin/cursos/apache24/",
+        "year": "2018",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Introducción al uso de la plataforma moodle (2020)",
+        "url": "pledin/cursos/moodle2020/",
+        "year": "2020",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Servicios en GNU/Linux (Nivel Intermedio) (2011)",
+        "url": "pledin/cursos/servicios2011/",
+        "year": "2011",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Servicios en GNU/Linux. Portal Educativo (2010)",
+        "url": "pledin/cursos/servicios2010/",
+        "year": "2010",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Introducción a los Servicios en GNU/Linux (2008)",
+        "url": "pledin/cursos/servicios2008/",
+        "year": "2008",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Curso TIC - IES Gonzalo Nazareno (2007)",
+        "url": "pledin/cursos/tic2007/",
+        "year": "2007",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Curso HELVIA - IES Gonzalo Nazareno (2007)",
+        "url": "pledin/cursos/helvia2007/",
+        "year": "2007",
+        "external": "none",
+        "ow": false
+      },
+      {
+        "title": "Máquinas virtuales para la puesta en marcha de un portal educativo (2006)",
+        "url": "pledin/cursos/mv2006/",
+        "year": "2006",
+        "external": "none",
+        "ow": false
+      }
+    ]
+  }
+]
