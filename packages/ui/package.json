@@ -1,0 +1,14 @@
+{
+  "name": "@pledin/ui",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./components/*": "./src/components/*",
+    "./layouts/*": "./src/layouts/*",
+    "./styles/*": "./src/styles/*",
+    "./utils/*": "./src/utils/*"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  }
+}

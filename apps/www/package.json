@@ -1,0 +1,20 @@
+{
+  "name": "@pledin/www",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev":     "astro dev",
+    "build":   "astro build && npx pagefind --site dist",
+    "preview": "astro preview",
+    "astro":   "astro"
+  },
+  "dependencies": {
+    "@pledin/ui":        "*",
+    "@astrojs/mdx":      "^4.3.13",
+    "@astrojs/rss":      "^4.0.15",
+    "@astrojs/sitemap":  "^3.7.0",
+    "@pagefind/default-ui": "^1.4.0",
+    "astro":             "^5.17.1",
+    "marked":            "^17.0.4"
+  }
+}

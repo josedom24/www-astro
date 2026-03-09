@@ -1,0 +1,17 @@
+{
+  "name": "@pledin/fp",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev":     "astro dev",
+    "build":   "astro build",
+    "preview": "astro preview",
+    "astro":   "astro"
+  },
+  "dependencies": {
+    "@pledin/ui":       "*",
+    "@astrojs/mdx":     "^4.3.13",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro":            "^5.17.1"
+  }
+}

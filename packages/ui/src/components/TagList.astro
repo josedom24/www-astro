@@ -1,0 +1,42 @@
+---
+interface Props {
+  tags: string[];
+  baseUrl: string; // p.ej. '/pledin/tags/' o '/pledin/microblog/tags/'
+}
+
+const { tags, baseUrl } = Astro.props;
+---
+
+{tags.length > 0 && (
+  <div class="tags">
+    {tags.map(tag => (
+      <a href={`${baseUrl}${tag.toLowerCase().replace(/ /g, '-')}/`} class="tag">
+        {tag}
+      </a>
+    ))}
+  </div>
+)}
+
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    background: var(--color-bg-sidebar);
+    color: var(--color-text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .tag:hover {
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+  }
+</style>

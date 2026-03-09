@@ -1,0 +1,321 @@
+---
+import '@pledin/ui/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Blog personal de José Domingo Muñoz' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/pledin/assets/favicon.png" />
+    <link rel="shortcut icon" href="/pledin/assets/favicon.png" />
+    <link rel="stylesheet" href="/pledin/pagefind/pagefind-ui.css" />
+    <title>{title} | Pledin</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/pledin/" class="site-title">
+          <img src="/pledin/assets/logo.png" alt="Pledin" width="40" height="40" />
+          Pledin
+        </a>
+        <nav class="main-nav">
+          <a href="/pledin/">Inicio</a>
+          <a href="/pledin/blog/">Blog</a>
+          <a href="/pledin/microblog/">Microblog</a>
+          <a href="/pledin/about/">Presentación</a>
+        </nav>
+        <div class="header-right">
+          <a href="https://github.com/josedom24/" aria-label="GitHub" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="/pledin/feed/feed.xml" aria-label="RSS">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+            </svg>
+          </a>
+          <button id="search-toggle" aria-label="Buscar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+          <button id="theme-toggle" aria-label="Cambiar tema">
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        </div>
+      </div>
+    </header>
+
+    <slot />
+
+    <!-- Modal de búsqueda -->
+    <div id="search-modal" class="search-modal hidden">
+      <div class="search-backdrop"></div>
+      <div class="search-box">
+        <div id="search"></div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} José Domingo Muñoz — <a href="/pledin/about/">Presentación</a></p>
+    </footer>
+
+    <script is:inline src="/pledin/pagefind/pagefind-ui.js"></script>
+    <script>
+      // Búsqueda
+      const toggle = document.getElementById('search-toggle');
+      const modal = document.getElementById('search-modal');
+      const backdrop = modal?.querySelector('.search-backdrop');
+      let initialized = false;
+
+      toggle?.addEventListener('click', () => {
+        modal?.classList.toggle('hidden');
+        if (!initialized) {
+          // @ts-ignore
+          new PagefindUI({ element: '#search', baseUrl: '/pledin/' });
+          initialized = true;
+        }
+      });
+
+      backdrop?.addEventListener('click', () => {
+        modal?.classList.add('hidden');
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal?.classList.add('hidden');
+      });
+
+      // Tema
+      const themeToggle = document.getElementById('theme-toggle');
+      const iconSun = document.getElementById('icon-sun');
+      const iconMoon = document.getElementById('icon-moon');
+      const html = document.documentElement;
+      
+      function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          iconSun.style.display = 'none';
+          iconMoon.style.display = 'block';
+        } else {
+          iconSun.style.display = 'block';
+          iconMoon.style.display = 'none';
+        }
+      }
+      
+      const saved = localStorage.getItem('theme');
+      if (saved) applyTheme(saved);
+      
+      themeToggle?.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        applyTheme(next);
+      });
+    </script>
+
+    <script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('pre').forEach(pre => {
+      const button = document.createElement('button');
+      button.textContent = 'Copiar';
+      button.className = 'copy-btn';
+      button.addEventListener('click', () => {
+        const code = pre.querySelector('code')?.innerText ?? pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          button.textContent = '¡Copiado!';
+          setTimeout(() => button.textContent = 'Copiar', 2000);
+        });
+      });
+      pre.style.position = 'relative';
+      pre.appendChild(button);
+    });
+  });
+</script>
+<button id="back-to-top" aria-label="Volver arriba">↑</button>
+
+<script is:inline>
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background-color: var(--color-bg-nav);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 4rem);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .site-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-accent-high);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .site-title img {
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .main-nav a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .main-nav a:hover {
+    color: var(--color-accent-high);
+    text-decoration: none;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+  }
+
+  .header-right a,
+  .header-right button {
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .header-right a:hover,
+  .header-right button:hover {
+    color: var(--color-accent-high);
+  }
+
+  .site-footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    margin-top: 4rem;
+  }
+
+  /* Modal de búsqueda */
+  .search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 6rem;
+  }
+
+  .search-modal.hidden {
+    display: none;
+  }
+
+  .search-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .search-box {
+    position: relative;
+    z-index: 1;
+    background: var(--color-bg);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 40rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 50rem) {
+    .main-nav { display: none; }
+  }
+
+  #back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s;
+  z-index: 100;
+}
+
+#back-to-top:hover {
+  background: var(--color-accent-high);
+}
+</style>

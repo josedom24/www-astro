@@ -1,0 +1,13 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@pledin/ui/components/*": ["../../packages/ui/src/components/*"],
+      "@pledin/ui/layouts/*":    ["../../packages/ui/src/layouts/*"],
+      "@pledin/ui/styles/*":     ["../../packages/ui/src/styles/*"],
+      "@pledin/ui/utils/*":      ["../../packages/ui/src/utils/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}
