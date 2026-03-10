@@ -37,7 +37,9 @@ const courseTitle = nav[0]?.title || courseName;
 
 const pageTitle = entry.data.title ?? slug.split('/').pop() ?? courseName;
 const flatLinks = nav.flatMap(section =>
-  section.children ? section.children.filter(c => c.url) : (section.url ? [section] : [])
+  section.children 
+    ? section.children.filter(c => c.url && !c.url.includes('#'))
+    : (section.url && !section.url.includes('#') ? [section] : [])
 );
 const currentIndex = flatLinks.findIndex(item => item.url === currentPath);
 const prev = flatLinks[currentIndex - 1];
@@ -52,6 +54,10 @@ const breadcrumb = [
 if (slugSegments.length > 1) {
   breadcrumb.push({ title: pageTitle, url: null });
 }
+
+
+//TOC
+const showToc = entry.data.toc !== false;
 ---
 
 <DocLayout
@@ -61,7 +67,9 @@ if (slugSegments.length > 1) {
   currentPath={currentPath}
   headings={headings}
   breadcrumb={breadcrumb}
+  headings={showToc ? headings : []}
 >
+
   <h1>{pageTitle}</h1>
   <Content />
   <PostNav

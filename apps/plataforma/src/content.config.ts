@@ -9,6 +9,7 @@ const cursos = defineCollection({
     // Campos opcionales que algunos docs pueden tener
     description: z.string().optional(),
     date: z.string().optional(),
+    toc: z.boolean().optional().default(true),
   }),
 });
 

@@ -12,6 +12,9 @@ export default defineConfig({
   site: 'https://plataforma.josedomingo.org',
   base: '/pledin',
   integrations: [mdx(), sitemap()],
+  build: {
+   format: 'file'
+  },
    
   
   vite: {

@@ -1,6 +1,7 @@
 ---
-title: Curso flask (Miniframework python para desarrollar páginas web)
+title: Curso flask (Miniframework python para desarrollar páginas web) (2017)
 permalink: /cursos/flask/index.html
+toc: false
 ---
 
 ![flask](img/flask.svg)

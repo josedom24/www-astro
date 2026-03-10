@@ -19,6 +19,9 @@ const { title, description = 'Blog personal de José Domingo Muñoz' } = Astro.p
     <link rel="shortcut icon" href="/pledin/assets/favicon.png" />
     <link rel="stylesheet" href="/pledin/pagefind/pagefind-ui.css" />
     <title>{title} | Pledin</title>
+    <style>
+  html { scroll-padding-top: var(--nav-height); }
+</style>
   </head>
   <body>
     <header class="site-header">
@@ -158,6 +161,12 @@ const { title, description = 'Blog personal de José Domingo Muñoz' } = Astro.p
 <button id="back-to-top" aria-label="Volver arriba">↑</button>
 
 <script is:inline>
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo(0, 0);
+  });
   const btn = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
     btn.style.display = window.scrollY > 300 ? 'flex' : 'none';

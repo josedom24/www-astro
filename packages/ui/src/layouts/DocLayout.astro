@@ -31,7 +31,6 @@ const toc = headings.filter(h => h.depth <= 3);
   <div class:list={['doc-wrapper', { 'with-toc': toc.length > 0 }]}>
     {nav.length > 0 && (
       <aside class="doc-sidebar">
-        {courseTitle && <p class="course-label">{courseTitle}</p>}
         <DocSidebar nav={nav} currentPath={currentPath} />
       </aside>
     )}
@@ -168,7 +167,7 @@ html {
 
   .doc-prose :global(img) {
     border-radius: 0.375rem;
-    border: 1px solid var(--color-border);
+    
   }
 
   .doc-prose :global(table) {

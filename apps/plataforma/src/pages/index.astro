@@ -31,7 +31,9 @@ import catalog from '../data/catalog.json';
           {section.courses.map((course) => (
             <CourseCard
               title={course.title}
-              url={course.url}
+              url={course.external !== 'none' ? course.url : 
+                   course.url.startsWith('/pledin/') ? course.url : 
+                   `/pledin/${course.url}`}
               year={course.year ?? undefined}
               external={course.external}
               ow={course.ow ?? false}
