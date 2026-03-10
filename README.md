@@ -1,4 +1,3 @@
-```markdown
 # www-astro
 
 Monorepo con los sitios web de [José Domingo Muñoz](https://www.josedomingo.org), migrados de Jekyll a Astro.
@@ -55,6 +54,5 @@ El índice se genera en `dist/<sitio>/pagefind/`. En desarrollo el buscador no f
 
 - [Astro 5](https://astro.build)
 - [npm Workspaces](https://docs.npmjs.com/cli/using-npm/workspaces)
-- Markdown para el contenido
+- Markdown + MDX para el contenido
 - [Pagefind](https://pagefind.app) para la búsqueda
-```
