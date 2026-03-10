@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ui = path.resolve(__dirname, '../../packages/ui/src');
 
@@ -11,8 +12,8 @@ export default defineConfig({
   site: 'https://plataforma.josedomingo.org',
   base: '/pledin',
   integrations: [mdx(), sitemap()],
-  image: {
-    service: { entrypoint: 'astro/assets/services/noop' },
+   
+  
   vite: {
     resolve: {
       alias: {

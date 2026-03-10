@@ -4,7 +4,7 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/curso_cpp2/"
+        "url": "/pledin/cursos/curso_cpp2/"
       }
     ]
   },
@@ -13,19 +13,19 @@
     "children": [
       {
         "title": "Tipo de datos booleano. Operadores relacionales y lógicos",
-        "url": "/cursos/curso_cpp2/curso/u01/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u01/"
       },
       {
         "title": "Estructuras alternativas: if",
-        "url": "/cursos/curso_cpp2/curso/u02/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u02/"
       },
       {
         "title": "Estructuras alternativas: switch",
-        "url": "/cursos/curso_cpp2/curso/u03/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u03/"
       },
       {
         "title": "Ejercicios estructuras alternativas",
-        "url": "/cursos/curso_cpp2/curso/u04/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u04/"
       }
     ]
   },
@@ -34,23 +34,23 @@
     "children": [
       {
         "title": "Estructuras repetitivas: while",
-        "url": "/cursos/curso_cpp2/curso/u05/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u05/"
       },
       {
         "title": "Estructuras repetitivas: do-while",
-        "url": "/cursos/curso_cpp2/curso/u06/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u06/"
       },
       {
         "title": "Estructuras repetitivas: for",
-        "url": "/cursos/curso_cpp2/curso/u07/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u07/"
       },
       {
         "title": "Uso específico de variables: contadores, acumuladores e indicadores",
-        "url": "/cursos/curso_cpp2/curso/u08/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u08/"
       },
       {
         "title": "Ejercicios estructuras repetitivas",
-        "url": "/cursos/curso_cpp2/curso/u09/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u09/"
       }
     ]
   },
@@ -59,11 +59,11 @@
     "children": [
       {
         "title": "Cadenas de caracteres con la clase string",
-        "url": "/cursos/curso_cpp2/curso/u10/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u10/"
       },
       {
         "title": "Ejercicios cadenas de caracteres",
-        "url": "/cursos/curso_cpp2/curso/u11/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u11/"
       }
     ]
   },
@@ -72,23 +72,23 @@
     "children": [
       {
         "title": "Introducción a los arrays",
-        "url": "/cursos/curso_cpp2/curso/u12/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u12/"
       },
       {
         "title": "Arrays unidimensionales: Vectores",
-        "url": "/cursos/curso_cpp2/curso/u13/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u13/"
       },
       {
         "title": "Cadenas de caracteres estilo C",
-        "url": "/cursos/curso_cpp2/curso/u14/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u14/"
       },
       {
         "title": "Arrays multidimensionales: Tablas",
-        "url": "/cursos/curso_cpp2/curso/u15/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u15/"
       },
       {
         "title": "Ejercicios de Arrays",
-        "url": "/cursos/curso_cpp2/curso/u16/"
+        "url": "/pledin/cursos/curso_cpp2/curso/u16/"
       }
     ]
   }

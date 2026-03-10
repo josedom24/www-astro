@@ -4,7 +4,7 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/podman2024/"
+        "url": "/pledin/cursos/podman2024/"
       }
     ]
   },
@@ -13,23 +13,23 @@
     "children": [
       {
         "title": "Introducción a los contenedores OCI",
-        "url": "/cursos/podman2024/contenido/modulo1/01_contenedores/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo1/01_contenedores/"
       },
       {
         "title": "Aplicaciones para trabajar con contenedores OCI",
-        "url": "/cursos/podman2024/contenido/modulo1/02_aplicaciones/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo1/02_aplicaciones/"
       },
       {
         "title": "Introducción de Podman",
-        "url": "/cursos/podman2024/contenido/modulo1/03_podman/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo1/03_podman/"
       },
       {
         "title": "Instalación de Podman en Linux",
-        "url": "/cursos/podman2024/contenido/modulo1/04_linux/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo1/04_linux/"
       },
       {
         "title": "Instalación de Podman en Windows/macOS",
-        "url": "/cursos/podman2024/contenido/modulo1/05_windows/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo1/05_windows/"
       }
     ]
   },
@@ -38,43 +38,43 @@
     "children": [
       {
         "title": "El \"Hola Mundo\" en Podman",
-        "url": "/cursos/podman2024/contenido/modulo2/01_holamundo/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/01_holamundo/"
       },
       {
         "title": "Ejecución simple de contenedores",
-        "url": "/cursos/podman2024/contenido/modulo2/02_contenedor/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/02_contenedor/"
       },
       {
         "title": "Ejecución de contenedores interactivos",
-        "url": "/cursos/podman2024/contenido/modulo2/03_interactivo/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/03_interactivo/"
       },
       {
         "title": "Ejecución de contenedores demonios",
-        "url": "/cursos/podman2024/contenido/modulo2/04_demonio/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/04_demonio/"
       },
       {
         "title": "Ejecución de un contenedor demonio con un servidor web",
-        "url": "/cursos/podman2024/contenido/modulo2/05_web/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/05_web/"
       },
       {
         "title": "Obteniendo información de los contenedores",
-        "url": "/cursos/podman2024/contenido/modulo2/06_informacion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/06_informacion/"
       },
       {
         "title": "Configuración de contenedores",
-        "url": "/cursos/podman2024/contenido/modulo2/07_configuracion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/07_configuracion/"
       },
       {
         "title": "Ejecución de un contenedor con un servidor de base de datos",
-        "url": "/cursos/podman2024/contenido/modulo2/08_mariadb/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/08_mariadb/"
       },
       {
         "title": "Modos de funcionamiento de los contenedores",
-        "url": "/cursos/podman2024/contenido/modulo2/09_funcionamiento/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/09_funcionamiento/"
       },
       {
         "title": "¿Cómo funcionan los contenedores rootless?",
-        "url": "/cursos/podman2024/contenido/modulo2/10_rootless/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo2/10_rootless/"
       }
     ]
   },
@@ -83,39 +83,39 @@
     "children": [
       {
         "title": "Introducción a las imágenes OCI",
-        "url": "/cursos/podman2024/contenido/modulo3/01_imagenes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/01_imagenes/"
       },
       {
         "title": "Introducción al formato de imagen OCI",
-        "url": "/cursos/podman2024/contenido/modulo3/02_formato/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/02_formato/"
       },
       {
         "title": "Almacenamiento de imágenes",
-        "url": "/cursos/podman2024/contenido/modulo3/03_almacen_img/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/03_almacen_img/"
       },
       {
         "title": "Ahorro de espacio de almacenamiento",
-        "url": "/cursos/podman2024/contenido/modulo3/04_ahorro_almacenamiento/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/04_ahorro_almacenamiento/"
       },
       {
         "title": "Almacenamiento de contenedores",
-        "url": "/cursos/podman2024/contenido/modulo3/05_almacen_cont/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/05_almacen_cont/"
       },
       {
         "title": "Almacenamiento de contenedores rootless",
-        "url": "/cursos/podman2024/contenido/modulo3/06_rootless/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/06_rootless/"
       },
       {
         "title": "Gestión de imágenes",
-        "url": "/cursos/podman2024/contenido/modulo3/07_gestion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/07_gestion/"
       },
       {
         "title": "Obteniendo información de las imágenes",
-        "url": "/cursos/podman2024/contenido/modulo3/08_informacion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/08_informacion/"
       },
       {
         "title": "Ejemplo: Desplegando la aplicación Drupal",
-        "url": "/cursos/podman2024/contenido/modulo3/09_drupal/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo3/09_drupal/"
       }
     ]
   },
@@ -124,51 +124,51 @@
     "children": [
       {
         "title": "Almacenamiento en Podman",
-        "url": "/cursos/podman2024/contenido/modulo4/01_almacenamiento/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/01_almacenamiento/"
       },
       {
         "title": "Trabajando con volúmenes",
-        "url": "/cursos/podman2024/contenido/modulo4/02_volumen/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/02_volumen/"
       },
       {
         "title": "Trabajando con bind mount",
-        "url": "/cursos/podman2024/contenido/modulo4/03_bindmount/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/03_bindmount/"
       },
       {
         "title": "Trabajando con almacenamiento en contenedores rootless",
-        "url": "/cursos/podman2024/contenido/modulo4/04_almacenamiento_rootless/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/04_almacenamiento_rootless/"
       },
       {
         "title": "Redes en Podman",
-        "url": "/cursos/podman2024/contenido/modulo4/05_redes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/05_redes/"
       },
       {
         "title": "Uso de la red bridge por defecto",
-        "url": "/cursos/podman2024/contenido/modulo4/06_bridge/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/06_bridge/"
       },
       {
         "title": "Gestión de redes definidas por el usuario",
-        "url": "/cursos/podman2024/contenido/modulo4/07_usuario/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/07_usuario/"
       },
       {
         "title": "Uso de la red bridge definidas por el usuario",
-        "url": "/cursos/podman2024/contenido/modulo4/08_usuario2/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/08_usuario2/"
       },
       {
         "title": "Uso de la red host en Podman",
-        "url": "/cursos/podman2024/contenido/modulo4/09_host/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/09_host/"
       },
       {
         "title": "Redes en contenedores rootless",
-        "url": "/cursos/podman2024/contenido/modulo4/10_red_rootless/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/10_red_rootless/"
       },
       {
         "title": "Despliegue de la aplicación Guestbook",
-        "url": "/cursos/podman2024/contenido/modulo4/11_guestbook/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/11_guestbook/"
       },
       {
         "title": "Despliegue de la aplicación Temperaturas",
-        "url": "/cursos/podman2024/contenido/modulo4/12_temperaturas/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo4/12_temperaturas/"
       }
     ]
   },
@@ -177,39 +177,39 @@
     "children": [
       {
         "title": "Trabajando con Pods en Podman",
-        "url": "/cursos/podman2024/contenido/modulo5/01_pod/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/01_pod/"
       },
       {
         "title": "Gestión de Pods",
-        "url": "/cursos/podman2024/contenido/modulo5/02_gestion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/02_gestion/"
       },
       {
         "title": "Funcionamiento de la red en un Pod",
-        "url": "/cursos/podman2024/contenido/modulo5/03_red/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/03_red/"
       },
       {
         "title": "Almacenamiento compartido entre los contenedores de un Pod",
-        "url": "/cursos/podman2024/contenido/modulo5/04_almacenamiento/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/04_almacenamiento/"
       },
       {
         "title": "Ejemplo: Despliegue de WordPress + MariaDB en un Pod",
-        "url": "/cursos/podman2024/contenido/modulo5/05_wordpress/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/05_wordpress/"
       },
       {
         "title": "Ejemplo: Despliegue de WordPress + MariaDB en un escenario multipod",
-        "url": "/cursos/podman2024/contenido/modulo5/06_wordpress2/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/06_wordpress2/"
       },
       {
         "title": "Ejemplo: nginx + fpm-php",
-        "url": "/cursos/podman2024/contenido/modulo5/07_nginx/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/07_nginx/"
       },
       {
         "title": "Generación de un archivo YAML de Kubernetes con Podman",
-        "url": "/cursos/podman2024/contenido/modulo5/08_kubernetes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/08_kubernetes/"
       },
       {
         "title": "Ejecutando recursos de Kubernetes en Podman",
-        "url": "/cursos/podman2024/contenido/modulo5/09_kubernetes2/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo5/09_kubernetes2/"
       }
     ]
   },
@@ -218,23 +218,23 @@
     "children": [
       {
         "title": "Introducción a Quadlet",
-        "url": "/cursos/podman2024/contenido/modulo6/01_quadlet/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo6/01_quadlet/"
       },
       {
         "title": "Ejecución de contenedores con Systemd y Quadlet",
-        "url": "/cursos/podman2024/contenido/modulo6/02_contenedor/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo6/02_contenedor/"
       },
       {
         "title": "Gestionando volúmenes y redes con Systemd y Quadlet",
-        "url": "/cursos/podman2024/contenido/modulo6/03_vol_redes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo6/03_vol_redes/"
       },
       {
         "title": "Ejecución de Pods con Systemd y Quadlet",
-        "url": "/cursos/podman2024/contenido/modulo6/04_pod/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo6/04_pod/"
       },
       {
         "title": "Ejemplo: Despliegue de WordPress + MariaDB con Systemd y Quadlet",
-        "url": "/cursos/podman2024/contenido/modulo6/05_wordpress/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo6/05_wordpress/"
       }
     ]
   },
@@ -243,35 +243,35 @@
     "children": [
       {
         "title": "Creando escenarios multicontenedor con Compose",
-        "url": "/cursos/podman2024/contenido/modulo7/01_compose/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/01_compose/"
       },
       {
         "title": "El fichero compose.yaml",
-        "url": "/cursos/podman2024/contenido/modulo7/02_compose_yaml/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/02_compose_yaml/"
       },
       {
         "title": "El comando podman-compose",
-        "url": "/cursos/podman2024/contenido/modulo7/03_podman_compose/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/03_podman_compose/"
       },
       {
         "title": "Almacenamiento y redes con Compose",
-        "url": "/cursos/podman2024/contenido/modulo7/04_almacenamiento_redes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/04_almacenamiento_redes/"
       },
       {
         "title": "Uso de parámetros con Compose",
-        "url": "/cursos/podman2024/contenido/modulo7/05_variables/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/05_variables/"
       },
       {
         "title": "Creación de contenedores rootless conectados a la red slirp4netns",
-        "url": "/cursos/podman2024/contenido/modulo7/06_rootless/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/06_rootless/"
       },
       {
         "title": "Despliegue de la aplicación Guestbook",
-        "url": "/cursos/podman2024/contenido/modulo7/07_guestbook/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/07_guestbook/"
       },
       {
         "title": "Despliegue de la aplicación Temperaturas",
-        "url": "/cursos/podman2024/contenido/modulo7/08_temperaturas/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo7/08_temperaturas/"
       }
     ]
   },
@@ -280,35 +280,35 @@
     "children": [
       {
         "title": "Construcción y distribución de imágenes OCI",
-        "url": "/cursos/podman2024/contenido/modulo8/01_introduccion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/01_introduccion/"
       },
       {
         "title": "Construcción de imágenes a partir de un contenedor",
-        "url": "/cursos/podman2024/contenido/modulo8/02_contenedor/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/02_contenedor/"
       },
       {
         "title": "El fichero Containerfile",
-        "url": "/cursos/podman2024/contenido/modulo8/03_containerfile/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/03_containerfile/"
       },
       {
         "title": "Construcción de imágenes con podman build",
-        "url": "/cursos/podman2024/contenido/modulo8/04_build/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/04_build/"
       },
       {
         "title": "Construcción de imágenes configurables con variables de entorno",
-        "url": "/cursos/podman2024/contenido/modulo8/05_configuracion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/05_configuracion/"
       },
       {
         "title": "Construcción de imágenes con Compose",
-        "url": "/cursos/podman2024/contenido/modulo8/06_compose/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/06_compose/"
       },
       {
         "title": "Distribución de imágenes OCI",
-        "url": "/cursos/podman2024/contenido/modulo8/07_distribucion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/07_distribucion/"
       },
       {
         "title": "Uso de ficheros Containerfile parametrizados",
-        "url": "/cursos/podman2024/contenido/modulo8/08_variables/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo8/08_variables/"
       }
     ]
   },
@@ -317,27 +317,27 @@
     "children": [
       {
         "title": "Introducción a Buildah y Skopeo",
-        "url": "/cursos/podman2024/contenido/modulo9/01_introduccion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo9/01_introduccion/"
       },
       {
         "title": "Construcción de imágenes desde una imagen base con Buildah",
-        "url": "/cursos/podman2024/contenido/modulo9/02_base/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo9/02_base/"
       },
       {
         "title": "Construcción de imágenes desde cero con Buildah",
-        "url": "/cursos/podman2024/contenido/modulo9/03_scratch/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo9/03_scratch/"
       },
       {
         "title": "Construcción de imágenes desde un Containerfile con Buildah",
-        "url": "/cursos/podman2024/contenido/modulo9/04_build/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo9/04_build/"
       },
       {
         "title": "Distribución de imágenes con Buildah",
-        "url": "/cursos/podman2024/contenido/modulo9/05_distribucion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo9/05_distribucion/"
       },
       {
         "title": "Gestión de imágenes con Skopeo",
-        "url": "/cursos/podman2024/contenido/modulo9/06_skopeo/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo9/06_skopeo/"
       }
     ]
   },
@@ -346,27 +346,27 @@
     "children": [
       {
         "title": "Introducción a Podman Desktop",
-        "url": "/cursos/podman2024/contenido/modulo10/01_introduccion/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo10/01_introduccion/"
       },
       {
         "title": "Gestión de imágenes en Podman Desktop",
-        "url": "/cursos/podman2024/contenido/modulo10/02_imagenes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo10/02_imagenes/"
       },
       {
         "title": "Gestión de contenedores en Podman Desktop",
-        "url": "/cursos/podman2024/contenido/modulo10/03_contenedor/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo10/03_contenedor/"
       },
       {
         "title": "Gestión de Pods en Podman Desktop",
-        "url": "/cursos/podman2024/contenido/modulo10/04_pod/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo10/04_pod/"
       },
       {
         "title": "Gestión de volúmenes en Podman Desktop",
-        "url": "/cursos/podman2024/contenido/modulo10/05_volumenes/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo10/05_volumenes/"
       },
       {
         "title": "Construcción de imágenes en Podman Desktop",
-        "url": "/cursos/podman2024/contenido/modulo10/06_build/"
+        "url": "/pledin/cursos/podman2024/contenido/modulo10/06_build/"
       }
     ]
   }

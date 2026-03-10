@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import DocLayout from '@pledin/ui/layouts/DocLayout.astro';
+import PostNav from '@pledin/ui/components/PostNav.astro';
+import PostNav from '@pledin/ui/components/PostNav.astro';
 
 const navModules = import.meta.glob('../../data/nav/*.json', { eager: true });
 
@@ -16,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content , headings} = await render(entry);
 
 const slugParts = entry.id.split('/');
 const courseName = slugParts[0];
@@ -31,14 +33,42 @@ const slug = entry.id.replace(/\/index$/, '').replace(/^index$/, '');
 const currentPath = `/pledin/cursos/${slug}/`;
 
 const courseTitle = nav[0]?.title || courseName;
+
+
+const pageTitle = entry.data.title ?? slug.split('/').pop() ?? courseName;
+const flatLinks = nav.flatMap(section =>
+  section.children ? section.children.filter(c => c.url) : (section.url ? [section] : [])
+);
+const currentIndex = flatLinks.findIndex(item => item.url === currentPath);
+const prev = flatLinks[currentIndex - 1];
+const next = flatLinks[currentIndex + 1];
+
+// Breadcrumb
+const slugSegments = slug.split('/');
+const breadcrumb = [
+  { title: 'Cursos', url: '/pledin/' },
+  { title: courseTitle, url: `/pledin/cursos/${slugSegments[0]}/` },
+];
+if (slugSegments.length > 1) {
+  breadcrumb.push({ title: pageTitle, url: null });
+}
 ---
 
 <DocLayout
-  title={entry.data.title}
+  title={pageTitle}
   courseTitle={courseTitle}
   nav={nav}
   currentPath={currentPath}
-  description={entry.data.description}
+  headings={headings}
+  breadcrumb={breadcrumb}
 >
+  <h1>{pageTitle}</h1>
   <Content />
+  <PostNav
+    prevUrl={prev?.url}
+    prevTitle={prev?.title}
+    nextUrl={next?.url}
+    nextTitle={next?.title}
+  />
 </DocLayout>
+

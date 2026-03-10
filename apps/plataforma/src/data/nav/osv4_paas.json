@@ -4,7 +4,7 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/osv4_paas/"
+        "url": "/pledin/cursos/osv4_paas/"
       }
     ]
   },
@@ -13,19 +13,19 @@
     "children": [
       {
         "title": "Cloud Computing PaaS: Plataforma como servicio",
-        "url": "/cursos/osv4_paas/modulo01/paas/"
+        "url": "/pledin/cursos/osv4_paas/modulo01/paas/"
       },
       {
         "title": "OpenShift, la plataforma PaaS de Red Hat",
-        "url": "/cursos/osv4_paas/modulo01/openshift/"
+        "url": "/pledin/cursos/osv4_paas/modulo01/openshift/"
       },
       {
         "title": "Plataformas para trabajar con OpenShift v4",
-        "url": "/cursos/osv4_paas/modulo01/plataformas/"
+        "url": "/pledin/cursos/osv4_paas/modulo01/plataformas/"
       },
       {
         "title": "Introducción a  Red Hat OpenShift Dedicated Developer Sandbox",
-        "url": "/cursos/osv4_paas/modulo01/sandbox/"
+        "url": "/pledin/cursos/osv4_paas/modulo01/sandbox/"
       }
     ]
   },
@@ -34,43 +34,43 @@
     "children": [
       {
         "title": "Introducción al despliegue de aplicaciones en OpenShift v4",
-        "url": "/cursos/osv4_paas/modulo02/introduccion/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/introduccion/"
       },
       {
         "title": "Despliegue de aplicaciones desde imágenes con oc",
-        "url": "/cursos/osv4_paas/modulo02/imagen/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/imagen/"
       },
       {
         "title": "Despliegue de aplicaciones desde imágenes desde la consola web",
-        "url": "/cursos/osv4_paas/modulo02/imagen_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/imagen_web/"
       },
       {
         "title": "Despliegue de aplicaciones desde código fuente con oc",
-        "url": "/cursos/osv4_paas/modulo02/codigo/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/codigo/"
       },
       {
         "title": "Despliegue de aplicaciones desde código fuente con oc (2ª parte)",
-        "url": "/cursos/osv4_paas/modulo02/codigo2/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/codigo2/"
       },
       {
         "title": "Despliegue de aplicaciones desde código fuente desde la consola web",
-        "url": "/cursos/osv4_paas/modulo02/codigo_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/codigo_web/"
       },
       {
         "title": "Despliegue de aplicaciones desde Dockerfile con oc",
-        "url": "/cursos/osv4_paas/modulo02/docker/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/docker/"
       },
       {
         "title": "Despliegue de aplicaciones desde Dockerfile desde la consola web",
-        "url": "/cursos/osv4_paas/modulo02/docker_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/docker_web/"
       },
       {
         "title": "Despliegue de aplicaciones desde el catálogo con oc",
-        "url": "/cursos/osv4_paas/modulo02/catalogo/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/catalogo/"
       },
       {
         "title": "Despliegue de aplicaciones desde el catálogo desde la consola web",
-        "url": "/cursos/osv4_paas/modulo02/catalogo_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo02/catalogo_web/"
       }
     ]
   },
@@ -79,27 +79,27 @@
     "children": [
       {
         "title": "Introducción al recurso ImageStream",
-        "url": "/cursos/osv4_paas/modulo03/introduccion/"
+        "url": "/pledin/cursos/osv4_paas/modulo03/introduccion/"
       },
       {
         "title": "ImageStream a imágenes del registro interno",
-        "url": "/cursos/osv4_paas/modulo03/registro_interno/"
+        "url": "/pledin/cursos/osv4_paas/modulo03/registro_interno/"
       },
       {
         "title": "Creación de ImageStream",
-        "url": "/cursos/osv4_paas/modulo03/crear_is/"
+        "url": "/pledin/cursos/osv4_paas/modulo03/crear_is/"
       },
       {
         "title": "Gestión de ImageStream desde la consola web",
-        "url": "/cursos/osv4_paas/modulo03/is_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo03/is_web/"
       },
       {
         "title": "Gestión de las etiquetas en un ImageStream",
-        "url": "/cursos/osv4_paas/modulo03/etiquetas/"
+        "url": "/pledin/cursos/osv4_paas/modulo03/etiquetas/"
       },
       {
         "title": "Actualización automática de ImageStream",
-        "url": "/cursos/osv4_paas/modulo03/update/"
+        "url": "/pledin/cursos/osv4_paas/modulo03/update/"
       }
     ]
   },
@@ -108,43 +108,43 @@
     "children": [
       {
         "title": "Introducción a la construcción automática de imágenes (build)",
-        "url": "/cursos/osv4_paas/modulo04/build/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/build/"
       },
       {
         "title": "Construcción de imágenes con estrategia Source-to-Image (S2I) + repositorio Git",
-        "url": "/cursos/osv4_paas/modulo04/s2i/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/s2i/"
       },
       {
         "title": "Construcción de imágenes con estrategia Docker + repositorio Git",
-        "url": "/cursos/osv4_paas/modulo04/docker/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/docker/"
       },
       {
         "title": "Definición del objeto BuildConfig",
-        "url": "/cursos/osv4_paas/modulo04/buildconfig/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/buildconfig/"
       },
       {
         "title": "Actualización manual de un build",
-        "url": "/cursos/osv4_paas/modulo04/actualizacion/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/actualizacion/"
       },
       {
         "title": "Construcción de imágenes desde ficheros locales",
-        "url": "/cursos/osv4_paas/modulo04/binary/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/binary/"
       },
       {
         "title": "Construcción de imágenes con Dockerfile en línea",
-        "url": "/cursos/osv4_paas/modulo04/dockerfile_inline/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/dockerfile_inline/"
       },
       {
         "title": "Gestión de builds desde la consola web",
-        "url": "/cursos/osv4_paas/modulo04/build_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/build_web/"
       },
       {
         "title": "Actualización automática de un build",
-        "url": "/cursos/osv4_paas/modulo04/imagechange/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/imagechange/"
       },
       {
         "title": "Actualización automática de un build por trigger webhook",
-        "url": "/cursos/osv4_paas/modulo04/webhook/"
+        "url": "/pledin/cursos/osv4_paas/modulo04/webhook/"
       }
     ]
   },
@@ -153,35 +153,35 @@
     "children": [
       {
         "title": "Características del recurso DeploymentConfig",
-        "url": "/cursos/osv4_paas/modulo05/dc/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/dc/"
       },
       {
         "title": "Creación de un DeployConfig al crear una aplicación",
-        "url": "/cursos/osv4_paas/modulo05/newdc/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/newdc/"
       },
       {
         "title": "Definición de un recurso DeploymentConfig",
-        "url": "/cursos/osv4_paas/modulo05/deploymentconfig/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/deploymentconfig/"
       },
       {
         "title": "Actualización de un DeploymentConfig (rollout)",
-        "url": "/cursos/osv4_paas/modulo05/rollout/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/rollout/"
       },
       {
         "title": "Rollback de un DeploymentConfig",
-        "url": "/cursos/osv4_paas/modulo05/rollback/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/rollback/"
       },
       {
         "title": "Trabajando con DeploymentConfig desde la consola web",
-        "url": "/cursos/osv4_paas/modulo05/dc_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/dc_web/"
       },
       {
         "title": "Estrategias de despliegues",
-        "url": "/cursos/osv4_paas/modulo05/estretegias/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/estretegias/"
       },
       {
         "title": "Estrategias de despliegues basadas en rutas",
-        "url": "/cursos/osv4_paas/modulo05/estrategias_rutas/"
+        "url": "/pledin/cursos/osv4_paas/modulo05/estrategias_rutas/"
       }
     ]
   },
@@ -190,35 +190,35 @@
     "children": [
       {
         "title": "Introducción a los Templates",
-        "url": "/cursos/osv4_paas/modulo06/template/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/template/"
       },
       {
         "title": "Descripción de un objeto Template",
-        "url": "/cursos/osv4_paas/modulo06/descripcion/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/descripcion/"
       },
       {
         "title": "Crear objetos desde un Template",
-        "url": "/cursos/osv4_paas/modulo06/crear_template/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/crear_template/"
       },
       {
         "title": "Crear objetos desde un Template desde la consola web",
-        "url": "/cursos/osv4_paas/modulo06/template_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/template_web/"
       },
       {
         "title": "Creación de plantillas a partir de objetos existentes",
-        "url": "/cursos/osv4_paas/modulo06/crear_template2/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/crear_template2/"
       },
       {
         "title": "Despliegue de una aplicación con plantillas",
-        "url": "/cursos/osv4_paas/modulo06/php-template/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/php-template/"
       },
       {
         "title": "Uso de Helm en OpenShift desde la consola web",
-        "url": "/cursos/osv4_paas/modulo06/helm-web/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/helm-web/"
       },
       {
         "title": "Uso de Helm en OpenShift desde la línea de comandos",
-        "url": "/cursos/osv4_paas/modulo06/helm-cli/"
+        "url": "/pledin/cursos/osv4_paas/modulo06/helm-cli/"
       }
     ]
   },
@@ -227,31 +227,31 @@
     "children": [
       {
         "title": "Introducción al almacenamiento en OpenShift v4",
-        "url": "/cursos/osv4_paas/modulo07/almacenamiento/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/almacenamiento/"
       },
       {
         "title": "Almacenamiento en Red Hat OpenShift Dedicated Developer Sandbox",
-        "url": "/cursos/osv4_paas/modulo07/almacenamiento_sandbox/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/almacenamiento_sandbox/"
       },
       {
         "title": "Ejemplo 1: Gestión de almacenamiento desde la consola web: phpsqlitecms (1ª parte)",
-        "url": "/cursos/osv4_paas/modulo07/phpsqlitecms/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/phpsqlitecms/"
       },
       {
         "title": "Ejemplo 1: Gestión de almacenamiento desde la consola web: phpsqlitecms (2ª parte)",
-        "url": "/cursos/osv4_paas/modulo07/phpsqlitecms2/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/phpsqlitecms2/"
       },
       {
         "title": "Ejemplo 2: Gestión de almacenamiento desde la línea de comandos: GuestBook",
-        "url": "/cursos/osv4_paas/modulo07/guestbook/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/guestbook/"
       },
       {
         "title": "Ejemplo 3: Haciendo persistente la aplicación Wordpress",
-        "url": "/cursos/osv4_paas/modulo07/wordpress/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/wordpress/"
       },
       {
         "title": "Instantáneas de volúmenes",
-        "url": "/cursos/osv4_paas/modulo07/snapshot/"
+        "url": "/pledin/cursos/osv4_paas/modulo07/snapshot/"
       }
     ]
   },
@@ -260,23 +260,23 @@
     "children": [
       {
         "title": "Introducción a OpenShift Pipelines",
-        "url": "/cursos/osv4_paas/modulo08/introduccion_pipeline/"
+        "url": "/pledin/cursos/osv4_paas/modulo08/introduccion_pipeline/"
       },
       {
         "title": "Despliegue de una aplicación con OpenShift Pipeline",
-        "url": "/cursos/osv4_paas/modulo08/pipeline/"
+        "url": "/pledin/cursos/osv4_paas/modulo08/pipeline/"
       },
       {
         "title": "Gestión de OpenShift Pipeline desde el terminal",
-        "url": "/cursos/osv4_paas/modulo08/pipeline_terminal/"
+        "url": "/pledin/cursos/osv4_paas/modulo08/pipeline_terminal/"
       },
       {
         "title": "Gestión de OpenShift Pipeline desde la consola web",
-        "url": "/cursos/osv4_paas/modulo08/pipeline_web/"
+        "url": "/pledin/cursos/osv4_paas/modulo08/pipeline_web/"
       },
       {
         "title": "Instalación de OpenShift Pipeline en CRC",
-        "url": "/cursos/osv4_paas/modulo08/operador/"
+        "url": "/pledin/cursos/osv4_paas/modulo08/operador/"
       }
     ]
   },
@@ -285,23 +285,23 @@
     "children": [
       {
         "title": "Introducción a OpenShift Serverless",
-        "url": "/cursos/osv4_paas/modulo09/serverless/"
+        "url": "/pledin/cursos/osv4_paas/modulo09/serverless/"
       },
       {
         "title": "Ejemplo de Serverless Serving",
-        "url": "/cursos/osv4_paas/modulo09/serving/"
+        "url": "/pledin/cursos/osv4_paas/modulo09/serving/"
       },
       {
         "title": "Ejemplo de Serverless Eventing",
-        "url": "/cursos/osv4_paas/modulo09/eventing/"
+        "url": "/pledin/cursos/osv4_paas/modulo09/eventing/"
       },
       {
         "title": "Ejemplo de Serverless Function",
-        "url": "/cursos/osv4_paas/modulo09/function/"
+        "url": "/pledin/cursos/osv4_paas/modulo09/function/"
       },
       {
         "title": "Instalación de OpenShift Serverless en CRC",
-        "url": "/cursos/osv4_paas/modulo09/operador/"
+        "url": "/pledin/cursos/osv4_paas/modulo09/operador/"
       }
     ]
   },
@@ -310,19 +310,19 @@
     "children": [
       {
         "title": "Despliegue de aplicación Citas en OpenShift v4 (1ª parte)",
-        "url": "/cursos/osv4_paas/modulo10/citas/"
+        "url": "/pledin/cursos/osv4_paas/modulo10/citas/"
       },
       {
         "title": "Despliegue de aplicación Citas en OpenShift v4 (2ª parte)",
-        "url": "/cursos/osv4_paas/modulo10/citas2/"
+        "url": "/pledin/cursos/osv4_paas/modulo10/citas2/"
       },
       {
         "title": "Despliegue de aplicación Parksmap en OpenShift v4 (1ª parte)",
-        "url": "/cursos/osv4_paas/modulo10/parksmap/"
+        "url": "/pledin/cursos/osv4_paas/modulo10/parksmap/"
       },
       {
         "title": "Despliegue de aplicación Nationalparks en OpenShift v4 (2ª parte)",
-        "url": "/cursos/osv4_paas/modulo10/parksmap2/"
+        "url": "/pledin/cursos/osv4_paas/modulo10/parksmap2/"
       }
     ]
   }

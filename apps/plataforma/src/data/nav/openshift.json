@@ -4,7 +4,7 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/openshift/"
+        "url": "/pledin/cursos/openshift/"
       }
     ]
   },
@@ -13,7 +13,7 @@
     "children": [
       {
         "title": "Introducción a PaaS",
-        "url": "/cursos/openshift/curso/u01/"
+        "url": "/pledin/cursos/openshift/curso/u01/"
       }
     ]
   },
@@ -22,19 +22,19 @@
     "children": [
       {
         "title": "Desplegando nuestras aplicaciones en contenedores",
-        "url": "/cursos/openshift/curso/u02/"
+        "url": "/pledin/cursos/openshift/curso/u02/"
       },
       {
         "title": "Introducción a docker",
-        "url": "/cursos/openshift/curso/u03/"
+        "url": "/pledin/cursos/openshift/curso/u03/"
       },
       {
         "title": "Ciclo de vida de nuestras aplicaciones en docker",
-        "url": "/cursos/openshift/curso/u04/"
+        "url": "/pledin/cursos/openshift/curso/u04/"
       },
       {
         "title": "Persistencia de la información en docker",
-        "url": "/cursos/openshift/curso/u05/"
+        "url": "/pledin/cursos/openshift/curso/u05/"
       }
     ]
   },
@@ -43,19 +43,19 @@
     "children": [
       {
         "title": "Introducción a Kubernetes",
-        "url": "/cursos/openshift/curso/u06/"
+        "url": "/pledin/cursos/openshift/curso/u06/"
       },
       {
         "title": "¿Qué nos aporta Kubernetes?: Tolerancia a fallos,escalabilidad, balanceo de carga",
-        "url": "/cursos/openshift/curso/u07/"
+        "url": "/pledin/cursos/openshift/curso/u07/"
       },
       {
         "title": "¿Qué nos aporta Kubernetes?: Actualizaciones continúas/Rollback y enrutamiento",
-        "url": "/cursos/openshift/curso/u08/"
+        "url": "/pledin/cursos/openshift/curso/u08/"
       },
       {
         "title": "Persistencia de información en Kubernetes",
-        "url": "/cursos/openshift/curso/u09/"
+        "url": "/pledin/cursos/openshift/curso/u09/"
       }
     ]
   },
@@ -64,75 +64,75 @@
     "children": [
       {
         "title": "Introducción a openshift",
-        "url": "/cursos/openshift/curso/u10/"
+        "url": "/pledin/cursos/openshift/curso/u10/"
       },
       {
         "title": "OpenShift Online",
-        "url": "/cursos/openshift/curso/u11/"
+        "url": "/pledin/cursos/openshift/curso/u11/"
       },
       {
         "title": "minishift: Instalación local de Openshift",
-        "url": "/cursos/openshift/curso/u12/"
+        "url": "/pledin/cursos/openshift/curso/u12/"
       },
       {
         "title": "Despliegue de nuestra primera aplicación en OpenShift",
-        "url": "/cursos/openshift/curso/u13/"
+        "url": "/pledin/cursos/openshift/curso/u13/"
       },
       {
         "title": "Recursos que nos ofrece Openshift",
-        "url": "/cursos/openshift/curso/u14/"
+        "url": "/pledin/cursos/openshift/curso/u14/"
       },
       {
         "title": "Tolerancia a fallos, escalabilidad y balanceado de carga en OpenShift",
-        "url": "/cursos/openshift/curso/u15/"
+        "url": "/pledin/cursos/openshift/curso/u15/"
       },
       {
         "title": "Actualizaciones continúas y Rollback de nuestra aplicación en OpenShift",
-        "url": "/cursos/openshift/curso/u16/"
+        "url": "/pledin/cursos/openshift/curso/u16/"
       },
       {
         "title": "Despliegue continuo en OpenShift",
-        "url": "/cursos/openshift/curso/u17/"
+        "url": "/pledin/cursos/openshift/curso/u17/"
       },
       {
         "title": "Autoescalado: Escalado automático en OpenShift",
-        "url": "/cursos/openshift/curso/u18/"
+        "url": "/pledin/cursos/openshift/curso/u18/"
       },
       {
         "title": "Introducción a la utilidad de línea de comandos oc",
-        "url": "/cursos/openshift/curso/u19/"
+        "url": "/pledin/cursos/openshift/curso/u19/"
       },
       {
         "title": "Despliegue de una aplicación con la utilidad de línea de comandos oc",
-        "url": "/cursos/openshift/curso/u20/"
+        "url": "/pledin/cursos/openshift/curso/u20/"
       },
       {
         "title": "Operaciones avanzadas con la utilidad de línea de comandos oc",
-        "url": "/cursos/openshift/curso/u21/"
+        "url": "/pledin/cursos/openshift/curso/u21/"
       },
       {
         "title": "Despliegue de aplicaciones Python en OpenShift",
-        "url": "/cursos/openshift/curso/u22/"
+        "url": "/pledin/cursos/openshift/curso/u22/"
       },
       {
         "title": "Despliegue de aplicaciones PHP en OpenShift",
-        "url": "/cursos/openshift/curso/u23/"
+        "url": "/pledin/cursos/openshift/curso/u23/"
       },
       {
         "title": "Despliegue de aplicaciones PHP en OpenShift con almacenamiento persistente",
-        "url": "/cursos/openshift/curso/u24/"
+        "url": "/pledin/cursos/openshift/curso/u24/"
       },
       {
         "title": "Trabajando con bases de datos en OpenShift",
-        "url": "/cursos/openshift/curso/u25/"
+        "url": "/pledin/cursos/openshift/curso/u25/"
       },
       {
         "title": "Despliegue de Wordpress en OpenShift",
-        "url": "/cursos/openshift/curso/u26/"
+        "url": "/pledin/cursos/openshift/curso/u26/"
       },
       {
         "title": "Despliegue de Wordpress con un template en OpenShift",
-        "url": "/cursos/openshift/curso/u27/"
+        "url": "/pledin/cursos/openshift/curso/u27/"
       }
     ]
   }

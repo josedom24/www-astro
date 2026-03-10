@@ -4,11 +4,11 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/apache24/"
+        "url": "/pledin/cursos/apache24/"
       },
       {
         "title": "Introducción al curso",
-        "url": "/cursos/apache24/curso/u0/u0.pdf"
+        "url": "/pledin/cursos/apache24/curso/u0/u0.pdf"
       }
     ]
   },
@@ -17,27 +17,27 @@
     "children": [
       {
         "title": "Protocolo HTTP",
-        "url": "/cursos/apache24/curso/u01/"
+        "url": "/pledin/cursos/apache24/curso/u01/"
       },
       {
         "title": "Introducción al servidor web Apache 2.4",
-        "url": "/cursos/apache24/curso/u02/"
+        "url": "/pledin/cursos/apache24/curso/u02/"
       },
       {
         "title": "Instalación del servidor web Apache 2.4",
-        "url": "/cursos/apache24/curso/u03/"
+        "url": "/pledin/cursos/apache24/curso/u03/"
       },
       {
         "title": "Estructura de los ficheros de configuración",
-        "url": "/cursos/apache24/curso/u04/"
+        "url": "/pledin/cursos/apache24/curso/u04/"
       },
       {
         "title": "Empezamos estudiando algunas directivas",
-        "url": "/cursos/apache24/curso/u05/"
+        "url": "/pledin/cursos/apache24/curso/u05/"
       },
       {
         "title": "Probando nuestro servidor web",
-        "url": "/cursos/apache24/curso/u06/"
+        "url": "/pledin/cursos/apache24/curso/u06/"
       }
     ]
   },
@@ -46,15 +46,15 @@
     "children": [
       {
         "title": "Introducción a Virtual Hosting",
-        "url": "/cursos/apache24/curso/u07/"
+        "url": "/pledin/cursos/apache24/curso/u07/"
       },
       {
         "title": "Configuración de Virtual Hosting",
-        "url": "/cursos/apache24/curso/u08/"
+        "url": "/pledin/cursos/apache24/curso/u08/"
       },
       {
         "title": "Configuración de acceso a los servidores virtuales",
-        "url": "/cursos/apache24/curso/u09/"
+        "url": "/pledin/cursos/apache24/curso/u09/"
       }
     ]
   },
@@ -63,23 +63,23 @@
     "children": [
       {
         "title": "Opciones de directorios",
-        "url": "/cursos/apache24/curso/u10/"
+        "url": "/pledin/cursos/apache24/curso/u10/"
       },
       {
         "title": "Trabajando con alias",
-        "url": "/cursos/apache24/curso/u11/"
+        "url": "/pledin/cursos/apache24/curso/u11/"
       },
       {
         "title": "Negociación de contenidos",
-        "url": "/cursos/apache24/curso/u12/"
+        "url": "/pledin/cursos/apache24/curso/u12/"
       },
       {
         "title": "Redirecciones",
-        "url": "/cursos/apache24/curso/u13/"
+        "url": "/pledin/cursos/apache24/curso/u13/"
       },
       {
         "title": "Páginas de errores personalizadas",
-        "url": "/cursos/apache24/curso/u14/"
+        "url": "/pledin/cursos/apache24/curso/u14/"
       }
     ]
   },
@@ -88,19 +88,19 @@
     "children": [
       {
         "title": "Control de acceso. Autorización",
-        "url": "/cursos/apache24/curso/u15/"
+        "url": "/pledin/cursos/apache24/curso/u15/"
       },
       {
         "title": "Autentificación básica",
-        "url": "/cursos/apache24/curso/u16/"
+        "url": "/pledin/cursos/apache24/curso/u16/"
       },
       {
         "title": "Autentificación digest",
-        "url": "/cursos/apache24/curso/u17/"
+        "url": "/pledin/cursos/apache24/curso/u17/"
       },
       {
         "title": "Implementación de políticas de autentificación y acceso",
-        "url": "/cursos/apache24/curso/u18/"
+        "url": "/pledin/cursos/apache24/curso/u18/"
       }
     ]
   },
@@ -109,7 +109,7 @@
     "children": [
       {
         "title": "Configuración de Apache mediante archivo .htaccess",
-        "url": "/cursos/apache24/curso/u19/"
+        "url": "/pledin/cursos/apache24/curso/u19/"
       }
     ]
   },
@@ -118,19 +118,19 @@
     "children": [
       {
         "title": "Uso de módulos en Apache 2.4",
-        "url": "/cursos/apache24/curso/u20/"
+        "url": "/pledin/cursos/apache24/curso/u20/"
       },
       {
         "title": "Módulo userdir",
-        "url": "/cursos/apache24/curso/u21/"
+        "url": "/pledin/cursos/apache24/curso/u21/"
       },
       {
         "title": "Creación de un servidor WebDAV",
-        "url": "/cursos/apache24/curso/u22/"
+        "url": "/pledin/cursos/apache24/curso/u22/"
       },
       {
         "title": "Módulo rewrite",
-        "url": "/cursos/apache24/curso/u23/"
+        "url": "/pledin/cursos/apache24/curso/u23/"
       }
     ]
   },
@@ -139,15 +139,15 @@
     "children": [
       {
         "title": "Módulos de Multiprocesamiento (MPM)",
-        "url": "/cursos/apache24/curso/u24/"
+        "url": "/pledin/cursos/apache24/curso/u24/"
       },
       {
         "title": "Ejecución de script PHP",
-        "url": "/cursos/apache24/curso/u25/"
+        "url": "/pledin/cursos/apache24/curso/u25/"
       },
       {
         "title": "Ejecución de script python",
-        "url": "/cursos/apache24/curso/u26/"
+        "url": "/pledin/cursos/apache24/curso/u26/"
       }
     ]
   },
@@ -156,23 +156,23 @@
     "children": [
       {
         "title": "Introducción a HTTPS",
-        "url": "/cursos/apache24/curso/u27/"
+        "url": "/pledin/cursos/apache24/curso/u27/"
       },
       {
         "title": "Obtener un certificado en CAcert",
-        "url": "/cursos/apache24/curso/u28/"
+        "url": "/pledin/cursos/apache24/curso/u28/"
       },
       {
         "title": "Configuración de HTTPS",
-        "url": "/cursos/apache24/curso/u29/"
+        "url": "/pledin/cursos/apache24/curso/u29/"
       },
       {
         "title": "Introducción al módulo mod_security2",
-        "url": "/cursos/apache24/curso/u30/"
+        "url": "/pledin/cursos/apache24/curso/u30/"
       },
       {
         "title": "Consejos de seguridad",
-        "url": "/cursos/apache24/curso/u31/"
+        "url": "/pledin/cursos/apache24/curso/u31/"
       }
     ]
   },
@@ -181,11 +181,11 @@
     "children": [
       {
         "title": "Configuración de un proxy inverso",
-        "url": "/cursos/apache24/curso/u32/"
+        "url": "/pledin/cursos/apache24/curso/u32/"
       },
       {
         "title": "Analizador de logs: awstats",
-        "url": "/cursos/apache24/curso/u33/"
+        "url": "/pledin/cursos/apache24/curso/u33/"
       }
     ]
   }

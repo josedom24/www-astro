@@ -7,15 +7,15 @@
     "children": [
       {
         "title": "Introducción al Cloud Computing",
-        "url": "/cursos/cloud2013/index.html#introducción-al-cloud-computing"
+        "url": "/pledin/cursos/cloud2013/index.html#introducción-al-cloud-computing"
       },
       {
         "title": "OpenStack",
-        "url": "/cursos/cloud2013/index.html#openstack"
+        "url": "/pledin/cursos/cloud2013/index.html#openstack"
       },
       {
         "title": "Utilización de instancias y almacenamiento en OpenStack",
-        "url": "/cursos/cloud2013/index.html#utilización-de-instancias-y-almacenamiento-en-openstack"
+        "url": "/pledin/cursos/cloud2013/index.html#utilización-de-instancias-y-almacenamiento-en-openstack"
       }
     ]
   },
@@ -24,11 +24,11 @@
     "children": [
       {
         "title": "Introducción a PaaS: Open Shift",
-        "url": "/cursos/cloud2013/index.html#introducción-a-paas-open-shift"
+        "url": "/pledin/cursos/cloud2013/index.html#introducción-a-paas-open-shift"
       },
       {
         "title": "Cloud Computing como herramienta didáctica. Posibilidades de uso/implantación en un centro educativo",
-        "url": "/cursos/cloud2013/index.html#cloud-computing-como-herramienta-didáctica-posibilidades-de-usoimplantación-en-un-centro-educativo"
+        "url": "/pledin/cursos/cloud2013/index.html#cloud-computing-como-herramienta-didáctica-posibilidades-de-usoimplantación-en-un-centro-educativo"
       }
     ]
   }

@@ -20,7 +20,7 @@ function normUrl(url: string): string {
 function isActive(url: string): boolean {
   if (!url) return false;
   const norm = normUrl(url);
-  return currentPath.startsWith(norm) || currentPath === norm.replace(/\/$/, '');
+  return currentPath === norm || currentPath === norm.replace(/\/$/, '');
 }
 ---
 
@@ -54,6 +54,12 @@ function isActive(url: string): boolean {
     </div>
   ))}
 </nav>
+<script>
+  const active = document.querySelector('.sidebar-link.active, a.sidebar-section-title.active');
+  if (active) {
+    active.scrollIntoView({ block: 'center' });
+  }
+</script>
 
 <style>
   .doc-sidebar {
@@ -117,4 +123,5 @@ function isActive(url: string): boolean {
     border-left-color: var(--color-accent, #2563eb);
     font-weight: 600;
   }
+
 </style>

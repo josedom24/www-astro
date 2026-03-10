@@ -11,49 +11,49 @@
       },
       {
         "title": "Curso de C++: Introducción a C++ (2020)",
-        "url": "pledin/cursos/curso_cpp1/",
+        "url": "cursos/curso_cpp1/",
         "year": "2020",
         "external": "none",
         "ow": true
       },
       {
         "title": "Curso de C++: Estructuras de control y tipos de datos (2020)",
-        "url": "pledin/cursos/curso_cpp2/",
+        "url": "cursos/curso_cpp2/",
         "year": "2020",
         "external": "none",
         "ow": true
       },
       {
         "title": "Curso de C++: Programación estructurada y orientación a objetos (2020)",
-        "url": "pledin/cursos/curso_cpp3/",
+        "url": "cursos/curso_cpp3/",
         "year": "2020",
         "external": "none",
         "ow": true
       },
       {
         "title": "Introducción a la programación con python3 (2019)",
-        "url": "pledin/cursos/programacion_python3/",
+        "url": "cursos/programacion_python3/",
         "year": "2019",
         "external": "none",
         "ow": true
       },
       {
         "title": "Introducción a la programación con pseudocódigo (2018)",
-        "url": "pledin/cursos/programacion/",
+        "url": "cursos/programacion/",
         "year": "2018",
         "external": "none",
         "ow": true
       },
       {
         "title": "Curso sobre Flask (Miniframework python para desarrollar páginas web) (2017)",
-        "url": "pledin/cursos/flask/",
+        "url": "cursos/flask/",
         "year": "2017",
         "external": "none",
         "ow": true
       },
       {
         "title": "Curso de python3 (2017)",
-        "url": "pledin/cursos/python3/",
+        "url": "cursos/python3/",
         "year": "2017",
         "external": "none",
         "ow": true
@@ -91,28 +91,28 @@
     "courses": [
       {
         "title": "Introducción a Podman (2024)",
-        "url": "pledin/cursos/podman2024/",
+        "url": "cursos/podman2024/",
         "year": "2024",
         "external": "none",
         "ow": true
       },
       {
         "title": "Introducción a Docker (2024)",
-        "url": "pledin/cursos/docker2024/",
+        "url": "cursos/docker2024/",
         "year": "2024",
         "external": "none",
         "ow": true
       },
       {
         "title": "OpenShift v4 como PaaS (2023)",
-        "url": "pledin/cursos/osv4_paas/",
+        "url": "cursos/osv4_paas/",
         "year": "2023",
         "external": "none",
         "ow": true
       },
       {
         "title": "Aprende Kubernetes con OpenShift v4 (2023)",
-        "url": "pledin/cursos/osv4_k8s/",
+        "url": "cursos/osv4_k8s/",
         "year": "2023",
         "external": "none",
         "ow": true
@@ -140,7 +140,7 @@
       },
       {
         "title": "Curso de Openshift (2019)",
-        "url": "pledin/cursos/openshift/",
+        "url": "cursos/openshift/",
         "year": "2019",
         "external": "none",
         "ow": true
@@ -152,7 +152,7 @@
     "courses": [
       {
         "title": "“Mini” Curso: Virtualización y Cloud Computing en el IES Gonzalo Nazareno (2022)",
-        "url": "https://www.josedomingo.org/pledin/2022/05/curso-cloud-iesgn",
+        "url": "https://www.josedomingo.org/2022/05/curso-cloud-iesgn",
         "year": "2022",
         "external": "web",
         "ow": false
@@ -201,14 +201,14 @@
       },
       {
         "title": "Jornadas Cloud Computing (2013)",
-        "url": "pledin/cursos/cloud2013/",
+        "url": "cursos/cloud2013/",
         "year": "2013",
         "external": "none",
         "ow": false
       },
       {
         "title": "Proyecto Cloud Computing (2012)",
-        "url": "pledin/cursos/cloud2012/",
+        "url": "cursos/cloud2012/",
         "year": "2012",
         "external": "none",
         "ow": false
@@ -220,56 +220,56 @@
     "courses": [
       {
         "title": "Curso Apache2.4 (2018)",
-        "url": "pledin/cursos/apache24/",
+        "url": "cursos/apache24/",
         "year": "2018",
         "external": "none",
         "ow": true
       },
       {
         "title": "Introducción al uso de la plataforma moodle (2020)",
-        "url": "pledin/cursos/moodle2020/",
+        "url": "cursos/moodle2020/",
         "year": "2020",
         "external": "none",
         "ow": false
       },
       {
         "title": "Servicios en GNU/Linux (Nivel Intermedio) (2011)",
-        "url": "pledin/cursos/servicios2011/",
+        "url": "cursos/servicios2011/",
         "year": "2011",
         "external": "none",
         "ow": false
       },
       {
         "title": "Servicios en GNU/Linux. Portal Educativo (2010)",
-        "url": "pledin/cursos/servicios2010/",
+        "url": "cursos/servicios2010/",
         "year": "2010",
         "external": "none",
         "ow": false
       },
       {
         "title": "Introducción a los Servicios en GNU/Linux (2008)",
-        "url": "pledin/cursos/servicios2008/",
+        "url": "cursos/servicios2008/",
         "year": "2008",
         "external": "none",
         "ow": false
       },
       {
         "title": "Curso TIC - IES Gonzalo Nazareno (2007)",
-        "url": "pledin/cursos/tic2007/",
+        "url": "cursos/tic2007/",
         "year": "2007",
         "external": "none",
         "ow": false
       },
       {
         "title": "Curso HELVIA - IES Gonzalo Nazareno (2007)",
-        "url": "pledin/cursos/helvia2007/",
+        "url": "cursos/helvia2007/",
         "year": "2007",
         "external": "none",
         "ow": false
       },
       {
         "title": "Máquinas virtuales para la puesta en marcha de un portal educativo (2006)",
-        "url": "pledin/cursos/mv2006/",
+        "url": "cursos/mv2006/",
         "year": "2006",
         "external": "none",
         "ow": false

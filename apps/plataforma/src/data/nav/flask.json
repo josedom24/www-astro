@@ -4,11 +4,11 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/flask/"
+        "url": "/pledin/cursos/flask/"
       },
       {
         "title": "Introducción al curso",
-        "url": "/cursos/flask/curso/u0/u0.pdf /"
+        "url": "/pledin/cursos/flask/curso/u0/u0.pdf"
       }
     ]
   },
@@ -17,19 +17,19 @@
     "children": [
       {
         "title": "Protocolo HTTP",
-        "url": "/cursos/flask/curso/u01/"
+        "url": "/pledin/cursos/flask/curso/u01/"
       },
       {
         "title": "Programación web dinámica",
-        "url": "/cursos/flask/curso/u02/"
+        "url": "/pledin/cursos/flask/curso/u02/"
       },
       {
         "title": "Patrón modelo-vista-controlador",
-        "url": "/cursos/flask/curso/u03/"
+        "url": "/pledin/cursos/flask/curso/u03/"
       },
       {
         "title": "Introducción a la programación web con python",
-        "url": "/cursos/flask/curso/u04/"
+        "url": "/pledin/cursos/flask/curso/u04/"
       }
     ]
   },
@@ -38,19 +38,19 @@
     "children": [
       {
         "title": "Introducción a flask",
-        "url": "/cursos/flask/curso/u05/"
+        "url": "/pledin/cursos/flask/curso/u05/"
       },
       {
         "title": "Instalación de flask",
-        "url": "/cursos/flask/curso/u06/"
+        "url": "/pledin/cursos/flask/curso/u06/"
       },
       {
         "title": "Corriendo una aplicación sencilla",
-        "url": "/cursos/flask/curso/u07/"
+        "url": "/pledin/cursos/flask/curso/u07/"
       },
       {
         "title": "Controlando nuestra aplicación con flask-script",
-        "url": "/cursos/flask/curso/u08/"
+        "url": "/pledin/cursos/flask/curso/u08/"
       }
     ]
   },
@@ -59,23 +59,23 @@
     "children": [
       {
         "title": "Enrutamiento: Rutas",
-        "url": "/cursos/flask/curso/u09/"
+        "url": "/pledin/cursos/flask/curso/u09/"
       },
       {
         "title": "Enrutamiento: Métodos",
-        "url": "/cursos/flask/curso/u10/"
+        "url": "/pledin/cursos/flask/curso/u10/"
       },
       {
         "title": "Trabajando con peticiones HTTP",
-        "url": "/cursos/flask/curso/u11/"
+        "url": "/pledin/cursos/flask/curso/u11/"
       },
       {
         "title": "Generando respuestas HTTP, respuestas de error y redirecciones",
-        "url": "/cursos/flask/curso/u12/"
+        "url": "/pledin/cursos/flask/curso/u12/"
       },
       {
         "title": "Contenido estático",
-        "url": "/cursos/flask/curso/u13/"
+        "url": "/pledin/cursos/flask/curso/u13/"
       }
     ]
   },
@@ -84,31 +84,31 @@
     "children": [
       {
         "title": "Plantillas con jinja2",
-        "url": "/cursos/flask/curso/u14/"
+        "url": "/pledin/cursos/flask/curso/u14/"
       },
       {
         "title": "Generando páginas HTML con Flask y Jinja2",
-        "url": "/cursos/flask/curso/u15/"
+        "url": "/pledin/cursos/flask/curso/u15/"
       },
       {
         "title": "Herencia de plantillas",
-        "url": "/cursos/flask/curso/u16/"
+        "url": "/pledin/cursos/flask/curso/u16/"
       },
       {
         "title": "Plantillas con bootstrap (flask-bootstrap)",
-        "url": "/cursos/flask/curso/u17/"
+        "url": "/pledin/cursos/flask/curso/u17/"
       },
       {
         "title": "Trabajando con formularios",
-        "url": "/cursos/flask/curso/u18/"
+        "url": "/pledin/cursos/flask/curso/u18/"
       },
       {
         "title": "Generando formularios con flask-wtf",
-        "url": "/cursos/flask/curso/u19/"
+        "url": "/pledin/cursos/flask/curso/u19/"
       },
       {
         "title": "Subida de ficheros",
-        "url": "/cursos/flask/curso/u20/"
+        "url": "/pledin/cursos/flask/curso/u20/"
       }
     ]
   },
@@ -117,27 +117,27 @@
     "children": [
       {
         "title": "Usando base de datos en Flask, flask-sqlalchemy",
-        "url": "/cursos/flask/curso/u21/"
+        "url": "/pledin/cursos/flask/curso/u21/"
       },
       {
         "title": "El modelo de base de datos",
-        "url": "/cursos/flask/curso/u22/"
+        "url": "/pledin/cursos/flask/curso/u22/"
       },
       {
         "title": "Listando y filtrando los registros de la base de datos",
-        "url": "/cursos/flask/curso/u23/"
+        "url": "/pledin/cursos/flask/curso/u23/"
       },
       {
         "title": "Creando registros en la base de datos",
-        "url": "/cursos/flask/curso/u24/"
+        "url": "/pledin/cursos/flask/curso/u24/"
       },
       {
         "title": "Modificando registros en la base de datos",
-        "url": "/cursos/flask/curso/u25/"
+        "url": "/pledin/cursos/flask/curso/u25/"
       },
       {
         "title": "Borrando un registro de la base de datos",
-        "url": "/cursos/flask/curso/u26/"
+        "url": "/pledin/cursos/flask/curso/u26/"
       }
     ]
   },
@@ -146,19 +146,19 @@
     "children": [
       {
         "title": "Gestión de usuarios con sesiones",
-        "url": "/cursos/flask/curso/u27/"
+        "url": "/pledin/cursos/flask/curso/u27/"
       },
       {
         "title": "Registrando nuevos usuarios",
-        "url": "/cursos/flask/curso/u28/"
+        "url": "/pledin/cursos/flask/curso/u28/"
       },
       {
         "title": "Gestión de permisos de usuarios",
-        "url": "/cursos/flask/curso/u29/"
+        "url": "/pledin/cursos/flask/curso/u29/"
       },
       {
         "title": "Gestión de usuarios con extensión Flask-Login",
-        "url": "/cursos/flask/curso/u30/"
+        "url": "/pledin/cursos/flask/curso/u30/"
       }
     ]
   },
@@ -167,11 +167,11 @@
     "children": [
       {
         "title": "Uso de cookies para añadir artículos al carrito",
-        "url": "/cursos/flask/curso/u31/"
+        "url": "/pledin/cursos/flask/curso/u31/"
       },
       {
         "title": "Finalización de la compra",
-        "url": "/cursos/flask/curso/u32/"
+        "url": "/pledin/cursos/flask/curso/u32/"
       }
     ]
   },
@@ -180,19 +180,19 @@
     "children": [
       {
         "title": "Despliegue de aplicación flask en un servidor LAMP",
-        "url": "/cursos/flask/curso/u33/"
+        "url": "/pledin/cursos/flask/curso/u33/"
       },
       {
         "title": "Despliegue de aplicación flask en hosting pythonanywhere",
-        "url": "/cursos/flask/curso/u34/"
+        "url": "/pledin/cursos/flask/curso/u34/"
       },
       {
         "title": "Despliegue de aplicación flask en un PaaS Heroku",
-        "url": "/cursos/flask/curso/u35/"
+        "url": "/pledin/cursos/flask/curso/u35/"
       },
       {
         "title": "Despliegue de aplicación flask en un contenedor docker",
-        "url": "/cursos/flask/curso/u36/"
+        "url": "/pledin/cursos/flask/curso/u36/"
       }
     ]
   }

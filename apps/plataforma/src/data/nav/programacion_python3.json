@@ -7,7 +7,7 @@
     "children": [
       {
         "title": "Índice",
-        "url": "/cursos/programacion_python3/"
+        "url": "/pledin/cursos/programacion_python3/"
       }
     ]
   },
@@ -16,15 +16,15 @@
     "children": [
       {
         "title": "Análisis de problemas y diseño de algoritmos",
-        "url": "/cursos/programacion_python3/curso/u01/"
+        "url": "/pledin/cursos/programacion_python3/curso/u01/"
       },
       {
         "title": "Introducción a los lenguajes de programación",
-        "url": "/cursos/programacion_python3/curso/u02/"
+        "url": "/pledin/cursos/programacion_python3/curso/u02/"
       },
       {
         "title": "Introducción a python3",
-        "url": "/cursos/programacion_python3/curso/u03/"
+        "url": "/pledin/cursos/programacion_python3/curso/u03/"
       }
     ]
   },
@@ -33,15 +33,15 @@
     "children": [
       {
         "title": "Instalación de python3",
-        "url": "/cursos/programacion_python3/curso/u04/"
+        "url": "/pledin/cursos/programacion_python3/curso/u04/"
       },
       {
         "title": "Escribir y ejecutar programas python",
-        "url": "/cursos/programacion_python3/curso/u05/"
+        "url": "/pledin/cursos/programacion_python3/curso/u05/"
       },
       {
         "title": "Mi primer programa en python3",
-        "url": "/cursos/programacion_python3/curso/u06/"
+        "url": "/pledin/cursos/programacion_python3/curso/u06/"
       }
     ]
   },
@@ -50,35 +50,35 @@
     "children": [
       {
         "title": "Datos y tipos de datos",
-        "url": "/cursos/programacion_python3/curso/u07/"
+        "url": "/pledin/cursos/programacion_python3/curso/u07/"
       },
       {
         "title": "Tipos de datos numéricos",
-        "url": "/cursos/programacion_python3/curso/u08/"
+        "url": "/pledin/cursos/programacion_python3/curso/u08/"
       },
       {
         "title": "Tipo de datos booleano",
-        "url": "/cursos/programacion_python3/curso/u09/"
+        "url": "/pledin/cursos/programacion_python3/curso/u09/"
       },
       {
         "title": "Trabajando con variables",
-        "url": "/cursos/programacion_python3/curso/u10/"
+        "url": "/pledin/cursos/programacion_python3/curso/u10/"
       },
       {
         "title": "Entrada y salida estándar",
-        "url": "/cursos/programacion_python3/curso/u11/"
+        "url": "/pledin/cursos/programacion_python3/curso/u11/"
       },
       {
         "title": "Introducción a las cadenas de caracteres",
-        "url": "/cursos/programacion_python3/curso/u12/"
+        "url": "/pledin/cursos/programacion_python3/curso/u12/"
       },
       {
         "title": "Pasando de pseudocódigo a python3",
-        "url": "/cursos/programacion_python3/curso/u13/"
+        "url": "/pledin/cursos/programacion_python3/curso/u13/"
       },
       {
         "title": "Ejercicios estructura secuencial",
-        "url": "/cursos/programacion_python3/curso/u14/"
+        "url": "/pledin/cursos/programacion_python3/curso/u14/"
       }
     ]
   },
@@ -87,27 +87,27 @@
     "children": [
       {
         "title": "Estructura de control: Alternativas",
-        "url": "/cursos/programacion_python3/curso/u15/"
+        "url": "/pledin/cursos/programacion_python3/curso/u15/"
       },
       {
         "title": "Ejercicios estructura alternativas",
-        "url": "/cursos/programacion_python3/curso/u16/"
+        "url": "/pledin/cursos/programacion_python3/curso/u16/"
       },
       {
         "title": "Estructuras de control repetitivas: while",
-        "url": "/cursos/programacion_python3/curso/u17/"
+        "url": "/pledin/cursos/programacion_python3/curso/u17/"
       },
       {
         "title": "Estructuras de control repetitivas: for",
-        "url": "/cursos/programacion_python3/curso/u18/"
+        "url": "/pledin/cursos/programacion_python3/curso/u18/"
       },
       {
         "title": "Uso específico de variables: contadores, acumuladores e indicadores",
-        "url": "/cursos/programacion_python3/curso/u19/"
+        "url": "/pledin/cursos/programacion_python3/curso/u19/"
       },
       {
         "title": "Ejercicios estructuras repetitivas",
-        "url": "/cursos/programacion_python3/curso/u20/"
+        "url": "/pledin/cursos/programacion_python3/curso/u20/"
       }
     ]
   },
@@ -116,39 +116,39 @@
     "children": [
       {
         "title": "Tipo de datos cadenas de caracteres",
-        "url": "/cursos/programacion_python3/curso/u21/"
+        "url": "/pledin/cursos/programacion_python3/curso/u21/"
       },
       {
         "title": "Las cadenas de caracteres son inmutables",
-        "url": "/cursos/programacion_python3/curso/u22/"
+        "url": "/pledin/cursos/programacion_python3/curso/u22/"
       },
       {
         "title": "Métodos principales de cadenas",
-        "url": "/cursos/programacion_python3/curso/u23/"
+        "url": "/pledin/cursos/programacion_python3/curso/u23/"
       },
       {
         "title": "Ejercicios cadena de caracteres",
-        "url": "/cursos/programacion_python3/curso/u24/"
+        "url": "/pledin/cursos/programacion_python3/curso/u24/"
       },
       {
         "title": "Tipo de datos secuencia: Listas",
-        "url": "/cursos/programacion_python3/curso/u25/"
+        "url": "/pledin/cursos/programacion_python3/curso/u25/"
       },
       {
         "title": "Las listas son mutables",
-        "url": "/cursos/programacion_python3/curso/u26/"
+        "url": "/pledin/cursos/programacion_python3/curso/u26/"
       },
       {
         "title": "Métodos principales de listas",
-        "url": "/cursos/programacion_python3/curso/u27/"
+        "url": "/pledin/cursos/programacion_python3/curso/u27/"
       },
       {
         "title": "Tipo de datos secuencia: Tuplas",
-        "url": "/cursos/programacion_python3/curso/u28/"
+        "url": "/pledin/cursos/programacion_python3/curso/u28/"
       },
       {
         "title": "Ejercicios de listas",
-        "url": "/cursos/programacion_python3/curso/u29/"
+        "url": "/pledin/cursos/programacion_python3/curso/u29/"
       }
     ]
   },
@@ -157,15 +157,15 @@
     "children": [
       {
         "title": "Tipo de datos mapa: diccionario",
-        "url": "/cursos/programacion_python3/curso/u30/"
+        "url": "/pledin/cursos/programacion_python3/curso/u30/"
       },
       {
         "title": "Métodos principales de diccionarios",
-        "url": "/cursos/programacion_python3/curso/u31/"
+        "url": "/pledin/cursos/programacion_python3/curso/u31/"
       },
       {
         "title": "Ejercicios de diccionarios",
-        "url": "/cursos/programacion_python3/curso/u32/"
+        "url": "/pledin/cursos/programacion_python3/curso/u32/"
       }
     ]
   },
@@ -174,7 +174,7 @@
     "children": [
       {
         "title": "Excepciones",
-        "url": "/cursos/programacion_python3/curso/u33/"
+        "url": "/pledin/cursos/programacion_python3/curso/u33/"
       }
     ]
   },
@@ -183,7 +183,7 @@
     "children": [
       {
         "title": "Introducción a los módulos",
-        "url": "/cursos/programacion_python3/curso/u34/"
+        "url": "/pledin/cursos/programacion_python3/curso/u34/"
       }
     ]
   },
@@ -192,19 +192,19 @@
     "children": [
       {
         "title": "Introducción a las funciones",
-        "url": "/cursos/programacion_python3/curso/u35/"
+        "url": "/pledin/cursos/programacion_python3/curso/u35/"
       },
       {
         "title": "Funciones recursivas",
-        "url": "/cursos/programacion_python3/curso/u36/"
+        "url": "/pledin/cursos/programacion_python3/curso/u36/"
       },
       {
         "title": "Ejercicios con funciones",
-        "url": "/cursos/programacion_python3/curso/u37/"
+        "url": "/pledin/cursos/programacion_python3/curso/u37/"
       },
       {
         "title": "Más ejercicios",
-        "url": "/cursos/programacion_python3/curso/u38/"
+        "url": "/pledin/cursos/programacion_python3/curso/u38/"
       }
     ]
   },
@@ -213,19 +213,19 @@
     "children": [
       {
         "title": "Introducción a la programación orientada a objetos",
-        "url": "/cursos/programacion_python3/curso/u39/"
+        "url": "/pledin/cursos/programacion_python3/curso/u39/"
       },
       {
         "title": "Encapsulamiento en la programación orientada a objetos",
-        "url": "/cursos/programacion_python3/curso/u40/"
+        "url": "/pledin/cursos/programacion_python3/curso/u40/"
       },
       {
         "title": "Herencia y delegación",
-        "url": "/cursos/programacion_python3/curso/u41/"
+        "url": "/pledin/cursos/programacion_python3/curso/u41/"
       },
       {
         "title": "Ejercicios de programación orientada a objetos",
-        "url": "/cursos/programacion_python3/curso/u42/"
+        "url": "/pledin/cursos/programacion_python3/curso/u42/"
       }
     ]
   }
