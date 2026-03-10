@@ -2,17 +2,27 @@
 import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
 import CourseCard from '@pledin/ui/components/CourseCard.astro';
 import catalog from '../data/catalog.json';
-
-const title = 'PLEDIN 3.0 — Catálogo de Cursos';
-const description = 'Plataforma Educativa Informática. Cursos de José Domingo Muñoz.';
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title="Catálogo de Cursos" description="Plataforma Educativa Informática. Cursos de José Domingo Muñoz.">
   <div class="catalog-hero">
-    <h1>Catálogo de Cursos</h1>
-    <p>Plataforma Educativa Informática · <a href="https://www.josedomingo.org">José Domingo Muñoz</a></p>
+    <div class="catalog-hero-inner">
+      <h1>Plataforma Educativa Informática</h1>
+      <p>Catálogo de cursos</p>
+    </div>
   </div>
-
+    <div class="catalog-intro">
+    
+    <p>
+      Bienvenidos a PLEDIN, Plataforma Educativa Informática. Esta plataforma está mantenida por
+      <a href="https://www.josedomingo.org">José Domingo Muñoz</a> y aquí podéis encontrar cursos
+      relacionados con el mundo informático y la educación. Puedes acceder también al
+      <a href="https://www.josedomingo.org/pledin/blog/">Blog PLEDIN</a>, donde encontrarás noticias
+      y documentación relacionada con estos temas, y la
+      <a href="https://fp.josedomingo.org">página módulos</a> donde estoy recopilando los contenidos
+      de los distintos módulos que imparto en los ciclos formativos de informática del IES Gonzalo Nazareno.
+    </p>
+  </div>
   <div class="catalog-body">
     {catalog.map((section) => (
       <section class="catalog-section">
@@ -24,6 +34,7 @@ const description = 'Plataforma Educativa Informática. Cursos de José Domingo 
               url={course.url}
               year={course.year ?? undefined}
               external={course.external}
+              ow={course.ow ?? false}
             />
           ))}
         </div>
@@ -36,43 +47,45 @@ const description = 'Plataforma Educativa Informática. Cursos de José Domingo 
   .catalog-hero {
     background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     color: white;
-    padding: 3rem 2rem;
-    margin: -2rem -2rem 2rem;
-    border-radius: 0;
+    padding: 1.5rem 0;
+  }
+
+  .catalog-hero-inner {
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 4rem);
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
 
   .catalog-hero h1 {
     font-size: 2rem;
     font-weight: 800;
     margin: 0 0 0.5rem;
+    color: white;
   }
 
   .catalog-hero p {
     margin: 0;
     opacity: 0.85;
-    font-size: 1rem;
+    color: white;
   }
 
-  .catalog-hero a {
-    color: #93c5fd;
-    text-decoration: underline;
-  }
+  .catalog-hero a { color: #93c5fd; }
 
   .catalog-body {
-    max-width: 1000px;
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 4rem);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
   }
 
-  .catalog-section {
-    margin-bottom: 2.5rem;
-  }
+  .catalog-section { margin-bottom: 2.5rem; }
 
   .section-heading {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: #6b7280;
-    border-bottom: 2px solid #e5e7eb;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -84,12 +97,26 @@ const description = 'Plataforma Educativa Informática. Cursos de José Domingo 
   }
 
   @media (max-width: 600px) {
-    .course-grid {
-      grid-template-columns: 1fr;
-    }
-    .catalog-hero {
-      padding: 2rem 1rem;
-      margin: -1rem -1rem 1.5rem;
-    }
+    .course-grid { grid-template-columns: 1fr; }
+    .catalog-hero { padding: 2rem 0; }
   }
+    .catalog-intro {
+    max-width: calc(var(--sidebar-width) + var(--content-width) + 4rem);
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .catalog-intro p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+      
+  }
+
+  .catalog-intro h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  
 </style>

@@ -1,0 +1,43 @@
+[
+  {
+    "title": "Introducción a los Servicios en GNU/Linux (2008)",
+    "children": [
+      {
+        "title": "Introdución",
+        "url": "/cursos/servicios2008/index.html#introdución"
+      },
+      {
+        "title": "Servidor DNS",
+        "url": "/cursos/servicios2008/index.html#servidor-dns"
+      },
+      {
+        "title": "Servidor DHCP",
+        "url": "/cursos/servicios2008/index.html#servidor-dhcp"
+      },
+      {
+        "title": "Servidor LDAP",
+        "url": "/cursos/servicios2008/index.html#servidor-ldap"
+      },
+      {
+        "title": "Servidor de Correo Electrónico",
+        "url": "/cursos/servicios2008/index.html#servidor-de-correo-electrónico"
+      },
+      {
+        "title": "LAMP: Linux, Apache, mySql, PHP",
+        "url": "/cursos/servicios2008/index.html#lamp-linux-apache-mysql-php"
+      },
+      {
+        "title": "NAT y Proxy",
+        "url": "/cursos/servicios2008/index.html#nat-y-proxy"
+      },
+      {
+        "title": "NFS, SAMBA y Mdns",
+        "url": "/cursos/servicios2008/index.html#nfs-samba-y-mdns"
+      },
+      {
+        "title": "Cortafuegos con iptables",
+        "url": "/cursos/servicios2008/index.html#cortafuegos-con-iptables"
+      }
+    ]
+  }
+]

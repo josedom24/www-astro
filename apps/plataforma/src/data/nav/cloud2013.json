@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Jornadas Cloud Computing (2013)"
+  },
+  {
+    "title": "1ª SESIÓN: 26 de febrero",
+    "children": [
+      {
+        "title": "Introducción al Cloud Computing",
+        "url": "/cursos/cloud2013/index.html#introducción-al-cloud-computing"
+      },
+      {
+        "title": "OpenStack",
+        "url": "/cursos/cloud2013/index.html#openstack"
+      },
+      {
+        "title": "Utilización de instancias y almacenamiento en OpenStack",
+        "url": "/cursos/cloud2013/index.html#utilización-de-instancias-y-almacenamiento-en-openstack"
+      }
+    ]
+  },
+  {
+    "title": "2ª SESIÓN: 5 de marzo",
+    "children": [
+      {
+        "title": "Introducción a PaaS: Open Shift",
+        "url": "/cursos/cloud2013/index.html#introducción-a-paas-open-shift"
+      },
+      {
+        "title": "Cloud Computing como herramienta didáctica. Posibilidades de uso/implantación en un centro educativo",
+        "url": "/cursos/cloud2013/index.html#cloud-computing-como-herramienta-didáctica-posibilidades-de-usoimplantación-en-un-centro-educativo"
+      }
+    ]
+  }
+]

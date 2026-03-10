@@ -5,6 +5,10 @@
       {
         "title": "Índice",
         "url": "/cursos/programacion/"
+      },
+      {
+        "title": "Introducción al curso",
+        "url": "/cursos/programacion/curso/u0/u0.pdf"
       }
     ]
   },
@@ -14,6 +18,193 @@
       {
         "title": "Resolución de problemas",
         "url": "/cursos/programacion/curso/u01/"
+      },
+      {
+        "title": "Análisis del problema",
+        "url": "/cursos/programacion/curso/u02/"
+      },
+      {
+        "title": "Diseño de algoritmos",
+        "url": "/cursos/programacion/curso/u03/"
+      }
+    ]
+  },
+  {
+    "title": "Entorno de trabajo: PSeInt",
+    "children": [
+      {
+        "title": "Introducción a PSeInt",
+        "url": "/cursos/programacion/curso/u04/"
+      }
+    ]
+  },
+  {
+    "title": "Pseudocódigo: Introducción",
+    "children": [
+      {
+        "title": "Estructura del algoritmo",
+        "url": "/cursos/programacion/curso/u05/"
+      },
+      {
+        "title": "Tipos de datos simples",
+        "url": "/cursos/programacion/curso/u06/"
+      },
+      {
+        "title": "Variables",
+        "url": "/cursos/programacion/curso/u07/"
+      },
+      {
+        "title": "Operadores y expresiones",
+        "url": "/cursos/programacion/curso/u08/"
+      },
+      {
+        "title": "Asignación de variables",
+        "url": "/cursos/programacion/curso/u09/"
+      },
+      {
+        "title": "Entrada y salida de información",
+        "url": "/cursos/programacion/curso/u10/"
+      },
+      {
+        "title": "Otras instrucciones",
+        "url": "/cursos/programacion/curso/u11/"
+      },
+      {
+        "title": "Funciones matemáticas",
+        "url": "/cursos/programacion/curso/u12/"
+      },
+      {
+        "title": "Funciones de cadenas de texto",
+        "url": "/cursos/programacion/curso/u13/"
+      },
+      {
+        "title": "Nuestro primer pseudocódigo completo",
+        "url": "/cursos/programacion/curso/u14/"
+      },
+      {
+        "title": "Ejecución paso a paso",
+        "url": "/cursos/programacion/curso/u15/"
+      },
+      {
+        "title": "Ejercicios estructura secuencial",
+        "url": "/cursos/programacion/curso/u16/"
+      }
+    ]
+  },
+  {
+    "title": "Pseudocódigo: Estructuras alternativas",
+    "children": [
+      {
+        "title": "Estructuras alternativas: Si",
+        "url": "/cursos/programacion/curso/u17/"
+      },
+      {
+        "title": "Estructuras alternativas: Segun",
+        "url": "/cursos/programacion/curso/u18/"
+      },
+      {
+        "title": "Ejercicios estructuras alternativas",
+        "url": "/cursos/programacion/curso/u19/"
+      }
+    ]
+  },
+  {
+    "title": "Pseudocódigo: Estructuras repetitivas",
+    "children": [
+      {
+        "title": "Estructuras repetitivas: Mientras",
+        "url": "/cursos/programacion/curso/u20/"
+      },
+      {
+        "title": "Estructuras repetitivas: Repetir-Hasta Que",
+        "url": "/cursos/programacion/curso/u21/"
+      },
+      {
+        "title": "Estructuras repetitivas: Para",
+        "url": "/cursos/programacion/curso/u22/"
+      },
+      {
+        "title": "Uso específico de variables: contadores, acumuladores e indicadores",
+        "url": "/cursos/programacion/curso/u23/"
+      },
+      {
+        "title": "Ejercicios estructuras repetitivas",
+        "url": "/cursos/programacion/curso/u24/"
+      },
+      {
+        "title": "Ejercicios cadenas de caracteres",
+        "url": "/cursos/programacion/curso/u25/"
+      }
+    ]
+  },
+  {
+    "title": "Pseudocódigo: Arreglos",
+    "children": [
+      {
+        "title": "Estructuras de datos: Arreglos (array)",
+        "url": "/cursos/programacion/curso/u26/"
+      },
+      {
+        "title": "Arreglos unidimensionales: Vectores",
+        "url": "/cursos/programacion/curso/u27/"
+      },
+      {
+        "title": "Arreglos multidimensionales: Tablas",
+        "url": "/cursos/programacion/curso/u28/"
+      },
+      {
+        "title": "Ejercicios de arreglos",
+        "url": "/cursos/programacion/curso/u29/"
+      }
+    ]
+  },
+  {
+    "title": "Pseudocódigo: Programación estructurada",
+    "children": [
+      {
+        "title": "Programación estructurada",
+        "url": "/cursos/programacion/curso/u30/"
+      },
+      {
+        "title": "Funciones y procedimientos",
+        "url": "/cursos/programacion/curso/u31/"
+      },
+      {
+        "title": "Funciones recursivas",
+        "url": "/cursos/programacion/curso/u32/"
+      },
+      {
+        "title": "Ejercicios de funciones",
+        "url": "/cursos/programacion/curso/u33/"
+      },
+      {
+        "title": "Más ejercicios",
+        "url": "/cursos/programacion/curso/u34/"
+      }
+    ]
+  },
+  {
+    "title": "Lenguajes de Programación",
+    "children": [
+      {
+        "title": "Introducción a los lenguajes de programación",
+        "url": "/cursos/programacion/curso/u35/"
+      },
+      {
+        "title": "Programas traductores",
+        "url": "/cursos/programacion/curso/u36/"
+      },
+      {
+        "title": "Compilación y ejecución de un lenguaje compilado: C++",
+        "url": "/cursos/programacion/curso/u37/"
+      },
+      {
+        "title": "Compilación e interpretación de un programa Java",
+        "url": "/cursos/programacion/curso/u38/"
+      },
+      {
+        "title": "Ejecución de programas interpretados con Python",
+        "url": "/cursos/programacion/curso/u39/"
       }
     ]
   }

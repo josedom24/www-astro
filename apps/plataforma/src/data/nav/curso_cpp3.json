@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Curso C++: Programación estructurada y orientación a objetos",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/curso_cpp3/"
+      }
+    ]
+  },
+  {
+    "title": "Punteros y estructuras",
+    "children": [
+      {
+        "title": "Introducción a los punteros (I)",
+        "url": "/cursos/curso_cpp3/curso/u01/"
+      },
+      {
+        "title": "Introducción a los punteros (II)",
+        "url": "/cursos/curso_cpp3/curso/u02/"
+      },
+      {
+        "title": "Introducción a las referencias en C++",
+        "url": "/cursos/curso_cpp3/curso/u03/"
+      },
+      {
+        "title": "Tipos de datos complejos: estructuras",
+        "url": "/cursos/curso_cpp3/curso/u04/"
+      }
+    ]
+  },
+  {
+    "title": "Programación estructurada",
+    "children": [
+      {
+        "title": "Programación estructurada",
+        "url": "/cursos/curso_cpp3/curso/u05/"
+      },
+      {
+        "title": "Funciones y procedimientos",
+        "url": "/cursos/curso_cpp3/curso/u06/"
+      },
+      {
+        "title": "Funciones recursivas",
+        "url": "/cursos/curso_cpp3/curso/u07/"
+      },
+      {
+        "title": "Ejercicios con funciones",
+        "url": "/cursos/curso_cpp3/curso/u08/"
+      },
+      {
+        "title": "Más ejercicios",
+        "url": "/cursos/curso_cpp3/curso/u09/"
+      }
+    ]
+  },
+  {
+    "title": "Programación orientada a objetos",
+    "children": [
+      {
+        "title": "Introducción a la programación orientada a objetos",
+        "url": "/cursos/curso_cpp3/curso/u10/"
+      },
+      {
+        "title": "Encapsulamiento en la programación orientada a objetos",
+        "url": "/cursos/curso_cpp3/curso/u11/"
+      },
+      {
+        "title": "Herencia y delegación",
+        "url": "/cursos/curso_cpp3/curso/u12/"
+      },
+      {
+        "title": "Ejercicios de programación orientada a objetos",
+        "url": "/cursos/curso_cpp3/curso/u13/"
+      }
+    ]
+  }
+]

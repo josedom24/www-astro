@@ -16,8 +16,276 @@
         "url": "/cursos/python3/curso/u01/"
       },
       {
+        "title": "Python2 us python3",
+        "url": "/cursos/python3/curso/u02/"
+      },
+      {
+        "title": "Instalación de python3",
+        "url": "/cursos/python3/curso/u03/"
+      },
+      {
+        "title": "Entornos de desarrollos y editores de texto",
+        "url": "/cursos/python3/curso/u04/"
+      },
+      {
         "title": "Mi primer programa en python3",
         "url": "/cursos/python3/curso/u05/"
+      }
+    ]
+  },
+  {
+    "title": "Estructura del lenguaje",
+    "children": [
+      {
+        "title": "Estructura del programa",
+        "url": "/cursos/python3/curso/u06/"
+      },
+      {
+        "title": "Funciones y constantes predefinidas",
+        "url": "/cursos/python3/curso/u07/"
+      },
+      {
+        "title": "Datos",
+        "url": "/cursos/python3/curso/u08/"
+      },
+      {
+        "title": "Tipos de datos",
+        "url": "/cursos/python3/curso/u09/"
+      },
+      {
+        "title": "Trabajando con variables",
+        "url": "/cursos/python3/curso/u10/"
+      },
+      {
+        "title": "Entrada y salida estándar",
+        "url": "/cursos/python3/curso/u11/"
+      }
+    ]
+  },
+  {
+    "title": "Tipos de datos numéricos",
+    "children": [
+      {
+        "title": "Tipo de datos numéricos",
+        "url": "/cursos/python3/curso/u12/"
+      },
+      {
+        "title": "Tipo de dato booleanos",
+        "url": "/cursos/python3/curso/u13/"
+      },
+      {
+        "title": "Ejercicios de programas sencillo",
+        "url": "/cursos/python3/curso/u14/"
+      }
+    ]
+  },
+  {
+    "title": "Estructuras de control",
+    "children": [
+      {
+        "title": "Estructura de control: Alternativas",
+        "url": "/cursos/python3/curso/u15/"
+      },
+      {
+        "title": "Ejercicios de alternativas",
+        "url": "/cursos/python3/curso/u16/"
+      },
+      {
+        "title": "Estructura de control: Repetitivas",
+        "url": "/cursos/python3/curso/u17/"
+      },
+      {
+        "title": "Ejercicios de repetitivas",
+        "url": "/cursos/python3/curso/u18/"
+      }
+    ]
+  },
+  {
+    "title": "Tipos de datos secuencia",
+    "children": [
+      {
+        "title": "Tipo de datos secuencia",
+        "url": "/cursos/python3/curso/u19/"
+      },
+      {
+        "title": "Tipo de datos secuencia: listas",
+        "url": "/cursos/python3/curso/u20/"
+      },
+      {
+        "title": "Métodos principales de listas",
+        "url": "/cursos/python3/curso/u21/"
+      },
+      {
+        "title": "Ejercicios de listas",
+        "url": "/cursos/python3/curso/u22/"
+      },
+      {
+        "title": "Operaciones avanzadas con secuencias",
+        "url": "/cursos/python3/curso/u23/"
+      },
+      {
+        "title": "Tipo de datos secuencia: Tuplas",
+        "url": "/cursos/python3/curso/u24/"
+      },
+      {
+        "title": "Tipo de datos secuencia: Rangos",
+        "url": "/cursos/python3/curso/u25/"
+      },
+      {
+        "title": "Codificación de caracteres",
+        "url": "/cursos/python3/curso/u26/"
+      },
+      {
+        "title": "Tipo de datos cadenas de caracteres",
+        "url": "/cursos/python3/curso/u27/"
+      },
+      {
+        "title": "Métodos principales de cadenas",
+        "url": "/cursos/python3/curso/u28/"
+      },
+      {
+        "title": "Ejercicios de cadenas",
+        "url": "/cursos/python3/curso/u29/"
+      },
+      {
+        "title": "Tipo de datos binarios: bytes, bytearray",
+        "url": "/cursos/python3/curso/u30/"
+      },
+      {
+        "title": "Tipo de datos conjuntos: set, frozenset",
+        "url": "/cursos/python3/curso/u31/"
+      },
+      {
+        "title": "Tipo de datos iterador y generador",
+        "url": "/cursos/python3/curso/u32/"
+      }
+    ]
+  },
+  {
+    "title": "Tipos de datos mapas",
+    "children": [
+      {
+        "title": "Tipo de datos mapa: diccionario",
+        "url": "/cursos/python3/curso/u33/"
+      },
+      {
+        "title": "Métodos principales de diccionarios",
+        "url": "/cursos/python3/curso/u34/"
+      },
+      {
+        "title": "Ejercicios de diccionarios",
+        "url": "/cursos/python3/curso/u35/"
+      }
+    ]
+  },
+  {
+    "title": "Trabajar con ficheros",
+    "children": [
+      {
+        "title": "Lectura y escritura de ficheros de textos",
+        "url": "/cursos/python3/curso/u36/"
+      },
+      {
+        "title": "Gestionar ficheros CSV",
+        "url": "/cursos/python3/curso/u37/"
+      },
+      {
+        "title": "Gestionar ficheros json",
+        "url": "/cursos/python3/curso/u38/"
+      }
+    ]
+  },
+  {
+    "title": "Errores y Excepciones",
+    "children": [
+      {
+        "title": "Excepciones",
+        "url": "/cursos/python3/curso/u39/"
+      }
+    ]
+  },
+  {
+    "title": "Módulos, paquetes y namespaces",
+    "children": [
+      {
+        "title": "Módulos y paquetes",
+        "url": "/cursos/python3/curso/u40/"
+      },
+      {
+        "title": "Módulos estándares: módulos de sistema",
+        "url": "/cursos/python3/curso/u41/"
+      },
+      {
+        "title": "Módulos estándares: módulos matemáticos",
+        "url": "/cursos/python3/curso/u42/"
+      },
+      {
+        "title": "Módulos estándares: módulos de hora y fechas",
+        "url": "/cursos/python3/curso/u43/"
+      },
+      {
+        "title": "Instalación de módulos",
+        "url": "/cursos/python3/curso/u44/"
+      }
+    ]
+  },
+  {
+    "title": "Programación estructurada y modular",
+    "children": [
+      {
+        "title": "Introducción a las funciones",
+        "url": "/cursos/python3/curso/u45/"
+      },
+      {
+        "title": "Conceptos avanzados sobre funciones",
+        "url": "/cursos/python3/curso/u46/"
+      },
+      {
+        "title": "Tipos especiales de funciones",
+        "url": "/cursos/python3/curso/u47/"
+      }
+    ]
+  },
+  {
+    "title": "Ejercicios programación estructurada y modular",
+    "children": [
+      {
+        "title": "Ejercicios con funciones",
+        "url": "/cursos/python3/curso/u48/"
+      },
+      {
+        "title": "Programación estructurada y modular: Ejemplo completo",
+        "url": "/cursos/python3/curso/u49/"
+      }
+    ]
+  },
+  {
+    "title": "Programación orientada a objetos",
+    "children": [
+      {
+        "title": "Programación orientada a objetos",
+        "url": "/cursos/python3/curso/u50/"
+      },
+      {
+        "title": "Conceptos avanzados de programación orientada a objetos I",
+        "url": "/cursos/python3/curso/u51/"
+      },
+      {
+        "title": "Conceptos avanzados de programación orientada a objetos II",
+        "url": "/cursos/python3/curso/u52/"
+      },
+      {
+        "title": "Polimorfismo, herencia y delegación",
+        "url": "/cursos/python3/curso/u53/"
+      }
+    ]
+  },
+  {
+    "title": "Ejercicios programación orientada a objetos",
+    "children": [
+      {
+        "title": "Programación orientadas a objetos: Ejemplo completo",
+        "url": "/cursos/python3/curso/u54/"
       }
     ]
   }

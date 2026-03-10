@@ -1,0 +1,264 @@
+[
+  {
+    "title": "Aprende Kubernetes con OpenShift v4",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/cursos/osv4_k8s/"
+      }
+    ]
+  },
+  {
+    "title": "Introducción a OpenShift v4",
+    "children": [
+      {
+        "title": "Implantación de aplicaciones web en contenedores",
+        "url": "/cursos/osv4_k8s/modulo1/contenedores/"
+      },
+      {
+        "title": "Introducción a OpenShift v4",
+        "url": "/cursos/osv4_k8s/modulo1/openshift/"
+      },
+      {
+        "title": "Plataformas para trabajar con OpenShift v4",
+        "url": "/cursos/osv4_k8s/modulo1/plataformas/"
+      }
+    ]
+  },
+  {
+    "title": "Red Hat OpenShift Dedicated Developer Sandbox",
+    "children": [
+      {
+        "title": "Red Hat OpenShift Dedicated Developer Sandbox",
+        "url": "/cursos/osv4_k8s/modulo2/sandbox/"
+      },
+      {
+        "title": "Visión general de la consola web",
+        "url": "/cursos/osv4_k8s/modulo2/consola/"
+      },
+      {
+        "title": "Visión general del proyecto de trabajo",
+        "url": "/cursos/osv4_k8s/modulo2/proyecto/"
+      },
+      {
+        "title": "Instalación del CLI de OpenShift: oc",
+        "url": "/cursos/osv4_k8s/modulo2/oc/"
+      },
+      {
+        "title": "Configuración de oc para el Developer Sandbox",
+        "url": "/cursos/osv4_k8s/modulo2/oclogin/"
+      }
+    ]
+  },
+  {
+    "title": "CRC (CodeReady Containers)",
+    "children": [
+      {
+        "title": "CRC (CodeReady Containers)",
+        "url": "/cursos/osv4_k8s/modulo3/introudccion_crc/"
+      },
+      {
+        "title": "Instalación en local con CRC",
+        "url": "/cursos/osv4_k8s/modulo3/instalacion_crc/"
+      },
+      {
+        "title": "Configuración de oc para CRC",
+        "url": "/cursos/osv4_k8s/modulo3/oc/"
+      },
+      {
+        "title": "Proyectos en OpenShift",
+        "url": "/cursos/osv4_k8s/modulo3/proyectos/"
+      },
+      {
+        "title": "La consola web en CRC",
+        "url": "/cursos/osv4_k8s/modulo3/consola_web/"
+      },
+      {
+        "title": "Similitudes y diferencias entre CRC y Developer Sandbox",
+        "url": "/cursos/osv4_k8s/modulo3/crc_sandbox/"
+      }
+    ]
+  },
+  {
+    "title": "OpenShift como distribución de Kubernetes",
+    "children": [
+      {
+        "title": "Despliegues de aplicaciones en Kubernetes",
+        "url": "/cursos/osv4_k8s/modulo4/aplicaciones/"
+      },
+      {
+        "title": "Recursos que nos ofrece OpenShift para desplegar aplicaciones",
+        "url": "/cursos/osv4_k8s/modulo4/recursos/"
+      },
+      {
+        "title": "Trabajando con Pods",
+        "url": "/cursos/osv4_k8s/modulo4/pods/"
+      },
+      {
+        "title": "Trabajando con Pods desde la consola web",
+        "url": "/cursos/osv4_k8s/modulo4/pods_web/"
+      },
+      {
+        "title": "Ejemplo: Pod multicontenedor",
+        "url": "/cursos/osv4_k8s/modulo4/pod_multicontenedor/"
+      },
+      {
+        "title": "Tolerancia a fallos, escalabilidad, balanceo de carga: ReplicaSet",
+        "url": "/cursos/osv4_k8s/modulo4/replicaset/"
+      },
+      {
+        "title": "Trabajando con ReplicaSets desde la consola web",
+        "url": "/cursos/osv4_k8s/modulo4/replicaset_web/"
+      },
+      {
+        "title": "Desplegando aplicaciones: Deployment",
+        "url": "/cursos/osv4_k8s/modulo4/deployment/"
+      },
+      {
+        "title": "Trabajando con Deployment desde la consola web",
+        "url": "/cursos/osv4_k8s/modulo4/deployment_web/"
+      },
+      {
+        "title": "Ejecución de Pods privilegiados",
+        "url": "/cursos/osv4_k8s/modulo4/pods_privilegiados/"
+      },
+      {
+        "title": "Actualización de un Deployment (rollout y rollback)",
+        "url": "/cursos/osv4_k8s/modulo4/actualizacion_deployment/"
+      }
+    ]
+  },
+  {
+    "title": "Acceso a las aplicaciones",
+    "children": [
+      {
+        "title": "Recursos que nos ofrece OpenShift para el acceso a las aplicaciones",
+        "url": "/cursos/osv4_k8s/modulo5/recursos/"
+      },
+      {
+        "title": "Trabajando con Services",
+        "url": "/cursos/osv4_k8s/modulo5/services/"
+      },
+      {
+        "title": "Accediendo a las aplicaciones: ingress y routes",
+        "url": "/cursos/osv4_k8s/modulo5/routes/"
+      },
+      {
+        "title": "Servicio DNS en Kubernetes",
+        "url": "/cursos/osv4_k8s/modulo5/dns/"
+      },
+      {
+        "title": "Gestionando los recursos de acceso desde la consola web",
+        "url": "/cursos/osv4_k8s/modulo5/acceso_web/"
+      }
+    ]
+  },
+  {
+    "title": "Despliegues parametrizados",
+    "children": [
+      {
+        "title": "Variables de entorno",
+        "url": "/cursos/osv4_k8s/modulo6/variables_entorno/"
+      },
+      {
+        "title": "ConfigMaps",
+        "url": "/cursos/osv4_k8s/modulo6/configmaps/"
+      },
+      {
+        "title": "Secrets",
+        "url": "/cursos/osv4_k8s/modulo6/secrets/"
+      },
+      {
+        "title": "Gestionando las variables de entorno, los ConfigMap y los Secret desde la consola web",
+        "url": "/cursos/osv4_k8s/modulo6/web/"
+      },
+      {
+        "title": "Ejemplo completo: Despliegue y acceso a Wordpress + MySql",
+        "url": "/cursos/osv4_k8s/modulo6/wordpress/"
+      },
+      {
+        "title": "Agrupación de aplicaciones",
+        "url": "/cursos/osv4_k8s/modulo6/agrupamiento/"
+      }
+    ]
+  },
+  {
+    "title": "Almacenamiento en OpenShift v4",
+    "children": [
+      {
+        "title": "Introducción al almacenamiento",
+        "url": "/cursos/osv4_k8s/modulo7/almacenamiento/"
+      },
+      {
+        "title": "Almacenamiento en CRC",
+        "url": "/cursos/osv4_k8s/modulo7/almacenamiento_crc/"
+      },
+      {
+        "title": "Volúmenes dentro de un pod",
+        "url": "/cursos/osv4_k8s/modulo7/volumen_pod/"
+      },
+      {
+        "title": "Aprovisionamiento dinámico de volúmenes",
+        "url": "/cursos/osv4_k8s/modulo7/volumen_dinamico/"
+      },
+      {
+        "title": "Gestionando el almacenamiento desde la consola web",
+        "url": "/cursos/osv4_k8s/modulo7/volumen_web/"
+      },
+      {
+        "title": "Ejemplo completo: Haciendo persistente la aplicación Wordpress",
+        "url": "/cursos/osv4_k8s/modulo7/wordpress/"
+      }
+    ]
+  },
+  {
+    "title": "Otros recursos para manejar nuestras aplicaciones",
+    "children": [
+      {
+        "title": "Otros recursos para manejar nuestras aplicaciones",
+        "url": "/cursos/osv4_k8s/modulo8/introduccion/"
+      },
+      {
+        "title": "StatefulSet",
+        "url": "/cursos/osv4_k8s/modulo8/statefulset/"
+      },
+      {
+        "title": "DaemonSet",
+        "url": "/cursos/osv4_k8s/modulo8/daemonset/"
+      },
+      {
+        "title": "Jobs y CronJobs",
+        "url": "/cursos/osv4_k8s/modulo8/jobs/"
+      },
+      {
+        "title": "Horizontal Pod AutoScaler",
+        "url": "/cursos/osv4_k8s/modulo8/hpa/"
+      }
+    ]
+  },
+  {
+    "title": "Ejemplo final: Citas",
+    "children": [
+      {
+        "title": "Despliegue de aplicación Citas en OpenShift v4",
+        "url": "/cursos/osv4_k8s/modulo9/citas/"
+      },
+      {
+        "title": "Despliegues de citas-backend",
+        "url": "/cursos/osv4_k8s/modulo9/backend/"
+      },
+      {
+        "title": "Despliegue de citas-frontend",
+        "url": "/cursos/osv4_k8s/modulo9/frontend/"
+      },
+      {
+        "title": "Despliegue de la base de datos mysql",
+        "url": "/cursos/osv4_k8s/modulo9/mysql/"
+      },
+      {
+        "title": "Actualización de la aplicación citas-backend",
+        "url": "/cursos/osv4_k8s/modulo9/backend_v2/"
+      }
+    ]
+  }
+]

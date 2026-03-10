@@ -11,6 +11,8 @@ export default defineConfig({
   site: 'https://plataforma.josedomingo.org',
   base: '/pledin',
   integrations: [mdx(), sitemap()],
+  image: {
+    service: { entrypoint: 'astro/assets/services/noop' },
   vite: {
     resolve: {
       alias: {

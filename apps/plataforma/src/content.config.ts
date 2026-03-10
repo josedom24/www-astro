@@ -4,7 +4,7 @@ import { glob } from 'astro/loaders';
 const cursos = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/cursos' }),
   schema: z.object({
-    title: z.string(),
+    title: z.string().optional(),
     permalink: z.string().optional(),
     // Campos opcionales que algunos docs pueden tener
     description: z.string().optional(),
