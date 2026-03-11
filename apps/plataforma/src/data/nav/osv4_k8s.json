@@ -55,7 +55,7 @@
     "children": [
       {
         "title": "CRC (CodeReady Containers)",
-        "url": "/pledin/cursos/osv4_k8s/modulo3/introudccion_crc/"
+        "url": "/pledin/cursos/osv4_k8s/modulo3/introduccion_crc/"
       },
       {
         "title": "Instalación en local con CRC",

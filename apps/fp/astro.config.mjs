@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ui = path.resolve(__dirname, '../../packages/ui/src');
 
 export default defineConfig({
+  site: 'https://fp.josedomingo.org',
   integrations: [mdx(), sitemap()],
   vite: {
     resolve: {
