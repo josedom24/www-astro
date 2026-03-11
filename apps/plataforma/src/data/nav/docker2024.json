@@ -124,11 +124,11 @@
       },
       {
         "title": "Ejemplo 1: Contenedor NextCloud con almacenamiento persistente",
-        "url": "/pledin/cursos/docker2024/contenido/modulo4/05_nextcloud/"
+        "url": "/pledin/cursos/docker2024/contenido/modulo4/06_nextcloud/"
       },
       {
         "title": "Ejemplo 2: Contenedor MariaDB con almacenamiento persistente",
-        "url": "/pledin/cursos/docker2024/contenido/modulo4/06_mariadb/"
+        "url": "/pledin/cursos/docker2024/contenido/modulo4/05_mariadb/"
       },
       {
         "title": "Otros usos del almacenamiento en Docker",
@@ -161,7 +161,7 @@
       },
       {
         "title": "Ejemplo 1: Despliegue de la aplicación Guestbook",
-        "url": "/pledin/cursos/docker2024/contenido/modulo5/06ejemplo1/"
+        "url": "/pledin/cursos/docker2024/contenido/modulo5/06_ejemplo1/"
       },
       {
         "title": "Ejemplo 2: Despliegue de la aplicación Temperaturas",

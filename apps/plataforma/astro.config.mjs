@@ -13,7 +13,7 @@ export default defineConfig({
   base: '/pledin',
   integrations: [mdx(), sitemap()],
   build: {
-   format: 'file'
+   format: 'directory'
   },
    
   
