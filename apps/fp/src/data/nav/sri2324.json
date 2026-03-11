@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Servicios de Red e Internet + HLC (2024-2025)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/pledin/sri2324/"
+      },
+      {
+        "title": "Virtualización en Linux",
+        "url": "/pledin/sri2324/#unidad-1-virtualizaci%C3%B3n-en-linux-hlc"
+      },
+      {
+        "title": "DHCP",
+        "url": "/pledin/sri2324/#unidad-2-protocolo-dhcp"
+      },
+      {
+        "title": "Infraestructura como código",
+        "url": "/pledin/sri2324/#unidad-3-infraestructura-como-c%C3%B3digo"
+      },
+      {
+        "title": "HTTP",
+        "url": "/pledin/sri2324/#unidad-4-protocolo-http"
+      },
+      {
+        "title": "IaaS",
+        "url": "/pledin/sri2324/#unidad-5-cloud-computing-iaas-openstack"
+      },
+      {
+        "title": "DNS",
+        "url": "/pledin/sri2324/#unidad-6-protocolo-dns"
+      },
+      {
+        "title": "Correo",
+        "url": "/pledin/sri2324/#unidad-6-servidor-de-correo-electr%C3%B3nico"
+      },
+      {
+        "title": "Almacenamiento",
+        "url": "/pledin/sri2324/#unidad-7-almacenamiento"
+      },
+      {
+        "title": "Kubernetes",
+        "url": "/pledin/sri2324/#unidad-8-kubernetes"
+      }
+    ]
+  },
+  {
+    "title": "Módulos",
+    "children": [
+      {
+        "title": "Servicios de Red e Internet + HLC",
+        "url": "/pledin/sri/"
+      },
+      {
+        "title": "Implantación de Aplicaciones Web",
+        "url": "/pledin/iaw/"
+      }
+    ]
+  }
+]

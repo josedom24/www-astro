@@ -128,7 +128,7 @@ Y vemos los nuevos Pods que se han creado:
 
 Y si accedemos a la página web y vamos refrescando, observamos como se balancea la carga entre los distintos Pods:  
 
-![citas](img/citas.gif)
+![citas](/pledin/cursos/osv4_k8s/modulo9/img/citas.gif)
 
 Si accedemos a la Topología de la consola web, después de realizar una agrupación de los dos despliegues, obtenemos:
 

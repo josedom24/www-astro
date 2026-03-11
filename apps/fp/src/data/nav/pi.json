@@ -1,0 +1,21 @@
+[
+  {
+    "title": "Proyecto intermodular (2025-2026)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/pi/"
+      },
+      {
+        "title": "Proyecto 1: Infraestructura como código",
+        "url": "/pi/2526/u1/"
+      },
+      {
+        "title": "Proyecto 2: Escenario en OpenStack",
+        "url": "/pi/2526/u2/"
+      }
+      
+      
+    ]
+  }
+]

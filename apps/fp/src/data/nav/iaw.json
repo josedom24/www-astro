@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Implantación de aplicaciones web (2024-2025)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/pledin/iaw/"
+      },
+      {
+        "title": "Introducción",
+        "url": "/pledin/iaw/#unidad-1-introducci%C3%B3n-a-la-implantaci%C3%B3n-de-aplicaciones-web"
+      },
+      {
+        "title": "PHP",
+        "url": "/pledin/iaw/#unidad-2-implantaci%C3%B3n-de-aplicaciones-web-php"
+      },
+      {
+        "title": "Python",
+        "url": "/pledin/iaw/#unidad-3-implantaci%C3%B3n-de-aplicaciones-web-python"
+      },
+      {
+        "title": "Java",
+        "url": "/pledin/iaw/#unidad-4-implantaci%C3%B3n-de-aplicaciones-web-java"
+      },
+      {
+        "title": "Docker",
+        "url": "/pledin/iaw/#unidad-5-docker"
+      },
+      {
+        "title": "IC/DC",
+        "url": "/pledin/iaw/#unidad-6-introducci%C3%B3n-a-la-integraci%C3%B3n-contin%C3%BAa-y-despliegue-continuo"
+      }
+    ]
+  }
+]

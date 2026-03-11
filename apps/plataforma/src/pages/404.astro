@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
+---
+<BaseLayout title="Página no encontrada">
+  <div class="not-found">
+    <h1>404</h1>
+    <p class="subtitle">Página no encontrada</p>
+    <p>La página que buscas no existe o ha sido movida.</p>
+    <div class="links">
+      <a href="/pledin/" class="btn">Ir al inicio</a>
+    </div>
+  </div>
+</BaseLayout>
+<style>
+  .not-found { max-width: var(--content-width); margin: 0 auto; padding: 6rem 1.5rem; text-align: center; }
+  h1 { font-size: 8rem; font-weight: 800; color: var(--color-accent); line-height: 1; margin-bottom: 1rem; }
+  .subtitle { font-size: 1.8rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem; }
+  p { color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
+  .links { display: flex; gap: 1rem; justify-content: center; }
+  .btn { background: var(--color-accent); color: white; padding: 0.75rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .btn:hover { background: var(--color-accent-high); text-decoration: none; color: white; }
+</style>

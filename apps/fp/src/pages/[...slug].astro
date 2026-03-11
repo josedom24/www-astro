@@ -1,0 +1,117 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocLayout from '@pledin/ui/layouts/DocLayout.astro';
+import PostNav from '@pledin/ui/components/PostNav.astro';
+
+const navModules = import.meta.glob('../data/nav/*.json', { eager: true });
+
+export async function getStaticPaths() {
+  const entries = await getCollection('modulos');
+  return entries.map((entry) => {
+    const slug = entry.id.replace(/\/index$/, '').replace(/^index$/, '') || undefined;
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+
+const slugParts = entry.id.split('/');
+const moduloName = slugParts[0];
+
+let nav = [];
+const navPath = `../data/nav/${moduloName}.json`;
+if (navModules[navPath]) {
+  nav = (navModules[navPath] as { default: unknown }).default as typeof nav;
+}
+
+const slug = entry.id.replace(/\/index$/, '').replace(/^index$/, '');
+const currentPath = `/${slug}/`;
+const courseTitle = nav[0]?.title || moduloName;
+const pageTitle = entry.data.title ?? slug.split('/').pop() ?? moduloName;
+
+const slugSegments = slug.split('/');
+
+// Prev/Next
+const flatLinks = nav.flatMap(section =>
+  section.children
+    ? section.children.filter(c => c.url && !c.url.includes('#'))
+    : (section.url && !section.url.includes('#') ? [section] : [])
+);
+
+let prev, next;
+
+if (slugSegments.length >= 4) {
+  // Prev/next entre clases de la misma unidad
+  const allEntries = await getCollection('modulos');
+  const unitEntries = allEntries
+    .filter(e =>
+      e.id.startsWith(`${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}/`) &&
+      !e.id.endsWith('/index') &&
+      e.id !== `${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}`
+    )
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  const currentIdx = unitEntries.findIndex(e => e.id === entry.id);
+  const prevEntry = unitEntries[currentIdx - 1];
+  const nextEntry = unitEntries[currentIdx + 1];
+
+  prev = prevEntry ? { url: `/${prevEntry.id}/`, title: prevEntry.data.title ?? prevEntry.id.split('/').pop() } : undefined;
+  next = nextEntry ? { url: `/${nextEntry.id}/`, title: nextEntry.data.title ?? nextEntry.id.split('/').pop() } : undefined;
+} else {
+  const currentIndex = flatLinks.findIndex(item => item.url === currentPath);
+  prev = flatLinks[currentIndex - 1];
+  next = flatLinks[currentIndex + 1];
+}
+
+// Breadcrumb
+let unitTitle = slugSegments[2] ?? '';
+
+if (slugSegments.length === 3) {
+  unitTitle = pageTitle;
+} else if (slugSegments.length >= 4) {
+  const allEntries = await getCollection('modulos');
+  const unitIndex = allEntries.find(e =>
+    e.id === `${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}`
+  );
+  if (unitIndex?.data?.title) unitTitle = unitIndex.data.title;
+}
+
+const breadcrumb = [
+  { title: 'FP', url: '/' },
+  { title: courseTitle, url: `/${slugSegments[0]}/` },
+];
+
+if (slugSegments.length === 3) {
+  breadcrumb.push({ title: unitTitle, url: null });
+} else if (slugSegments.length >= 4) {
+  breadcrumb.push({
+    title: unitTitle,
+    url: `/${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}/`,
+  });
+  breadcrumb.push({ title: pageTitle, url: null });
+}
+
+const showToc = entry.data.toc !== false;
+---
+
+<DocLayout
+  title={pageTitle}
+  courseTitle={courseTitle}
+  nav={nav}
+  currentPath={currentPath}
+  headings={showToc ? headings : []}
+  breadcrumb={breadcrumb}
+>
+  <h1>{pageTitle}</h1>
+  <Content />
+  <PostNav
+    prevUrl={prev?.url}
+    prevTitle={prev?.title}
+    nextUrl={next?.url}
+    nextTitle={next?.title}
+  />
+</DocLayout>

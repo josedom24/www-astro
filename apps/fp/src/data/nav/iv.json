@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Infraestructura virtual (2025-2026)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/iv/"
+      },
+      {
+        "title": "Virtualización Linux",
+        "url": "/iv/2526/u1/"
+      },
+      {
+        "title": "Contenedores",
+        "url": "/iv/2526/u2/"
+      },
+      {
+        "title": "OpenStack",
+        "url": "/iv/2526/u3/"
+      },
+      {
+        "title": "Kubernetes",
+        "url": "/iv/2526/u4/"
+      }
+      
+    ]
+  }
+]

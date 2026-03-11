@@ -1,0 +1,120 @@
+---
+import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Módulos FP" description="Módulos de Formación Profesional - José Domingo Muñoz">
+  <div class="fp-hero">
+    <div class="fp-hero-inner">
+      <h1>Módulos de Formación Profesional</h1>
+      <p>Curso 2025-2026</p>
+    </div>
+  </div>
+
+  <div class="fp-body">
+    <section class="fp-ciclo">
+      <h2>Ciclo de Grado Superior de Administración de Sistemas Informáticos en Red (ASIR)</h2>
+      <h3>2º ASIR</h3>
+      <div class="fp-grid">
+        <a href="/sri/" class="fp-card">
+          <img src="/assets/images/sri.png" alt="SRI" />
+          <span>Servicios de Red e Internet</span>
+        </a>
+        <a href="/iv/" class="fp-card">
+          <img src="/assets/images/iv.png" alt="IV" />
+          <span>Infraestructura Virtual</span>
+        </a>
+        <a href="/pi/" class="fp-card">
+          <img src="/assets/images/pi.png" alt="PI" />
+          <span>Proyecto Integrado</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .fp-hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    color: white;
+    padding: 1.5rem 0;
+  }
+
+  .fp-hero-inner {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .fp-hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    color: white;
+  }
+
+  .fp-hero p {
+    margin: 0;
+    opacity: 0.85;
+    color: white;
+  }
+
+  .fp-body {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .fp-ciclo h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .fp-ciclo h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .fp-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .fp-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    width: 160px;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+
+  .fp-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .fp-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .fp-card span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: center;
+    line-height: 1.4;
+  }
+</style>

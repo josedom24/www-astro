@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Seguridad y Alta Disponibilidad (antiguo)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/pledin/seguridadgs/"
+      },
+      {
+        "title": "Introducción",
+        "url": "/pledin/seguridadgs/u01"
+      },
+      {
+        "title": "Criptografía",
+        "url": "/pledin/seguridadgs/u02"
+      },
+      {
+        "title": "Cortafuegos",
+        "url": "/pledin/seguridadgs/u03"
+      },
+      {
+        "title": "VPN",
+        "url": "/pledin/seguridadgs/u04"
+      },
+      {
+        "title": "Alta disponibilidad",
+        "url": "/pledin/seguridadgs/u05"
+      }
+    ]
+  }
+]

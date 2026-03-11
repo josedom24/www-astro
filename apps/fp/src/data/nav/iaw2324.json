@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Implantación de aplicaciones web (2023-2024)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/pledin/iaw2324/"
+      },
+      {
+        "title": "Introducción",
+        "url": "/pledin/iaw2324/#unidad-1-introducci%C3%B3n-a-la-implantaci%C3%B3n-de-aplicaciones-web"
+      },
+      {
+        "title": "PHP",
+        "url": "/pledin/iaw2324/#unidad-2-implantaci%C3%B3n-de-aplicaciones-web-php"
+      },
+      {
+        "title": "Python",
+        "url": "/pledin/iaw2324/#unidad-3-implantaci%C3%B3n-de-aplicaciones-web-python"
+      },
+      {
+        "title": "Docker",
+        "url": "/pledin/iaw2324/#unidad-4-docker"
+      },
+      {
+        "title": "IC/DC",
+        "url": "/pledin/iaw2324/#unidad-5-introducci%C3%B3n-a-la-integraci%C3%B3n-contin%C3%BAa-y-despliegue-continuo"
+      },
+      {
+        "title": "Java",
+        "url": "/pledin/iaw2324/#unidad-6-implantaci%C3%B3n-de-aplicaciones-web-java"
+      }
+    ]
+  },
+  {
+    "title": "Módulos",
+    "children": [
+      {
+        "title": "Servicios de Red e Internet + HLC",
+        "url": "/pledin/sri/"
+      },
+      {
+        "title": "Implantación de Aplicaciones Web",
+        "url": "/pledin/iaw/"
+      }
+    ]
+  }
+]

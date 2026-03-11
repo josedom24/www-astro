@@ -12,6 +12,7 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.7.0",
     "@pledin/ui": "*",
-    "astro": "^5.17.1"
+    "astro": "^5.17.1",
+    "remark-directive": "^4.0.0"
   }
 }
