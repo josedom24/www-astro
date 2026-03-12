@@ -1,0 +1,2 @@
+User-Agent: *
+Sitemap: https://plataforma.josedomingo.org/pledin/sitemap-index.xml
