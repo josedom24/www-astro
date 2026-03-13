@@ -5,33 +5,49 @@ import TagList from './TagList.astro';
 interface Props {
   url: string;
   title: string;
-  date?: Date;             // si no se pasa, no se muestra la meta
+  date?: Date;
   tags?: string[];
   tagsBaseUrl?: string;
-  detailLink?: string;     // texto del enlace "Detalle →" (portada)
-  dataIndex?: number;      // para paginación "cargar más"
-  hidden?: boolean;        // para paginación "cargar más"
+  detailLink?: string;
+  dataIndex?: number;
+  hidden?: boolean;
+  detail?: boolean;        // modo detalle: h1 sin enlace, meta debajo del título
 }
 
 const {
   url, title, date, tags = [],
   tagsBaseUrl = '/pledin/microblog/tags/',
   detailLink, dataIndex, hidden = false,
+  detail = false,
 } = Astro.props;
 ---
 
 <article
-  class="micropost"
+  class:list={["micropost", { "micropost--detail": detail }]}
   data-index={dataIndex}
   style={hidden ? 'display:none' : undefined}
 >
-  {date && (
-    <div class="micropost-meta">
-      <PostMeta date={date} />
-      {tags.length > 0 && <TagList tags={tags} baseUrl={tagsBaseUrl} />}
-    </div>
+  {detail ? (
+    <>
+      <h1>{title}</h1>
+      {date && (
+        <div class="micropost-meta micropost-meta--below">
+          <PostMeta date={date} />
+          {tags.length > 0 && <TagList tags={tags} baseUrl={tagsBaseUrl} />}
+        </div>
+      )}
+    </>
+  ) : (
+    <>
+      {date && (
+        <div class="micropost-meta">
+          <PostMeta date={date} />
+          {tags.length > 0 && <TagList tags={tags} baseUrl={tagsBaseUrl} />}
+        </div>
+      )}
+      <h2><a href={url}>{title}</a></h2>
+    </>
   )}
-  <h2><a href={url}>{title}</a></h2>
   <div class="micropost-body">
     <slot />
   </div>
@@ -47,9 +63,11 @@ const {
     transition: border-color 0.2s;
   }
 
-  .micropost:hover {
-    border-color: var(--color-accent);
-  }
+  .micropost:hover { border-color: var(--color-accent); }
+
+  .micropost--detail { padding: 2rem; }
+
+  .micropost--detail:hover { border-color: var(--color-border); }
 
   .micropost-meta {
     display: flex;
@@ -58,27 +76,30 @@ const {
     margin-bottom: 0.5rem;
   }
 
+  .micropost-meta--below {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 0;
+  }
+
   h2 {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
   }
 
-  h2 a {
-    color: var(--color-text);
-    text-decoration: none;
-  }
+  h2 a { color: var(--color-text); text-decoration: none; }
+  h2 a:hover { color: var(--color-accent-high); }
 
-  h2 a:hover {
-    color: var(--color-accent-high);
-  }
-
-  .micropost-body {
-    line-height: 1.8;
-    font-size: 1rem;
-    margin-top: 0.5rem;
-  }
-
+  .micropost-body { line-height: 1.8; font-size: 1rem; margin-top: 0.5rem; }
   .micropost-body :global(p)           { margin-bottom: 1.25rem; }
   .micropost-body :global(ul),
   .micropost-body :global(ol)          { margin: 1rem 0 1.25rem 1.5rem; }
