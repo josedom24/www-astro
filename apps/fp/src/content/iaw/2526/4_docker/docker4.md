@@ -20,7 +20,7 @@ En este primer caso utilizaremos una imagen base de **Debian**, sin Python insta
 
 El fichero `Dockerfile` será el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM debian:13
 
@@ -93,7 +93,7 @@ En este segundo caso utilizaremos una imagen oficial de Python que ya incluye el
 
 El fichero `Dockerfile` sería el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM python:3.14.2-trixie
 

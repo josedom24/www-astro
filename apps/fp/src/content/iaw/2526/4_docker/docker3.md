@@ -10,7 +10,7 @@ En el contexto vamos a tener el fichero `Dockerfile` y un directorio, llamado `a
 
 En este caso vamos a usar una imagen base de un sistema operativo sin ningún servicio. El fichero `Dockerfile` será el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM debian:stable-slim
 RUN apt-get update && apt-get install -y apache2 libapache2-mod-php7.4 php7.4 && apt-get clean && rm -rf /var/lib/apt/lists/* && rm /var/www/html/index.html
@@ -54,7 +54,7 @@ La aplicación tiene un fichero `info.php`que me da información sobre PHP, en e
 
 En este caso el fichero `Dockerfile` sería el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM php:7.4-apache
 COPY app /var/www/html/

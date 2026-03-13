@@ -105,7 +105,7 @@ Será ejecutado automáticamente por el contenedor de MariaDB cuando se iniciali
 
 El fichero `Dockerfile` de la aplicación es el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM php:8.3-apache
 

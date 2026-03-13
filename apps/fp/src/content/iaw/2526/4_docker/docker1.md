@@ -55,7 +55,7 @@ Dockerfile  index.html
 
 El contenido de `Dockerfile` es:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM debian:stable-slim
 RUN apt-get update  && apt-get install -y  apache2 

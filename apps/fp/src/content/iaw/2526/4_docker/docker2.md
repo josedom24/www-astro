@@ -15,7 +15,7 @@ Dockerfile  public_html
 
 En este caso vamos a usar una imagen base de un sistema operativo sin ningún servicio. El fichero `Dockerfile` será el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM debian:stable-slim
 RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -56,7 +56,7 @@ Y acceder con el navegador a nuestra página:
 
 En este caso el fichero `Dockerfile` sería el siguiente:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM httpd:2.4
 COPY public_html /usr/local/apache2/htdocs/
@@ -76,7 +76,7 @@ $ docker run -d -p 80:80 --name ejemplo1 josedom24/ejemplo1:v2
 
 En este caso el fichero `Dockerfile` sería:
 
-```Dockerfile
+```dockerfile
 # syntax=docker/dockerfile:1
 FROM nginx:1.24
 COPY public_html /usr/share/nginx/html

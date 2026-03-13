@@ -6,7 +6,7 @@ Podemos ejecutar un conjunto de stages en un runner, y otro conjunto en otros. P
 
 Veamos un ejemplo:
 
-```grovy
+```groovy
 pipeline {
     agent none
     stages {
