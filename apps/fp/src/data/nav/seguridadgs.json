@@ -1,30 +1,30 @@
 [
   {
-    "title": "Seguridad y Alta Disponibilidad (antiguo)",
+    "title": "Seguridad y Alta Disponibilidad",
     "children": [
       {
         "title": "Inicio",
-        "url": "/pledin/seguridadgs/"
+        "url": "/seguridadgs/"
       },
       {
         "title": "Introducción",
-        "url": "/pledin/seguridadgs/u01"
+        "url": "/seguridadgs/curso/u01/"
       },
       {
         "title": "Criptografía",
-        "url": "/pledin/seguridadgs/u02"
+        "url": "/seguridadgs/curso/u02/"
       },
       {
         "title": "Cortafuegos",
-        "url": "/pledin/seguridadgs/u03"
+        "url": "/seguridadgs/curso/u03/"
       },
       {
         "title": "VPN",
-        "url": "/pledin/seguridadgs/u04"
+        "url": "/seguridadgs/curso/u04/"
       },
       {
         "title": "Alta disponibilidad",
-        "url": "/pledin/seguridadgs/u05"
+        "url": "/seguridadgs/curso/u05/"
       }
     ]
   }

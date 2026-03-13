@@ -4,43 +4,43 @@
     "children": [
       {
         "title": "Inicio",
-        "url": "/pledin/lmgs/"
+        "url": "/lmgs/"
       },
       {
         "title": "Pseudocódigo",
-        "url": "/pledin/lmgs/u01"
+        "url": "/lmgs/curso/u01/"
       },
       {
         "title": "Python3",
-        "url": "/pledin/lmgs/u02"
+        "url": "/lmgs/curso/u02/"
       },
       {
         "title": "Introducción a los LM",
-        "url": "/pledin/lmgs/u03"
+        "url": "/lmgs/curso/u03/"
       },
       {
         "title": "XML",
-        "url": "/pledin/lmgs/u04"
+        "url": "/lmgs/curso/u04/"
       },
       {
         "title": "JSON",
-        "url": "/pledin/lmgs/u05"
+        "url": "/lmgs/curso/u05/"
       },
       {
         "title": "HTML/CSS",
-        "url": "/pledin/lmgs/u06"
+        "url": "/lmgs/curso/u06/"
       },
       {
         "title": "YAML",
-        "url": "/pledin/lmgs/u07"
+        "url": "/lmgs/curso/u07/"
       },
       {
         "title": "Flask",
-        "url": "/pledin/lmgs/u08"
+        "url": "/lmgs/curso/u08/"
       },
       {
         "title": "Servicios Web",
-        "url": "/pledin/lmgs/u09"
+        "url": "/lmgs/curso/u09/"
       }
     ]
   }
