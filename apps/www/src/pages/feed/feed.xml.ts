@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import type { APIContext } from 'astro';
-import { getPostDate } from '../../utils/date';
+import { getPostDate } from '@pledin/ui/utils/date';
 
 export async function GET(context: APIContext) {
   const posts = (await getCollection('blog'))

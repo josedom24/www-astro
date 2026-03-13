@@ -1,15 +1,15 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BlogLayout from '@pledin/ui/layouts/BlogLayout.astro';
-import BlogSidebar from '../../../../components/BlogSidebar.astro';
-import PostMeta from '../../../../components/PostMeta.astro';
-import TagList from '../../../../components/TagList.astro';
-import PostNav from '../../../../components/PostNav.astro';
-import RelatedPosts from '../../../../components/RelatedPosts.astro';
-import { getPostDate } from '../../../../utils/date';
-import Comments from '../../../../components/Comments.astro';
-import Giscus from '../../../../components/Giscus.astro';
-import { getReadingTime } from '../../../../utils/readingTime';
+import BlogSidebar from '@pledin/ui/components/BlogSidebar.astro';
+import PostMeta from '@pledin/ui/components/PostMeta.astro';
+import TagList from '@pledin/ui/components/TagList.astro';
+import PostNav from '@pledin/ui/components/PostNav.astro';
+import RelatedPosts from '@pledin/ui/components/RelatedPosts.astro';
+import { getPostDate } from '@pledin/ui/utils/date';
+import Comments from '@pledin/ui/components/Comments.astro';
+import Giscus from '@pledin/ui/components/Giscus.astro';
+import { getReadingTime } from '@pledin/ui/utils/readingTime';
 
 
 export async function getStaticPaths() {

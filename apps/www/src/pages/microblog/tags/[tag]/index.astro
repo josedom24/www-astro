@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
-import MicropostCard from '../../../../components/MicropostCard.astro';
+import MicropostCard from '@pledin/ui/components/MicropostCard.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('microblog');

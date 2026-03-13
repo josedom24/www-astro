@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogLayout from '@pledin/ui/layouts/BlogLayout.astro';
-import BlogSidebar from '../../components/BlogSidebar.astro';
-import PostCard from '../../components/PostCard.astro';
-import { getExcerpt } from '../../utils/excerpt.ts';
-import { getPostDate } from '../../utils/date';
-import { getReadingTime } from '../../utils/readingTime';
+import BlogSidebar from '@pledin/ui/components/BlogSidebar.astro';
+import PostCard from '@pledin/ui/components/PostCard.astro';
+import { getExcerpt } from '@pledin/ui/utils/excerpt.ts';
+import { getPostDate } from '@pledin/ui/utils/date';
+import { getReadingTime } from '@pledin/ui/utils/readingTime';
 
 
 const allPosts = (await getCollection('blog'))
