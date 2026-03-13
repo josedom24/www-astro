@@ -3,6 +3,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { shikiConfig } from '../../packages/ui/src/shiki.config.mjs';
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ui = path.resolve(__dirname, '../../packages/ui/src');
@@ -11,6 +13,7 @@ export default defineConfig({
   site: 'https://www.josedomingo.org',
   base: '/pledin',
   integrations: [mdx(), sitemap()],
+  markdown: { shikiConfig },
   vite: {
     resolve: {
       alias: {

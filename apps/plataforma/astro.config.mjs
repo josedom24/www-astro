@@ -3,6 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { shikiConfig } from '../../packages/ui/src/shiki.config.mjs';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -14,7 +15,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   
    
-  
+  markdown: { shikiConfig },
   vite: {
     resolve: {
       alias: {

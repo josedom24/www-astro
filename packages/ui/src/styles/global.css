@@ -53,7 +53,8 @@ img {
   margin: 0 auto;
 }
 
-code {
+/* Inline code (fuera de bloques pre) */
+:not(pre) > code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   background: var(--color-bg-sidebar);
@@ -61,17 +62,20 @@ code {
   border-radius: 0.25rem;
 }
 
+/* Shiki gestiona el fondo de pre — solo añadimos forma */
 pre {
-  background: var(--color-bg-sidebar);
-  padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
+  margin: 1rem 0;
+  padding: 1rem;
 }
 
 pre code {
   background: none;
   padding: 0;
+  font-size: 0.875em;
 }
+
 .btn {
   display: inline-block;
   background: var(--color-accent);
@@ -89,44 +93,47 @@ pre code {
   text-decoration: none !important;
 }
 
-.micropost-body code {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-  background: var(--color-bg-sidebar);
-  padding: 0.1em 0.3em;
-  border-radius: 0.25rem;
-}
-
-.micropost-body pre {
-  background: var(--color-bg-sidebar);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-.micropost-body pre code {
-  background: none;
-  padding: 0;
-}
 .copy-btn {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background: rgba(255, 255, 255, 0.15);
-  color: #e2e8f0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.2rem 0.6rem;
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-text-muted);
+  padding: 0.3rem;
   border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  opacity: 1;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .copy-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--color-text-muted);
+  color: var(--color-bg);
+}
+
+/* Shiki dual theme */
+pre.astro-code {
+  background-color: var(--shiki-light-bg) !important;
+  background-color: #f0f0f0 !important;
+  color: var(--shiki-light) !important;
+}
+
+pre.astro-code span {
+  color: var(--shiki-light) !important;
+}
+
+[data-theme='dark'] pre.astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+
+[data-theme='dark'] pre.astro-code span {
+  color: var(--shiki-dark) !important;
 }
 
 /* Asides */
