@@ -1,0 +1,208 @@
+[
+  {
+    "title": "Curso de preparación para el examen Python PCEP",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/python_pcep/"
+      }
+    ]
+  },
+  {
+    "title": "1. Introducción a Python y a la programación de ordenadores",
+    "children": [
+      { "title": "Introducción a la programación y a los lenguajes de programación", "url": "/pledin/cursos/python_pcep/contenido/seccion01/clase1/" },
+      { "title": "Compilación e interpretación", "url": "/pledin/cursos/python_pcep/contenido/seccion01/clase2/" },
+      { "title": "Introducción a Python", "url": "/pledin/cursos/python_pcep/contenido/seccion01/clase3/" },
+      { "title": "Instalación de Python", "url": "/pledin/cursos/python_pcep/contenido/seccion01/clase4/" },
+      { "title": "Escribir y ejecutar programas Python", "url": "/pledin/cursos/python_pcep/contenido/seccion01/clase5/" },
+      { "title": "Nuestro primer programa en Python", "url": "/pledin/cursos/python_pcep/contenido/seccion01/clase6/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcep/contenido/seccion01/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcep/contenido/seccion01/prueba/" }
+    ]
+  },
+  {
+    "title": "2. Nuestro primer programa",
+    "children": [
+      { "title": "Introducción a las funciones", "url": "/pledin/cursos/python_pcep/contenido/seccion02/clase1/" },
+      { "title": "LABORATORIO - Trabajando con la función print()", "url": "/pledin/cursos/python_pcep/contenido/seccion02/clase2/" },
+      { "title": "Ejecución secuencial de instrucciones", "url": "/pledin/cursos/python_pcep/contenido/seccion02/clase3/" },
+      { "title": "Más argumentos de la función print()", "url": "/pledin/cursos/python_pcep/contenido/seccion02/clase4/" },
+      { "title": "LABORATORIO - La función print() y sus argumentos", "url": "/pledin/cursos/python_pcep/contenido/seccion02/clase5/" },
+      { "title": "LABORATORIO - Dando forma a la salida", "url": "/pledin/cursos/python_pcep/contenido/seccion02/clase6/" }
+    ]
+  },
+  {
+    "title": "3. Literales y tipos de datos",
+    "children": [
+      { "title": "Literales y tipos de datos", "url": "/pledin/cursos/python_pcep/contenido/seccion03/clase1/" },
+      { "title": "Literales numéricos", "url": "/pledin/cursos/python_pcep/contenido/seccion03/clase2/" },
+      { "title": "Literales cadenas de caracteres y booleanos", "url": "/pledin/cursos/python_pcep/contenido/seccion03/clase3/" },
+      { "title": "LABORATORIO - Literales de Python - Cadenas", "url": "/pledin/cursos/python_pcep/contenido/seccion03/clase4/" }
+    ]
+  },
+  {
+    "title": "4. Operadores básicos",
+    "children": [
+      { "title": "Introducción a los operadores y expresiones", "url": "/pledin/cursos/python_pcep/contenido/seccion04/clase1/" },
+      { "title": "Operadores básicos", "url": "/pledin/cursos/python_pcep/contenido/seccion04/clase2/" },
+      { "title": "Prioridad de operadores", "url": "/pledin/cursos/python_pcep/contenido/seccion04/clase3/" }
+    ]
+  },
+  {
+    "title": "5. Variables",
+    "children": [
+      { "title": "Introducción a las variables", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase1/" },
+      { "title": "Trabajando con variables", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase2/" },
+      { "title": "LABORATORIO - Variables", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase3/" },
+      { "title": "LABORATORIO - Variables: un convertidor simple", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase4/" },
+      { "title": "LABORATORIO - Operadores y expresiones", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase5/" },
+      { "title": "Comentarios", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase6/" },
+      { "title": "LABORATORIO - Comentarios", "url": "/pledin/cursos/python_pcep/contenido/seccion05/clase7/" }
+    ]
+  },
+  {
+    "title": "6. Entrada y salida básica",
+    "children": [
+      { "title": "La función input()", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase1/" },
+      { "title": "Conversión de datos (casting)", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase2/" },
+      { "title": "Operadores de cadena", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase3/" },
+      { "title": "LABORATORIO - Entradas y salidas simples", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase4/" },
+      { "title": "LABORATORIO - Operadores y expresiones", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase5/" },
+      { "title": "LABORATORIO - Cálculo de horas", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase6/" },
+      { "title": "LABORATORIO - Ejercicios estructura secuencial", "url": "/pledin/cursos/python_pcep/contenido/seccion06/clase7/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcep/contenido/seccion06/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcep/contenido/seccion06/prueba/" }
+    ]
+  },
+  {
+    "title": "7. Estructura alternativa",
+    "children": [
+      { "title": "Operadores de comparación", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase1/" },
+      { "title": "LABORATORIO - Preguntas y Respuestas", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase2/" },
+      { "title": "Estructuras alternativas", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase3/" },
+      { "title": "Ejemplos de estructuras alternativas", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase4/" },
+      { "title": "LABORATORIO - Operadores de comparación y ejecución condicional", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase5/" },
+      { "title": "LABORATORIO - Fundamentos de la instrucción if-else", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase6/" },
+      { "title": "LABORATORIO - Fundamentos de la instrucción if-elif-else", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase7/" },
+      { "title": "LABORATORIO - Ejercicios estructura alternativa", "url": "/pledin/cursos/python_pcep/contenido/seccion07/clase8/" }
+    ]
+  },
+  {
+    "title": "8. Estructura repetitiva",
+    "children": [
+      { "title": "Bucle while", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase1/" },
+      { "title": "LABORATORIO - Adivina el número secreto", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase2/" },
+      { "title": "Bucle for", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase3/" },
+      { "title": "LABORATORIO - Fundamentos del bucle for: contador", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase4/" },
+      { "title": "Las instrucciones break y continue", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase5/" },
+      { "title": "LABORATORIO - La instrucción break", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase6/" },
+      { "title": "LABORATORIO - La instrucción continue", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase7/" },
+      { "title": "El bloque else en las instrucciones while y for", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase8/" },
+      { "title": "LABORATORIO - Fundamentos del bucle while", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase9/" },
+      { "title": "LABORATORIO - La hipótesis de Collatz", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase10/" },
+      { "title": "LABORATORIO - Ejercicios estructura repetitiva", "url": "/pledin/cursos/python_pcep/contenido/seccion08/clase11/" }
+    ]
+  },
+  {
+    "title": "9. Operaciones lógicas y de bits en Python",
+    "children": [
+      { "title": "Expresiones lógicas", "url": "/pledin/cursos/python_pcep/contenido/seccion09/clase1/" },
+      { "title": "Operadores a nivel de bits", "url": "/pledin/cursos/python_pcep/contenido/seccion09/clase2/" },
+      { "title": "Uso de los operadores a nivel de bits", "url": "/pledin/cursos/python_pcep/contenido/seccion09/clase3/" }
+    ]
+  },
+  {
+    "title": "10. Introducción a las listas",
+    "children": [
+      { "title": "Introducción a las listas", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase1/" },
+      { "title": "Operaciones básicas sobre las listas", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase2/" },
+      { "title": "LABORATORIO - Los fundamentos de las listas", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase3/" },
+      { "title": "Introducción a los métodos. Añadir elementos a las listas", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase4/" },
+      { "title": "Recorrido de listas", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase5/" },
+      { "title": "Intercambiando elementos en las listas", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase6/" },
+      { "title": "LABORATORIO - Los fundamentos de las listas: los Beatles", "url": "/pledin/cursos/python_pcep/contenido/seccion10/clase7/" }
+    ]
+  },
+  {
+    "title": "11. Operaciones con listas",
+    "children": [
+      { "title": "Las listas son mutables", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase1/" },
+      { "title": "Operación de rebanada de listas", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase2/" },
+      { "title": "Operadores de pertenencia", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase3/" },
+      { "title": "Programas de ejemplo de uso de listas", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase4/" },
+      { "title": "LABORATORIO - Operaciones con listas: conceptos básicos", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase5/" },
+      { "title": "Ordenación de una lista por el algoritmo burbuja", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase6/" },
+      { "title": "El ordenamiento burbuja en Python", "url": "/pledin/cursos/python_pcep/contenido/seccion11/clase7/" }
+    ]
+  },
+  {
+    "title": "12. Listas multidimensionales",
+    "children": [
+      { "title": "Compresión de listas", "url": "/pledin/cursos/python_pcep/contenido/seccion12/clase1/" },
+      { "title": "Listas de dos dimensiones", "url": "/pledin/cursos/python_pcep/contenido/seccion12/clase2/" },
+      { "title": "Ejemplo con listas de dos dimensiones", "url": "/pledin/cursos/python_pcep/contenido/seccion12/clase3/" },
+      { "title": "Listas multidimensionales", "url": "/pledin/cursos/python_pcep/contenido/seccion12/clase4/" },
+      { "title": "LABORATORIO - Ejercicios con listas", "url": "/pledin/cursos/python_pcep/contenido/seccion12/clase5/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcep/contenido/seccion12/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcep/contenido/seccion12/prueba/" }
+    ]
+  },
+  {
+    "title": "13. Introducción a las funciones",
+    "children": [
+      { "title": "Introducción a las funciones", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase1/" },
+      { "title": "Tu primera función", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase2/" },
+      { "title": "Funciones parametrizadas", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase3/" },
+      { "title": "Paso de parámetros", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase4/" },
+      { "title": "Efectos y resultados de una función", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase5/" },
+      { "title": "Listas y funciones", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase6/" },
+      { "title": "LABORATORIO - Año bisiesto", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase7/" },
+      { "title": "LABORATORIO - Cuántos días", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase8/" },
+      { "title": "LABORATORIO - Día del año", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase9/" },
+      { "title": "LABORATORIO - Números primos", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase10/" },
+      { "title": "LABORATORIO - Conversión del consumo de combustible", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase11/" },
+      { "title": "Ámbito de variables y funciones", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase12/" },
+      { "title": "La palabra reservada global", "url": "/pledin/cursos/python_pcep/contenido/seccion13/clase13/" }
+    ]
+  },
+  {
+    "title": "14. Ejemplos de funciones",
+    "children": [
+      { "title": "Ejemplo 1: Cálculo del IMC", "url": "/pledin/cursos/python_pcep/contenido/seccion14/clase1/" },
+      { "title": "Ejemplo 2: Triángulos", "url": "/pledin/cursos/python_pcep/contenido/seccion14/clase2/" },
+      { "title": "Ejemplo 3: Factoriales", "url": "/pledin/cursos/python_pcep/contenido/seccion14/clase3/" },
+      { "title": "Ejemplo 4: Números Fibonacci", "url": "/pledin/cursos/python_pcep/contenido/seccion14/clase4/" },
+      { "title": "Ejemplo 5: Recursividad", "url": "/pledin/cursos/python_pcep/contenido/seccion14/clase5/" }
+    ]
+  },
+  {
+    "title": "15. Tuplas y diccionarios",
+    "children": [
+      { "title": "Tipos de datos secuencias y mutabilidad", "url": "/pledin/cursos/python_pcep/contenido/seccion15/clase1/" },
+      { "title": "Tuplas", "url": "/pledin/cursos/python_pcep/contenido/seccion15/clase2/" },
+      { "title": "Diccionarios", "url": "/pledin/cursos/python_pcep/contenido/seccion15/clase3/" },
+      { "title": "Métodos de diccionarios", "url": "/pledin/cursos/python_pcep/contenido/seccion15/clase4/" },
+      { "title": "Ejemplo con tuplas y diccionarios", "url": "/pledin/cursos/python_pcep/contenido/seccion15/clase5/" },
+      { "title": "LABORATORIO - Ejercicios con diccionarios", "url": "/pledin/cursos/python_pcep/contenido/seccion15/clase6/" }
+    ]
+  },
+  {
+    "title": "16. Excepciones",
+    "children": [
+      { "title": "Errores en la programación", "url": "/pledin/cursos/python_pcep/contenido/seccion16/clase1/" },
+      { "title": "Excepciones en Python", "url": "/pledin/cursos/python_pcep/contenido/seccion16/clase2/" },
+      { "title": "Pruebas de ejecución", "url": "/pledin/cursos/python_pcep/contenido/seccion16/clase3/" },
+      { "title": "Ejemplo de depuración de código", "url": "/pledin/cursos/python_pcep/contenido/seccion16/clase4/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcep/contenido/seccion16/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcep/contenido/seccion16/prueba/" }
+    ]
+  },
+  {
+    "title": "17. Examen final de curso",
+    "children": [
+      { "title": "Proyecto Final: Juego de tres en raya", "url": "/pledin/cursos/python_pcep/contenido/seccion17/proyecto/" },
+      { "title": "Prueba Final", "url": "/pledin/cursos/python_pcep/contenido/seccion17/prueba/" }
+    ]
+  }
+]

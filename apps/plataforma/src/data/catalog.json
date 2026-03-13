@@ -3,10 +3,17 @@
     "title": "Programación",
     "courses": [
       {
-        "title": "Curso de preparación para el examen Pythonn PCEP - PCAP (2025)",
-        "url": "https://github.com/josedom24/python_pcep_pcap",
+        "title": "Curso de preparación para el examen Python PCEP – Certified Entry-Level Python Programmer (2025)",
+        "url": "cursos/python_pcep",
         "year": "2025",
-        "external": "github",
+        "external": "none",
+        "ow": true
+      },
+      {
+        "title": "Curso de preparación para el examen PCAP – Certified Associate Python Programmer (2025)",
+        "url": "cursos/python_pcap",
+        "year": "2025",
+        "external": "none",
         "ow": true
       },
       {

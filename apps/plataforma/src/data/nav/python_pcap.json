@@ -1,0 +1,200 @@
+[
+  {
+    "title": "Curso de preparación para el examen PCAP – Certified Associate Python Programmer",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/python_pcap/"
+      }
+    ]
+  },
+  {
+    "title": "1. Introducción a los módulos en Python",
+    "children": [
+      { "title": "¿Qué es un módulo en Python?", "url": "/pledin/cursos/python_pcap/contenido/seccion01/clase1/" },
+      { "title": "Importación de módulos", "url": "/pledin/cursos/python_pcap/contenido/seccion01/clase2/" },
+      { "title": "Módulos y namespaces", "url": "/pledin/cursos/python_pcap/contenido/seccion01/clase3/" },
+      { "title": "Importación de entidades de un módulo", "url": "/pledin/cursos/python_pcap/contenido/seccion01/clase4/" },
+      { "title": "Importación de todas las entidades de un módulo", "url": "/pledin/cursos/python_pcap/contenido/seccion01/clase5/" }
+    ]
+  },
+  {
+    "title": "2. Módulos estándares en Python",
+    "children": [
+      { "title": "La función dir()", "url": "/pledin/cursos/python_pcap/contenido/seccion02/clase1/" },
+      { "title": "El módulo math", "url": "/pledin/cursos/python_pcap/contenido/seccion02/clase2/" },
+      { "title": "El módulo random", "url": "/pledin/cursos/python_pcap/contenido/seccion02/clase3/" },
+      { "title": "El módulo platform", "url": "/pledin/cursos/python_pcap/contenido/seccion02/clase4/" }
+    ]
+  },
+  {
+    "title": "3. Módulos y paquetes",
+    "children": [
+      { "title": "¿Qué es un paquete en Python?", "url": "/pledin/cursos/python_pcap/contenido/seccion03/clase1/" },
+      { "title": "Nuestro primer módulo (1ª parte)", "url": "/pledin/cursos/python_pcap/contenido/seccion03/clase2/" },
+      { "title": "Nuestro primer módulo (2ª parte)", "url": "/pledin/cursos/python_pcap/contenido/seccion03/clase3/" },
+      { "title": "Nuestro primer paquete (1ª parte)", "url": "/pledin/cursos/python_pcap/contenido/seccion03/clase4/" },
+      { "title": "Nuestro primer paquete (2ª parte)", "url": "/pledin/cursos/python_pcap/contenido/seccion03/clase5/" }
+    ]
+  },
+  {
+    "title": "4. Instalador de paquetes PIP",
+    "children": [
+      { "title": "El ecosistema de paquetes de Python", "url": "/pledin/cursos/python_pcap/contenido/seccion04/clase1/" },
+      { "title": "Instalación de pip", "url": "/pledin/cursos/python_pcap/contenido/seccion04/clase2/" },
+      { "title": "Cómo usar pip", "url": "/pledin/cursos/python_pcap/contenido/seccion04/clase3/" },
+      { "title": "Ejemplo de uso de pip", "url": "/pledin/cursos/python_pcap/contenido/seccion04/clase4/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcap/contenido/seccion04/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcap/contenido/seccion04/prueba/" }
+    ]
+  },
+  {
+    "title": "5. Cadenas de caracteres",
+    "children": [
+      { "title": "Codificación de caracteres en Python", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase1/" },
+      { "title": "Introducción a las cadenas de caracteres", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase2/" },
+      { "title": "Funciones que trabajan con cadenas de caracteres", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase3/" },
+      { "title": "Las cadenas son inmutables", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase4/" },
+      { "title": "Métodos de las cadenas de caracteres (1ª parte)", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase5/" },
+      { "title": "Métodos de las cadenas de caracteres (2ª parte)", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase6/" },
+      { "title": "LABORATORIO: Tu propio split", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase7/" },
+      { "title": "Comparación de cadenas", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase8/" },
+      { "title": "Ordenación de cadenas", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase9/" },
+      { "title": "Conversión entre cadenas y números", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase10/" },
+      { "title": "LABORATORIO: Un display LED", "url": "/pledin/cursos/python_pcap/contenido/seccion05/clase11/" }
+    ]
+  },
+  {
+    "title": "6. Ejemplos de programas trabajando con cadenas de caracteres",
+    "children": [
+      { "title": "Ejemplo 1: El cifrado César", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase1/" },
+      { "title": "Ejemplo 2: El procesador de números", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase2/" },
+      { "title": "Ejemplo 3: El validador IBAN", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase3/" },
+      { "title": "LABORATORIO: Mejorando el cifrado César", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase4/" },
+      { "title": "LABORATORIO: Palíndromos", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase5/" },
+      { "title": "LABORATORIO: Anagramas", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase6/" },
+      { "title": "LABORATORIO: El dígito de la vida", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase7/" },
+      { "title": "LABORATORIO: ¡Encuentra una palabra!", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase8/" },
+      { "title": "LABORATORIO: Sudoku", "url": "/pledin/cursos/python_pcap/contenido/seccion06/clase9/" }
+    ]
+  },
+  {
+    "title": "7. Excepciones: Gestionando errores de programación",
+    "children": [
+      { "title": "Introducción a las excepciones", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase1/" },
+      { "title": "Manejo de excepciones", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase2/" },
+      { "title": "Jerarquía de excepciones", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase3/" },
+      { "title": "Propagación de excepciones", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase4/" },
+      { "title": "La instrucción assert", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase5/" },
+      { "title": "Excepciones integradas", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase6/" },
+      { "title": "LABORATORIO: Leer enteros de forma segura", "url": "/pledin/cursos/python_pcap/contenido/seccion07/clase7/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcap/contenido/seccion07/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcap/contenido/seccion07/prueba/" }
+    ]
+  },
+  {
+    "title": "8. Introducción a la Programación Orientada a Objetos",
+    "children": [
+      { "title": "Introducción a la programación orientada a objetos", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase1/" },
+      { "title": "Programación orientada a objetos en Python", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase2/" },
+      { "title": "Pila: Enfoque procedimental", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase3/" },
+      { "title": "Pila: Programación orientada a objetos", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase4/" },
+      { "title": "Pila: Creación de varios objetos", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase5/" },
+      { "title": "Pila: Herencia de clases", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase6/" },
+      { "title": "LABORATORIO: Pila Contadora", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase7/" },
+      { "title": "LABORATORIO: Colas alias FIFO", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase8/" },
+      { "title": "LABORATORIO: Colas alias FIFO: parte 2", "url": "/pledin/cursos/python_pcap/contenido/seccion08/clase9/" }
+    ]
+  },
+  {
+    "title": "9. Propiedades y métodos",
+    "children": [
+      { "title": "Propiedades de instancia", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase1/" },
+      { "title": "Propiedades de clase", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase2/" },
+      { "title": "Comprobando la existencia de una propiedad", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase3/" },
+      { "title": "Métodos de instancia", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase4/" },
+      { "title": "Propiedades comunes en clases y objetos", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase5/" },
+      { "title": "Explorando y modificando las clases y objetos", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase6/" },
+      { "title": "Representación de los objetos", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase7/" },
+      { "title": "LABORATORIO: La clase Timer", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase8/" },
+      { "title": "LABORATORIO: Días de la semana", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase9/" },
+      { "title": "LABORATORIO: Puntos en un plano", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase10/" },
+      { "title": "LABORATORIO: Triángulo", "url": "/pledin/cursos/python_pcap/contenido/seccion09/clase11/" }
+    ]
+  },
+  {
+    "title": "10. Herencia de clases",
+    "children": [
+      { "title": "Herencia de clases en Python", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase1/" },
+      { "title": "Relación entre superclase y subclase", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase2/" },
+      { "title": "Relación entre objetos y clases", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase3/" },
+      { "title": "Trabajando con propiedades y métodos heredados", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase4/" },
+      { "title": "Herencia múltiple", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase5/" },
+      { "title": "Polimorfismo", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase6/" },
+      { "title": "Cómo construir una jerarquía de clases", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase7/" },
+      { "title": "Composición", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase8/" },
+      { "title": "Herencia simple frente a herencia múltiple", "url": "/pledin/cursos/python_pcap/contenido/seccion10/clase9/" }
+    ]
+  },
+  {
+    "title": "11. Las excepciones en profundidad",
+    "children": [
+      { "title": "El bloque else y finally en las excepciones", "url": "/pledin/cursos/python_pcap/contenido/seccion11/clase1/" },
+      { "title": "Las excepciones son clases", "url": "/pledin/cursos/python_pcap/contenido/seccion11/clase2/" },
+      { "title": "Creación de nuevas excepciones", "url": "/pledin/cursos/python_pcap/contenido/seccion11/clase3/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcap/contenido/seccion11/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcap/contenido/seccion11/prueba/" }
+    ]
+  },
+  {
+    "title": "12. Generadores, iteradores y cierres",
+    "children": [
+      { "title": "Generadores e iteradores", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase1/" },
+      { "title": "La instrucción yield", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase2/" },
+      { "title": "Ejemplos de generadores", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase3/" },
+      { "title": "Introducción a las listas por compresión", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase4/" },
+      { "title": "Funciones lambda", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase5/" },
+      { "title": "Usos de funciones lambdas", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase6/" },
+      { "title": "Introducción a los cierres", "url": "/pledin/cursos/python_pcap/contenido/seccion12/clase7/" }
+    ]
+  },
+  {
+    "title": "13. Trabajando con archivos",
+    "children": [
+      { "title": "Trabajando con archivos", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase1/" },
+      { "title": "Manejo de archivos", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase2/" },
+      { "title": "Abriendo y cerrando los archivos", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase3/" },
+      { "title": "Lectura de archivos de texto", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase4/" },
+      { "title": "Escritura en archivos de texto", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase5/" },
+      { "title": "Trabajando con archivos binarios", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase6/" },
+      { "title": "Ejemplo: cómo copiar archivos", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase7/" },
+      { "title": "LABORATORIO: Histograma de frecuencia de caracteres", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase8/" },
+      { "title": "LABORATORIO: Histograma de frecuencia de caracteres ordenados", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase9/" },
+      { "title": "LABORATORIO: Evaluando los resultados de los estudiantes", "url": "/pledin/cursos/python_pcap/contenido/seccion13/clase10/" }
+    ]
+  },
+  {
+    "title": "14. Módulos de sistema: os, datetime, calendar",
+    "children": [
+      { "title": "El módulo os", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase1/" },
+      { "title": "LABORATORIO: El módulo os", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase2/" },
+      { "title": "El módulo datetime", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase3/" },
+      { "title": "El módulo time", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase4/" },
+      { "title": "El módulo datetime en profundidad", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase5/" },
+      { "title": "Operaciones con fechas y horas", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase6/" },
+      { "title": "LABORATORIO: Los módulos datetime y time", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase7/" },
+      { "title": "El módulo calendar", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase8/" },
+      { "title": "Clases para crear calendarios", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase9/" },
+      { "title": "LABORATORIO: El módulo calendar", "url": "/pledin/cursos/python_pcap/contenido/seccion14/clase10/" },
+      { "title": "Test intermedio: comprueba lo que has aprendido", "url": "/pledin/cursos/python_pcap/contenido/seccion14/test/" },
+      { "title": "Prueba intermedia", "url": "/pledin/cursos/python_pcap/contenido/seccion14/prueba/" }
+    ]
+  },
+  {
+    "title": "15. Prueba Final",
+    "children": [
+      { "title": "Prueba Final 1", "url": "/pledin/cursos/python_pcap/contenido/seccion15/prueba1/" },
+      { "title": "Prueba Final 2", "url": "/pledin/cursos/python_pcap/contenido/seccion15/prueba2/" }
+    ]
+  }
+]
