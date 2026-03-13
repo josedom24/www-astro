@@ -13,23 +13,41 @@ const allPosts = (await getCollection('blog'))
 const allMicroposts = (await getCollection('microblog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const recentMicroposts = allMicroposts.slice(0, 3);
-const moreMicroposts = allMicroposts.slice(3, 9);
+// Feed mixto: unir y ordenar por fecha
+const allMixed = [
+  ...allPosts.map(post => ({ type: 'blog' as const, date: getPostDate(post), post })),
+  ...allMicroposts.map(post => ({ type: 'microblog' as const, date: post.data.date, post })),
+].sort((a, b) => b.date.valueOf() - a.date.valueOf());
 
-const recentPosts = allPosts.slice(0, 3).map(post => {
-  const parts = (post.body ?? '').split(/<!--\s*more\s*-->/i);
-  const preview = marked(parts[0]) as string;
-  const hasMore = parts.length > 1;
-  return { post, preview, hasMore };
-});
-const morePosts = allPosts.slice(3, 9);
+const recentMixed = allMixed.slice(0, 5);
 
-const renderedMicroposts = await Promise.all(
-  recentMicroposts.map(async post => {
-    const { Content } = await render(post);
-    return { post, Content };
-  })
+// Renderizar los microposts que aparecen en el feed
+const renderedMicroposts = Object.fromEntries(
+  await Promise.all(
+    recentMixed
+      .filter(item => item.type === 'microblog')
+      .map(async ({ post }) => {
+        const { Content } = await render(post);
+        return [post.id, Content];
+      })
+  )
 );
+
+// Preparar previews de los posts de blog del feed
+const blogPreviews = Object.fromEntries(
+  recentMixed
+    .filter(item => item.type === 'blog')
+    .map(({ post }) => {
+      const parts = (post.body ?? '').split(/<!--\s*more\s*-->/i);
+      const preview = marked(parts[0]) as string;
+      const hasMore = parts.length > 1;
+      return [post.id, { preview, hasMore }];
+    })
+);
+
+// Bloques "más posts"
+const morePosts = allPosts.slice(5, 11);
+const moreMicroposts = allMicroposts.slice(5, 11);
 ---
 
 <BaseLayout title="Inicio">
@@ -45,15 +63,18 @@ const renderedMicroposts = await Promise.all(
 
    
   
-    <!-- Blog -->
-    <section class="home-section">
-      <h2 class="section-title">Blog</h2>
-      <div class="post-list">
-        {recentPosts.map(({ post, preview, hasMore }) => {
-          const slug = post.data.slug ?? post.id;
-          const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
-          const date = getPostDate(post);
-          return (
+    <!-- Feed reciente -->
+<section class="home-section">
+  <h2 class="section-title">Últimas entradas</h2>
+  <div class="post-list">
+    {recentMixed.map(({ type, date, post }) => {
+      if (type === 'blog') {
+        const slug = post.data.slug ?? post.id;
+        const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
+        const { preview, hasMore } = blogPreviews[post.id];
+        return (
+          <div>
+            <span class="feed-label feed-label--blog">Blog</span>
             <PostCard
               url={url}
               title={post.data.title}
@@ -63,64 +84,66 @@ const renderedMicroposts = await Promise.all(
               previewHtml={preview}
               hasMore={hasMore}
             />
+          </div>
+        );
+      } else {
+        const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
+        const url = match
+          ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
+          : `/pledin/microblog/${post.id}/`;
+        const Content = renderedMicroposts[post.id];
+        return (
+          <div>
+            <span class="feed-label feed-label--microblog">Microblog</span>
+            <MicropostCard url={url} title={post.data.title} date={date} detailLink="Detalle →">
+              <Content />
+            </MicropostCard>
+          </div>
+        );
+      }
+    })}
+  </div>
+
+  <!-- Más posts -->
+  <div class="more-grids">
+    <div class="more-list">
+      <p class="more-title">Más posts en el Blog...</p>
+      <ul>
+        {morePosts.map(post => {
+          const slug = post.data.slug ?? post.id;
+          const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
+          const date = getPostDate(post);
+          return (
+            <li>
+              <a href={url}>{post.data.title}</a>
+              <span class="date">({date.toLocaleDateString('es-ES', { dateStyle: 'medium' })})</span>
+            </li>
           );
         })}
-      </div>
-      <div class="more-list">
-        <p class="more-title">Más posts en el Blog...</p>
-        <ul>
-          {morePosts.map(post => {
-            const slug = post.data.slug ?? post.id;
-            const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
-            const date = getPostDate(post);
-            return (
-              <li>
-                <a href={url}>{post.data.title}</a>
-                <span class="date">({date.toLocaleDateString('es-ES', { dateStyle: 'medium' })})</span>
-              </li>
-            );
-          })}
-        </ul>
-        <a href="/pledin/blog/" class="ver-todos">Ver todos →</a>
-      </div>
-    </section>
-
-     <!-- Microblog -->
-    <section class="home-section">
-      <h2 class="section-title">Microblog</h2>
-      <div class="micropost-list">
-        {renderedMicroposts.map(({ post, Content }) => {
+      </ul>
+      <a href="/pledin/blog/" class="ver-todos">Ver todos →</a>
+    </div>
+    <div class="more-list">
+      <p class="more-title">Más posts en el Microblog...</p>
+      <ul>
+        {moreMicroposts.map(post => {
           const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
           const url = match
             ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
             : `/pledin/microblog/${post.id}/`;
+          const date = post.data.date;
           return (
-            <MicropostCard url={url} title={post.data.title} detailLink="Detalle →">
-              <Content />
-            </MicropostCard>
+            <li>
+              <a href={url}>{post.data.title}</a>
+              <span class="date">({date.toLocaleDateString('es-ES', { dateStyle: 'medium' })})</span>
+            </li>
           );
         })}
-      </div>
-      <div class="more-list">
-        <p class="more-title">Más posts en el Microblog...</p>
-        <ul>
-          {moreMicroposts.map(post => {
-            const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
-            const url = match
-              ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
-              : `/pledin/microblog/${post.id}/`;
-            const date = post.data.date;
-            return (
-              <li>
-                <a href={url}>{post.data.title}</a>
-                <span class="date">({date.toLocaleDateString('es-ES', { dateStyle: 'medium' })})</span>
-              </li>
-            );
-          })}
-        </ul>
-        <a href="/pledin/microblog/" class="ver-todos">Ver todos →</a>
-      </div>
-    </section>
+      </ul>
+      <a href="/pledin/microblog/" class="ver-todos">Ver todos →</a>
+    </div>
+  </div>
+</section>
 
 
     <!-- Licencia -->
@@ -251,7 +274,38 @@ const renderedMicroposts = await Promise.all(
     text-align: center;
     padding: 2rem 0;
   }
+.feed-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
 
+.feed-label--blog {
+  background: var(--color-accent);
+  color: white;
+}
+
+.feed-label--microblog {
+  background: var(--color-bg-sidebar);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.more-grids {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .more-grids { grid-template-columns: 1fr; }
+}
   
 
 </style>
