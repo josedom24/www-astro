@@ -7,9 +7,7 @@
 
 set -e
 
-SSH_HOST="endor.josedomingo.org"
-REPO_PATH="/home/debian/github/www-astro"
-CONTAINER="www-astro-builder"
+SSH_HOST="debian@endor.josedomingo.org"
 
 # Colores
 GREEN='\033[0;32m'
@@ -24,30 +22,28 @@ err()  { echo -e "${RED}✗ $1${NC}"; exit 1; }
 deploy_app() {
   local app=$1
 
-  # Rutas destino en endor
   case $app in
-    www)        DIST_DST="/dist/www" ;;
-    plataforma) DIST_DST="/dist/plataforma" ;;
-    fp)         DIST_DST="/dist/fp" ;;
+    www)        DIST_SRC="apps/www/dist/"
+                #DIST_DST="/home/debian/www/blog_pledin/html/pledin/" ;;
+                DIST_DST="/home/debian/prueba-astro/blog_pledin/html/pledin/" ;;
+    plataforma) DIST_SRC="apps/plataforma/dist/"
+                #DIST_DST="/home/debian/www/plataforma_pledin/html/pledin/" ;;
+                DIST_DST="/home/debian/prueba-astro/plataforma_pledin/html/pledin/" ;;
+    fp)         DIST_SRC="apps/fp/dist/"
+                #DIST_DST="/home/debian/www/fp_pledin/html/" ;;
+                DIST_DST="/home/debian/prueba-astro/fp_pledin/html/" ;;
     *) err "App desconocida: $app" ;;
   esac
 
   log "Desplegando $app..."
 
-  # 1. Git pull en endor
-  log "[$app] git pull..."
-  ssh debian@$SSH_HOST "cd $REPO_PATH && git pull"
-
-  # 2. Build dentro del contenedor
-  log "[$app] npm install..."
-  ssh debian@$SSH_HOST "docker exec $CONTAINER sh -c 'cd /app && npm install --silent'"
-
+  # 1. Build local
   log "[$app] build..."
-  ssh debian@$SSH_HOST "docker exec $CONTAINER sh -c 'cd /app && npm run build:$app'"
+  npm run build:$app
 
-  # 3. Copiar dist al directorio de Apache (montado como volumen)
-  log "[$app] copiando a Apache..."
-  ssh debian@$SSH_HOST "docker exec $CONTAINER sh -c 'rm -rf ${DIST_DST}/* && cp -r /app/apps/$app/dist/. ${DIST_DST}/'"
+  # 2. rsync al servidor
+  log "[$app] sincronizando con endor..."
+  rsync -az --delete $DIST_SRC ${SSH_HOST}:${DIST_DST}
 
   log "[$app] ✅ desplegado correctamente"
 }
