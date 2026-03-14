@@ -2,19 +2,13 @@ services:
   builder:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     container_name: www-astro-builder
     volumes:
       # Repositorio (fuente)
       - /home/debian/github/www-astro:/app
-      - www_astro_cache_www:/app/apps/www/.astro
-      - www_astro_cache_plataforma:/app/apps/plataforma/.astro
-      - www_astro_cache_fp:/app/apps/fp/.astro
+      # Directorios de Apache (destino del build)
       - /home/debian/www/blog_pledin/html/pledin:/dist/www
       - /home/debian/www/plataforma_pledin/html/pledin:/dist/plataforma
       - /home/debian/www/fp_pledin/html:/dist/fp
     restart: unless-stopped
-volumes:  
-  www_astro_cache_www:
-  www_astro_cache_plataforma:
-  www_astro_cache_fp:         
