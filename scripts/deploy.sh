@@ -8,7 +8,7 @@
 set -e
 
 SSH_HOST="endor.josedomingo.org"
-REPO_PATH="/home/jose/github/www-astro"
+REPO_PATH="/home/debian/github/www-astro"
 CONTAINER="www-astro-builder"
 
 # Colores
@@ -36,18 +36,18 @@ deploy_app() {
 
   # 1. Git pull en endor
   log "[$app] git pull..."
-  ssh $SSH_HOST "cd $REPO_PATH && git pull"
+  ssh debian@$SSH_HOST "cd $REPO_PATH && git pull"
 
   # 2. Build dentro del contenedor
   log "[$app] npm install..."
-  ssh $SSH_HOST "docker exec $CONTAINER sh -c 'cd /app && npm install --silent'"
+  ssh debian@$SSH_HOST "docker exec $CONTAINER sh -c 'cd /app && npm install --silent'"
 
   log "[$app] build..."
-  ssh $SSH_HOST "docker exec $CONTAINER sh -c 'cd /app && npm run build:$app'"
+  ssh debian@$SSH_HOST "docker exec $CONTAINER sh -c 'cd /app && npm run build:$app'"
 
   # 3. Copiar dist al directorio de Apache (montado como volumen)
   log "[$app] copiando a Apache..."
-  ssh $SSH_HOST "docker exec $CONTAINER sh -c 'rm -rf ${DIST_DST}/* && cp -r /app/apps/$app/dist/. ${DIST_DST}/'"
+  ssh debian@$SSH_HOST "docker exec $CONTAINER sh -c 'rm -rf ${DIST_DST}/* && cp -r /app/apps/$app/dist/. ${DIST_DST}/'"
 
   log "[$app] ✅ desplegado correctamente"
 }

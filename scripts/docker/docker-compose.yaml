@@ -6,9 +6,9 @@ services:
     container_name: www-astro-builder
     volumes:
       # Repositorio (fuente)
-      - /home/jose/github/www-astro:/app
+      - /home/debian/github/www-astro:/app
       # Directorios de Apache (destino del build)
-      - /home/jose/prueba-astro/blog_pledin/html/pledin:/dist/www
-      - /home/jose/prueba-astro/plataforma_pledin/html/pledin:/dist/plataforma
-      - /home/jose/prueba-astro/fp_pledin/html:/dist/fp
+      - /home/debian/prueba-astro/blog_pledin/html/pledin:/dist/www
+      - /home/debian/prueba-astro/plataforma_pledin/html/pledin:/dist/plataforma
+      - /home/debian/prueba-astro/fp_pledin/html:/dist/fp
     restart: unless-stopped
