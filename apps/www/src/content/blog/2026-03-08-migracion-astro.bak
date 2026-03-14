@@ -5,26 +5,24 @@ slug: 2026/03/migracion-pledin-astro
 tags:
   - Astro
   - Jekyll
-  - Migración
-  - Web
-excerpt: 'Después de muchos años usando Jekyll como generador de sitios estáticos, he decidido migrar Pledin a Astro. En este artículo explico qué es Astro, por qué lo he elegido y todos los pasos que he seguido para realizar la migración.'
+  - Pledin
 ---
 
-Después de muchos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y todos los pasos que he seguido para realizar la migración.
-
-<!--more-->
+Desde septiembre de 2018, mi paǵina **Pledin - Plataforma Educativa Informática** ha sido una web estática generado por Jekyll, si quieres más información de como fue construida te invito a leer el artículo: [Bienvenidos a PLEDIN 3.0](https://www.josedomingo.org/pledin/2018/09/bienvenidos-a-pledin30/). Después de estos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y el proceso que he llevado a cabo para esta migración.
 
 ## ¿Qué es Astro?
 
-[Astro](https://astro.build) es un framework moderno para construir sitios web estáticos y dinámicos. A diferencia de otros frameworks como Next.js o Nuxt, Astro está diseñado desde cero para generar HTML estático de la forma más eficiente posible.
+[Astro](https://astro.build) es un framework moderno para construir sitios web, especialmente pensado para sitios donde el contenido es lo más importante: blogs, documentación, portfolios...
 
-Sus principales características son:
+La filosofía de Astro es sencilla: generar páginas HTML simples y rápidas, enviando al navegador solo lo imprescindible. Mientras otros frameworks cargan grandes cantidades de JavaScript aunque no haga falta, Astro hace justo lo contrario.
 
-- **Islands Architecture**: solo envía JavaScript al navegador cuando es estrictamente necesario. El resto es HTML puro.
-- **Framework-agnostic**: puedes usar componentes de React, Vue, Svelte o simplemente componentes `.astro` propios.
-- **Content Collections**: sistema tipado para gestionar contenido en Markdown o MDX con validación de esquemas mediante Zod.
-- **Integrations**: sistema de plugins oficial para añadir funcionalidades como sitemap, RSS, MDX, etc.
-- **Rendimiento**: genera sitios extremadamente rápidos gracias a la eliminación de JavaScript innecesario.
+Algunas de sus características más interesantes:
+
+* **Páginas ultrarrápidas**: al eliminar el JavaScript innecesario, las páginas cargan mucho más rápido y obtienen mejores puntuaciones en herramientas como PageSpeed.
+* **Flexible**: puedes usar componentes de React, Vue, Svelte... o simplemente los componentes propios de Astro, que tienen una sintaxis muy parecida al HTML de toda la vida.
+* **Gestión de contenido integrada**: permite organizar los ficheros Markdown de forma estructurada, con validación automática de los metadatos de cada página.
+* **Extensible**: dispone de un sistema de plugins oficial para añadir funcionalidades como generación de sitemap, feed RSS, soporte para MDX, etc.
+* **Rendimiento**: genera sitios extremadamente rápidos gracias a la eliminación de JavaScript innecesario.
 
 ## ¿Por qué migrar de Jekyll a Astro?
 
@@ -32,156 +30,79 @@ Jekyll ha sido una herramienta excelente durante años, pero tiene algunas limit
 
 - Requiere Ruby y sus dependencias, lo que puede ser un problema en entornos modernos.
 - El sistema de plantillas Liquid, aunque funcional, es limitado comparado con componentes modernos.
-- La velocidad de build con muchos posts puede ser lenta.
+- La velocidad de build con muchos posts es lenta.
 - La integración con herramientas modernas de frontend es complicada.
 
 Astro en cambio ofrece una experiencia de desarrollo moderna, usa JavaScript/TypeScript, y tiene un ecosistema muy activo.
 
-## Arquitectura del nuevo sitio
+## El proceso de migración
 
-El sitio `www.josedomingo.org` tiene tres secciones principales:
+### Manteniendo las URLs
 
-- **Blog**: ~300 artículos técnicos sobre Linux, Docker, Kubernetes, redes, etc.
-- **Microblog**: entradas cortas al estilo de notas rápidas.
-- **About**: página personal con información sobre el autor.
+Uno de los requisitos más importantes era no romper las URLs existentes, ya que llevan años indexadas y referenciadas. En la gran mayoría de los casos las URLs se han mantenido exactamente igual. Para los pocos casos donde no fue posible, se añadieron redirecciones en el fichero `.htaccess` del servidor Apache.
 
-Todo se sirve bajo la ruta base `/pledin/`, lo que hay que tener en cuenta en toda la configuración.
+### El frontmatter de los ficheros Markdown
 
-La estructura de ficheros del proyecto queda así:
+Una de las buenas noticias de la migración es que el contenido apenas ha necesitado cambios. La mayoría de los ficheros Markdown se han podido reutilizar tal cual, con dos pequeños ajustes en el blog:
 
+- Se ha añadido el campo `date` de forma explícita.
+- El campo `permalink` se ha renombrado a `slug`.
+
+En las otras dos aplicaciones (plataforma y fp) no ha sido necesario tocar ningún fichero de contenido.
+
+## Estructura del proyecto
+
+El sitio se ha organizado como un **monorepo** con tres aplicaciones independientes:
+
+- **www** → Blog personal ([www.josedomingo.org](https://www.josedomingo.org))
+- **plataforma** → Catálogo de cursos ([plataforma.josedomingo.org](https://plataforma.josedomingo.org))
+- **fp** → Módulos de Formación Profesional ([fp.josedomingo.org](https://fp.josedomingo.org))
 ```
-src/
-├── content/
-│   ├── blog/          ← posts del blog en Markdown
-│   └── microblog/     ← posts del microblog en Markdown
-├── data/
-│   └── comments/      ← comentarios antiguos en JSON
-├── layouts/
-│   ├── BaseLayout.astro   ← cabecera, pie, búsqueda, tema
-│   └── BlogLayout.astro   ← rejilla sidebar + contenido + TOC
-├── components/
-│   ├── BlogSidebar.astro
-│   ├── Comments.astro
-│   └── Giscus.astro
-├── pages/
-│   ├── index.astro
-│   ├── about.astro
-│   ├── blog/index.astro
-│   ├── feed/feed.xml.ts
-│   ├── tags/[tag]/index.astro
-│   ├── microblog/
-│   └── [year]/[month]/[slug]/index.astro
-└── utils/
-    ├── date.ts
-    └── excerpt.ts
+www-astro/
+├── apps/
+│   ├── www/          # Blog personal
+│   ├── plataforma/   # Catálogo de cursos
+│   └── fp/           # Módulos FP
+└── packages/
+    └── ui/           # Componentes y layouts compartidos
 ```
 
-## Configuración básica
+### Componentes y layouts compartidos
 
-El fichero `astro.config.mjs` define la configuración principal:
+Una de las ventajas de usar Astro es poder reutilizar código entre las tres aplicaciones. Para ello se ha creado el paquete `@pledin/ui` que contiene dos tipos de elementos:
 
+**Layouts**: son las plantillas que definen la estructura general de cada tipo de página. Por ejemplo, `BaseLayout` define la cabecera, el menú de navegación y el pie de página común a todo el sitio. `BlogLayout` añade además una barra lateral con el índice del blog, y `DocLayout` está pensado para las páginas de documentación de los módulos FP, con navegación lateral y tabla de contenidos.
+
+**Componentes**: son piezas reutilizables más pequeñas que se insertan dentro de los layouts o las páginas. Por ejemplo, `PostCard` muestra la vista previa de un post del blog, `TagList` muestra las etiquetas de un artículo, o `PostNav` muestra los enlaces al post anterior y siguiente.
+
+Tanto los layouts como los componentes se importan en cualquiera de las tres aplicaciones simplemente con:
 ```js
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-
-export default defineConfig({
-  site: 'https://www.josedomingo.org',
-  base: '/pledin',
-  integrations: [mdx(), sitemap()],
-});
+import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
+import PostCard from '@pledin/ui/components/PostCard.astro';
 ```
 
-Las **Content Collections** se definen en `content.config.ts` con esquemas Zod para validar el frontmatter de cada post:
+## Desarrollo y despliegue
 
-```typescript
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/blog' }),
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    tags: z.array(z.string()).optional(),
-    excerpt: z.string().optional(),
-    cover: z.string().optional(),
-    slug: z.string().optional(),
-  }),
-});
+### Servidor de desarrollo
+
+Durante el desarrollo, Astro incluye un servidor web local que recarga automáticamente el navegador cada vez que se modifica un fichero. Para arrancar cada aplicación:
+```bash
+npm run dev:www
+npm run dev:plataforma
+npm run dev:fp
 ```
 
-## Script de migración de posts
+### Proceso de build y despliegue
 
-Los posts de Jekyll tienen algunas particularidades que hay que transformar:
-
-- El campo `permalink` pasa a ser `slug`.
-- Las imágenes referenciaban rutas de WordPress (`wp-content/uploads`) que hay que actualizar.
-- La sintaxis `{: .align-center }` de Kramdown no existe en Astro.
-- Los bloques `{% raw %}` y `{% endraw %}` de Liquid se eliminan.
-- Las imágenes con atributos Jekyll se convierten a HTML.
-- Los botones con clase `.btn` se convierten a etiquetas `<a>` HTML.
-
-El script Python de migración procesa todos estos casos automáticamente y avisa de los que no puede resolver.
-
-## URLs y rutas
-
-Una de las partes más delicadas de la migración es mantener las URLs existentes para no romper los enlaces entrantes. Los posts del blog siguen el patrón `/pledin/YYYY/MM/slug/`, que se construye a partir del campo `slug` del frontmatter.
-
-Para el microblog, las URLs se generan a partir del nombre del fichero con el patrón `YYYY-MM-DD-slug.md`.
-
-## Características implementadas
-
-### Búsqueda con Pagefind
-
-Para la búsqueda se usa [Pagefind](https://pagefind.app), una librería que genera un índice estático durante el build. Se integra en el script de build:
-
-```json
-"build": "astro build && npx pagefind --site dist"
+Cuando el sitio está listo para publicar, Astro genera todos los ficheros HTML estáticos mediante el proceso de build:
+```bash
+npm run build:www
+npm run build:plataforma
+npm run build:fp
 ```
 
-El modal de búsqueda se activa con el icono de lupa en la cabecera.
-
-### TOC automático
-
-Los posts del blog muestran una tabla de contenidos en la columna derecha generada automáticamente a partir de los encabezados `h2` y `h3` del artículo.
-
-### RSS
-
-El feed RSS está disponible en `/pledin/feed/feed.xml` e incluye el contenido completo de los posts con las imágenes referenciando las URLs absolutas.
-
-### Sitemap
-
-El sitemap se genera automáticamente con `@astrojs/sitemap` en cada build.
-
-### Modo oscuro
-
-El tema oscuro se activa con el botón sol/luna de la cabecera y se guarda en `localStorage` para persistir entre visitas.
-
-### Favicon y metadatos
-
-El favicon y los metadatos SEO se definen en `BaseLayout.astro` y se personalizan por página.
-
-## Migración de comentarios
-
-El sitio usaba [Staticman](https://staticman.net) para los comentarios, que se almacenaban como ficheros YAML en el repositorio bajo `_data/comments/`. 
-
-Para la migración he optado por un enfoque híbrido:
-
-1. **Comentarios antiguos**: se han migrado a ficheros JSON en `src/data/comments/` y se muestran estáticamente en cada post usando `import.meta.glob`.
-2. **Comentarios nuevos**: se usa [Giscus](https://giscus.app), que almacena los comentarios en GitHub Discussions. Los usuarios necesitan una cuenta de GitHub para comentar, lo que para un blog técnico como este es perfectamente asumible.
-
-Los comentarios antiguos muestran los avatares de Gravatar cuando están disponibles, usando el hash MD5 del email que Staticman ya almacenaba.
-
-## Páginas especiales
-
-### Página 404
-
-Se ha creado una página `src/pages/404.astro` con un diseño limpio que ofrece enlaces para volver al inicio y al blog.
-
-### Página About
-
-La página about incluye una tarjeta de perfil con avatar, nombre, ubicación y enlaces, seguida de una presentación y los comentarios migrados de Staticman.
-
-## Conclusión
-
-La migración ha sido un proceso laborioso pero satisfactorio. El resultado es un sitio más rápido, más moderno y más fácil de mantener. Astro ha demostrado ser una herramienta muy flexible que permite adaptarse a las necesidades específicas de cada proyecto.
-
-El código fuente del sitio está disponible en [GitHub](https://github.com/josedom24/www-astro).
+Para automatizar el despliegue se ha creado un script que realiza tres acciones en orden: hace un commit con los cambios, los sube a GitHub, construye la aplicación en local y finalmente sincroniza los ficheros generados con el servidor mediante `rsync`:
+```bash
+./scripts/deploy.sh www "Nuevo post sobre Docker"
+./scripts/deploy.sh all "Actualización de contenidos"
+```
