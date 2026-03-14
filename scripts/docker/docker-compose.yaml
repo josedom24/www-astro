@@ -2,7 +2,7 @@ services:
   builder:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
     container_name: www-astro-builder
     volumes:
       # Repositorio (fuente)
