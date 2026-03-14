@@ -8,7 +8,7 @@ tags:
   - Pledin
 ---
 
-Desde septiembre de 2018, mi paǵina **Pledin - Plataforma Educativa Informática** ha sido una web estática generado por Jekyll, si quieres más información de como fue construida te invito a leer el artículo: [Bienvenidos a PLEDIN 3.0](https://www.josedomingo.org/pledin/2018/09/bienvenidos-a-pledin30/). Después de estos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y el proceso que he llevado a cabo para esta migración.
+Desde septiembre de 2018, mi página **Pledin - Plataforma Educativa Informática** ha sido una web estática generado por Jekyll, si quieres más información de como fue construida te invito a leer el artículo: [Bienvenidos a PLEDIN 3.0](https://www.josedomingo.org/pledin/2018/09/bienvenidos-a-pledin30/). Después de estos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y el proceso que he llevado a cabo para esta migración.
 
 ## ¿Qué es Astro?
 
@@ -28,27 +28,65 @@ Algunas de sus características más interesantes:
 
 Jekyll ha sido una herramienta excelente durante años, pero tiene algunas limitaciones que con el tiempo se hacen evidentes:
 
-- Requiere Ruby y sus dependencias, lo que puede ser un problema en entornos modernos.
-- El sistema de plantillas Liquid, aunque funcional, es limitado comparado con componentes modernos.
-- La velocidad de build con muchos posts es lenta.
-- La integración con herramientas modernas de frontend es complicada.
+* Requiere Ruby y sus dependencias, lo que puede ser un problema en entornos modernos.
+* El sistema de plantillas Liquid, aunque funcional, es limitado comparado con componentes modernos.
+* La velocidad de build con muchos posts es lenta.
+* La integración con herramientas modernas de frontend es complicada.
+
+---
+
+**Minimal Mistakes y los warnings de construcción**
+
+Antes de pasarme a Astro, mi web funcionaba con Jekyll y la plantilla **Minimal Mistakes**, una de las más populares del ecosistema Jekyll. Con el tiempo empezaron a aparecer warnings en cada build, una señal de que mantener el sitio en pie iba a exigir cada vez más esfuerzo.
+
+Los warnings eran de dos tipos. Por un lado, una **deprecación en Ruby**: alguna dependencia del proyecto usaba una API interna que ya había cambiado en versiones modernas. No rompía nada de momento, pero indicaba que el stack no estaba actualizado, y que una actualización de Ruby podía acabar rompiendo el build.
+
+Por otro lado, una larga lista de warnings relacionados con **Sass** y la evolución de Dart Sass hacia versiones más estrictas:
+
+- **Deprecación de `@import`**: la plantilla cargaba sus estilos mediante reglas `@import` encadenadas. Esta forma de importar archivos Sass desaparecerá en Dart Sass 3.0.0.
+
+- **Deprecación del operador `/` para divisiones**: varias partes del código usaban `/` directamente para hacer operaciones matemáticas en Sass, algo eliminado en favor de `math.div()` o `calc()`.
+
+- **Deprecación de funciones globales de color**: la plantilla usaba funciones como `mix()`, `red()`, `green()` o `blue()` en su forma global, que también están marcadas para desaparecer en Dart Sass 3.0.0.
+
+- **Deprecación de `mixed-decls`**: Sass va a cambiar cómo maneja propiedades CSS mezcladas con reglas anidadas, algo que afecta a varios archivos internos de la plantilla.
+
+Y al final del log, un detalle significativo:
+
+```
+WARNING: 210 repetitive deprecation warnings omitted.
+```
+
+Es decir, la salida que se ve es solo una parte. En total hay más de 200 warnings adicionales del mismo tipo que el propio compilador decide ocultar para no saturar la consola.
+
+En todos los casos el patrón es el mismo: son cambios que vienen de la evolución de las herramientas y que afectan al código interno de Minimal Mistakes. Arreglarlo no depende de ti, sino de que el mantenedor de la plantilla actualice todo el código.
+
+En definitiva, estos warnings reflejaban una situación cada vez más común con proyectos basados en Jekyll: el tiempo que dedicas al sitio ya no va a escribir contenido, sino a lidiar con incompatibilidades entre herramientas y versiones.
+
+
 
 Astro en cambio ofrece una experiencia de desarrollo moderna, usa JavaScript/TypeScript, y tiene un ecosistema muy activo.
 
 ## El proceso de migración
 
-### Manteniendo las URLs
+Hay que hablar de que empece probando distintas plantillas de astro como el starlight. Sin embargo, depués de varios intentros de hacerlo encajar en lo que necesitaba (www es un blog, y ese tema está pensado para la documentación), volví a comenzar desde = sin utilizar ninguna plantilla, y ayudado por la IA (especialmente por claude) fuí construyendo la página (componentes, layouts, páginas, estilos,...) desde 0.
 
-Uno de los requisitos más importantes era no romper las URLs existentes, ya que llevan años indexadas y referenciadas. En la gran mayoría de los casos las URLs se han mantenido exactamente igual. Para los pocos casos donde no fue posible, se añadieron redirecciones en el fichero `.htaccess` del servidor Apache.
+**Probando plantillas: Starlight y por qué no funcionó**
 
-### El frontmatter de los ficheros Markdown
+Lo primero que hice antes de construir nada fue explorar las plantillas disponibles en el ecosistema de Astro. La más destacada es **Starlight**, la plantilla oficial para sitios de documentación. Incluye cosas como navegación lateral automática a partir de la estructura de archivos, búsqueda integrada, soporte multiidioma y un sistema de componentes MDX propio.
 
-Una de las buenas noticias de la migración es que el contenido apenas ha necesitado cambios. La mayoría de los ficheros Markdown se han podido reutilizar tal cual, con dos pequeños ajustes en el blog:
+El problema es que está muy orientada a documentación, y mi web es un blog. Intentar adaptarla implica pelear contra su estructura: las rutas están pensadas para secciones de docs, el layout principal no encaja con una lista de posts, y muchos de sus componentes dan por sentadas cosas que en un blog no tienen sentido. Después de varios intentos de reconvertirla, decidí descartarla y empezar desde cero.
 
-- Se ha añadido el campo `date` de forma explícita.
-- El campo `permalink` se ha renombrado a `slug`.
+**Construyendo desde 0 con Astro e IA**
 
-En las otras dos aplicaciones (plataforma y fp) no ha sido necesario tocar ningún fichero de contenido.
+Partí de un proyecto Astro limpio, sin ninguna plantilla. Desde ahí fui construyendo todo de forma incremental:
+
+- **Componentes**: cabecera, pie de página, tarjetas de post, sistema de navegación...
+- **Layouts**: un layout base y layouts específicos para la portada, los posts y las páginas estáticas.
+- **Páginas**: índice, página de post individual, sección de etiquetas...
+- **Estilos**: sistema de variables CSS, tipografía, modo oscuro...
+
+Durante todo este proceso usé la IA, principalmente Claude, como asistente. El flujo habitual era: yo definía qué quería construir, Claude proponía una implementación, y yo la revisaba, ajustaba y la integraba en el proyecto. Útil especialmente para no atascarse en detalles de sintaxis de Astro o en patrones que aún no conocía bien.
 
 ## Estructura del proyecto
 
@@ -80,6 +118,86 @@ Tanto los layouts como los componentes se importan en cualquiera de las tres apl
 import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
 import PostCard from '@pledin/ui/components/PostCard.astro';
 ```
+
+
+### Manteniendo las URLs
+
+Uno de los requisitos más importantes era no romper las URLs existentes, ya que llevan años indexadas y referenciadas. En la gran mayoría de los casos las URLs se han mantenido exactamente igual. Para los pocos casos donde no fue posible, se añadieron redirecciones en el fichero `.htaccess` del servidor Apache.
+
+
+---
+
+**Limpieza de directivas Liquid y Kramdown en los archivos Markdown**
+
+Otro de los trabajos previos a la migración fue revisar los archivos Markdown para eliminar directivas que son específicas de Jekyll y que Astro no entiende.
+
+**`{: .center}`**
+
+Esta es una sintaxis propia de **Kramdown**, el procesador de Markdown que usa Jekyll. Permite aplicar atributos HTML directamente sobre un elemento, en este caso una clase CSS:
+
+```markdown
+![imagen](foto.jpg)
+{: .center}
+```
+
+En Astro el procesador de Markdown es diferente (Remark), y esta sintaxis simplemente no existe. Había que eliminarla o sustituirla por la alternativa correspondiente.
+
+**`{% raw %}` y `{% endraw %}`**
+
+Estas son etiquetas de **Liquid**, el motor de plantillas de Jekyll. Su función era indicarle a Jekyll que no procesara el contenido entre ellas, útil por ejemplo para mostrar código que contuviera llaves `{{ }}` sin que Jekyll intentara interpretarlo como variables. En Astro no existe Liquid, así que estas etiquetas aparecen literalmente en el contenido si no se eliminan.
+
+**`{% capture notice-text %}...{% endcapture %}`**
+
+También de Liquid. En Minimal Mistakes se usaba para construir bloques de aviso (notices), capturando el contenido en una variable que luego se pasaba a un include:
+
+```liquid
+{% capture notice-text %}
+Este es un aviso importante.
+{% endcapture %}
+
+{% include notice type="info" content=notice-text %}
+```
+
+Es una forma de componer contenido dinámico dentro del Markdown que depende completamente de Liquid e Jekyll. En Astro hay que sustituirlo por componentes propios o por la sintaxis de MDX si se quiere mantener ese tipo de bloques.
+
+En resumen, parte del trabajo de migración no fue solo mover archivos, sino limpiar los Markdown de todas estas dependencias con el ecosistema Jekyll, que en muchos casos estaban repartidas por decenas de archivos.
+
+---
+
+**Conversión automática de bloques notice**
+
+En Jekyll, los bloques de aviso se construían con una combinación de etiquetas Liquid y HTML:
+
+```liquid
+{% capture notice-text %}
+## Título del aviso
+Contenido del aviso.
+{% endcapture %}
+<div class="notice--info">{{ notice-text | markdownify }}</div>
+```
+
+En Astro, la forma equivalente es usando directivas de Remark, mucho más limpias:
+
+```markdown
+:::tip[Título del aviso]
+Contenido del aviso.
+:::
+```
+
+Como este patrón se repetía en decenas de archivos, escribimos un script Python que recorría todos los Markdown del proyecto, detectaba estos bloques y los convertía automáticamente, traduciendo además las clases CSS de Minimal Mistakes (`notice--info`, `notice--warning`, `notice--danger`...) a sus tipos de directiva correspondientes en Remark. Con un solo comando, todos los archivos quedaban migrados sin intervención manual.
+
+
+
+### El frontmatter de los ficheros Markdown
+
+Una de las buenas noticias de la migración es que el contenido apenas ha necesitado cambios. La mayoría de los ficheros Markdown se han podido reutilizar tal cual, con dos pequeños ajustes en el blog:
+
+- Se ha añadido el campo `date` de forma explícita.
+- El campo `permalink` se ha renombrado a `slug`.
+
+En las otras dos aplicaciones (plataforma y fp) no ha sido necesario tocar ningún fichero de contenido.
+
+Quitar
 
 ## Desarrollo y despliegue
 
