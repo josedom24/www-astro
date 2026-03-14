@@ -8,7 +8,6 @@
 set -e
 
 SSH_HOST="debian@endor.josedomingo.org"
-
 # Colores
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -18,6 +17,27 @@ NC='\033[0m'
 log()  { echo -e "${GREEN}▶ $1${NC}"; }
 warn() { echo -e "${YELLOW}⚠ $1${NC}"; }
 err()  { echo -e "${RED}✗ $1${NC}"; exit 1; }
+
+APP=${1}
+MSG=${2}
+
+[ -z "$APP" ] && { echo "Uso: $0 [www|plataforma|fp|all] \"mensaje\""; exit 1; }
+[ -z "$MSG" ] && { echo "Uso: $0 $APP \"mensaje del commit\""; exit 1; }
+
+# --- Commit y push ---
+commit_and_push() {
+  log "git add..."
+  git add -A
+
+  if git diff --cached --quiet; then
+    warn "Sin cambios que commitear"
+  else
+    log "git commit: $MSG"
+    git commit -m "$MSG"
+    log "git push..."
+    git push
+  fi
+}
 
 deploy_app() {
   local app=$1
@@ -48,8 +68,12 @@ deploy_app() {
   log "[$app] ✅ desplegado correctamente"
 }
 
+
+
 # --- Main ---
-APP=${1:-all}
+# Primero commit y push
+commit_and_push
+
 
 case $APP in
   www|plataforma|fp)
@@ -66,3 +90,5 @@ case $APP in
     exit 1
     ;;
 esac
+
+
