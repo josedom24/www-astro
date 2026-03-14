@@ -71,7 +71,7 @@ Astro en cambio ofrece una experiencia de desarrollo moderna, usa JavaScript/Typ
 
 ## El proceso de migración
 
-Hay que hablar de que empece probando distintas plantillas de astro como el starlight. Sin embargo, depués de varios intentros de hacerlo encajar en lo que necesitaba (www es un blog, y ese tema está pensado para la documentación), volví a comenzar desde = sin utilizar ninguna plantilla, y ayudado por la IA (especialmente por claude) fuí construyendo la página (componentes, layouts, páginas, estilos,...) desde 0.
+Hay que hablar de que empece probando distintas plantillas de astro como el starlight. Sin embargo, después de varios intentos de hacerlo encajar en lo que necesitaba (www es un blog, y ese tema está pensado para la documentación), volví a comenzar desde = sin utilizar ninguna plantilla, y ayudado por la IA (especialmente por claude) fui construyendo la página (componentes, layouts, páginas, estilos,...) desde 0.
 
 **Probando plantillas: Starlight y por qué no funcionó**
 
