@@ -35,8 +35,6 @@ Jekyll ha sido una herramienta excelente durante años, pero tiene algunas limit
 * La velocidad de build con muchos posts es lenta.
 * La integración con herramientas modernas de frontend es complicada.
 
----
-
 **Minimal Mistakes y los warnings de construcción**
 
 Antes de pasarme a Astro, mi web funcionaba con Jekyll y la plantilla **Minimal Mistakes**, una de las más populares del ecosistema Jekyll. Con el tiempo empezaron a aparecer warnings en cada build, una señal de que mantener el sitio en pie iba a exigir cada vez más esfuerzo.

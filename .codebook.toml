@@ -1,1 +1,5 @@
 dictionaries = ["es"]
+words = [
+    "layouts",
+    "reutilizables",
+]
