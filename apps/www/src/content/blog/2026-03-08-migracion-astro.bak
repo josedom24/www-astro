@@ -12,6 +12,8 @@ Desde septiembre de 2018, mi página **Pledin - Plataforma Educativa Informátic
 
 ## ¿Qué es Astro?
 
+Hola que tal com
+
 [Astro](https://astro.build) es un framework moderno para construir sitios web, especialmente pensado para sitios donde el contenido es lo más importante: blogs, documentación, portfolios...
 
 La filosofía de Astro es sencilla: generar páginas HTML simples y rápidas, enviando al navegador solo lo imprescindible. Mientras otros frameworks cargan grandes cantidades de JavaScript aunque no haga falta, Astro hace justo lo contrario.
