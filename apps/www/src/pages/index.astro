@@ -46,8 +46,10 @@ const blogPreviews = Object.fromEntries(
 );
 
 // Bloques "más posts"
-const morePosts = allPosts.slice(5, 11);
-const moreMicroposts = allMicroposts.slice(5, 11);
+const blogEnFeed = recentMixed.filter(item => item.type === 'blog').length;
+const microblogEnFeed = recentMixed.filter(item => item.type === 'microblog').length;
+const morePosts = allPosts.slice(blogEnFeed, blogEnFeed + 6);
+const moreMicroposts = allMicroposts.slice(microblogEnFeed, microblogEnFeed + 6);
 ---
 
 <BaseLayout title="Inicio">
