@@ -1,0 +1,95 @@
+[
+  {
+    "title": "Curso: Profundización a la virtualización con KVM/libvirt (2025)",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/kvm2/"
+      }
+    ]
+  },
+  {
+    "title": "1. Introducción a la virtualización",
+    "children": [
+      { "title": "¿Qué es la virtualización?", "url": "/pledin/cursos/kvm2/contenido/modulo1/virtualizacion/" },
+      { "title": "Tipos de virtualización", "url": "/pledin/cursos/kvm2/contenido/modulo1/tipos/" },
+      { "title": "Introducción a QEMU/KVM", "url": "/pledin/cursos/kvm2/contenido/modulo1/qemu-kvm/" },
+      { "title": "Introducción a libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo1/libvirt/" },
+      { "title": "Introducción a LXC", "url": "/pledin/cursos/kvm2/contenido/modulo1/lxc/" }
+    ]
+  },
+  {
+    "title": "2. Instalación de QEMU/KVM + libvirt",
+    "children": [
+      { "title": "Preparación del escenario de instalación", "url": "/pledin/cursos/kvm2/contenido/modulo2/escenario/" },
+      { "title": "Instalación de QEMU/KVM + libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo2/instalacion/" },
+      { "title": "Conexión local no privilegiada a libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo2/session/" },
+      { "title": "Conexión local privilegiada a libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo2/system/" },
+      { "title": "Conexión remota a libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo2/remoto/" }
+    ]
+  },
+  {
+    "title": "3. Creación de máquinas virtuales desde la línea de comandos",
+    "children": [
+      { "title": "Creación de máquinas virtuales con virt-install", "url": "/pledin/cursos/kvm2/contenido/modulo3/virt-install/" },
+      { "title": "Características de las máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo3/caracteristicas/" },
+      { "title": "Gestión de máquinas virtuales con virsh", "url": "/pledin/cursos/kvm2/contenido/modulo3/gestion/" },
+      { "title": "Definición XML de una máquina virtual", "url": "/pledin/cursos/kvm2/contenido/modulo3/xml/" },
+      { "title": "Modificación de la definición de una máquina virtual", "url": "/pledin/cursos/kvm2/contenido/modulo3/modificacion/" }
+    ]
+  },
+  {
+    "title": "4. Creación de máquinas virtuales con virt-manager",
+    "children": [
+      { "title": "Primeros pasos con virt-manager", "url": "/pledin/cursos/kvm2/contenido/modulo4/instalacion/" },
+      { "title": "Creación de máquinas virtuales Linux", "url": "/pledin/cursos/kvm2/contenido/modulo4/linux/" },
+      { "title": "Gestión de máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo4/gestion/" },
+      { "title": "Detalles de las máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo4/detalles/" },
+      { "title": "Creación de máquinas virtuales Windows", "url": "/pledin/cursos/kvm2/contenido/modulo4/windows/" },
+      { "title": "Acceso a las máquinas virtuales desde el exterior" }
+    ]
+  },
+  {
+    "title": "5. Gestión del almacenamiento en QEMU/KVM + libvirt",
+    "children": [
+      { "title": "Introducción al almacenamiento", "url": "/pledin/cursos/kvm2/contenido/modulo5/almacenamiento/" },
+      { "title": "Introducción al almacenamiento en QEMU/KVM + libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo5/introduccion/" },
+      { "title": "Gestión de Pools de Almacenamiento", "url": "/pledin/cursos/kvm2/contenido/modulo5/pool/" },
+      { "title": "Gestión de volúmenes de almacenamiento con libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo5/volumen1/" },
+      { "title": "Gestión de volúmenes de almacenamiento con herramientas específicas", "url": "/pledin/cursos/kvm2/contenido/modulo5/volumen2/" },
+      { "title": "Trabajar con volúmenes en las máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo5/volumen-vm/" }
+    ]
+  },
+  {
+    "title": "6. Clonación e instantáneas de máquinas virtuales",
+    "children": [
+      { "title": "Clonación de máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo6/clonacion/" },
+      { "title": "Plantillas de máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo6/template/" },
+      { "title": "Clonación completa a partir de plantillas", "url": "/pledin/cursos/kvm2/contenido/modulo6/completa/" },
+      { "title": "Clonación enlazada a partir de plantillas", "url": "/pledin/cursos/kvm2/contenido/modulo6/ligera/" },
+      { "title": "Instantáneas de máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo6/snapshot/" }
+    ]
+  },
+  {
+    "title": "7. Gestión de redes en QEMU/KVM + libvirt",
+    "children": [
+      { "title": "Introducción a la gestión de redes en QEMU/KVM + libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo7/introduccion/" },
+      { "title": "Definición de Redes Virtuales (Privadas) en libvirt", "url": "/pledin/cursos/kvm2/contenido/modulo7/definicion/" },
+      { "title": "Gestión de Redes Virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo7/virtuales/" },
+      { "title": "Creación de un Puente Externo con Linux Bridge", "url": "/pledin/cursos/kvm2/contenido/modulo7/bridge/" },
+      { "title": "Gestión de Redes Puentes (Públicas)", "url": "/pledin/cursos/kvm2/contenido/modulo7/puentes/" },
+      { "title": "Configuración de red en las máquinas virtuales", "url": "/pledin/cursos/kvm2/contenido/modulo7/configuracion/" }
+    ]
+  },
+  {
+    "title": "8. Trabajando con contenedores LXC",
+    "children": [
+      { "title": "Introducción a Linux Containers (LXC)", "url": "/pledin/cursos/kvm2/contenido/modulo8/introduccion/" },
+      { "title": "Creación y gestión de contenedores LXC", "url": "/pledin/cursos/kvm2/contenido/modulo8/creacion/" },
+      { "title": "Configuración de contenedores LXC", "url": "/pledin/cursos/kvm2/contenido/modulo8/configuracion/" },
+      { "title": "Redes en LXC", "url": "/pledin/cursos/kvm2/contenido/modulo8/redes/" },
+      { "title": "Almacenamiento en LXC", "url": "/pledin/cursos/kvm2/contenido/modulo8/almacenamiento/" },
+      { "title": "Introducción a LXD", "url": "/pledin/cursos/kvm2/contenido/modulo8/lxd/" }
+    ]
+  }
+]

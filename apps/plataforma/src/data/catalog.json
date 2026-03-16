@@ -72,9 +72,9 @@
     "courses": [
       {
         "title": "Curso: Profundización a la virtualización con KVM/libvirt (2025)",
-        "url": "https://github.com/josedom24/curso_kvm_ow/blob/main/curso2",
+        "url": "cursos/kvm2/",
         "year": "2025",
-        "external": "github",
+        "external": "none",
         "ow": true
       },
       {
