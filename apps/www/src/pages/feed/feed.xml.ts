@@ -45,7 +45,7 @@ export async function GET(context: APIContext) {
   }));
 
   const items = [...blogItems, ...microItems]
-    .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
+    .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf()).slice(0, 20);
 
   return rss({
     title: 'Blog de Pledin',
