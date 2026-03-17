@@ -5,7 +5,7 @@ title: Internet en la vida de nuestros hijos, ¿cómo transformar los riesgos en
 
 
 guid: http://www.josedomingo.org/pledin/?p=352
-slug: 2010/11/internet-en-la-vida-de-nuestros-hijos-%c2%bfcomo-transformar-los-riesgos-en-oportunidades
+slug: blog/2010/11/internet-en-la-vida-de-nuestros-hijos-como-transformar-los-riesgos-en-oportunidades
 
   
 tags:

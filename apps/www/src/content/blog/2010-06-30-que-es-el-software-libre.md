@@ -5,7 +5,7 @@ title: ¿Qué es el software libre?
 
 
 guid: http://www.josedomingo.org/pledin/?p=238
-slug: 2010/06/%c2%bfque-es-el-software-libre
+slug: blog/2010/06/que-es-el-software-libre
 
   
 tags:
