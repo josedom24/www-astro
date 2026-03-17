@@ -224,3 +224,10 @@ Para automatizar el despliegue se ha creado un script que realiza tres acciones 
 ./scripts/deploy.sh www "Nuevo post sobre Docker"
 ./scripts/deploy.sh all "Actualización de contenidos"
 ```
+
+## Migración a Astro 6
+
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+tus schemas son simples y compatibles, pero hay que importar z desde astro/zod en lugar de astro:content:
