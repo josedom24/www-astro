@@ -1,0 +1,78 @@
+[
+  {
+    "title": "Curso: Introducción a la virtualización con KVM/libvirt usando virt-manager",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/kvm1/"
+      }
+    ]
+  },
+  {
+    "title": "1. Introducción a la virtualización con KVM/libvirt",
+    "children": [
+      { "title": "¿Qué es la virtualización?", "url": "/pledin/cursos/kvm1/contenidos/unidad01/clase1/" },
+      { "title": "Tipos de virtualización", "url": "/pledin/cursos/kvm1/contenidos/unidad01/clase2/" },
+      { "title": "Introducción a QEMU/KVM y libvirt", "url": "/pledin/cursos/kvm1/contenidos/unidad01/clase3/" }
+    ]
+  },
+  {
+    "title": "2. Introducción a virt-manager",
+    "children": [
+      { "title": "Preparación del escenario de instalación", "url": "/pledin/cursos/kvm1/contenidos/unidad02/clase1/" },
+      { "title": "Instalación de virt-manager", "url": "/pledin/cursos/kvm1/contenidos/unidad02/clase2/" },
+      { "title": "Conexión local privilegiada a libvirt con virt-manager", "url": "/pledin/cursos/kvm1/contenidos/unidad02/clase3/" }
+    ]
+  },
+  {
+    "title": "3. Creación de máquinas virtuales con virt-manager",
+    "children": [
+      { "title": "Creación de máquinas virtuales Linux", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase1/" },
+      { "title": "Características de las máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase2/" },
+      { "title": "Gestión de máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase3/" },
+      { "title": "Detalles de las máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase4/" },
+      { "title": "Creación de máquinas virtuales Windows (1ª parte)", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase5/" },
+      { "title": "Creación de máquinas virtuales Windows (2ª parte)", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase6/" },
+      { "title": "Acceso a las máquinas virtuales desde el exterior", "url": "/pledin/cursos/kvm1/contenidos/unidad03/clase7/" }
+    ]
+  },
+  {
+    "title": "4. Gestión del almacenamiento en virt-manager",
+    "children": [
+      { "title": "Introducción al almacenamiento en virt-manager", "url": "/pledin/cursos/kvm1/contenidos/unidad04/clase1/" },
+      { "title": "Gestión de grupos de almacenamiento", "url": "/pledin/cursos/kvm1/contenidos/unidad04/clase2/" },
+      { "title": "Gestión de volúmenes de almacenamiento", "url": "/pledin/cursos/kvm1/contenidos/unidad04/clase3/" },
+      { "title": "Trabajar con volúmenes en las máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad04/clase4/" }
+    ]
+  },
+  {
+    "title": "5. Clonación e instantáneas de máquinas virtuales",
+    "children": [
+      { "title": "Clonación completa de máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad05/clase1/" },
+      { "title": "Clonación enlazada de máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad05/clase2/" },
+      { "title": "Instantáneas de máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad05/clase3/" }
+    ]
+  },
+  {
+    "title": "6. Gestión de redes en virt-manager",
+    "children": [
+      { "title": "Introducción a la gestión de redes", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase1/" },
+      { "title": "Definición de redes", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase2/" },
+      { "title": "Creación de un puente externo", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase3/" },
+      { "title": "Configuración de red en las máquinas virtuales", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase4/" },
+      { "title": "Ejemplo 1: Trabajando con redes puentes públicas", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase5/" },
+      { "title": "Ejemplo 2: Trabajando con redes virtuales privadas", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase6/" },
+      { "title": "Ejemplo 3: Configuración de un router/NAT", "url": "/pledin/cursos/kvm1/contenidos/unidad06/clase7/" }
+    ]
+  },
+  {
+    "title": "7. Temas adicionales",
+    "children": [
+      { "title": "Acceso a la máquina virtual usando la consola serie", "url": "/pledin/cursos/kvm1/contenidos/unidad07/clase1/" },
+      { "title": "Creación de máquinas virtuales por red", "url": "/pledin/cursos/kvm1/contenidos/unidad07/clase2/" },
+      { "title": "Conexión local no privilegiada a libvirt", "url": "/pledin/cursos/kvm1/contenidos/unidad07/clase3/" },
+      { "title": "Conexión remota a libvirt", "url": "/pledin/cursos/kvm1/contenidos/unidad07/clase4/" },
+      { "title": "Gestión de máquinas virtuales con Cockpit", "url": "/pledin/cursos/kvm1/contenidos/unidad07/clase5/" }
+    ]
+  }
+]

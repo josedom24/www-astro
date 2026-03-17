@@ -7,7 +7,7 @@ toc: false
 
 * Repositorio del curso: [https://github.com/josedom24/curso_kvm_ow/blob/main/curso2](https://github.com/josedom24/curso_kvm_ow/blob/main/curso2)
 
-El segundo curso está pensado para quienes ya conocen los fundamentos y desean **profundizar en la virtualización usando herramientas de línea de comandos**.
+Este curso está pensado para quienes ya conocen los fundamentos y desean **profundizar en la virtualización usando herramientas de línea de comandos**.
 
 En este curso se trabaja, entre otros aspectos:
 
@@ -20,8 +20,6 @@ En este curso se trabaja, entre otros aspectos:
 Este enfoque resulta especialmente útil para **administradores de sistemas**, laboratorios avanzados o escenarios donde no se dispone de entorno gráfico.
 
 ## Contenidos
-
-# Curso: Profundización a la virtualización con KVM/libvirt
 
 1. Introducción a la virtualización con KVM/libvirt
     * [¿Qué es la virtualización?](/pledin/cursos/kvm2/contenidos/unidad01/clase1/)

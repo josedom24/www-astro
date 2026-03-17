@@ -79,9 +79,9 @@
       },
       {
         "title": "Curso: Introducción a la virtualización con KVM/libvirt usando virt-manager (2025)",
-        "url": "https://github.com/josedom24/curso_kvm_ow/blob/main/curso1",
+        "url": "cursos/kvm1/",
         "year": "2025",
-        "external": "github",
+        "external": "none",
         "ow": true
       },
       {
