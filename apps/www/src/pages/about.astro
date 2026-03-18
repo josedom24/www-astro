@@ -3,7 +3,7 @@ import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
 import Comments from '@pledin/ui/components/Comments.astro';
 import Giscus from '@pledin/ui/components/Giscus.astro';
 const comments = [
-  
+
   { "name": "Alberto Molina", "date": "2010-04-15", "message": "Enhorabuena por el cambio, me gusta! Ahora que has cogido ritmo sólo falta que hagas lo mismo en el Instituto.", "email": "68c0903a5d4600776c1b1f876e43f7e4" },
   { "name": "ifanlo", "date": "2010-05-13", "message": "Hola, José!<br/>Buscando cursos sobre OOo Base, he llegado hasta aquí (en Guadalinex no hay manera de entrar al curso online).<br/> No conocía este sitio, te felicito por él, está bien lleno de recursos (y no pones trampas publicitarias como hago yo).<br/> Mira, sobre OOo Base, no sé si ya conocías éste: http://superalumnos.net/tutorial-de-openoffice-org-base<br/> Lo pasé a ODF y PDF a partir de unos materiales online originales de un profesor de la U. de Extremadura: http://tutorialopenofficebase.wordpress.com/<br/> <br/> Dispone de ello a tu comodidad. Saludos." },
   { "name": "Valeria Delgado", "date": "2010-06-25", "message": "Hola! la pagina esta muy bueno. Gracias." },
@@ -36,8 +36,9 @@ const comments = [
 
 <BaseLayout title="Presentación">
   <div class="about-wrapper">
-
+<img src="/pledin/assets/2026/03/logo_3.gif" alt="Pledin" class="logo" />
     <div class="profile">
+
       <img src="/pledin/assets/avatar2.png" alt="José Domingo Muñoz" class="avatar" />
       <div class="profile-info">
         <h2>José Domingo Muñoz</h2>
@@ -185,5 +186,9 @@ const comments = [
     border-top: 2px solid var(--color-border);
     color: var(--color-text) !important;
   }
-
+  .logo {
+    width: auto;
+    max-height: 120px;
+    flex-shrink: 0;
+  }
 </style>
