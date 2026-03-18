@@ -8,7 +8,7 @@ tags:
   - Pledin
 ---
 
-![pledin](/pledin/assets/2026/03/logo_3.gif)
+![pledin](/pledin/assets/2026/03/astro.svg)
 
 Desde septiembre de 2018, mi página **Pledin - Plataforma Educativa Informática** ha sido una web estática generado por Jekyll, si quieres más información de como fue construida te invito a leer el artículo: [Bienvenidos a PLEDIN 3.0](https://www.josedomingo.org/pledin/2018/09/bienvenidos-a-pledin30/). Después de estos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y el proceso que he llevado a cabo para esta migración.
 
