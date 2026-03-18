@@ -231,3 +231,13 @@ curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 tus schemas son simples y compatibles, pero hay que importar z desde astro/zod en lugar de astro:content:
+
+
+cd apps/www && npx @astrojs/upgrade
+cd ../plataforma && npx @astrojs/upgrade
+cd ../fp && npx @astrojs/upgrade
+
+
+rm -rf node_modules
+npm install
+npx astro --version
