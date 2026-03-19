@@ -10,7 +10,7 @@ tags:
 
 ![pledin](/pledin/assets/2026/03/astro.svg)
 
-Desde septiembre de 2018, mi página **Pledin - Plataforma Educativa Informática** ha sido una web estática generado por Jekyll, si quieres más información de como fue construida te invito a leer el artículo: [Bienvenidos a PLEDIN 3.0](https://www.josedomingo.org/pledin/2018/09/bienvenidos-a-pledin30/). Después de estos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y el proceso que he llevado a cabo para esta migración.
+Desde septiembre de 2018, mi página **Pledin - Plataforma Educativa Informática** ha sido una web estática generada por Jekyll, si quieres más información de como fue construida te invito a leer el artículo: [Bienvenidos a PLEDIN 3.0](https://www.josedomingo.org/pledin/2018/09/bienvenidos-a-pledin30/). Después de estos años usando **Jekyll** como generador de sitios estáticos para este blog, he decidido migrar a **Astro**. En este artículo explico qué es Astro, por qué lo he elegido y el proceso que he llevado a cabo para esta migración.
 
 ## ¿Qué es Astro?
 
@@ -51,7 +51,7 @@ Frente a esto, Astro ofrece una experiencia de desarrollo moderna basada en Java
 
 ## El proceso de migración
 
-Hay que hablar de que empecé probando distintas plantillas de astro como **Starlight**. Sin embargo, después de varios intentos de hacerlo encajar en lo que necesitaba (www es un blog, y ese tema está pensado para la documentación), volví a comenzar de nuevo sin utilizar ninguna plantilla, fui construyendo desde 0, los distintos elementos de la página:
+Debo mencionar que empecé probando distintas plantillas de astro como **Starlight**. Sin embargo, después de varios intentos de hacerlo encajar en lo que necesitaba (www es un blog, y ese tema está pensado para la documentación), volví a comenzar de nuevo sin utilizar ninguna plantilla, fui construyendo desde 0, los distintos elementos de la página:
 
 * **Componentes**: cabecera, pie de página, tarjetas de post, sistema de navegación...
 * **Layouts**: un layout base y layouts específicos para la portada, los posts y las páginas estáticas.
