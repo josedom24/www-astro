@@ -9,6 +9,5 @@ tags:
 Historia de Linux desde los años 60 hasta el día de hoy.
 
 <a href="/pledin/assets/2025/10/linux.jpg">
-  <img src="/pledin/assets/2025/10/linux.jpg" width="400" alt="" />
+  <img src="/pledin/assets/2025/10/linux.jpg" width="400" alt="Historia de Linux" />
 </a>
-
