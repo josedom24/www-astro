@@ -25,7 +25,7 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
       <p class="toc-title">En esta página</p>
       <ul>
         <li class="depth-1">
-          <a href="#">{title}</a>
+          <a href="#top">{title}</a>
         </li>
         {filteredHeadings.map(h => (
           <li class:list={[`depth-${h.depth}`]}>
