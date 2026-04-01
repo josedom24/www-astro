@@ -119,6 +119,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           new PagefindUI({ element: '#search', baseUrl: `${base}/` });
           initialized = true;
         }
+        setTimeout(() => {
+             modal?.querySelector('.pagefind-ui__search-input')?.focus();
+           }, 50);
       });
 
       backdrop?.addEventListener('click', () => {
