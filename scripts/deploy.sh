@@ -44,14 +44,11 @@ deploy_app() {
 
   case $app in
     www)        DIST_SRC="apps/www/dist/"
-                #DIST_DST="/home/debian/www/blog_pledin/html/pledin/" ;;
-                DIST_DST="/home/debian/prueba-astro/blog_pledin/html/pledin/" ;;
+                DIST_DST="/home/debian/www/blog_pledin/html/pledin/" ;;
     plataforma) DIST_SRC="apps/plataforma/dist/"
-                #DIST_DST="/home/debian/www/plataforma_pledin/html/pledin/" ;;
-                DIST_DST="/home/debian/prueba-astro/plataforma_pledin/html/pledin/" ;;
+                DIST_DST="/home/debian/www/plataforma_pledin/html/pledin/" ;;
     fp)         DIST_SRC="apps/fp/dist/"
-                #DIST_DST="/home/debian/www/fp_pledin/html/" ;;
-                DIST_DST="/home/debian/prueba-astro/fp_pledin/html/" ;;
+                DIST_DST="/home/debian/www/fp_pledin/html/" ;;
     *) err "App desconocida: $app" ;;
   esac
 
