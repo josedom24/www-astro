@@ -164,3 +164,8 @@ pre.astro-code span {
 .aside-danger  .aside-title { color: #b91c1c; }
 .aside-content p { margin: 0; font-size: 0.95rem; }
 .aside-content p + p { margin-top: 0.5rem; }
+
+.pagefind-ui__results {
+  max-height: 60vh;
+  overflow-y: auto;
+}
