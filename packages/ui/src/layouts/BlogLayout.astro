@@ -128,6 +128,7 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
 
   @media (max-width: 70rem) {
     .page-wrapper.with-toc {
+      max-width: 100%;
       grid-template-columns: var(--sidebar-width) 1fr;
     }
     .toc { display: none; }
@@ -135,6 +136,7 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
 
   @media (max-width: 50rem) {
     .page-wrapper {
+      max-width: 100%;
       grid-template-columns: 1fr;
     }
     .sidebar { display: none; }
