@@ -126,19 +126,15 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
   padding-left: 1.75rem;
 }
 
-  @media (max-width: 70rem) {
-    .page-wrapper.with-toc {
-      grid-template-columns: var(--sidebar-width) 1fr;
-    }
-    .toc { display: none; }
+@media (max-width: 70rem) {
+  .page-wrapper,
+  .page-wrapper.with-toc {
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
-
-  @media (max-width: 50rem) {
-    .page-wrapper {
-      grid-template-columns: 1fr;
-    }
-    .sidebar { display: none; }
-  }
+  .sidebar { display: none; }
+  .toc { display: none; }
+}
 
 
 </style>
