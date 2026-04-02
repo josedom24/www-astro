@@ -41,7 +41,7 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
 
 <style>
   .page-wrapper {
-    max-width: calc(var(--sidebar-width) + var(--content-width) + 4rem);
+    max-width: min(calc(var(--sidebar-width) + var(--content-width) + 4rem), 100%);
     margin: 0 auto;
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
@@ -51,7 +51,7 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
   }
 
   .page-wrapper.with-toc {
-    max-width: calc(var(--sidebar-width) + var(--content-width) + 16rem + 4rem);
+    max-width: min(calc(var(--sidebar-width) + var(--content-width) + 16rem + 4rem), 100%);
     grid-template-columns: var(--sidebar-width) 1fr 14rem;
   }
 
