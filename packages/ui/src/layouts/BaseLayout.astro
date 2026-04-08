@@ -18,7 +18,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href={`${base}/assets/favicon.png`} />
     <link rel="shortcut icon" href={`${base}/assets/favicon.png`} />
-    <link rel="stylesheet" href={`${base}/pagefind/pagefind-ui.css`} />
     <title>{title} | Pledin</title>
     <style>
       html { scroll-padding-top: var(--nav-height); }
@@ -108,50 +107,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p>© {new Date().getFullYear()} José Domingo Muñoz — <a href={`${base}/about/`}>Presentación</a></p>
     </footer>
 
-    <script type="module">
-      import { Instance, Input, ResultList } from "https://cdn.jsdelivr.net/npm/@pagefind/modular-ui@1.0.0/+esm";
+    <script define:vars={{ base }}>
+      async function setupSearch() {
+        const { Instance, Input, ResultList } = await import("https://cdn.jsdelivr.net/npm/@pagefind/modular-ui@1.0.0/+esm");
 
-      const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-      const toggle = document.getElementById('search-toggle');
-      const modal = document.getElementById('search-modal');
-      const backdrop = modal?.querySelector('.search-backdrop');
-      let instance = null;
+        const toggle = document.getElementById('search-toggle');
+        const modal = document.getElementById('search-modal');
+        const backdrop = modal?.querySelector('.search-backdrop');
+        let instance = null;
 
-      async function initSearch() {
-        if (instance) return;
+        async function initSearch() {
+          if (instance) return;
+          instance = new Instance({ bundlePath: `${base}/pagefind/` });
+          instance.add(new Input({ containerElement: '#search-input-container', placeholder: 'Buscar...' }));
+          instance.add(new ResultList({ containerElement: '#search-results-container' }));
+        }
 
-        instance = new Instance({
-          bundlePath: `${base}/pagefind/`
+        toggle?.addEventListener('click', async () => {
+          modal?.classList.toggle('hidden');
+          if (!instance) await initSearch();
+          setTimeout(() => {
+            modal?.querySelector('input')?.focus();
+          }, 50);
         });
 
-        instance.add(new Input({
-          containerElement: '#search-input-container',
-          placeholder: 'Buscar...',
-        }));
+        backdrop?.addEventListener('click', () => {
+          modal?.classList.add('hidden');
+        });
 
-        instance.add(new ResultList({
-          containerElement: '#search-results-container',
-        }));
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') modal?.classList.add('hidden');
+        });
       }
 
-      toggle?.addEventListener('click', async () => {
-        modal?.classList.toggle('hidden');
-        if (!instance) {
-          await initSearch();
-        }
-        setTimeout(() => {
-          const input = modal?.querySelector('input');
-          input?.focus();
-        }, 50);
-      });
-
-      backdrop?.addEventListener('click', () => {
-        modal?.classList.add('hidden');
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') modal?.classList.add('hidden');
-      });
+      setupSearch();
     </script>
 
     <script define:vars={{ base }}>
