@@ -12,6 +12,6 @@ Hace unos meses, posiblemente en la última actualización de la página de [**N
          
 Como no soy dado a revisar la página periódicamente, he desarrollado un pequeño script en Python que genera automáticamente el archivo XML del feed. Al alojarlo en GitHub Pages, puedo volver a acceder a él desde mi cliente RSS habitual.
 
-Gracias a GitHub Actions, el feed se actualiza automáticamente. Podéis suscribiros a las novedades accediendo a: `https://josedom24.github.io/educacion-novedades-rss/feed.xml`.
+Gracias a GitHub Actions, el feed se actualiza automáticamente. Podéis suscribiros a las novedades accediendo a este [link](https://josedom24.github.io/educacion-novedades-rss/feed.xml).
 
 Para quienes tengan curiosidad o quieran ver el código, os dejo el [repositorio](https://github.com/josedom24/educacion-novedades-rss).
