@@ -19,8 +19,8 @@ NOTICE_MAP = {
 }
 
 PATTERN = re.compile(
-    r'\{%\s*capture\s+notice-text\s*%\}(.*?)\{%\s*endcapture\s*%\}\s*'
-    r'<div class="([^"]+)">\s*\{\{\s*notice-text\s*\|\s*markdownify\s*\}\}\s*</div>',
+    r'\{%\s*capture\s+(\w+)\s*%\}(.*?)\{%\s*endcapture\s*%\}\s*'
+    r'<div class="([^"]+)">\s*\{\{\s*\w+\s*\|\s*markdownify\s*\}\}\s*</div>',
     re.DOTALL
 )
 
@@ -29,8 +29,8 @@ def convert_file(path: str) -> bool:
         content = f.read()
 
     def replace(m):
-        body = m.group(1).strip()
-        css_class = m.group(2).strip()
+        body = m.group(2).strip()
+        css_class = m.group(3).strip()
         directive_type = NOTICE_MAP.get(css_class, 'note')
         # Detectar si hay un h2 al principio para usarlo como título
         title_match = re.match(r'^##\s+(.+)$', body, re.MULTILINE)

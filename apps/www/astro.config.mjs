@@ -4,6 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { shikiConfig } from '../../packages/ui/src/shiki.config.mjs';
+import remarkDirective from 'remark-directive';
+import remarkAsides from '../../packages/ui/src/utils/remark-asides.mjs';
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,7 +15,7 @@ export default defineConfig({
   site: 'https://www.josedomingo.org',
   base: '/pledin',
   integrations: [mdx(), sitemap()],
-  markdown: { shikiConfig },
+  markdown: { shikiConfig, remarkPlugins: [remarkDirective, remarkAsides] },
   vite: {
     resolve: {
       alias: {
