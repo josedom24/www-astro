@@ -109,35 +109,52 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <script define:vars={{ base }}>
       async function setupSearch() {
-        const { Instance, Input, ResultList } = await import("https://cdn.jsdelivr.net/npm/@pagefind/modular-ui@1.0.0/+esm");
+        try {
+          const { Instance, Input, ResultList } = await import("https://cdn.jsdelivr.net/npm/@pagefind/modular-ui@1.0.0/+esm");
 
-        const toggle = document.getElementById('search-toggle');
-        const modal = document.getElementById('search-modal');
-        const backdrop = modal?.querySelector('.search-backdrop');
-        let instance = null;
+          const toggle = document.getElementById('search-toggle');
+          const modal = document.getElementById('search-modal');
+          const backdrop = modal?.querySelector('.search-backdrop');
+          let instance = null;
 
-        async function initSearch() {
-          if (instance) return;
-          instance = new Instance({ bundlePath: `${base}/pagefind/` });
-          instance.add(new Input({ containerElement: '#search-input-container', placeholder: 'Buscar...' }));
-          instance.add(new ResultList({ containerElement: '#search-results-container' }));
+          async function initSearch() {
+            if (instance) return;
+
+            // Aseguramos que la ruta termine en / para evitar errores de concatenación
+            const bundlePath = `${base}/pagefind/`.replace(/\/$/, '') + '/';
+
+            instance = new Instance({ bundlePath });
+
+            instance.add(new Input({
+              containerElement: '#search-input-container',
+              placeholder: 'Buscar...',
+            }));
+
+            instance.add(new ResultList({
+              containerElement: '#search-results-container'
+            }));
+          }
+
+          toggle?.addEventListener('click', async () => {
+            modal?.classList.toggle('hidden');
+            if (!instance) {
+              await initSearch();
+            }
+            setTimeout(() => {
+              modal?.querySelector('input')?.focus();
+            }, 100);
+          });
+
+          backdrop?.addEventListener('click', () => {
+            modal?.classList.add('hidden');
+          });
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') modal?.classList.add('hidden');
+          });
+        } catch (err) {
+          console.error('Pagefind Modular UI failed to load:', err);
         }
-
-        toggle?.addEventListener('click', async () => {
-          modal?.classList.toggle('hidden');
-          if (!instance) await initSearch();
-          setTimeout(() => {
-            modal?.querySelector('input')?.focus();
-          }, 50);
-        });
-
-        backdrop?.addEventListener('click', () => {
-          modal?.classList.add('hidden');
-        });
-
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') modal?.classList.add('hidden');
-        });
       }
 
       setupSearch();
