@@ -119,6 +119,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         document.querySelector('pagefind-modal')?.open();
       });
 
+      // ESC: limpia primero si hay texto, cierra si el input está vacío
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        const input = document.querySelector('pagefind-modal input');
+        if (input && input.value) {
+          e.stopPropagation();
+          input.value = '';
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      }, true);
+
       const themeToggle = document.getElementById('theme-toggle');
       const iconSun = document.getElementById('icon-sun');
       const iconMoon = document.getElementById('icon-moon');
