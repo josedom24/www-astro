@@ -26,14 +26,11 @@ ello realiza los siguientes pasos:
 7. Muestra los logs del Pod y comprueba que se visualizan los logs de los accesos que hemos realizado en el punto anterior.
 8. Elimina el Pod, y comprueba que ha sido eliminado.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo del fichero yaml que has creado con la definición del Pod.
 2. Pantallazo donde se comprueba que el Pod ha sido creado.
 3. Pantallazo donde se ve la información detallada del Pod.
 4. Pantallazo donde se ve el fichero `index.html` del DocumentRoot.
 5. Pantallazo del navegador accediendo a la aplicación con el `port-forward`.
 6. Pantallazo donde se ve los logs de acceso del Pod.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		

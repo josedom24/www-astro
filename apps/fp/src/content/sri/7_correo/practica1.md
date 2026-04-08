@@ -16,15 +16,12 @@ El envío y recepción se hará desde el servidor usando la herramienta `mail`. 
 * Envía un correo desde el exterior (gmail, hotmail,...) a tu servidor local. 
 * Vamos a configurar distintas mediadas para luchar contra el SPAM: Configura de manera adecuada Postfix para que tenga en cuenta el registro SPF de los correos que recibes (no hace falta configurar la comprobación de DKIM porque se hace automáticamente). 
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Realiza una consulta con `dig` para mostrar la configuración de tu registro SPF.
 2. Envía un correo desde tu servidor a la dirección de correo que te indica la página [Learn and Test DMARC](https://www.learndmarc.com/) y envía una captura de pantalla de la comprobación de que tu configuración SPF, DKIM y DMARC funcionan (**PASS**).
 3. Muestra el log donde se demuestre el envío de correo. Una captura de pantalla donde se vea que el correo ha llegado. Y una comprobación en las cabeceras del correo que muestre que el receptor ha comprobado tus registros SPF, DKIM y DMARC.
 4. Muestra el log donde se vea la recpción del correo desde el exterior. Muestra cómo has leído el correo. Muestra el registro MX de tu dominio con una consulta con `dig`.
 5. Muestra el log del correo para comprobar que se está haciendo el testeo del registro SPF del correo que recibes.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 

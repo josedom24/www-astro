@@ -20,9 +20,7 @@ Hay que tener en cuenta los siguientes aspectos:
     * En `luffy`: tenemos instalado `systemd-resolved`. Investiga como cambiar el servidor DNS cuando tenemos este sistema de resolución funcionando.
 3. Para que podamos usar los nombres cortos (por ejemplo, para hacer `ssh zoro`) es necesario que el parámetro `search` del fichero `/etc/resolv.conf` este configurado con nuestro nombre de dominio. Investiga como hacer el cambio del parámetro `search` en las distintas máquinas.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Entrega la configuración DNS de cada máquina: donde se compruebe que el servidor que están utilizando es **nami** y que tienes configurado de manera adecuada el parámetro `search`.
 2. Entrega la definición de las vistas y de las zonas.
 3. Entrega el resultado de las siguientes consultas desde **sanji**:
@@ -34,5 +32,4 @@ Hay que tener en cuenta los siguientes aspectos:
 4. Entrega el resultado de las siguientes consultas desde **zoro**:
     * La dirección IP de `luffy`.
 5. Desde `luffy` entrega la salida de `ping zoro` y `ssh sanji` para comprobar que funcionan los nombres cortos en la resolución.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

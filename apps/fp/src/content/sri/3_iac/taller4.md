@@ -29,13 +29,11 @@ Los contenidos necesarios para la realización de este taller y para profundizar
 8. Modifica el fichero `Vagrantfile` para añadir a `nodo2` una nueva interfaz de red conectada a la red pública. Debes tener un Linux Bridge `br0`. Comprueba que `nodo2` tiene una nueva interfaz de red con el direccionamiento de la red pública.
 9. Modifica el fichero `Vagrantfile` para añadir a `nodo2` dos nuevos discos de 1Gb de tamaño. Comprueba que efectivamente se han añadido a la máquina. 
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. El fichero `Vagrantfile` con el que has trabajado.
 2. Una captura de pantalla donde se vea la configuración de red del `nodo1` (salida de `ip a`).
 3. Una captura de pantalla donde se vea la configuración de red del `nodo2` (salida de `ip a`).
 4. Captura de pantalla donde se vea el `ping` entre las máquinas usando la red interna muy aislada.
 5. Comprueba que el nodo2 tiene una nueva interfaz conectada a `br0`. Prueba a hacer ping a esa dirección desde el exterior.
 6. Captura de pantalla donde se vea que el `nodo2` tiene añadido los dos nuevos discos.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

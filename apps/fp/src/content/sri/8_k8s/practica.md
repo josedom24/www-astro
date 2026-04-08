@@ -10,9 +10,7 @@ Escribe los ficheros yaml que te posibilitan desplegar la aplicación en minikub
 
 Despliega la aplicación en minikube.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Salida de los comando que nos posibilitan ver los recursos que has creado en el cluster.
 2. Pantallazo accediendo a la aplicación utilizando el servicio.
 3. Pantallazo accediendo a la aplicación utilizando el ingress.
@@ -20,7 +18,7 @@ Despliega la aplicación en minikube.
 5. Escala la aplicación con 3 replicas. Muestra la salida oportuna para ver los pods que se han creado.
 6. Modifica la aplicación, vuelve a crear una imagen con la nueva versión y actualiza el despliegue. No te olvide de anotar la modificación. Muestra la salida del historial de despliegue, la salida de `kubectl get all` y un pantallazo donde se vea la modificación que has realizado.
 7. Entrega un zip con los ficheros yaml. Si has declarado algún ConfigMap o Secret sin definir en un fichero indica la instrucción para su creación.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 ## Ejercicio2: Despliegue en otra distribución de kubernetes
 
@@ -30,10 +28,8 @@ Realiza el despliegue de la aplicación en el nuevo clúster. Es posible que no 
 
 Escala la aplicación y ejecuta `kubectl get pods -o wide` para ver cómo se ejecutan en los distintos nodos del clúster.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Escribe un pequeño tutorial explicando la configuración que has realizado para instalar un clúster multinodo de k8s.
 2. Muestra la salida del comando `kubectl get pods -o wide` después de hacer el escalado.
 3. Enseña al profesor la aplicación funcionando en el nuevo clúster.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

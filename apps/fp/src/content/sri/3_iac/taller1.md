@@ -73,13 +73,11 @@ title: "Taller 1: Ansible - Playbook sencillo"
 	* **¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?**
 	* **Comprobación del funcionamiento: Comprueba que se ha copiado un fichero `foo.txt` en el servidor, accede desde un navegador al servidor y comprueba que aparece el fichero `index.html` que hemos creado.**
 
-{% capture notice-text %}	 
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Entrega los ficheros: `site.yaml`, `hosts` y `template/index.j2`.
 2. Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.
 3. Responde: ¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?
 4. Captura de pantalla, donde se vea el fichero `foo.txt` en el servidor configurado.
 5. Captura de pantalla donde se vea el acceso desde el navegador al servidor web, y se vea el contenido del fichero `index.html`.
 6. Entrega la URL de tu repositorio con el que estás trabajando.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

@@ -146,12 +146,10 @@ Un **servidor DNS esclavo** contiene una réplica de las zonas del servidor maes
 
 	* **Cada vez que realices una modificación en el servidor DNS maestro recuerda incrementar el número de serie**.
 
-{% capture notice-text %}	
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Realización del apartado 8.
 2. Transferencia de zonas: indica para que sirve el número de serie. Explica con tus palabras qué indican los tiempos que se configuran en el registro `SOA`.
 3. Realización del apartado 10.
 4. Realiza el ejercicio que te va a proponer el profesor.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 		

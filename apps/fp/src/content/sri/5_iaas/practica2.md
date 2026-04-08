@@ -21,15 +21,12 @@ En **máquina1 (luffy)** vamos a crear dos contenedores en un red interna, para 
 		* Un usuario `profesor`, que puede utilizar `sudo` sin contraseña. Copia de las claves públicas de todos los profesores en los contenedores para que puedan acceder con el usuario `profesor`.
 	* Cambia la contraseña al usuario `root`.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. El fichero de configuración de uno de los contenedores.
 2. La salida del comando `sudo lxc-ls -f`.
 3. Prueba de funcionamiento de qué los FQDN están bien configurados en los dos contenedores.
 4. Prueba de funcionamiento de que se pueden acceder a los contenedores por ssh.
 5. Prueba de funcionamiento de que los contenedores tienen acceso a internet accediendo a un nombre de dominio, para comprobar que funciona el DNS.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 Finalmente comprueba que todo el escenario está funcionando después de reiniciar la **máquina1 (luffy)**.

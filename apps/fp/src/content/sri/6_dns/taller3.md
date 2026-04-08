@@ -58,11 +58,9 @@ title: "Taller 3: Delegación de subdominios con bind9"
 
 4. No modifiques el fichero `/etc/resolv.conf` del cliente, es decir, las consultas se hacen al servidor DNS principal, cuando preguntemos por un nombre en la zona delegada el servidor DNS principal, preguntará al servidor DNS delegado y guardara la respuesta en su caché. Pregunta por la dirección ip del nombre `www.informatica.tunombre.org`. ¿Quién ha respondido?. 
 
-{% capture notice-text %}	
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Una captura de pantalla donde se vea la consulta para averiguar la dirección IP de `www.informatica.tunombre.org`.
 2. Una captura de pantalla donde se vea la consulta para averiguar el servidor DNS con autoridad para la zona del dominio `informatica.tunombre.org`. ¿Es el mismo que el servidor DNS con autoridad para la zona `tunombre.org`?
 3. Una captura de pantalla donde se vea la consulta para averiguar el servidor de correo configurado para `informatica.tunombre.org`.
 4. Realiza el ejercicio que te va a proponer el profesor.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		

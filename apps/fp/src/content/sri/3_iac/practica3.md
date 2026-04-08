@@ -18,12 +18,9 @@ Ya tenemos el servidor SAN preparado, ya podemos empezar a compartir dispositivo
 3. Crea un target con 2 LUN (correspondientes a dos volúmenes lógicos de 512Mb cada uno) y autenticación por CHAP y conéctala a un cliente windows. Explica cómo se escanea la red en windows y cómo se utilizan las unidades nuevas (formateándolas con NTFS)
 4. El sistema debe funcionar después de un reinicio de las máquinas.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Las instrucciones que has ejecutados en el cliente iscsi para escanear los targets y formatear u montar el dispositivo compartido.
 2. La configuración que has realizado para que el montaje sea automático tras iniciar el sistema.
 3. Capturas de pantallas donde se vea cómo se ha escaneado los targets y se han formateado los dispositivos de bloque y se han montado en el cliente windows.
-4. Se realizará una prueba delante del profesor para comprobar que el sistema funciona después de un reinicio. 
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+4. Se realizará una prueba delante del profesor para comprobar que el sistema funciona después de un reinicio.
+:::		

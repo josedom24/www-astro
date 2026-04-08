@@ -31,12 +31,9 @@ En este ejercicio debes responder desde tu cuenta de correo personal al correo q
 
 Muestra el log del sistema donde se comprueba que el correo se ha recibido con éxito.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Prueba de funcionamiento del ejercicio1. Se debe mostrar el log para asegurarse que se ha enviado el correo.
 2. Muestra las cabeceras del correo recibido en el ejercicio 2 mostrando las cabeceras donde vemos los servidores por los que ha pasado el correo.
 3. Muestra el log del sistema donde se comprueba que el correo se ha recibido con éxito en el ejercicio 3.
 4. Realiza el ejercicio que os va a plantear el profesor.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		

@@ -27,9 +27,7 @@ Los siguientes pasos los debes hacer con el cliente de OpenStack, puedes entrar 
 7. Configura la instancia `maquina-router` para que funcione como router-nat. Comprueba que el cliente tiene acceso a internet. Instala un servidor web en el cliente.
 8. Accede desde el exterior con un navegador web al servidor web del cliente.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Los comandos OSC para crear la red `red-externa`.
 2. Los comandos OSC y sus salidas, para visualizar las redes que tienes en tu proyecto y los routers.
 3. Cuando crees la instancia `maquina-router`, accede a ella y comprueba la IP fija que ha tomando. Responde: ¿Has podido añadir una IP flotante a esta nueva instancia? Razona la respuesta.
@@ -38,4 +36,4 @@ Los siguientes pasos los debes hacer con el cliente de OpenStack, puedes entrar 
 6. Comandos OSC para deshabilitar la seguridad de los puertos de la `red-interna`.
 7. Comprobación de que la `maquina-cliente` tiene conexión al exterior.
 8. Comprobación del acceso al servidor web de la `maquina-cliente` desde el exterior.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

@@ -34,13 +34,10 @@ Todas las operaciones que realices sobre recursos de OpenStack lo tienes que hac
 	* **Deshabilitamos la puerta de enlace.** Esto es para que *cloud-init* no configure la puerta de enlace en las instancias conectada a esta red.
 	* La puerta de enlace de los dispositivos conectados a esta red será el `172.16.0.1`.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Las instrucciones para crear el router y las redes.
 2. Una captura de pantalla donde se vea la Topología de Red en Horizon que has creado.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 
 ## Instalación de las instancias de OpenStack
@@ -75,9 +72,7 @@ Las dos instancias que vamos a crear se van a configurar con `cloud-init` de la 
 * Deshabilita la seguridad de los puertos en la interfaz de red para que funcione de manera adecuada el NAT.
 * Comprueba que tiene acceso a internet.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Las instrucciones para crear y configurar las máquinas.
 2. Los ficheros `cloud-config.yaml` que has usado para crear las instancias.
 3. La IP flotante de la **máquina1 (luffy)**.
@@ -85,6 +80,5 @@ Las dos instancias que vamos a crear se van a configurar con `cloud-init` de la 
 5. Prueba de funcionamiento de qué los FQDN están bien configurados en las dos máquinas.
 6. Prueba de funcionamiento de que se pueden acceder a todas las máquinas por ssh.
 7. Prueba de funcionamiento de que las máquinas tienen acceso a internet accediendo a un nombre de dominio, para comprobar que funciona el DNS.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 

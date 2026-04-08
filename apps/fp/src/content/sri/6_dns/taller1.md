@@ -139,9 +139,7 @@ En esta máquina vamos a instalar un servidor DNS `bind9`.
 
 7. Reinicia el servicio. Configura el nuevo DNS en otra máquina, desde la que vas a realizar las consultas con `dig`.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Realiza una consulta con dig a tu servidor para averiguar ula IP de `www.marca.es`. Contesta las siguientes preguntas:
 	* ¿Cuánto ha tardado en realizar la consulta? ¿Qué consultas se han realizado para averiguar la dirección IP? 
 	* Realiza de nuevo la consulta. ¿Cuánto ha tardado ahora? ¿Por qué ha tardado menos? ¿Qué consultas se han realizado para averiguar la dirección IP?
@@ -151,4 +149,4 @@ En esta máquina vamos a instalar un servidor DNS `bind9`.
 	* Servidor de correo del dominio.
 	* Una resolución inversa.
 3. Avisa al profesor y enséñale el servidor DNS funcionando.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		

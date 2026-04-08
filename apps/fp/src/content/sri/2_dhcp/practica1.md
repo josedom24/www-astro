@@ -28,9 +28,7 @@ Vamos as seguir trabajando con el escenario que hemos construido en la práctica
 7. Actualmente los servidores **servidorWeb** y **servidorNAS** tienen una configuración de red estática. Vamos a configurar una reserva para cada máquina. Configura de forma adecuada el servidor dhcp para que ofrezca a estos servidores la misma IP (**reserva**) que habíamos configurado de forma estática.
 8. Modifica la configuración de red del **servidorWeb** y el **servidorNAS** para que tomen la configuración de red de forma dinámica.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Contenido de los ficheros de configuración que has modificado en el servidor DHCP.
 2. Una comprobación donde se vea la ip que ha tomado de forma dinámica el **cliente1** y el cliente windows.
 3. Una comprobación donde se comprueba que los dos clientes tienen conectividad al exterior.
@@ -39,4 +37,4 @@ Vamos as seguir trabajando con el escenario que hemos construido en la práctica
 6. Explica, con pruebas de funcionamiento, el motivo del comportamiento que se indica en los puntos 5 y 6. **Muestra al profesor el funcionamiento del punto 5 y 6**.
 7. Muestra la configuración para hacer las reservas.
 8. Una captura de pantalla donde se vea la ip que ha tomado de forma dinámica el **servidorWeb** y el **servidorNAS**. ¿Las reservas se guardan en el fichero de concesión del servidor dhcp?
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

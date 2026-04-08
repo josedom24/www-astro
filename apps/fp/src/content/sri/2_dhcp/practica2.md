@@ -12,14 +12,12 @@ Para ello sigue los siguientes pasos:
 3. Monta ese directorio en el directorio `/var/www/html` del contenedor **servidorWeb**.
 4. Configura en el **router** una regla de DNAT para que podamos acceder al servidor Web desde el exterior. (**La configuración debe ser persistente.**)
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Configuración y demostración que has exportado un directorio desde el **servidorNAS**.
 2. Demostración donde se vea que has montado el directorio indicado en el contenedor.
 3. Demostración donde se vea el acceso al servidor web desde el exterior.
 4. Cambia el contenido del fichero `index.html` en el **servidorNAS** y accede a la página para comprobar que se han producido los cambios,
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 
 ## Script de creación de clientes
@@ -41,12 +39,10 @@ Para comprobar que funciona:
 	```
 2. Comprueba que la máquina está funcionando, y que ha tomado direccionamiento de red de forma dinámica.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Entrega el script que has diseñado.
 2. Una comprobación de que el tamaño del disco (y de su sistema de fichero) de la máquina creada es el adecuado.
 3. Una vez creado el **cliente2**, pruebas de funcionamiento del direccionamiento que ha tomado y de que tiene acceso al exterior.
 4. Un acceso por ssh a **cliente2** donde se demuestre que no se pide contraseña.
 5. Instala un cliente web de texto en **cliente2** y accede a la página web de **servidorWeb**.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

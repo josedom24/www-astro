@@ -45,11 +45,9 @@ Podríamos usar la IP de eth0, o cualquier otra IP accesible de otra interfaz de
 3. Comprueba que tienes conectividad con la máquina.
 5. Ejecuta el playbook que instala un servidor web en la máquina.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.
 2. Captura de pantalla donde se vea el acceso desde el navegador al servidor web.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 

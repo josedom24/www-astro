@@ -24,13 +24,11 @@ Los siguientes pasos los debes hacer con el cliente de OpenStack, puedes entrar 
 5. Crea una instancia cuyo disco sea el volumen creado anteriormente. Recuerda elegir un sabor de tipo **vol.XXXX**. Asóciale una IP flotante.
 6. Accede a la instancia e instala nginx. Comprueba con un navegador web que está funcionando.
 7. Elimina la instancia. Vuelve a crear una instancia con el mismo volumen y vuelve a comprobar que el servidor web sigue instalado. No se ha perdido la información.
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Comandos OSC para crear y asociar el volumen.
 2. Antes de redimensionar el volumen, la salida del comando `df -h` en la instancia donde hemos asociado el volumen.
 3. Comando OSC para redimensionar el volumen. La salida del comando `df -h` en la instancia donde hemos asociado el volumen, después de redimensionar el sistema de ficheros.
 5. Comando OSC para crear un volumen arrancable con una imagen.
 6. Comando OSC para crear una instancia cuyo disco es el volumen.
 7. Comprobación de que el servidor web sigue funcionando después de eliminar la instancia y volver a crear una instancia con el mismo volumen.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

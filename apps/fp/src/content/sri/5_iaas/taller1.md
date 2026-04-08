@@ -29,11 +29,9 @@ title: "Taller 1: Trabajo con instancias en OpenStack"
 9. Accede por ssh a la instancia que has creado.
 10. Lista todas las instancias que tienes creada, y elimina la que has creado en el punto 7.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Entrega comprobaciones de las instrucciones y sus salidas para cada uno de los puntos que tienes que hacer en el taller.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 ## Ejercicio voluntario
 
@@ -46,8 +44,6 @@ Si tenemos una imagen cloud con *cloud-init* instalado, esta imagen se puede usa
 * Se debe crear un usuario (con tu nombre) y contraseña.
 * Se debe configurar el fqdn a `maquina-cloud.example.org`.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Entrega un pequeño manual con las instrucciones y configuraciones que has realizado, y con las comprobaciones necesarias para comprobar que has realizado de forma correcta ele ejercicio.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

@@ -24,13 +24,10 @@ Como indicamos en el contenido de este módulo, no se va  a trabajar directament
 6. Vamos a comprobar la escalabilidad: escala el ReplicaSet para tener 6 Pods de la aplicación.
 7. Elimina el ReplicaSet y comprueba que se han borrado todos los Pods.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo del fichero yaml que has creado con la definición del ReplicaSet.
 2. Pantallazo donde se comprueba que el ReplicaSet y los 3 Pods se han creado.
 3. Pantallazo donde se ve la información detallada del ReplicaSet.
 4. Pantallazo donde se ven los Pods que se han creado, después de eliminar uno de ellos.
 5. Pantallazo donde se ven los Pods que se han creado después del escalado.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		

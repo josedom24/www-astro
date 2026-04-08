@@ -20,11 +20,9 @@ Vamos a instalar el CMS Wordpress usando Helm. Para ello, realiza los siguientes
 6. Comprueba los Pods, ReplicaSet, Deployment y Services que se han creado.
 7. Accede a la aplicación.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo con la búsqueda del chart con el comando `helm`.
 2. Pantallazo donde se compruebe que se ha desplegado de forma correcta.
 3. Pantallazo donde se vean los Pods, ReplicaSets, Deployments y Services que se han creado.
 4. Pantallazo donde se vea el acceso al blog y se vea tu nombre como título del blog.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		

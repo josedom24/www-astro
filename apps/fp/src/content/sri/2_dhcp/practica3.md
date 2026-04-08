@@ -18,11 +18,9 @@ En este último punto vamos a modificar nuestra infraestructura para que el serv
 	* Servidor DNS: `172.22.0.1`
 6. Para comprobar que funciona el nuevo ámbito, utiliza el script para crear una máquina llamada **otro_cliente** con un volumen de 6G y conectada a la **red_intra2**.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Contenido del ficheros de configuración que has modificado en el servidor DHCP.
 2. Una vez creado el **otro_cliente**, pruebas de funcionamiento del direccionamiento que ha tomado y de que tiene acceso al exterior.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 

@@ -27,9 +27,7 @@ title: "Práctica: Instalación de nginx con PHP"
 4. En la página `www.pagina1.org/principal` se debe mostrar una página web estática (utiliza alguna plantilla para que tenga hoja de estilo o la página estática que has generado en IAW).
 5. Si accedes a la página `www.pagina1.org/principal/documentos` se visualizarán los documentos que hay en `/srv/doc`. Por lo tanto se permitirá el listado de fichero y el seguimiento de enlaces simbólicos.
 6. Limita el acceso a la URL `www.pagina1.org/secreto` con autentificación básica.
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Entrega un zip con el código que has generado en la práctica.
 2. Pantallazos para comprobar que se han creado los dos VirtualHost después de ejecutar el playbook ansible y están activos.
 3. Comprobación de que el servidor fpm-php está configurado para recibir las peticiones en un socket TCP.
@@ -37,6 +35,6 @@ title: "Práctica: Instalación de nginx con PHP"
 5. Pantallazo accediendo a `www.pagina1.org/principal/documentos` (pon algunos ficheros para que se vea la lista).
 6. Pantallazos de la autentificación básica.
 7. Finalmente, configura el playbook ansible para desactivar el VirtualHost `www.pagina2.org`. Pasa de nuevo el playbook y manda algún prueba de que se ha desactivado dicho VirtualHost.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 

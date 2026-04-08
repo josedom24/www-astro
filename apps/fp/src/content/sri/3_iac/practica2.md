@@ -47,9 +47,7 @@ Las tareas necesarias para instalar y configurar un servidor de base de datos ma
 
 Recuerda reiniciar el servicio si es necesario (handler) al cambiar la configuración del servicio.
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Entrega los ficheros de ansible que has generado, comprimidos en un zip.
 2. Entrada captura de pantalla accediendo a alguna máquina interna sin usar `vagrant ssh`.
 3. Entrega capturas de pantalla donde se vean las puertas de enlaces de los equipos de la red interna.
@@ -58,6 +56,6 @@ Recuerda reiniciar el servicio si es necesario (handler) al cambiar la configura
 6. Entrega la instrucción y una prueba de funcionamiento para realizar una conexión desde la máquina `web` a la base de datos creada, usando el nombre `bd-tunombre.dominio.algo`.
 7. Añade un nueva máquina llamada `cliente` conectada a la **red_intra**, configura el inventario de `ansible` y vuelve a pasar la receta para que esta máquina tenga acceso a internet.
 8. (Optativa) Crea un rol llamado `wordpress` que realice todos los pasos necesarios para instalar WordPress en el servidor web.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 

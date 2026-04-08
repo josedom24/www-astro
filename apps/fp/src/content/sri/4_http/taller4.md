@@ -21,11 +21,11 @@ Instala en el servidor `balanceador` el balanceador haproxy y configúralo de ma
 
 Configura la resolución estática para acceder al balanceador con el nombre `www.example.org`.
 
-{% capture notice-text %}
+:::tip
 * **Tarea 1**: Entrega capturas de pantalla que el balanceador está funcionando.
 * **Tarea 2**: Entrega una captura de pantalla donde se vea la página web de estadísticas de haproxy (abrir en un navegador web la URL `http://www.example.org/ha_stats`.
 * **Tarea 3**: Desde uno de los servidores (`apache1` o `apache2`), verificar los logs del servidor Apache. En todos los casos debería figurar como única dirección IP cliente la IP interna de la máquina balanceador `192.168.100.1`. ¿Por qué?
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 
 ### Ejercicio 2: Aumento de rendimiento usando el balanceo de carga
 
@@ -42,8 +42,8 @@ El anterior comando simula 100 usuarios al mismo tiempo haciendo 1000 peticiones
 
 De la salida nos interesa el parámetro `Requests per second:`, que nos da el numero de peticiones servidas por segundos.
 
-{% capture notice-text %}
+:::tip
 * **Tarea 1**: Con `hatop` habilita un solo nodo de balanceo, ejecuta la prueba y comprueba cuantas peticiones por segundos se responden. Entrega una captura donde se vea que sólo un nodo está habilitado, y la salida de la prueba.
 * **Tarea 2**: Habilita los dos nodos y vuelve a realizar la prueba. ¿Han subido las peticiones por segundos respondidas? Entrega las mimas capturas de pantalla que en el punto anterior.
 * **Tarea 3**: Modifica el escenario Vagrant y el playbook de ansible para añadir otro servidor web `apache3`. Habilita los tres nodos en el balanceo y realiza la prueba. ¿Han subido las peticiones por segundos respondidas? Entrega las mimas capturas de pantalla que en el punto anterior.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

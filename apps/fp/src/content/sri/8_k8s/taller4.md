@@ -107,13 +107,11 @@ Realiza los siguientes pasos:
 3. Modifica el fichero `/etc/hosts` de tu ordenador para configurar la resolución estática.
 4. Accede a la aplicación usando el nombre que has asignado.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo donde se vea el acceso desde un navegador web a la aplicación cuando sólo tenemos el servicio para acceder a la aplicación (tiene que aparecer el mensaje de error).
 2. Pantallazo donde se vea el acceso desde un navegador web a la aplicación usando la ip del nodo master y el puerto asignado al Service.
 3. Pantallazo donde se vea el acceso desde un navegador web a la aplicación usando el nombre que hemos configurado en el recurso Ingress.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		
 ## Ejercicio 2: Despliegue y acceso de la Aplicación Lets-Chat
 
 [Let's Chat](https://github.com/sdelements/lets-chat) es una aplicación web escrita en Node.js que utilizando una base de datos MongoDB nos posibilita la creación de salas de chats.
@@ -131,10 +129,8 @@ Realiza los siguientes pasos:
 
 1. Utilizando como modelos los ficheros yaml de la actividad anterior, crea los ficheros necesarios para crear los recursos en tu cluster de Kubernetes para desplegar esta aplicación.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Los ficheros yaml que has creado.
 2. Un pantallazo donde se vea el acceso desde un navegador web a la aplicación usando la ip del nodo master y el puerto asignado al Service.
 3. Un pantallazo donde se vea el acceso desde un navegador web a la aplicación usando el nombre que hemos configurado en el recurso Ingress.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	

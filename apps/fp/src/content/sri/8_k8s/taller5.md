@@ -35,14 +35,12 @@ Vamos a modificar esta variable en el despliegue del `frontend` y cambiaremos el
 5. Modifica el fichero [`backend-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/files/temperaturas/backend-srv.yaml) para cambiar el nombre del Service por `servidor-temperaturas` y crea el Service.
 6. Accede a la aplicación usando el puerto asignado al Service NodePort del `frontend` o creando el recurso `Ingress`.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo donde se vea la definición del recurso `ConfigMap`.
 2. Pantallazo donde se vea la modificación del fichero `frontend-deployment.yaml`.
 3. Pantallazo donde se vea la modificación del fichero `backend-srv.yaml`.
 4. Pantallazo donde se compruebe que la aplicación está funcionando.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		
 ## Ejercicio 2: Despliegue y acceso de la aplicación Nextcloud
 
 Basándonos en el [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/wordpress.md) vamos a realizar el despliegue de la aplicación NextCloud + MariaDB. Para ello ten en cuenta lo siguiente:
@@ -53,10 +51,8 @@ Basándonos en el [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](
 * Utiliza los ficheros yaml del ejemplo haciendo las modificaciones oportunas.
 
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo donde se vea el contenido del fichero de despliegue de NextCloud.
 2. Pantallazo donde se vean los recursos que se han creado.
 3. Pantallazo donde se compruebe que la aplicación está funcionando.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	

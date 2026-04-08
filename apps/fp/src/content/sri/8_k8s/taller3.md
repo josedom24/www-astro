@@ -26,16 +26,13 @@ En este taller vamos a crear un Deployment de una aplicación web. Sigamos los s
 6. Accede  a los logs del despliegue para comprobar el acceso que has hecho en el punto anterior.
 7. Elimina el Deployment y comprueba que se han borrado todos los recursos creados.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo del fichero yaml que has creado con la definición del Deployment. 
 2. Pantallazo donde se comprueba los recursos que se han creado.
 3. Pantallazo donde se ve la información detallada del Deployment.
 4. Pantallazo donde se vea el acceso desde un navegador web a la aplicación usando el `port-forward`.
 5. Pantallazo donde se vea los logs del despliegue después del acceso.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		
 ## Ejercicio 2: Actualización y desactualización de nuestra aplicación.
 
 El equipo de desarrollo ha creado una primera versión preliminar de una aplicación web y ha creado una imagen de contenedor con el siguiente nombre: `iesgn/test_web:version1`.
@@ -67,17 +64,14 @@ Finalmente después de un trabajo muy duro, el equipo de desarrollo ha creado la
 3. Visualiza el historial de actualizaciones.
 4. Crea una redirección utilizando el `port-forward` para acceder a la aplicación, sabiendo que la aplicación ofrece el servicio en el puerto 80, y accede a la aplicación con un navegador web.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo donde se vea el acceso desde un navegador web a la version 1 de la aplicación.
 2. Pantallazo donde se vea el acceso desde un navegador web a la version 2 de la aplicación.
 3. Pantallazo donde se visualice el historial de actualización del despliegue después de actualizar a la versión 2.
 4. Pantallazo donde se vea el acceso desde un navegador web a la version 3 de la aplicación (¡¡¡No se visualiza bien la hoja de estilos!!!).
 5. Pantallazo donde se visualice el historial de actualización después de realizar el *rollback* del despliegue.
 6. Pantallazo donde se vea el acceso desde un navegador web a la version de la aplicación que queda después de hacer el rollout.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 
 ## Ejercicio 3: Despliegue de la aplicación GuestBook
 
@@ -111,10 +105,7 @@ Para realizar el despliegue realiza los siguientes pasos:
 
 En el siguiente módulo estudiaremos los recursos que nos ofrece la API de Kubernetes para permitirnos el acceso a las aplicaciones desde el exterior, y para que los distintos Pods de los despliegues puedan acceder entre ellos.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo donde se comprueba los recursos que se han creado.
 2. Pantallazo donde se vea el acceso desde un navegador web a la aplicación usando el `port-forward`, y se vea el mensaje de error al no poder acceder a la base de datos.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	

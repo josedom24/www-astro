@@ -28,11 +28,9 @@ Realiza los siguientes pasos:
 5. Quita la configuración de acceso a `phpmyadmin` con el comando `a2disconf` y comprueba que ya no puedes acceder. A continuación crea un virtualhost, al que hay que acceder con el nombre *basededatos.tunombre.org*, y que nos muestre la aplicación. **Nota: En la configuración del virtualhost copia las 3 directivas `directory` que se encuentran en el fichero `/etc/apache2/conf-available/myphpadmin.conf`.**
 6. Accede a `phpmyadmin` y comprueba que puedes acceder con el usuario que creaste en el punto 1 y que puede gestionar su base de datos.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Una captura de phpmyadmin donde se vea la base de datos que has creado en el punto 1.
 2. ¿Cómo has quitado la configuración de acceso a `phpmyadmin` en el punto 5?
 3. Entrega una captura de la configuración del virtualhost.
-4. Entrega una captura con el acceso a `phpmyadmin` usando el nombre *basededatos.tunombre.org*, con el usuario que creaste en el punto 1.   
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+4. Entrega una captura con el acceso a `phpmyadmin` usando el nombre *basededatos.tunombre.org*, con el usuario que creaste en el punto 1.
+:::

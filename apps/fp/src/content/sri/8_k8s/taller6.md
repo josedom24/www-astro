@@ -27,15 +27,13 @@ Realiza los siguientes pasos:
 5. Define y crea un Service NodePort, accede desde un navegador al fichero `info.php` y comprueba que se visualiza de forma correcta.
 6. Comprobemos la persistencia: elimina el Deployment, vuelve a crearlo y vuelve a acceder desde el navegador al fichero `info.php`. ¿Se sigue visualizando?
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo con la definición del recurso PersistentVolumenClaim.
 2. Pantallazo donde se visualice los recursos `pv` y `pvc` que se han creado.
 3. Pantallazo donde se vea el fichero yaml para el despliegue.
 4. Pantallazo donde se vea el acceso a `info.php`.
 5. Pantallazo donde se vea que se ha eliminado y se ha vuelto a crear el despliegue y se sigue sirviendo el fichero `info.php`.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>		
+:::		
 ## Ejercicio 2: Haciendo persistente la aplicación GuestBook
 
 En este ejercicio vamos a volver a desplegar nuestra aplicación GuestBook, que realizamos en el taller 4 y 5, para añadirle persistencia a la base de datos redis.
@@ -105,15 +103,13 @@ Realiza los siguientes pasos:
 5. Accede a la aplicación y escribe algunos mensajes.
 6. Comprobemos la persistencia: elimina el despliegue de redis, vuelve a crearlo, vuelve a acceder desde el navegador y comprueba que los mensajes no se han perdido.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo con la definición del recurso PersistentVolumenClaim.
 2. Pantallazo donde se visualicen los recursos `pv` y `pvc` que se han creado.
 3. Pantallazo donde se vea el fichero yaml modificado para el despliegue de redis.
 4. Pantallazo donde se vea el acceso a la aplicación con los mensajes escritos.
 5. Pantallazo donde se vea que se ha eliminado y se ha vuelto a crear el despliegue de redis y que se sigue sirviendo la aplicación con los mensajes.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 ## Ejercicio 3: Haciendo persistente la aplicación Nextcloud 
 
 Esta actividad es la continuación de la actividad realizada en el taller 5.
@@ -128,10 +124,8 @@ Realiza los siguientes pasos:
 5. Accede a la aplicación, configúrala y sube un fichero.
 6. Comprobemos la persistencia: elimina los despliegues, vuelve a crearlos y vuelve a acceder desde el navegador y comprueba que la aplicación está configurada y mantiene el fichero que habías subido.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo donde se vean los ficheros yaml modificados para los despliegues.
 2. Pantallazo donde se vea el acceso a la aplicación con el fichero que has subido.
 3. Pantallazo donde se vea que se han eliminado y se han vuelto a crear los despliegues y que la aplicación sigue sirviendo el fichero que habíamos subido.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

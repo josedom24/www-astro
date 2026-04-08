@@ -11,10 +11,8 @@ Realiza los siguientes pasos:
 3. Crea un pod efímero que consulte la base de datos del secundario.
 
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Pantallazo con la definición de los recursos.
 2. Pantallazo donde se visualice que se han creado los pods, los servicios y los volúmenes.
 3. Pantallazo donde se visualice la consulta a la base de datos.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

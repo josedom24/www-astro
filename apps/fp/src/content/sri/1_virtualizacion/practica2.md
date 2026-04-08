@@ -30,9 +30,7 @@ Todas las operaciones las tiene que hacer desde la línea de comandos:
     * A los contenedores se debe acceder por ssh, configúralos para que podamos entrar con clave privada (configura tu clave pública y la mia) por ssh con el usuario `root`.
 5. Configura la máquina **router** para que haga SNAT y permita que los contenedores y la máquina **servidorNAS** tengan acceso al exterior (**La configuración debe ser persistente.**). 
 
-{% capture notice-text %}
-## Entrega
-
+:::tip[Entrega]
 1. Fichero xml con la definición de la red **red_intra**, la instrucción de creación y la que permite el inicio automático.
 2. Comprobación que el volumen de la máquina **router** tiene el formato raw.
 3. El comando `virsh` que muestra información de las máquinas **router** y **servidorNAS** para comprobar que se inicia de forma automática.
@@ -45,4 +43,4 @@ Todas las operaciones las tiene que hacer desde la línea de comandos:
 10. Comprobación que los contenedores tienen acceso al exterior.
 11. Desde el host, utiliza `ssh -A`, para acceder al **router** y posteriormente a los contenedores y a la máquina **servidorNAS**.
 12. Busca información sobre la configuración de ssh para definir distintos accesos. Configura el fichero `~/.ssh/config` en tu equipo para que puedas acceder desde el host directamente a los contenedores y a la máquina **servidorNAS**..
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

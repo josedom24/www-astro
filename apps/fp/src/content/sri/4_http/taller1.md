@@ -38,9 +38,7 @@ Para hacer este ejercicio, crea un escenario en Vagrant, que tenga una máquina 
 
 	Usando un fichero `.htaccess` haz que al acceder a la URL `www.taller1.com/documentos` se produce una redirección a `www.taller1.com/principal/documentos` usando el modulo rewrite (recuerda que tienes que activarlo). Además, deniega el acceso desde la red interna.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Configuración completa del virtualhost.
 2. Comprobación de que al acceder a `www.taller1.com` se produce una redirección.
 3. Pantallazo accediendo a `www.taller1.com/principal/documentos` (pon algunos ficheros para que se vea la lista).
@@ -48,4 +46,4 @@ Para hacer este ejercicio, crea un escenario en Vagrant, que tenga una máquina 
 5. Pantallazos de la autentificación básica.
 6. Pantallazos de acceso a `www.taller1.com/secreto` desde el host y el cliente interno.
 7. Contenido del fichero `.htaccess`. Acceso a `www.taller1.com/documentos` comprobando que se produce una redirección desde el exterior y prueba de acceso desde el cliente interno para comprobar que no tiene permiso de acceso.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::

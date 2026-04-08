@@ -30,14 +30,11 @@ title: "Taller 3: Introducción a proxy inverso"
 6. Configura nginx como proxy inverso para acceder a las páginas del `servidorweb`: A la primera página con la URL `www.app1.org` y a la segunda página con la URL `www.app2.org`.
 7. Modifica la configuración del proxy para acceder a las páginas web con las siguientes URL: `www.servidor.org/app1` y `www.servidor.org/app2`.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Con apache2, pantallazos donde se compruebe el acceso a las dos páginas web: `www.app1.org` y `www.app2.org`.
 2. Quita la directiva `ProxyPassReverse` y comprueba que no se sigue la redirección. Realiza una petición HEAD con `curl` a `http://www.app1.org/directorio`. ¿Qué cabecera tienes que comprobar para asegurar que la redirección no funciona?
 3. Con apache2, pantallazos donde se compruebe el acceso a las dos páginas web: `www.servidor.org/app1` y `www.servidor.org/app2`.
 4. Con nginx, pantallazos donde se compruebe el acceso a las dos páginas web: `www.app1.org` y `www.app2.org`.
 5. Con nginx, pantallazos donde se compruebe el acceso a las dos páginas web: `www.servidor.org/app1` y `www.servidor.org/app2`.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>
+:::
 

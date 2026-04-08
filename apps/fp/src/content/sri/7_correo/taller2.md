@@ -37,13 +37,11 @@ Muchos de los servicios que podemos instalar en un servidor manda correos a usua
 * Durante la configuración os preguntará el servidor relay, para rellenar el parámetro `relay_host`, en nuestro caso, `sanji.tudominio.gonzalonazareno.org`.
 * Para que podamos usar nuestro servidor de correo `samji` desde otros servidores tenemos que darle permiso. Para ello añade en el parámetro `mynetworks` las redes desde las que podemos mandar correos.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. La configuración del cortafuegos en `luffy` donde se vea que sólo puede mandar correos nuestro servidor de correos "oficial".
 2. Desde otra máquina, por ejemplo `luffy`, con la utilidad `mail` manda un correo al exterior.
 3. Muestra las cabeceras del correo recibido mostrando las cabeceras donde vemos los servidores por los que ha pasado el correo para comprobar que ha pasado por `sanji`. ¿Por cuántos servidores ha pasado?
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 
 ## Envío de correos de notificación
 
@@ -63,12 +61,9 @@ MAILTO="root@localhost"
 * * * * * echo "Message from cron"
 ```
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Ejecuta el servicio manualmente y comprueba que el usuario `root`ha recibido el correo.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 
 ## Redirecciones
 
@@ -78,12 +73,9 @@ Una **redirección** se utiliza para enviar el correo que llegue a un usuario a 
 
 Crea un fichero `.forward` en el home del usuario `root` con tu dirección de correo electrónico y comprueba que ahora los correos que recibe el usuario `root` te llegan a tu correo.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Ejecuta de nuevo el servicio `apticron` y comprueba que has recibido el correo en la dirección que has indicado.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 
 ## Alias
 
@@ -96,13 +88,10 @@ Para ello vamos a usar un **alias**. Cuando se define un alias para un determina
 3. Crea un nuevo alias en el fichero `/etc/aliases`, de la siguiente forma: `root: usuario1,usuario2`.
 4. Cada vez que se modifica el fichero `/etc/aliases` hay que ejecutar la instrucción `newaliases` para que los cambios tengan efecto.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Ejecuta de nuevo el servicio `apticron` y comprueba que el correo lo reciben los dos nuevos usuarios.
 2. Crea un fichero `.forward` en el home de alguno de ellos y comprueba la redirección.
-
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 
 ## Envío de corros desde una aplicación
 
@@ -111,10 +100,8 @@ Los CMS que instalamos normalmente envían correos. Por ejemplo nuestro WordPres
 1. Instala un servidor postfix **Satellite system** en `zoro`, como hemos hecho anteriormente, y configurar WordPress para que use como servidor de correos `localhost`.
 2. Configurar WordPress para que use como correo `sanji.tudominio.gonzalonazareno.org`.
 
-{% capture notice-text %}
-## ¿Qué tienes que entregar?
-
+:::tip[¿Qué tienes que entregar?]
 1. Investiga como configurar el servidor de correos SMTP en WordPress, elige una de las dos opciones para enviar correos.
 2. Entrega una captura de pantalla donde se demuestre que has recibido un correo electrónico desde tu WordPress.
-{% endcapture %}<div class="notice--info">{{ notice-text | markdownify }}</div>	
+:::	
 
