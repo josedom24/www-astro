@@ -120,8 +120,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           async function initSearch() {
             if (instance) return;
 
-            // Aseguramos que la ruta termine en / para evitar errores de concatenación
-            const bundlePath = `${base}/pagefind/`.replace(/\/$/, '') + '/';
+            // Construimos la ruta absoluta completa para evitar que el navegador
+            // intente buscar el bundle en el CDN de jsDelivr.
+            const bundlePath = window.location.origin + `${base}/pagefind/`.replace(/\/$/, '') + '/';
 
             instance = new Instance({ bundlePath });
 
