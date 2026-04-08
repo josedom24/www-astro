@@ -18,6 +18,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href={`${base}/assets/favicon.png`} />
     <link rel="shortcut icon" href={`${base}/assets/favicon.png`} />
+    <link rel="stylesheet" href={`${base}/pagefind/pagefind-ui.css`} />
     <title>{title} | Pledin</title>
     <style>
       html { scroll-padding-top: var(--nav-height); }
@@ -97,71 +98,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div id="search-modal" class="search-modal hidden">
       <div class="search-backdrop"></div>
       <div class="search-box">
-        <div id="search-input-container"></div>
-        <div id="search-results-container"></div>
+        <div id="search"></div>
       </div>
     </div>
-
 
     <footer class="site-footer">
       <p>© {new Date().getFullYear()} José Domingo Muñoz — <a href={`${base}/about/`}>Presentación</a></p>
     </footer>
 
+    <script is:inline src={`${base}/pagefind/pagefind-ui.js`}></script>
     <script define:vars={{ base }}>
-      async function setupSearch() {
-        try {
-          const { Instance, Input, ResultList } = await import("https://cdn.jsdelivr.net/npm/@pagefind/modular-ui@1.0.0/+esm");
+      const toggle = document.getElementById('search-toggle');
+      const modal = document.getElementById('search-modal');
+      const backdrop = modal?.querySelector('.search-backdrop');
+      let initialized = false;
 
-          const toggle = document.getElementById('search-toggle');
-          const modal = document.getElementById('search-modal');
-          const backdrop = modal?.querySelector('.search-backdrop');
-          let instance = null;
-
-          async function initSearch() {
-            if (instance) return;
-
-            // Construimos la ruta absoluta completa para evitar que el navegador
-            // intente buscar el bundle en el CDN de jsDelivr.
-            const bundlePath = window.location.origin + `${base}/pagefind/`.replace(/\/$/, '') + '/';
-
-            instance = new Instance({ bundlePath });
-
-            instance.add(new Input({
-              containerElement: '#search-input-container',
-              placeholder: 'Buscar...',
-            }));
-
-            instance.add(new ResultList({
-              containerElement: '#search-results-container'
-            }));
-          }
-
-          toggle?.addEventListener('click', async () => {
-            modal?.classList.toggle('hidden');
-            if (!instance) {
-              await initSearch();
-            }
-            setTimeout(() => {
-              modal?.querySelector('input')?.focus();
-            }, 100);
-          });
-
-          backdrop?.addEventListener('click', () => {
-            modal?.classList.add('hidden');
-          });
-
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') modal?.classList.add('hidden');
-          });
-        } catch (err) {
-          console.error('Pagefind Modular UI failed to load:', err);
+      toggle?.addEventListener('click', () => {
+        modal?.classList.toggle('hidden');
+        if (!initialized) {
+          new PagefindUI({ element: '#search', baseUrl: `${base}/` });
+          initialized = true;
         }
-      }
+        setTimeout(() => {
+             modal?.querySelector('.pagefind-ui__search-input')?.focus();
+           }, 50);
+      });
 
-      setupSearch();
-    </script>
+      backdrop?.addEventListener('click', () => {
+        modal?.classList.add('hidden');
+      });
 
-    <script define:vars={{ base }}>
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal?.classList.add('hidden');
+      });
+
       const themeToggle = document.getElementById('theme-toggle');
       const iconSun = document.getElementById('icon-sun');
       const iconMoon = document.getElementById('icon-moon');
@@ -398,75 +368,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     z-index: 1;
     background: var(--color-bg);
     border-radius: 0.5rem;
-    padding: 1.5rem;
+    padding: 1rem;
     width: 100%;
     max-width: 40rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Estilos para la Modular UI de Pagefind - Usando :global para elementos dinámicos */
-  :global(#search-input-container input) {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1.1rem;
-    border: 2px solid var(--color-border);
-    border-radius: 0.5rem;
-    background: var(--color-bg-nav);
-    color: var(--color-text);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  :global(#search-input-container input:focus) {
-    border-color: var(--color-accent);
-  }
-
-  :global(#search-results-container) {
-    margin-top: 1rem;
-    max-height: 60vh;
-    overflow-y: auto;
-    padding-right: 0.5rem;
-  }
-
-  :global(#search-results-container article) {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--color-border);
-    transition: background 0.2s;
-  }
-
-  :global(#search-results-container article:last-child) {
-    border-bottom: none;
-  }
-
-  :global(#search-results-container article h3) {
-    margin: 0 0 0.25rem 0;
-    font-size: 1.1rem;
-    color: var(--color-accent-high);
-  }
-
-  :global(#search-results-container article p) {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    line-height: 1.4;
-  }
-
-  :global(#search-results-container article a) {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  :global(#search-results-container article:hover) {
-    background: rgba(0,0,0,0.02);
-  }
-
-  :global(#search-results-container::-webkit-scrollbar) {
-    width: 6px;
-  }
-  :global(#search-results-container::-webkit-scrollbar-thumb) {
-    background: var(--color-border);
-    border-radius: 3px;
   }
 
   #back-to-top {
