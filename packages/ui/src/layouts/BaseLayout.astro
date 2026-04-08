@@ -98,30 +98,51 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div id="search-modal" class="search-modal hidden">
       <div class="search-backdrop"></div>
       <div class="search-box">
-        <div id="search"></div>
+        <div id="search-input-container"></div>
+        <div id="search-results-container"></div>
       </div>
     </div>
+
 
     <footer class="site-footer">
       <p>© {new Date().getFullYear()} José Domingo Muñoz — <a href={`${base}/about/`}>Presentación</a></p>
     </footer>
 
-    <script is:inline src={`${base}/pagefind/pagefind-ui.js`}></script>
-    <script define:vars={{ base }}>
+    <script type="module">
+      import { Instance, Input, ResultList } from "https://cdn.jsdelivr.net/npm/@pagefind/modular-ui@1.0.0/+esm";
+
+      const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       const toggle = document.getElementById('search-toggle');
       const modal = document.getElementById('search-modal');
       const backdrop = modal?.querySelector('.search-backdrop');
-      let initialized = false;
+      let instance = null;
 
-      toggle?.addEventListener('click', () => {
+      async function initSearch() {
+        if (instance) return;
+
+        instance = new Instance({
+          bundlePath: `${base}/pagefind/`
+        });
+
+        instance.add(new Input({
+          containerElement: '#search-input-container',
+          placeholder: 'Buscar...',
+        }));
+
+        instance.add(new ResultList({
+          containerElement: '#search-results-container',
+        }));
+      }
+
+      toggle?.addEventListener('click', async () => {
         modal?.classList.toggle('hidden');
-        if (!initialized) {
-          new PagefindUI({ element: '#search', baseUrl: `${base}/` });
-          initialized = true;
+        if (!instance) {
+          await initSearch();
         }
         setTimeout(() => {
-             modal?.querySelector('.pagefind-ui__search-input')?.focus();
-           }, 50);
+          const input = modal?.querySelector('input');
+          input?.focus();
+        }, 50);
       });
 
       backdrop?.addEventListener('click', () => {
@@ -131,7 +152,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') modal?.classList.add('hidden');
       });
+    </script>
 
+    <script define:vars={{ base }}>
       const themeToggle = document.getElementById('theme-toggle');
       const iconSun = document.getElementById('icon-sun');
       const iconMoon = document.getElementById('icon-moon');
