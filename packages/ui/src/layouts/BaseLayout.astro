@@ -404,8 +404,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   }
 
-  /* Estilos para la Modular UI de Pagefind */
-  #search-input-container input {
+  /* Estilos para la Modular UI de Pagefind - Usando :global para elementos dinámicos */
+  :global(#search-input-container input) {
     width: 100%;
     padding: 0.75rem 1rem;
     font-size: 1.1rem;
@@ -417,55 +417,54 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     transition: border-color 0.2s;
   }
 
-  #search-input-container input:focus {
+  :global(#search-input-container input:focus) {
     border-color: var(--color-accent);
   }
 
-  #search-results-container {
+  :global(#search-results-container) {
     margin-top: 1rem;
     max-height: 60vh;
     overflow-y: auto;
     padding-right: 0.5rem;
   }
 
-  #search-results-container article {
+  :global(#search-results-container article) {
     padding: 1rem 0;
     border-bottom: 1px solid var(--color-border);
     transition: background 0.2s;
   }
 
-  #search-results-container article:last-child {
+  :global(#search-results-container article:last-child) {
     border-bottom: none;
   }
 
-  #search-results-container article h3 {
+  :global(#search-results-container article h3) {
     margin: 0 0 0.25rem 0;
     font-size: 1.1rem;
     color: var(--color-accent-high);
   }
 
-  #search-results-container article p {
+  :global(#search-results-container article p) {
     margin: 0;
     font-size: 0.9rem;
     color: var(--color-text-muted);
     line-height: 1.4;
   }
 
-  #search-results-container article a {
+  :global(#search-results-container article a) {
     text-decoration: none;
     color: inherit;
     display: block;
   }
 
-  #search-results-container article:hover {
+  :global(#search-results-container article:hover) {
     background: rgba(0,0,0,0.02);
   }
 
-  /* Scrollbar minimalista para los resultados */
-  #search-results-container::-webkit-scrollbar {
+  :global(#search-results-container::-webkit-scrollbar) {
     width: 6px;
   }
-  #search-results-container::-webkit-scrollbar-thumb {
+  :global(#search-results-container::-webkit-scrollbar-thumb) {
     background: var(--color-border);
     border-radius: 3px;
   }
