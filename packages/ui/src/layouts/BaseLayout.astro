@@ -114,9 +114,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <script is:inline src={`${base}/pagefind/pagefind-component-ui.js`}></script>
     <script define:vars={{ base }}>
-      // Búsqueda: abre el dialog nativo que genera <pagefind-modal>
+      // Búsqueda: usa el método open() del componente para que gestione su estado interno
       document.getElementById('search-toggle')?.addEventListener('click', () => {
-        document.querySelector('pagefind-modal dialog')?.showModal();
+        document.querySelector('pagefind-modal')?.open();
       });
 
       const themeToggle = document.getElementById('theme-toggle');
