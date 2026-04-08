@@ -124,6 +124,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         if (e.key !== 'Escape') return;
         const input = document.querySelector('pagefind-modal input');
         if (input && input.value) {
+          e.preventDefault();
           e.stopPropagation();
           input.value = '';
           input.dispatchEvent(new Event('input', { bubbles: true }));
