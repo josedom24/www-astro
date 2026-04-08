@@ -6,7 +6,7 @@ tags:
   - "Educación"
 ---
 
-[ ](/pledin/assets/2026/04/ja.png)
+![ ](/pledin/assets/2026/04/ja.png)
 
 Hace unos meses, posiblemente en la última actualización de la página de [**Novedades del portal de educación de la Junta de Andalucía**](https://www.juntadeandalucia.es/educacion/portales/novedades-portada), la opción de sindicación de contenidos mediante RSS desapareció y dejé de recibir actualizaciones en mi lector.
          
