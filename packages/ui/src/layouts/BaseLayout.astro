@@ -101,7 +101,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p>© {new Date().getFullYear()} José Domingo Muñoz — <a href={`${base}/about/`}>Presentación</a></p>
     </footer>
 
-    <script is:inline src={`${base}/pagefind/pagefind-component-ui.js`} type="module"></script>
+    <script is:inline src={`${base}/pagefind/pagefind-component-ui.js`}></script>
     <script define:vars={{ base }}>
       // Búsqueda: abre el dialog nativo que genera <pagefind-modal>
       document.getElementById('search-toggle')?.addEventListener('click', () => {
