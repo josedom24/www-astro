@@ -1,0 +1,125 @@
+[
+  {
+    "title": "Curso de Introducción a C++ Moderno",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/cpp_moderno/"
+      }
+    ]
+  },
+  {
+    "title": "1. Fundamentos de la programación",
+    "children": [
+      { "title": "¿Qué es un lenguaje de programación?", "url": "/pledin/cursos/cpp_moderno/contenido/modulo01/introduccion/" },
+      { "title": "Introducción a C++ moderno", "url": "/pledin/cursos/cpp_moderno/contenido/modulo01/cpp/" },
+      { "title": "Instalación de un entorno de desarrollo para C++", "url": "/pledin/cursos/cpp_moderno/contenido/modulo01/instalacion/" },
+      { "title": "Estructura de un programa en C++", "url": "/pledin/cursos/cpp_moderno/contenido/modulo01/estructura/" },
+      { "title": "Cómo compilar y ejecutar programas", "url": "/pledin/cursos/cpp_moderno/contenido/modulo01/compilacion/" }
+    ]
+  },
+  {
+    "title": "2. Tipos de datos",
+    "children": [
+      { "title": "Tipos de datos fundamentales", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/tipos/" },
+      { "title": "Tipos de datos carácter y booleano", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/caracter_bool/" },
+      { "title": "Tipos de datos numéricos y operaciones aritméticas", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/numeros/" },
+      { "title": "Declaración e inicialización de variables", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/variables/" },
+      { "title": "Ámbito y duración de almacenamiento de variables", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/ambito/" },
+      { "title": "Declaración e inicialización de constantes", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/constantes/" },
+      { "title": "Conversión de tipos de datos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/casting/" },
+      { "title": "Introducción a las cadenas de caracteres", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/cadenas/" },
+      { "title": "Conversión de cadenas de caracteres", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/casting_cadenas/" },
+      { "title": "Entrada y salida estándar", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/entrada_salida/" },
+      { "title": "Ejercicios estructura secuencial", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/secuencial/" },
+      { "title": "Tipos definidos por el usuario: enum class", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/enum/" },
+      { "title": "Tipos definidos por el usuario: struct", "url": "/pledin/cursos/cpp_moderno/contenido/modulo02/struct/" }
+    ]
+  },
+  {
+    "title": "3. Control de flujo",
+    "children": [
+      { "title": "Operadores relacionales y lógicos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/operadores/" },
+      { "title": "Estructuras alternativas: if", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/if/" },
+      { "title": "Estructuras alternativas: switch", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/switch/" },
+      { "title": "Ejercicios estructuras alternativas", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/alternativa/" },
+      { "title": "Estructuras repetitivas: while", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/while/" },
+      { "title": "Estructuras repetitivas: do-while", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/dowhile/" },
+      { "title": "Estructuras repetitivas: for", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/for/" },
+      { "title": "Uso específico de variables: contadores, acumuladores e indicadores", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/variables/" },
+      { "title": "Ejercicios estructuras repetitivas", "url": "/pledin/cursos/cpp_moderno/contenido/modulo03/repetitiva/" }
+    ]
+  },
+  {
+    "title": "4. Programación estructurada",
+    "children": [
+      { "title": "Introducción a la programación estructurada y uso de funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/funciones/" },
+      { "title": "Ámbito y duración de las variables en funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/ambito/" },
+      { "title": "Gestión de memoria con punteros", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/punteros/" },
+      { "title": "Gestión de memoria con referencias", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/referencias/" },
+      { "title": "Paso de argumentos a funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/argumentos/" },
+      { "title": "Ejemplos de paso de argumentos a funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/argumentos2/" },
+      { "title": "Valores de retorno de una función", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/retorno/" },
+      { "title": "Tipos de funciones: constexpr, inline, lambda y recursivas", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/tipos/" },
+      { "title": "Organización del código en archivos (.h y .cpp)", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/organizacion/" },
+      { "title": "Ejercicios con funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo04/ejercicios/" }
+    ]
+  },
+  {
+    "title": "5. Programación orientada a objetos",
+    "children": [
+      { "title": "Introducción a la programación orientada a objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/introduccion/" },
+      { "title": "Definición de clases y creación de objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/poo_c++/" },
+      { "title": "Introducción al encapsulamiento", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/encapsulamiento/" },
+      { "title": "Miembros estáticos de clase", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/estatico/" },
+      { "title": "Composición de objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/composicion/" },
+      { "title": "Herencia de clases", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/herencia/" },
+      { "title": "Introducción al polimorfismo", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/polimorfismo/" },
+      { "title": "Ejercicios de programación orientada a objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/ejercicios/" }
+    ]
+  },
+  {
+    "title": "6. Estructuras dinámicas en la STL",
+    "children": [
+      { "title": "Gestión de memoria y estructuras dinámicas", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/introduccion/" },
+      { "title": "Cadenas de caracteres: std::string", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/string/" },
+      { "title": "Arreglos: std::array", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/array/" },
+      { "title": "Vectores: std::vector", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/vector/" },
+      { "title": "Listas: std::list", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/list/" },
+      { "title": "Mapas: std::map y std::unordered_map", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/map/" },
+      { "title": "Algoritmos de la STL", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/algoritmos/" },
+      { "title": "Ejercicios con std::string", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/ejercicios_string/" },
+      { "title": "Ejercicios con std::array", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/ejercicios_array/" },
+      { "title": "Ejercicios con std::vector", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/ejercicios_vector/" },
+      { "title": "Ejercicios con std::list", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/ejercicios_list/" },
+      { "title": "Ejercicios con std::map y std::unordered_map", "url": "/pledin/cursos/cpp_moderno/contenido/modulo06/ejercicios_map/" }
+    ]
+  },
+  {
+    "title": "7. Introducción a la programación genérica",
+    "children": [
+      { "title": "Introducción a la programación genérica", "url": "/pledin/cursos/cpp_moderno/contenido/modulo07/generica/" },
+      { "title": "Plantillas de funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo07/plantillas/" },
+      { "title": "Ejemplos típicos de plantillas de funciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo07/ejemplos/" },
+      { "title": "Uso de funciones genéricas con contenedores STL", "url": "/pledin/cursos/cpp_moderno/contenido/modulo07/stl/" },
+      { "title": "Ejercicios con plantillas de función", "url": "/pledin/cursos/cpp_moderno/contenido/modulo07/ejercicios/" }
+    ]
+  },
+  {
+    "title": "8. Excepciones: gestión de errores",
+    "children": [
+      { "title": "Gestión de errores en C++", "url": "/pledin/cursos/cpp_moderno/contenido/modulo08/errores/" },
+      { "title": "Introducción a las excepciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo08/excepcioones/" },
+      { "title": "Manejo de excepciones con try, catch y throw", "url": "/pledin/cursos/cpp_moderno/contenido/modulo08/try/" },
+      { "title": "Ejercicios con excepciones", "url": "/pledin/cursos/cpp_moderno/contenido/modulo08/ejercicios/" }
+    ]
+  },
+  {
+    "title": "9. Trabajo con archivos",
+    "children": [
+      { "title": "Introducción al trabajo con archivos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo09/archivos/" },
+      { "title": "Apertura, lectura y escritura de archivos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo09/operaciones/" },
+      { "title": "Ejercicios con archivos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo09/ejercicios/" }
+    ]
+  }
+]
