@@ -2,8 +2,31 @@
 title: "Curso de Introducción a C++ Moderno"
 toc: false
 ---
+![cpp_moderno](img/cpp_moderno.png)
+
+## ¿Por qué aprender C++ moderno?
+
+**C++** es uno de los lenguajes de programación más potentes y versátiles que existen. Presente en sistemas operativos, motores de videojuegos, software de simulación, aplicaciones embebidas y de alto rendimiento, sigue siendo una elección fundamental en la industria del software.
+
+El estándar moderno de C++ (desde **C++11** en adelante, con especial atención a **C++17** y **C++20**) ha transformado el lenguaje profundamente: ahora es más expresivo, más seguro y más fácil de usar que sus versiones anteriores, sin perder la potencia que lo caracteriza.
+
+## ¿Qué aprenderás en este curso?
+
+Este curso cubre los fundamentos de la programación con C++ moderno, desde cero hasta los conceptos más avanzados:
+
+* Fundamentos del lenguaje: tipos de datos, variables, operadores y control de flujo
+* Programación estructurada con funciones, punteros y referencias
+* Programación orientada a objetos: clases, herencia y polimorfismo
+* Uso de la **STL** (Standard Template Library): `std::vector`, `std::map`, `std::string`...
+* Programación genérica con plantillas de función
+* Gestión de errores mediante excepciones
+* Trabajo con archivos
+
+## Repositorio
 
 * [Ejercicios y ejemplos](https://github.com/josedom24/ejercicios_curso_cpp_moderno)
+
+## Curso
 
 1. Fundamentos de la programación
 
