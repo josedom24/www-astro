@@ -2,8 +2,31 @@
 title: "Curso de Programación Orientada a Objetos con C++ moderno"
 toc: false
 ---
+![poo_cpp_moderno](img/poo_cpp_moderno.png)
+
+## ¿Qué es la Programación Orientada a Objetos?
+
+La **Programación Orientada a Objetos** (POO) es el paradigma dominante en el desarrollo de software moderno. Organizar el código en torno a **clases y objetos** permite modelar problemas del mundo real de forma natural, reutilizar código de manera eficiente y construir sistemas que escalan y evolucionan con facilidad.
+
+**C++ moderno** es uno de los mejores lenguajes para aprender POO en profundidad: ofrece control total sobre la memoria, soporte nativo para los pilares del paradigma y herramientas avanzadas como punteros inteligentes, plantillas de clase y la STL.
+
+## ¿Qué aprenderás en este curso?
+
+Este curso aborda la POO con C++ desde los fundamentos hasta técnicas avanzadas de diseño:
+
+* Los cuatro pilares: **encapsulamiento**, **herencia**, **polimorfismo** y abstracción
+* Gestión de memoria dinámica con **punteros inteligentes** y el patrón RAII
+* Relaciones entre clases: dependencia, asociación, agregación y composición
+* Diseño polimórfico con **clases abstractas** e interfaces puras
+* Abstracción del comportamiento con lambdas, functores y `std::function`
+* **Plantillas de clase** y programación genérica aplicada a la STL
+* Proyecto final: sistema de dispositivos inteligentes
+
+## Repositorio
 
 * [Ejercicios y ejemplos](https://github.com/josedom24/ejercicios_curso_poo_cpp_moderno)
+
+## Curso
 
 1. Introducción a la Programación Orientada a Objetos
 
