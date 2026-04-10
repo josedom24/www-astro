@@ -1,0 +1,1 @@
+[Persona|nombre: string; edad: int|+ presentarse(): void; + cumplirAnios(): void; + cambiarNombre(nombre: string): void]

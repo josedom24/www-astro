@@ -1,0 +1,1 @@
+[Biblioteca|+avisarRetraso():void]uses->[Notificador|-mensaje:string; +enviarMensaje(texto:string):void]

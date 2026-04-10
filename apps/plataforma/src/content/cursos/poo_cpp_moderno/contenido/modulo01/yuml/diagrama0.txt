@@ -1,0 +1,7 @@
+// Objetos (instancias concretas)
+[libro1:\nCien años de soledad\nGabriel García Márquez\n1967]-.-[Libro]
+[libro2:\n1984\nGeorge Orwell\n1949]-.-[Libro]
+[libro3:\nEl Principito\nAntoine de Saint-Exupéry\n1943]-.-[Libro]
+
+// Clase
+[Libro|-titulo: string;-autor: string;-añoPublicacion: int|+prestar(): void;+devolver(): void]

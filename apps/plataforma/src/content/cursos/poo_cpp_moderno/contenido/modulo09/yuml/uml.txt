@@ -1,0 +1,4 @@
+[<<interface>> Dispositivo|+nombre:string;+mostrarInfo()]^-[Sensor|+leer():optional<double>]
+[<<interface>> Dispositivo]^-[Actuador|+activar()]
+[Controlador|+agregarDispositivo(Dispositivo);+procesarDispositivos()]
+[Controlador]++->[<<interface>> Dispositivo]

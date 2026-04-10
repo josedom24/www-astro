@@ -1,0 +1,4 @@
+[Animal|+hacerSonido():void; +~Animal()] 
+[Animal]^-[Leon|+hacerSonido():void; +cazar():void]
+[Animal]^-[Elefante|+hacerSonido():void; +banarse():void]
+[Animal]^-[Mono|+hacerSonido():void; +columpiarse():void]

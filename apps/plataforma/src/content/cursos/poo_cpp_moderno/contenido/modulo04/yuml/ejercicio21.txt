@@ -1,0 +1,3 @@
+[Empleado|-nombre:string; +mostrarInfo():void]
+[Empleado]^-[Programador|-lenguaje:string; +mostrarInfo():void]
+[Empleado]^-[Diseñador|-herramienta:string; +mostrarInfo():void]

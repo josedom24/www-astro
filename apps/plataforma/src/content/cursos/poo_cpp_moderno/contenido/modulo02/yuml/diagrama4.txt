@@ -1,0 +1,1 @@
+[Persona|- nombre: string; - edad: int|+ Persona(): void; + Persona(n: string): void; + Persona(n: string, e: int): void; + mostrar(): void]

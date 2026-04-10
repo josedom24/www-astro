@@ -1,0 +1,2 @@
+[CuentaBancaria|-titular: std::string;-saldo: double|+CuentaBancaria(nombre: string, saldoInicial: double);+depositar(cantidad: double): void;+retirar(cantidad: double): void;+mostrarInformacion(): void]
+

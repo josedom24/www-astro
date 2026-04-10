@@ -1,0 +1,4 @@
+[Instrumento|+tocar():void]
+[Instrumento]^-[Guitarra|+tocar():void]
+[Instrumento]^-[Piano|+tocar():void]
+[Instrumento]^-[Bateria|+tocar():void]

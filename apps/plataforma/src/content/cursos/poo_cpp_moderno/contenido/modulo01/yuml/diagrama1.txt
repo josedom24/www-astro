@@ -1,0 +1,5 @@
+// Objetos (instancias concretas)
+[persona1:\nAna\n30]-.-[Persona]
+
+// Clase
+[Persona|+nombre: cadena;+edad: entero|+saludar()]

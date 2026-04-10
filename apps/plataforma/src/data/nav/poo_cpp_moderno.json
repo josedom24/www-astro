@@ -1,0 +1,117 @@
+[
+  {
+    "title": "Curso de Programación Orientada a Objetos con C++ moderno",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/poo_cpp_moderno/"
+      }
+    ]
+  },
+  {
+    "title": "1. Introducción a la Programación Orientada a Objetos",
+    "children": [
+      { "title": "¿Qué es la programación orientada a objetos?", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo01/poo/" },
+      { "title": "Los pilares de la programación orientada a objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo01/pilares/" }
+    ]
+  },
+  {
+    "title": "2. Fundamentos básicos de programación orientada a objetos",
+    "children": [
+      { "title": "Clases y objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/clases/" },
+      { "title": "Miembros de instancia: atributos y métodos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/miembros/" },
+      { "title": "Encapsulamiento y modificadores de acceso (public, private, protected)", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/acceso/" },
+      { "title": "Constructores y destructores", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/constructor/" },
+      { "title": "Inicialización de objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/objetos/" },
+      { "title": "Métodos y objetos constantes", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/constantes/" },
+      { "title": "Inicialización de atributos con listas de inicialización", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/inicializacion/" },
+      { "title": "Métodos getter y setter", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/getters/" },
+      { "title": "Polimorfismo estático: sobrecarga de métodos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/sobrecarga/" },
+      { "title": "Atributos y métodos estáticos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/estatico/" },
+      { "title": "Ejercicios sobre clases y objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo02/ejercicios/" }
+    ]
+  },
+  {
+    "title": "3. Gestión de memoria dinámica",
+    "children": [
+      { "title": "Introducción a la gestión de recursos en C++ moderno", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo03/introduccion/" },
+      { "title": "Gestión manual de memoria dinámica", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo03/memoria/" },
+      { "title": "Propiedad de recursos y patrón RAII", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo03/raii/" },
+      { "title": "Gestión de memoria con punteros inteligentes", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo03/inteligentes/" },
+      { "title": "Clases y punteros inteligentes", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo03/clases/" },
+      { "title": "Ejercicios sobre gestión de memoria dinámica", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo03/ejercicios/" }
+    ]
+  },
+  {
+    "title": "4. Relaciones entre clases",
+    "children": [
+      { "title": "Introducción a las relaciones entre clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/introduccion/" },
+      { "title": "Dependencia entre clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/dependencia/" },
+      { "title": "Asociaciones entre clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/asociacion/" },
+      { "title": "Agregación entre clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/agregacion/" },
+      { "title": "Composición entre clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/composicion/" },
+      { "title": "Ejercicios sobre relaciones de clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/ejercicio1/" },
+      { "title": "Herencia: clases base y derivadas", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/herencia/" },
+      { "title": "Herencia y polimorfismo dinámico", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/polimorfismo/" },
+      { "title": "Conversión segura de tipos polimórficos con dynamic_cast", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/cast/" },
+      { "title": "Conversiones implícitas y punteros base", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/conversiones/" },
+      { "title": "Ejercicios sobre herencia y polimorfismo", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo04/ejercicio2/" }
+    ]
+  },
+  {
+    "title": "5. Fundamentos avanzados de programación orientada a objetos",
+    "children": [
+      { "title": "Copia de objetos: superficiales y profundas", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/copy/" },
+      { "title": "Movimiento de objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/move/" },
+      { "title": "Control de creación, copia y movimiento de objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/creacion/" },
+      { "title": "Clonación de objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/clonacion/" },
+      { "title": "Sobrecarga de operadores", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/operadores/" },
+      { "title": "Fluidez de métodos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/fluidez/" },
+      { "title": "Ejercicios sobre conceptos avanzados de programación orientada a objetos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo05/ejercicios/" }
+    ]
+  },
+  {
+    "title": "6. Interfaces y diseño polimórfico",
+    "children": [
+      { "title": "Clases abstractas y métodos virtuales puros", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo06/abstracta/" },
+      { "title": "Interfaces puras y diseño orientado a contratos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo06/interface/" },
+      { "title": "El problema de devolver tipos concretos y objetos polimórficos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo06/concretos/" },
+      { "title": "Devolución de interfaces mediante punteros inteligentes", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo06/devolucion/" },
+      { "title": "Ejercicios sobre interfaces y diseño polimórfico", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo06/ejercicios/" }
+    ]
+  },
+  {
+    "title": "7. Abstracción del comportamiento",
+    "children": [
+      { "title": "Comportamiento intercambiable y bajo acoplamiento", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/comportamiento/" },
+      { "title": "Delegación de comportamiento mediante interfaces", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/delegacion/" },
+      { "title": "Representación de acciones con funciones lambdas", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/lambda/" },
+      { "title": "Uso de std::function para encapsular comportamiento configurable", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/function/" },
+      { "title": "Functores y clases con operator()", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/functor/" },
+      { "title": "Inyección de comportamiento mediante composición", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/composicion/" },
+      { "title": "Ejercicios sobre abstracción de comportamiento", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo07/ejercicios/" }
+    ]
+  },
+  {
+    "title": "8. Plantillas de clases y programación genérica",
+    "children": [
+      { "title": "Introducción a las plantillas de clases", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/plantillas/" },
+      { "title": "Clases genéricas con uno o varios parámetros de tipo", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/parametros/" },
+      { "title": "Especialización de plantillas de clase", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/especializacion/" },
+      { "title": "Las plantillas de clase y la STL", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/stl/" },
+      { "title": "Plantilla de clase: std::optional", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/optional/" },
+      { "title": "Plantillas de clase: std::variant y std::visit", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/variant/" },
+      { "title": "Ejercicios sobre programación genérica", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo08/ejercicios/" }
+    ]
+  },
+  {
+    "title": "9. Proyecto final: Sistema de dispositivos inteligentes",
+    "children": [
+      { "title": "Planteamiento general del proyecto", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo09/planteamiento/" },
+      { "title": "Clases base y derivadas: diseño de la jerarquía de dispositivos", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo09/jerarquia/" },
+      { "title": "Implementación del controlador del sistema", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo09/controlador/" },
+      { "title": "Manejo de eventos genéricos mediante std::variant y std::visit", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo09/eventos/" },
+      { "title": "Integración en un programa principal", "url": "/pledin/cursos/poo_cpp_moderno/contenido/modulo09/main/" }
+    ]
+  }
+]

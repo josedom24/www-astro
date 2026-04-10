@@ -1,0 +1,1 @@
+[Persona|-nombre: std::string;-edad: int|+Persona(nombre: string, edad: int);+saludar(): void;+cumplirAnios(): void]

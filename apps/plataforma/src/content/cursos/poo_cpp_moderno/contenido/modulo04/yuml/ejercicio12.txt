@@ -1,0 +1,1 @@
+[Curso|-titulo:string; -profesor:Profesor*; +mostrarInfo():void] -> [Profesor|-nombre:string; +darClase():void]

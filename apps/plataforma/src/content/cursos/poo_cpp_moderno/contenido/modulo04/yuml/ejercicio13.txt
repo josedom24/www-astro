@@ -1,0 +1,1 @@
+[Equipo|-nombre:string; -jugadores:Jugador*; +mostrarPlantilla():void]<>->[Jugador|-nombre:string; +jugar():void]

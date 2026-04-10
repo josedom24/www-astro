@@ -1,0 +1,1 @@
+[Casa|-direccion:string; -habitaciones:Habitacion; +mostrarCasa():void]++->[Habitacion|-tipo:string; +mostrar():void]

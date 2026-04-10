@@ -1,0 +1,1 @@
+[<<interface>> IForma]^-.-[Circulo]

@@ -1,0 +1,3 @@
+[<<interface>> Dibujable|+dibujar(): void]
+[<<interface>> Dibujable]^-[Circulo|+dibujar(): void]
+[<<interface>> Dibujable]^-[Rectangulo|+dibujar(): void]
