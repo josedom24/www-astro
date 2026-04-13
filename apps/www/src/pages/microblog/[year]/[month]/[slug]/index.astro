@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
 import MicropostCard from '@pledin/ui/components/MicropostCard.astro';
+import Giscus from '@pledin/ui/components/Giscus.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('microblog');
@@ -31,6 +32,9 @@ const { Content } = await render(post);
     >
       <Content />
     </MicropostCard>
+
+    <h2 class="giscus-title">Nuevos comentarios</h2>
+    <Giscus />
   </div>
 </BaseLayout>
 
@@ -50,4 +54,14 @@ const { Content } = await render(post);
   }
 
   .back:hover { color: var(--color-accent); }
+
+  .giscus-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-border);
+    color: var(--color-text);
+  }
 </style>
