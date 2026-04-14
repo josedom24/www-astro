@@ -9,6 +9,6 @@ toc: false
 	* [Taller 1: Git. Trabajando con ramas y uniones](taller1.html)
 	* [Taller 2: ¿Cómo colaborar en un proyecto de software libre? ¿Qué es un Pull Request (PR)?](taller2.html)
 * [Teoría: Introducción a las Aplicaciones Web](../../pdf/introduccion_aplicaciones_web.pdf)
-	* [Práctica: Despliegue de página web estática](../practica.html)
+	* [Práctica: Despliegue de página web estática](practica.html)
 * [Teoría: Introducción a la Implantación de Aplicaciones Web](../../pdf/introduccion_iaw.pdf)
 

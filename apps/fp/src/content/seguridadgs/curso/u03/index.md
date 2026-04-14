@@ -31,7 +31,7 @@ toc: false
     * [iptables](perimetral_iptables.html)
     * [Reglas de NAT con nftables](https://www.josedomingo.org/pledin/2020/01/nftables-cortafuegos-perimetral-nat/)
     * [Implementación de un cortafuegos perimetral con nftables](https://www.josedomingo.org/pledin/2020/01/nftables-cortafuegos-perimetral-filtrado/)
-    * [Ejercicio 2](ejercicio2_cortafuegos.html)
+    * [Ejercicio 2](ejercicio2.html)
 
 ## Práctica
 
