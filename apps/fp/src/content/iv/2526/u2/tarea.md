@@ -1,5 +1,5 @@
 ---
-tittle: "Tarea - Docker"
+title: "Tarea - Docker"
 ---
 
 Queremos implantar distintas aplicaciones web con Docker en nuestro VPS. Utilizaremos nuestro servidor web `nginx` que tenemos instalado en el VPS como **proxy inverso**. 
