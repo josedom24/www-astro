@@ -32,7 +32,7 @@ Veamos dos ejemplos concretos:
 
 Veamos un pequeño ejemplo de un Pod multicontenedor:
 
-Tenemos la definición del Pod en el fichero [`pod-multicontenedor.yaml`](files/pod-multicontenedor.yaml):
+Tenemos la definición del Pod en el fichero `pod-multicontenedor.yaml`:
 
 ```yaml
 apiVersion: v1
