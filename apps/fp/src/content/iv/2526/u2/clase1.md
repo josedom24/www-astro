@@ -9,7 +9,7 @@ title: "Clase 1: Introducción a Linux Containers (LXC)"
 
 ## Recursos
 
-* [Introducción a Linux Containers (LXC)](lxc.html)
+* [Introducción a Linux Containers (LXC)](../lxc)
 
 
 ## ¿Qué tienes que hacer?

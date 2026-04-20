@@ -11,7 +11,7 @@ title: "Taller 3: Instalación de WordPress en un servidor LEMP"
 ## Recursos para realizar este taller
 
 * [Vídeo: Como instalar Wordpress en un entorno LAMP](https://www.youtube.com/watch?v=muAKPiPqW6g)
-* [Teoría: Introducción al servidor web nginx](nginx.html)
+* [Teoría: Introducción al servidor web nginx](../nginx)
 
 ## ¿Qué tienes que hacer?
 

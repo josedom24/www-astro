@@ -47,8 +47,8 @@ En este caso:
 
 ## Índice
 
-* [Instalación de Jenkins en docker](instalacion_docker.html)
-* [Introducción a los Pipelines de Jenkins](pipelines.html)
-* [Instalación de docker como runner de Jenkins](runner_docker.html)
-* [Creación, testeo y publicación de imágenes docker desde Jenkins](gendocker.html)
+* [Instalación de Jenkins en docker](instalacion_docker)
+* [Introducción a los Pipelines de Jenkins](pipelines)
+* [Instalación de docker como runner de Jenkins](runner_docker)
+* [Creación, testeo y publicación de imágenes docker desde Jenkins](gendocker)
 * Ejecución de un pipeline en varios runner
