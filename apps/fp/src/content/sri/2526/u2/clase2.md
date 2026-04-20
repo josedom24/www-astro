@@ -14,7 +14,7 @@ title: "Clase 2: Tarea - Instalación del servidor Kea DHCP"
 
 Para realizar esta tarea te puede ayudar una:
 
-* [Introducción a Kea DHCP](kea/)
+* [Introducción a Kea DHCP](/sri/2526/u2/kea/)
 
 ## Ejercicio
 
