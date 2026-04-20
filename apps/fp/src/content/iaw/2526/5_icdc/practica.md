@@ -18,7 +18,7 @@ Modifica el pipeline para que después de hacer el test sobre la aplicación, ge
 2. Subir la imagen a tu cuenta de Docker Hub.
 3. Borrar la imagen que se ha creado.
 
-Por lo tanto tienes que estudiar el apartado [Ejecución de un pipeline en varios runner](icdc8,html) para ejecutar el pipeline en dos runner:
+Por lo tanto tienes que estudiar el apartado [Ejecución de un pipeline en varios runner](icdc8.html) para ejecutar el pipeline en dos runner:
 
 * En el contenedor docker a partir de la imagen `python:3` los pasos del taller 3.
 * En la máquina de Jenkins los pasos de este ejercicio.
