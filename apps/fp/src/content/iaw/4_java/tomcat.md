@@ -58,7 +58,7 @@ Para acceder a la zona de administración:
 
 Utilizaremos la herramienta anterior para explicar cómo desplegar una aplicación, por ejemplo .war. Simplemente bajamos con el scroll hasta encontrar una sección llamada "WAR file to deploy". Seleccionamos el fichero .war y le damos al botón "Deploy".
 
-Puedes bajarte el fichero war desde el siguiente [enlace](war/RequestDispatcher.war).
+Puedes bajarte el fichero war desde el siguiente [enlace](/iaw/4_java/war/RequestDispatcher.war).
 
 ![tomcat](img/tomcat3.png)
 
@@ -95,5 +95,5 @@ Su ruta real es `aplicacion/web-inf/web.xml`, se trata de un descriptor de despl
 :::tip
 **Ejercicio**
 
-Instala **apache tomcat** en un equipo y despliega la aplicación: [sample.war](war/sample.war) desde la línea de comandos.
+Instala **apache tomcat** en un equipo y despliega la aplicación: [sample.war](/iaw/4_java/war/sample.war) desde la línea de comandos.
 :::
