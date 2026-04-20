@@ -23,7 +23,7 @@ Para terminar instalamos los plugins que nos recomiendan y creamos un usuario ad
 ## Índice
 
 * Instalación de Jenkins en docker
-* [Introducción a los Pipelines de Jenkins](pipelines)
-* [Instalación de docker como runner de Jenkins](runner_docker)
-* [Creación, testeo y publicación de imágenes docker desde Jenkins](gendocker)
-* [Ejecución de un pipeline en varios runner](runner)
+* [Introducción a los Pipelines de Jenkins](/iaw/6_ic/jenkins/pipelines/)
+* [Instalación de docker como runner de Jenkins](/iaw/6_ic/jenkins/runner_docker/)
+* [Creación, testeo y publicación de imágenes docker desde Jenkins](/iaw/6_ic/jenkins/gendocker/)
+* [Ejecución de un pipeline en varios runner](/iaw/6_ic/jenkins/runner/)

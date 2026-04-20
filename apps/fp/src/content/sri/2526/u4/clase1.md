@@ -4,7 +4,7 @@ title: "Protocolo NFS"
 
 ## Recursos
 
-* [Protocolos de almacenamiento HTTP](pdf/almacenamiento2526.pdf)
+* [Protocolos de almacenamiento HTTP](/sri/2526/u4/pdf/almacenamiento2526.pdf)
 
 ## Servidor NFS
 

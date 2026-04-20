@@ -4,7 +4,7 @@ title: "Taller 3: Integración continua de aplicación django (Test)"
 
 Vamos a trabajar con el repositorio de la aplicación [django_tutorial](https://github.com/josedom24/django_tutorial). Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero `tests.py` del directorio `polls`.
 
-Cada test viene definido por una función. En el fichero puedes leer los comentarios para saber que es lo que prueba cada test, o puedes ver el documento [Tests en la aplicación tutorial Django](test_tutorial_django).
+Cada test viene definido por una función. En el fichero puedes leer los comentarios para saber que es lo que prueba cada test, o puedes ver el documento [Tests en la aplicación tutorial Django](/iaw/6_ic/test_tutorial_django/).
 
 Para ejecutar los test ejecutamos:
 

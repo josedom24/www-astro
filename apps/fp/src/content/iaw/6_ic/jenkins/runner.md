@@ -47,8 +47,8 @@ En este caso:
 
 ## Índice
 
-* [Instalación de Jenkins en docker](instalacion_docker)
-* [Introducción a los Pipelines de Jenkins](pipelines)
-* [Instalación de docker como runner de Jenkins](runner_docker)
-* [Creación, testeo y publicación de imágenes docker desde Jenkins](gendocker)
+* [Instalación de Jenkins en docker](/iaw/6_ic/jenkins/instalacion_docker/)
+* [Introducción a los Pipelines de Jenkins](/iaw/6_ic/jenkins/pipelines/)
+* [Instalación de docker como runner de Jenkins](/iaw/6_ic/jenkins/runner_docker/)
+* [Creación, testeo y publicación de imágenes docker desde Jenkins](/iaw/6_ic/jenkins/gendocker/)
 * Ejecución de un pipeline en varios runner
