@@ -11,7 +11,7 @@ title: "Clase 2: Configuración de contenedores LXC"
 
 ## Recursos
 
-* [Configuración de contenedores LXC](../lxc2)
+* [Configuración de contenedores LXC](/iv/2526/u2/lxc2/)
 
 ## Ejercicio
 

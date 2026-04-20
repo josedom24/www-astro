@@ -10,7 +10,7 @@ title: "Taller 2: Configuración Apache2 + fpm-php"
 
 ## Recursos para realizar este taller
 
-* Artículo: [Ejecución de PHP con PHP-FPM](../fpm)
+* Artículo: [Ejecución de PHP con PHP-FPM](/iaw/2_php/fpm/)
 
 ## ¿Qué tienes que hacer?
 
