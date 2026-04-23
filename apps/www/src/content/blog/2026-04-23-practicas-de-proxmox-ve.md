@@ -19,12 +19,12 @@ Las presentaciones que comparto a continuación recogen los contenidos con los q
 
 ## Lista de prácticas
 
-* [Proxmox VE: Introducción a la virtualización](https://github.com/josedom24/presentaciones/blob/main/hlcgm/intro_virt_proxmox.pdf)
-* [Práctica 1: Instalación de una máquina Linux en Proxmox](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica1.pdf)
-* [Práctica 2: Instalación de una máquina Windows en Proxmox](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica2.pdf)
-* [Práctica 3: Trabajo con claves SSH](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica3.pdf)
-* [Práctica 4: Clonación, plantillas y snapshots en Proxmox](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica4.pdf)
-* [Práctica 5: Acceso remoto usando Apache Guacamole](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica5.pdf)
-* [Práctica 6: Instalación de contenedores en Proxmox](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica6.pdf)
-* [Práctica 7: Trabajando con redes en Proxmox](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica7.pdf)
-* [Práctica 8: Almacenamiento en Proxmox](https://github.com/josedom24/presentaciones/blob/main/hlcgm/practica8.pdf)
+* [Proxmox VE: Introducción a la virtualización](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/intro_virt_proxmox.pdf)
+* [Práctica 1: Instalación de una máquina Linux en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica1.pdf)
+* [Práctica 2: Instalación de una máquina Windows en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica2.pdf)
+* [Práctica 3: Trabajo con claves SSH](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica3.pdf)
+* [Práctica 4: Clonación, plantillas y snapshots en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica4.pdf)
+* [Práctica 5: Acceso remoto usando Apache Guacamole](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica5.pdf)
+* [Práctica 6: Instalación de contenedores en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica6.pdf)
+* [Práctica 7: Trabajando con redes en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica7.pdf)
+* [Práctica 8: Almacenamiento en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica8.pdf)
