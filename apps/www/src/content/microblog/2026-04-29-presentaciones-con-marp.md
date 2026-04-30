@@ -1,8 +1,8 @@
 ---
 title: "Presentaciones con Marp"
 date: 2026-04-29
-tags:
-  - "Aplicación"
+tags: 
+  - "Aplicaciones"
   - "Presentaciones"
   - "Markdown"
 ---
@@ -16,4 +16,3 @@ Escribes tus diapositivas directamente en **Markdown**, y Marp se encarga de con
 Además, puedes exportar el resultado a varios formatos: **HTML**, **PDF** o **PPTX**. Perfecto para llevar tus presentaciones a cualquier contexto.
 
 Si tienes curiosidad, puedes echarle un vistazo a algunos ejemplos en mi repositorio: [github.com/josedom24/marp-presentaciones](https://github.com/josedom24/marp-presentaciones)
-
