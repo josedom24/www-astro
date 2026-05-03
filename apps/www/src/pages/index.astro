@@ -3,10 +3,10 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '@pledin/ui/layouts/BaseLayout.astro';
 import PostCard from '@pledin/ui/components/PostCard.astro';
 import MicropostCard from '@pledin/ui/components/MicropostCard.astro';
-import PostMeta from '@pledin/ui/components/PostMeta.astro';
-import TagList from '@pledin/ui/components/TagList.astro';
 import { getPostDate } from '@pledin/ui/utils/date';
 import { getReadingTime } from '@pledin/ui/utils/readingTime';
+import { marked } from 'marked';
+import { getHighlighter } from 'shiki';
 
 const allPosts = (await getCollection('blog'))
   .sort((a, b) => getPostDate(b).valueOf() - getPostDate(a).valueOf());
@@ -22,13 +22,43 @@ const allMixed = [
 
 const recentMixed = allMixed.slice(0, 5);
 
-// Renderizar contenido de blog y microblog
-const renderedContent = Object.fromEntries(
+// Configurar Shiki para highlighting en marked
+const highlighter = await getHighlighter({ theme: 'github-light' });
+marked.use({
+  async: true,
+  renderer: {
+    code: async (code, lang) => {
+      if (lang) {
+        return await highlighter.codeToHtml(code, { lang, theme: 'github-light' });
+      }
+      return `<pre><code>${code}</code></pre>`;
+    }
+  }
+});
+
+// Preparar previews de los posts de blog del feed (solo hasta <!--more-->)
+const blogPreviews = Object.fromEntries(
   await Promise.all(
-    recentMixed.map(async ({ post }) => {
-      const { Content } = await render(post);
-      return [post.id, Content];
-    })
+    recentMixed
+      .filter(item => item.type === 'blog')
+      .map(async ({ post }) => {
+        const parts = (post.body ?? '').split(/<!--\s*more\s*-->/i);
+        const preview = await marked(parts[0]) as string;
+        const hasMore = parts.length > 1;
+        return [post.id, { preview, hasMore }];
+      })
+  )
+);
+
+// Renderizar los microposts que aparecen en el feed
+const renderedMicroposts = Object.fromEntries(
+  await Promise.all(
+    recentMixed
+      .filter(item => item.type === 'microblog')
+      .map(async ({ post }) => {
+        const { Content } = await render(post);
+        return [post.id, Content];
+      })
   )
 );
 
@@ -60,33 +90,28 @@ const moreMicroposts = allMicroposts.slice(microblogEnFeed, microblogEnFeed + 6)
       if (type === 'blog') {
         const slug = post.data.slug ?? post.id;
         const url = `/pledin/${slug.replace(/^blog\//, '')}/`;
-        const Content = renderedContent[post.id];
+        const { preview, hasMore } = blogPreviews[post.id];
         return (
-          <article class="blog-preview">
+          <div>
             <span class="feed-label feed-label--blog">Blog</span>
-            {post.data.cover && (
-              <a href={url}>
-                <img src={post.data.cover} alt={post.data.title} class="cover" />
-              </a>
-            )}
-            <div class="preview-content">
-              <h3><a href={url}>{post.data.title}</a></h3>
-              <PostMeta date={date} readingTime={getReadingTime(post.body ?? '')} />
-              <div class="post-body">
-                <Content />
-              </div>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <TagList tags={post.data.tags} baseUrl="/pledin/tags/" />
-              )}
-            </div>
-          </article>
+            <PostCard
+              url={url}
+              title={post.data.title}
+              date={date}
+              readingTime={getReadingTime(post.body ?? '')}
+              cover={post.data.cover}
+              previewHtml={preview}
+              hasMore={hasMore}
+              tags={post.data.tags ?? []}
+            />
+          </div>
         );
       } else {
         const match = post.id.match(/^(\d{4})-(\d{2})-\d{2}-(.+)$/);
         const url = match
           ? `/pledin/microblog/${match[1]}/${match[2]}/${match[3]}/`
           : `/pledin/microblog/${post.id}/`;
-        const Content = renderedContent[post.id];
+        const Content = renderedMicroposts[post.id];
         return (
           <div>
             <span class="feed-label feed-label--microblog">Microblog</span>
@@ -293,90 +318,6 @@ const moreMicroposts = allMicroposts.slice(microblogEnFeed, microblogEnFeed + 6)
 
 @media (max-width: 600px) {
   .more-grids { grid-template-columns: 1fr; }
-}
-
-.blog-preview {
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  padding: 1.25rem;
-  background: var(--color-bg-nav);
-  transition: border-color 0.2s;
-}
-
-.blog-preview:hover {
-  border-color: var(--color-accent);
-}
-
-.blog-preview .cover {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.preview-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.blog-preview h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.blog-preview h3 a {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.blog-preview h3 a:hover {
-  color: var(--color-accent-high);
-}
-
-.blog-preview .post-body {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--color-text);
-}
-
-.blog-preview .post-body :global(p) {
-  margin-bottom: 0.75rem;
-}
-
-.blog-preview .post-body :global(ul),
-.blog-preview .post-body :global(ol) {
-  margin: 0.5rem 0 0.75rem 1.5rem;
-  padding-left: 1rem;
-}
-
-.blog-preview .post-body :global(li) {
-  margin-bottom: 0.3rem;
-  padding-left: 0.25rem;
-}
-
-.blog-preview .post-body :global(img) {
-  border-radius: 0.5rem;
-  margin: 1rem auto;
-}
-
-.blog-preview .post-body :global(a) {
-  color: var(--color-accent);
-  text-decoration: underline;
-}
-
-.blog-preview .post-body :global(code) {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-}
-
-.blog-preview .post-body :global(pre) {
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin: 1rem 0;
 }
 
 </style>
