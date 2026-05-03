@@ -36,15 +36,32 @@ marked.use({
   }
 });
 
-// Preparar previews de los posts de blog del feed (solo hasta <!--more-->)
+// Preparar previews de los posts de blog del feed (truncar en <!--more--> o primeros párrafos)
 const blogPreviews = Object.fromEntries(
   await Promise.all(
     recentMixed
       .filter(item => item.type === 'blog')
       .map(async ({ post }) => {
-        const parts = (post.body ?? '').split(/<!--\s*more\s*-->/i);
-        const preview = await marked(parts[0]) as string;
+        const body = post.body ?? '';
+        const parts = body.split(/<!--\s*more\s*-->/i);
         const hasMore = parts.length > 1;
+
+        // Si no hay <!--more-->, truncar en el primer párrafo vacío (separador de párrafos)
+        let previewMarkdown = parts[0];
+        if (!hasMore) {
+          const paragraphs = body.split('\n\n').filter(p => p.trim());
+          // Tomar hasta 2 párrafos si no son headings
+          const preview_parts = [];
+          for (const para of paragraphs) {
+            if (preview_parts.length >= 2) break;
+            if (!para.match(/^#+\s/)) { // ignorar headings
+              preview_parts.push(para);
+            }
+          }
+          previewMarkdown = preview_parts.join('\n\n');
+        }
+
+        const preview = await marked(previewMarkdown) as string;
         return [post.id, { preview, hasMore }];
       })
   )
