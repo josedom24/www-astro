@@ -4,7 +4,7 @@ toc: false
 ---
 
 
-* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/http.pdf))
+* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/http.pdf)
 * [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
   * Ejercicio: Configuración básica de apache2
   * Ejercicio: Configuración básica de nginx
