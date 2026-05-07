@@ -16,7 +16,7 @@ title: "Clase 3: Configuración básica de nginx"
 
 Los contenidos necesarios para la realización de este ejercicio y para profundizar en la configuración de nginx, lo puedes encontrar en el siguiente apartado:
 
-* [Introducción al servidor web nginx](nginx.html)
+* [Introducción al servidor web nginx](../nginx/)
 
 ## Ejercicio
 

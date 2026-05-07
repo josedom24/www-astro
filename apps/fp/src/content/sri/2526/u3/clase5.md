@@ -13,7 +13,7 @@ title: "Clase 5: HAproxy como balanceador de carga"
 
 Los contenidos necesarios para la realización de este ejercicio y para profundizar en la configuración de nginx, lo puedes encontrar en el siguiente apartado:
 
-* [Introducción al balanceo de carga con HAProxy](haproxy.html)
+* [Introducción al balanceo de carga con HAProxy](../haproxy/)
 
 
 ## Ejercicios

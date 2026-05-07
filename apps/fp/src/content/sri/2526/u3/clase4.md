@@ -13,7 +13,7 @@ title: "Clase 4: Introducción a proxy inverso"
 
 Los contenidos necesarios para la realización de este ejercicio y para profundizar en la configuración de nginx, lo puedes encontrar en el siguiente apartado:
 
-* [Proxy inverso con Apache2 y Nginx](proxyinverso.html)
+* [Proxy inverso con Apache2 y Nginx](../proxyinverso/)
 
 ## Ejercicios
 
