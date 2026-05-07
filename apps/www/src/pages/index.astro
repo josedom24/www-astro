@@ -6,7 +6,7 @@ import MicropostCard from '@pledin/ui/components/MicropostCard.astro';
 import { getPostDate } from '@pledin/ui/utils/date';
 import { getReadingTime } from '@pledin/ui/utils/readingTime';
 import { marked } from 'marked';
-import { getHighlighter } from 'shiki';
+import { createHighlighter } from 'shiki';
 
 const allPosts = (await getCollection('blog'))
   .sort((a, b) => getPostDate(b).valueOf() - getPostDate(a).valueOf());
@@ -23,13 +23,20 @@ const allMixed = [
 const recentMixed = allMixed.slice(0, 5);
 
 // Configurar Shiki para highlighting en marked
-const highlighter = await getHighlighter({ theme: 'github-light' });
+const highlighter = await createHighlighter({ themes: ['github-light'], langs: [] });
 marked.use({
   async: true,
   renderer: {
     code: async (code, lang) => {
       if (lang) {
-        return await highlighter.codeToHtml(code, { lang, theme: 'github-light' });
+        try {
+          if (!highlighter.getLoadedLanguages().includes(lang)) {
+            await highlighter.loadLanguage(lang as any);
+          }
+          return highlighter.codeToHtml(code, { lang, theme: 'github-light' });
+        } catch {
+          return `<pre><code>${code}</code></pre>`;
+        }
       }
       return `<pre><code>${code}</code></pre>`;
     }
