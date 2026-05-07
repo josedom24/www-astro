@@ -7,28 +7,24 @@
         "url": "/sri/main/"
       },
       {
-        "title": "Virtualización en Linux",
+        "title": "Configuración básica de un servidor. DHCP.",
         "url": "/sri/main/u1/"
       },
       {
-        "title": "DHCP",
+        "title": "HTTP",
         "url": "/sri/main/u2/"
       },
       {
-        "title": "HTTP",
+        "title": "Almacenamiento",
         "url": "/sri/main/u3/"
       },
       {
-        "title": "Almacenamiento",
+        "title": "DNS",
         "url": "/sri/main/u4/"
       },
       {
-        "title": "DNS",
-        "url": "/sri/main/u5/"
-      },
-      {
         "title": "Correo electrónico",
-        "url": "/sri/main/u6/"
+        "url": "/sri/main/u5/"
       }
     ]
   }

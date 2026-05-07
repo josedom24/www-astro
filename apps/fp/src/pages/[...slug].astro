@@ -36,6 +36,9 @@ if (navPath) {
 const slug = entry.id.replace(/\/index$/, '').replace(/^index$/, '');
 const currentPath = `/${slug}/`;
 const courseTitle = nav[0]?.title || moduloName;
+const courseBaseUrl = navPath === `../data/nav/${moduloName}/${cursoName}.json`
+  ? `/${moduloName}/${cursoName}/`
+  : `/${moduloName}/`;
 const pageTitle = entry.data.title ?? slug.split('/').pop() ?? moduloName;
 
 const slugSegments = slug.split('/');
@@ -87,7 +90,7 @@ if (slugSegments.length === 3) {
 
 const breadcrumb = [
   { title: 'FP', url: '/' },
-  { title: courseTitle, url: `/${slugSegments[0]}/` },
+  { title: courseTitle, url: courseBaseUrl },
 ];
 
 if (slugSegments.length === 3) {
