@@ -4,8 +4,6 @@ import { marked } from 'marked';
 import type { APIContext } from 'astro';
 import { getPostDate } from '@pledin/ui/utils/date';
 import { execSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
-import path from 'node:path';
 
 function getFirstCommitDate(filePath: string): Date | null {
   try {
@@ -23,16 +21,8 @@ function getFirstCommitDate(filePath: string): Date | null {
   }
 }
 
-function resolveContentFile(base: string, id: string): string | null {
-  for (const ext of ['.md', '.mdx']) {
-    const p = path.resolve(base, id + ext);
-    if (existsSync(p)) return p;
-  }
-  return null;
-}
-
-function getPubDate(base: string, id: string, fallback: Date): Date {
-  const file = resolveContentFile(base, id);
+function getPubDate(post: any, fallback: Date): Date {
+  const file = post?.filePath ?? post?._internal?.filePath;
   if (!file) return fallback;
   return getFirstCommitDate(file) ?? fallback;
 }
@@ -51,7 +41,7 @@ export async function GET(context: APIContext) {
       .replace(/src="\/pledin\//g, `src="https://www.josedomingo.org/pledin/`);
     return {
       title: post.data.title,
-      pubDate: getPubDate('src/content/blog', post.id, getPostDate(post)),
+      pubDate: getPubDate(post, getPostDate(post)),
       description: post.data.excerpt ?? '',
       content: html,
       link: url,
@@ -69,7 +59,7 @@ export async function GET(context: APIContext) {
       .replace(/src="\/pledin\//g, `src="https://www.josedomingo.org/pledin/`);
     return {
       title: post.data.title,
-      pubDate: getPubDate('src/content/microblog', post.id, post.data.date),
+      pubDate: getPubDate(post, post.data.date),
       description: '',
       content: html,
       link: url,
