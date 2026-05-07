@@ -2,81 +2,6 @@
 title: "Práctica: Configuración de un router (SNAT, DNAT y DHCP)"
 ---
 
-## ¿Qué vas a aprender en esta práctica?
-
-* Realizar la configuración de un router Linux.
-* Activar el reenvío de paquetes.
-* Configurar reglas SNAT y DNAT.
-* Realizar la instalación y configuración del servidor Kea DHCP.
-* Entender los tiempos involucrados en el protocolo DHCP.
-* Comprender el comportamiento de los clientes cuando no tienen comunicación con el servidor DHCP.
-* Configurar reservas DHCP.
-
-## Teoría
-
-### Router Linux, SNAT y DNAT
-
-* **¿Para qué se usa un router Linux?**
-
-* Para **conectar dos o más redes** y permitir el **enrutamiento de paquetes** entre ellas.
-* Útil en redes domésticas, laboratorios o firewalls personalizados.
-* Puede realizar funciones como:
-  * NAT (traducción de direcciones).
-  * Filtrado de paquetes.
-  * Redirección de puertos.
-  * Compartir conexión a Internet.
-
-* **Habilitar el reenvío de IPs (IP Forwarding)**: Permite que el kernel reenvíe paquetes entre interfaces de red.
-    * Comando temporal: `echo 1 > /proc/sys/net/ipv4/ip_forward`
-    * Para hacerlo **persistente**:  ~~Editar el archivo `/etc/sysctl.conf` y añadir o descomentar `net.ipv4.ip_forward = 1`. Y ejecutar: `sysctl -p`~~. En Debian13 ha cambiado la gestión de los parámetros del kernel, tienes que buscar información para añadir el parámetro `net.ipv4.ip_forward = 1` y de esa forma activar el bit de forwarding.
-
-* **SNAT (Source NAT)**: Se usa para **salir a Internet** desde una red local con IPs privadas. Cambia la **IP de origen** de los paquetes por la IP pública del router.
-
-    * Con `iptables`:
-
-    ```bash
-    iptables -t nat -A POSTROUTING -o eth0 -s 192.168.0.0/24 -j SNAT --to-source 192.0.2.1
-    ```
-
-    * `eth0`: interfaz de salida (por ejemplo, hacia Internet).
-    * `-s`: Se indica la red desde la que queremos tener acceso a internet.
-    * `192.0.2.1`: IP pública del router.
-
-    * Alternativa más sencilla (masquerade) si se usa IP dinámica:
-
-    ```bash
-    iptables -t nat -A POSTROUTING -o eth0 -s 192.168.0.0/24 -j MASQUERADE
-    ```
-
-* **DNAT (Destination NAT)**: Se usa para **redirigir tráfico entrante** desde el exterior a una máquina interna. Cambia la **IP de destino** de los paquetes.
-    * Con `iptables`:
-
-      ```bash
-      iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.100:80
-      ```
-
-    * Redirige el puerto 80 entrante a una máquina interna con IP 192.168.1.100.
-
-* **Hacer reglas `iptables` persistentes**: Las reglas de `iptables` no sobreviven a un reinicio, se deben guardar. Lo más sencillo para hacerla persistente es usar el paquete `iptables-persistent` (Debian/Ubuntu):
-    * Guarda las reglas actuales:
-
-    ```bash
-    iptables-save > /etc/iptables/rules.v4
-    ```
-    * Se restauran automáticamente al iniciar el sistema.
-
-### Servidor DHCP
-
-Para realizar la parte de DHCP de esta práctica te puede ayudar una:
-
-* [Introducción a Kea DHCP](/sri/main/u2/kea/)
-
-## Recursos
-
-* El [Ejemplo 3: Configuración de un router/NAT](https://github.com/josedom24/curso_kvm_ow/blob/main/curso1/contenidos/unidad06/clase7.md) del curso de virtualización.
-
-## Ejercicio
-
 Vamos a crear el siguiente escenario:
 
 ![router](img/practica.png)
@@ -115,6 +40,18 @@ Tendremos 3 redes:
 5. Configura la máquina router para que permita que las máquinas internas tenga acceso a internet. Las reglas que has configurado deben ser persistentes. ¿Es necesario usar *enmascaramiento*?
 6. Instala un servidor web en la máquina **Servidor Web**: `sudo apt install apache2`. Crea la regla necesaria para acceder desde el exterior al servidor web con un navegador. Usa resolución estática para acceder a la página web usando el nombre `www.tunombre.org`, para acceder desde el exterior, y desde las máquinas conectadas a la red **muy aislada**. **Nota**: Desde el exterior se debe acceder a la máquina **router** para acceder a la página web.
 
+:::tip[Entrega Parte 1]
+
+1. Configuración de red de las máquinas. Comprobación de que las máquinas que están conectadas en distintas redes hacen ping entre ellas (usa una de las máquinas conectada a la red **muy aislada**).
+2. Comprobación de que el nombre FQDN está bien configurado en las máquinas.
+3. Comprobación de que al ejecutar sudo no se pide la contraseña en las máquinas Linux.
+4. Comprobación del acceso a la máquina **cliente1** y **Servidor Web** con ssh desde el exterior.
+5. Comprobación de que las máquinas internas tienen acceso a internet y resolución DNS.
+6. Comprobación del acceso a la página web con un navegador desde el exterior y desde alguna de las máquinas conectadas a la red **muy aislada**.
+7. ¿Se puede acceder a la máquina **Servidor Web** desde el exterior sin acceder por el router? Razona tu respuesta.
+
+:::
+
 ### Parte 2: Configuración con servidor DHCP
 
 Vamos a seguir trabajando con el escenario de la parte anterior.
@@ -136,28 +73,16 @@ Vamos a seguir trabajando con el escenario de la parte anterior.
 9. Conecta la máquina **router** a una red de tipo NAT con servidor DHCP (por ejemplo la `default`). Configura la interfaz correspondiente para que tome direccionamiento dinámico.
 10. Recuerda que si la interfaz "pública" de un router toma direccionamiento dinámico, las reglas de SNAT deben usar la técnica de enmascaramiento. Modifica las reglas de SNAT para que el escenario siga funcionando.
 
-:::tip[Entrega]
+:::tip[Entrega Parte 2]
 
-**Parte 1 — Direccionamiento estático**
-
-1. Configuración de red de las máquinas. Comprobación de que las máquinas que están conectadas en distintas redes hacen ping entre ellas (usa una de las máquinas conectada a la red **muy aislada**).
-2. Comprobación de que el nombre FQDN está bien configurado en las máquinas.
-3. Comprobación de que al ejecutar sudo no se pide la contraseña en las máquinas Linux.
-4. Comprobación del acceso a la máquina **cliente1** y **Servidor Web** con ssh desde el exterior.
-5. Comprobación de que las máquinas internas tienen acceso a internet y resolución DNS.
-6. Comprobación del acceso a la página web con un navegador desde el exterior y desde alguna de las máquinas conectadas a la red **muy aislada**.
-7. ¿Se puede acceder a la máquina **Servidor Web** desde el exterior sin acceder por el router? Razona tu respuesta.
-
-**Parte 2 — Servidor DHCP**
-
-8. Entrega el fichero de configuración que tienes que realizar en el apartado 1 del servidor DHCP.
-9. Muestra la configuración de los clientes para que tomen direccionamiento dinámico. Muestra la configuración de red (dirección ip, puerta de enlace, DNS,...) con la que se han configurado. Muestra la lista de concesiones.
-10. Una comprobación donde se comprueba que los dos clientes tienen conectividad al exterior.
-11. Comprobación donde se vean los 4 paquetes que se transmite en la negociación de la concesión, del apartado 3.
-12. Explica, con pruebas de funcionamiento, el motivo del comportamiento que se indica en los puntos 4 y 5. Muestra al profesor el funcionamiento del punto 4 y 5.
-13. La configuración del servidor DHCP que se solicita en el apartado 6. Muestra la configuración del **servidorWeb** después de cambiar su configuración de red. Comprueba que puedes seguir accediendo a la página web desde el exterior y desde los clientes.
-14. Muestra el cambio que has realizado en la configuración de la interface "pública" del **router**. Muestra la configuración de red que ha tomado.
-15. Muestras las nuevas reglas SNAT.
-16. Comprueba que los clientes y el **servidorWeb** siguen teniendo conectividad con el exterior.
+1. Entrega el fichero de configuración que tienes que realizar en el apartado 1 del servidor DHCP.
+2. Muestra la configuración de los clientes para que tomen direccionamiento dinámico. Muestra la configuración de red (dirección ip, puerta de enlace, DNS,...) con la que se han configurado. Muestra la lista de concesiones.
+3. Una comprobación donde se comprueba que los dos clientes tienen conectividad al exterior.
+4. Comprobación donde se vean los 4 paquetes que se transmite en la negociación de la concesión, del apartado 3.
+5. Explica, con pruebas de funcionamiento, el motivo del comportamiento que se indica en los puntos 4 y 5. Muestra al profesor el funcionamiento del punto 4 y 5.
+6. La configuración del servidor DHCP que se solicita en el apartado 6. Muestra la configuración del **servidorWeb** después de cambiar su configuración de red. Comprueba que puedes seguir accediendo a la página web desde el exterior y desde los clientes.
+7. Muestra el cambio que has realizado en la configuración de la interface "pública" del **router**. Muestra la configuración de red que ha tomado.
+8. Muestras las nuevas reglas SNAT.
+9. Comprueba que los clientes y el **servidorWeb** siguen teniendo conectividad con el exterior.
 
 :::
