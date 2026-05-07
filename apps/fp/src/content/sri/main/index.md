@@ -3,7 +3,7 @@ title: "Servicios de Red e Internet (2026-2027)"
 toc: false
 ---
 
-## Unidad 1: Configuración básica de un servidor. DHCP.
+## Unidad 1: Configuración básica de un servidor - DHCP
 
 * [Configuración inicial de un servidor](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/configuracion_inicial.pdf)
 * [DHCP. Servidor Kea DHCP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dhcp.pdf)
@@ -12,12 +12,14 @@ toc: false
 
 ## Unidad 2: Protocolo HTTP
 
-* [Clase 1: Introducción al protocolo HTTP](2526/u3/clase1/)
-* [Clase 2: Configuración básica de apache2](2526/u3/clase2/)
-* [Clase 3: Configuración básica de nginx](2526/u3/clase3/)
-* [Clase 4: Introducción a proxy inverso](2526/u3/clase4/)
-* [Clase 5: HAproxy como balanceador de carga](2526/u3/clase5/)
-* [Clase 6: Tarea - Protocolo HTTP](2526/u3/clase6/)
+* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/http.pdf))
+* [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
+  * Ejercicio: Configuración básica de apache2
+  * Ejercicio: Configuración básica de nginx
+* [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
+  * Ejercicio: Introducción a proxy inverso
+  * Ejercicio: HAproxy como balanceador de carga
+  * Práctica: Protocolo HTTP
 
 ## Unidad 3: Protocolos de Almacenamiento
 
