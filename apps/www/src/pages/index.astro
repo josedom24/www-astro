@@ -6,6 +6,7 @@ import MicropostCard from '@pledin/ui/components/MicropostCard.astro';
 import { getPostDate } from '@pledin/ui/utils/date';
 import { getReadingTime } from '@pledin/ui/utils/readingTime';
 import { marked } from 'marked';
+import { getHighlighter } from 'shiki';
 
 const allPosts = (await getCollection('blog'))
   .sort((a, b) => getPostDate(b).valueOf() - getPostDate(a).valueOf());
@@ -21,6 +22,51 @@ const allMixed = [
 
 const recentMixed = allMixed.slice(0, 5);
 
+// Configurar Shiki para highlighting en marked
+const highlighter = await getHighlighter({ theme: 'github-light' });
+marked.use({
+  async: true,
+  renderer: {
+    code: async (code, lang) => {
+      if (lang) {
+        return await highlighter.codeToHtml(code, { lang, theme: 'github-light' });
+      }
+      return `<pre><code>${code}</code></pre>`;
+    }
+  }
+});
+
+// Preparar previews de los posts de blog del feed (truncar en <!--more--> o primeros párrafos)
+const blogPreviews = Object.fromEntries(
+  await Promise.all(
+    recentMixed
+      .filter(item => item.type === 'blog')
+      .map(async ({ post }) => {
+        const body = post.body ?? '';
+        const parts = body.split(/<!--\s*more\s*-->/i);
+        const hasMore = parts.length > 1;
+
+        // Si no hay <!--more-->, truncar en el primer párrafo vacío (separador de párrafos)
+        let previewMarkdown = parts[0];
+        if (!hasMore) {
+          const paragraphs = body.split('\n\n').filter(p => p.trim());
+          // Tomar hasta 2 párrafos si no son headings
+          const preview_parts = [];
+          for (const para of paragraphs) {
+            if (preview_parts.length >= 2) break;
+            if (!para.match(/^#+\s/)) { // ignorar headings
+              preview_parts.push(para);
+            }
+          }
+          previewMarkdown = preview_parts.join('\n\n');
+        }
+
+        const preview = await marked(previewMarkdown) as string;
+        return [post.id, { preview, hasMore }];
+      })
+  )
+);
+
 // Renderizar los microposts que aparecen en el feed
 const renderedMicroposts = Object.fromEntries(
   await Promise.all(
@@ -31,18 +77,6 @@ const renderedMicroposts = Object.fromEntries(
         return [post.id, Content];
       })
   )
-);
-
-// Preparar previews de los posts de blog del feed
-const blogPreviews = Object.fromEntries(
-  recentMixed
-    .filter(item => item.type === 'blog')
-    .map(({ post }) => {
-      const parts = (post.body ?? '').split(/<!--\s*more\s*-->/i);
-      const preview = marked(parts[0]) as string;
-      const hasMore = parts.length > 1;
-      return [post.id, { preview, hasMore }];
-    })
 );
 
 // Bloques "más posts"
@@ -85,6 +119,7 @@ const moreMicroposts = allMicroposts.slice(microblogEnFeed, microblogEnFeed + 6)
               cover={post.data.cover}
               previewHtml={preview}
               hasMore={hasMore}
+              tags={post.data.tags ?? []}
             />
           </div>
         );
@@ -301,6 +336,5 @@ const moreMicroposts = allMicroposts.slice(microblogEnFeed, microblogEnFeed + 6)
 @media (max-width: 600px) {
   .more-grids { grid-template-columns: 1fr; }
 }
-
 
 </style>
