@@ -3,7 +3,7 @@ import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const modulos = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content' }),
+  loader: glob({ pattern: ['**/*.md', '!**/draft/**'], base: './src/content' }),
   schema: z.object({
     title: z.string().optional(),
     description: z.string().optional(),

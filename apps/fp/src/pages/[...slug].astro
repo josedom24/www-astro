@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import DocLayout from '@pledin/ui/layouts/DocLayout.astro';
 import PostNav from '@pledin/ui/components/PostNav.astro';
 
-const navModules = import.meta.glob('../data/nav/*.json', { eager: true });
+const navModules = import.meta.glob('../data/nav/**/*.json', { eager: true });
 
 export async function getStaticPaths() {
   const entries = await getCollection('modulos');
@@ -21,10 +21,15 @@ const { Content, headings } = await render(entry);
 
 const slugParts = entry.id.split('/');
 const moduloName = slugParts[0];
+const cursoName = slugParts[1];
 
 let nav = [];
-const navPath = `../data/nav/${moduloName}.json`;
-if (navModules[navPath]) {
+const navCandidates = [
+  `../data/nav/${moduloName}/${cursoName}.json`,
+  `../data/nav/${moduloName}.json`,
+];
+const navPath = navCandidates.find(p => navModules[p]);
+if (navPath) {
   nav = (navModules[navPath] as { default: unknown }).default as typeof nav;
 }
 

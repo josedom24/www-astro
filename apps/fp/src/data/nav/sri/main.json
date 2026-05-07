@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Servicios de Red e Internet (2026-2027)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/sri/main/"
+      },
+      {
+        "title": "Virtualización en Linux",
+        "url": "/sri/main/u1/"
+      },
+      {
+        "title": "DHCP",
+        "url": "/sri/main/u2/"
+      },
+      {
+        "title": "HTTP",
+        "url": "/sri/main/u3/"
+      },
+      {
+        "title": "Almacenamiento",
+        "url": "/sri/main/u4/"
+      },
+      {
+        "title": "DNS",
+        "url": "/sri/main/u5/"
+      },
+      {
+        "title": "Correo electrónico",
+        "url": "/sri/main/u6/"
+      }
+    ]
+  }
+]
