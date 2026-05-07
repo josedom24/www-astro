@@ -5,18 +5,18 @@ toc: false
 
 ## Unidad 1: Configuración básica de un servidor - DHCP
 
-* [Configuración inicial de un servidor](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/configuracion_inicial.pdf)
-* [DHCP. Servidor Kea DHCP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dhcp.pdf)
+* [Configuración inicial de un servidor](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/configuracion_inicial.pdf)
+* [DHCP. Servidor Kea DHCP](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/dhcp.pdf)
   * [Práctica: Configuración de un router (SNAT y DNAT)](u1/practica/)
   
 
 ## Unidad 2: Protocolo HTTP
 
-* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/http.pdf)
-* [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
+* [Protocolo HTTP](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/http.pdf)
+* [Servidores web Apache y Nginx](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/apache_nginx.pdf)
   * Ejercicio: Configuración básica de apache2
   * Ejercicio: Configuración básica de nginx
-* [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
+* [Proxy inverso y balanceador de carga](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/proxy_balanceador.pdf)
   * Ejercicio: Introducción a proxy inverso
   * Ejercicio: HAproxy como balanceador de carga
   * Práctica: Protocolo HTTP
