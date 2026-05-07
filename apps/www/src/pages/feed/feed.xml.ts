@@ -3,6 +3,39 @@ import { getCollection, render } from 'astro:content';
 import { marked } from 'marked';
 import type { APIContext } from 'astro';
 import { getPostDate } from '@pledin/ui/utils/date';
+import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+
+function getFirstCommitDate(filePath: string): Date | null {
+  try {
+    const out = execSync(
+      'git log --diff-filter=A --follow --format=%aI -- ' + JSON.stringify(filePath),
+      { encoding: 'utf8' },
+    ).trim();
+    const lines = out.split('\n').filter(Boolean);
+    if (lines.length === 0) return null;
+    const iso = lines[lines.length - 1];
+    const d = new Date(iso);
+    return Number.isNaN(d.valueOf()) ? null : d;
+  } catch {
+    return null;
+  }
+}
+
+function resolveContentFile(base: string, id: string): string | null {
+  for (const ext of ['.md', '.mdx']) {
+    const p = path.resolve(base, id + ext);
+    if (existsSync(p)) return p;
+  }
+  return null;
+}
+
+function getPubDate(base: string, id: string, fallback: Date): Date {
+  const file = resolveContentFile(base, id);
+  if (!file) return fallback;
+  return getFirstCommitDate(file) ?? fallback;
+}
 
 export async function GET(context: APIContext) {
   const posts = (await getCollection('blog'))
@@ -18,7 +51,7 @@ export async function GET(context: APIContext) {
       .replace(/src="\/pledin\//g, `src="https://www.josedomingo.org/pledin/`);
     return {
       title: post.data.title,
-      pubDate: getPostDate(post),
+      pubDate: getPubDate('src/content/blog', post.id, getPostDate(post)),
       description: post.data.excerpt ?? '',
       content: html,
       link: url,
@@ -36,7 +69,7 @@ export async function GET(context: APIContext) {
       .replace(/src="\/pledin\//g, `src="https://www.josedomingo.org/pledin/`);
     return {
       title: post.data.title,
-      pubDate: post.data.date,
+      pubDate: getPubDate('src/content/microblog', post.id, post.data.date),
       description: '',
       content: html,
       link: url,
