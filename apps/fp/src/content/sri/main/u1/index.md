@@ -1,5 +1,5 @@
 ---
-title: "Unidad 1: Configuración básica de un servidor. DHCP."
+title: "Unidad 1: Configuración básica de un servidor - DHCP"
 toc: false
 ---
 
