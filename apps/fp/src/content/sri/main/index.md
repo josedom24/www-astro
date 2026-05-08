@@ -32,9 +32,9 @@ toc: false
   * [Ejercicio 4: Vistas en bind](u3/ejercicio4/)
   * [Práctica: Protocolo DNS](u3/practica/)
 
-## Unidad 4: Introducción al servidor de correo electrónico
+## Unidad 4: Servidor de correo electrónico
 
-* [Introducción al sistema de correo electrónico](pdf/correo.pdf)
+* [Introducción al sistema de correo electrónico](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/correo.pdf)
 * [Instalación y configuración básica de postfix](2526/u6/clase1/)
 * [Caso 1:  Envío local, entre usuarios del mismo servidor](2526/u6/clase2/)
 * [Caso 2: Envío de correo desde usuarios del servidor a correos de internet (desde el escenario de OpenStack)](2526/u6/intro1/)

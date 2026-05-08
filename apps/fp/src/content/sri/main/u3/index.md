@@ -8,4 +8,4 @@ toc: false
   * [Ejercicio 2: Instalación y configuración de un servidor DNS esclavo](u3/ejercicio2/)
   * [Ejercicio 3: Delegación de subdominios con bind9](u3/ejercicio3/)
   * [Ejercicio 4: Vistas en bind](u3/ejercicio4/)
-  * [Práctica: Protocolo DNS](2526/u5/practica/)
+  * [Práctica: Protocolo DNS](u3/practica/)
