@@ -7,24 +7,20 @@
         "url": "/sri/main/"
       },
       {
-        "title": "Configuración básica de un servidor - DHCP",
+        "title": "Configuración básica - DHCP",
         "url": "/sri/main/u1/"
       },
       {
-        "title": "Protocolo HTTP",
+        "title": "Protocolo HTTP - Almacenamiento",
         "url": "/sri/main/u2/"
       },
       {
-        "title": "Almacenamiento",
+        "title": "Protocolo DNS",
         "url": "/sri/main/u3/"
       },
       {
-        "title": "DNS",
-        "url": "/sri/main/u4/"
-      },
-      {
         "title": "Correo electrónico",
-        "url": "/sri/main/u5/"
+        "url": "/sri/main/u4/"
       }
     ]
   }
