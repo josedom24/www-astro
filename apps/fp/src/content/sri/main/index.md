@@ -25,12 +25,12 @@ toc: false
 
 ## Unidad 3: Protocolo DNS
 
-* [Clase 1: Introducción al protocolo DNS](2526/u5/clase1/)
-* [Clase 2: Instalación y configuración del servidor bind9 en nuestra red local](2526/u5/clase2/)
-* [Clase 3: Instalación y configuración de un servidor DNS esclavo](2526/u5/clase3/)
-* [Clase 4: Delegación de subdominios con bind9](2526/u5/clase4/)
-* [Clase 5: Vistas en bind](2526/u5/clase5/)
-* [Práctica protocolo DNS](2526/u5/practica/)
+* [Introducción al protocolo DNS]([2526/u5/clase1/](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/dns.pdf))
+  * [Ejercicio 1: Instalación y configuración del servidor bind9 en nuestra red local](2526/u5/clase2/)
+  * [Ejercicio 2: Instalación y configuración de un servidor DNS esclavo](2526/u5/clase3/)
+  * [Ejercicio 3: Delegación de subdominios con bind9](2526/u5/clase4/)
+  * [Ejercicio 4: Vistas en bind](2526/u5/clase5/)
+  * [Práctica protocolo DNS](2526/u5/practica/)
 
 ## Unidad 4: Introducción al servidor de correo electrónico
 
