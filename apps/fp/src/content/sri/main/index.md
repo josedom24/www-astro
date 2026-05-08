@@ -22,14 +22,8 @@ toc: false
 * [Protocolos de almacenamiento](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/almacenamiento.pdf)
   * [Práctica: Protocolo HTTP y almacenamiento](practica/)
 
-## Unidad 3: Protocolos de Almacenamiento
 
-* [Protocolos de almacenamiento HTTP](2526/u4/pdf/almacenamiento2526.pdf)
-* [Clase 1: Protocolo NFS](2526/u4/clase1/)
-* [Clase 2: Protocolo iSCSI](2526/u4/clase2/)
-* [Clase 3: Práctica - Protocolos de almacenamiento](2526/u4/clase3/)
-
-## Unidad 4: Protocolo DNS
+## Unidad 3: Protocolo DNS
 
 * [Clase 1: Introducción al protocolo DNS](2526/u5/clase1/)
 * [Clase 2: Instalación y configuración del servidor bind9 en nuestra red local](2526/u5/clase2/)
@@ -38,7 +32,7 @@ toc: false
 * [Clase 5: Vistas en bind](2526/u5/clase5/)
 * [Práctica protocolo DNS](2526/u5/practica/)
 
-## Unidad 5: Introducción al servidor de correo electrónico
+## Unidad 4: Introducción al servidor de correo electrónico
 
 * [Introducción al sistema de correo electrónico](pdf/correo.pdf)
 * [Instalación y configuración básica de postfix](2526/u6/clase1/)
