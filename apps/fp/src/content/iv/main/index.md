@@ -5,14 +5,14 @@ toc: false
 
 ## Unidad 1: Virtualización Linux
 
-* [Presentación: Introducción a la virtualización]()
-* Curso 1
-* Curso 2
-* Presentación: Introducción QEMU/KKVM + libvirt
-  * Ejercicio 1: Creación de máquinas virtuales desde la línea de comandos
-* Presentación: Almacenamiento en QEMU/KVM + libvirt
+* [Presentación: Introducción a la virtualización](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/virtualización.pdf)
+* [Curso: Introducción a la virtualización con KVM/libvirt usando virt-manager](https://github.com/josedom24/curso_kvm_ow/tree/main/curso1)
+* [Curso: Profundización a la virtualización con KVM/libvirt](https://github.com/josedom24/curso_kvm_ow/tree/main/curso2)
+* [Presentación: Introducción QEMU/KKVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_intro.pdf)
+  * [Ejercicio 1: Creación de máquinas virtuales desde la línea de comandos](u1/ejercicio1/)
+* [Presentación: Almacenamiento en QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_almacenamiento.pdf)
   * Ejercicio 2: Gestión del almacenamiento en QEMU/KVM + libvirt
-* Presentación: Redes en QEMU/KVM + libvirt
+* [Presentación: Redes en QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_redes.pdf)
   * Ejercicio 3: Gestión de redes en QEMU/KVM + libvirt
 * Práctica: QEMU/KVM + libvirt
 
