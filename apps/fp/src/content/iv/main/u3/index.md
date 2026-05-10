@@ -9,4 +9,4 @@ toc: false
   * [Ejercicio 2: Uso de OpenStack client (OSC)](ejercicio2/)
   * [Ejercicio 3: Red interna conectada con un router OpenStack](ejercicio3/)
   * [Ejercicio 4: Red interna conectada con un router linux en OpenStack](ejercicio4/)
-* [Practica: Escenario en OpenStack](u3/practica/)
+* [Practica: Escenario en OpenStack](practica/)

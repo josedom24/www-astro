@@ -43,17 +43,13 @@ toc: false
 ## Unidad 4: Orquestadores de contenedores. Kubernetes
 
 * [Presentación: Introducción a Kubernetes](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kubernetes.pdf)
-* Curso de Kubernetes
-
-
-
-* [Introducción a Kubernetes](https://github.com/josedom24/presentaciones/raw/main/servicios/kubernetes.pdf)
-* [Instalación y configuración de minikube y kubectl](2526/u4/k8s1.html)
-* [Trabajando con Pods](2526/u4/k8s2.html)
-* [Trabajando con ReplicaSet](2526/u4/k8s3.html)
-* [Trabajando con Deployments](2526/u4/k8s4.html)
-* [Acceso a las aplicaciones](2526/u4/k8s5.html)
-* [Despliegues parametrizados](2526/u4/k8s6.html)
-* [Almacenamiento en Kubernetes](2526/u4/k8s7.html)
-* [Instalación de un CMS con Helm](2526/u4/k8s8.html)
-* [Práctica: Kubernetes](2526/u4/practica.html)
+* [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies)
+  * [Ejercicio 1: Instalación y configuración de minikube y kubectl](u4/ejercicio1/)
+  * [Ejercicio 2: Trabajando con Pods](u4/ejercicio2/)
+  * [Ejercicio 3: Trabajando con ReplicaSet](u4/ejercicio3/)
+  * [Ejercicio 4: Trabajando con Deployments](u4/ejercicio4/)
+  * [Ejercicio 5: Acceso a las aplicaciones](u4/ejercicio5/)
+  * [Ejercicio 6: Despliegues parametrizados](u4/ejercicio6/)
+  * [Ejercicio 7: Almacenamiento en Kubernetes](u4/ejercicio7/)
+  * [Ejercicio 8: Instalación de un CMS con Helm](u4/ejercicio8/)
+* [Práctica: Kubernetes](/u4/practica/)
