@@ -16,30 +16,17 @@ toc: false
 
 ## Unidad 2: Virtualización en contenedores
 
-
 * [Presentación: Introducción a los contenedores](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/contenedores.pdf)
 * [Presentación: Contenedores LXC](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/lxc.pdf)
-  * Ejercicio 1: Contenedores LXC
+  * [Ejercicio 1: Contenedores LXC](u2/ejercicio1/)
 * [Presentación: Contenedores Docker](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/docker.pdf)
 * [Curso docker](https://github.com/josedom24/curso_docker_ies)
-  * Ejercicio 2: Introducción a los contenedores Docker
-  * Ejercicio 3: Almacenamiento en Docker
-  * Ejercicio 4: Ejemplos de despliegue en Docker
-  * Ejercicio 5: Ejemplos de escenarios multicontenedor
-* Práctica: LXC - Docker
+  * [Ejercicio 2: Introducción a los contenedores Docker](u2/ejercicio2/)
+  * [Ejercicio 3: Almacenamiento en Docker](u2/ejercicio3/)
+  * [Ejercicio 4: Ejemplos de despliegue en Docker](u2/ejercicio4/)
+  * [Ejercicio 5: Ejemplos de escenarios multicontenedor](u2/ejercicio5/)
+* [Práctica: LXC - Docker](u2/practica/)
 
-
-* [Clase 1: Introducción a Linux Containers (LXC)](2526/u2/clase1.html)
-* [Clase 2: Configuración de contenedores LXC](2526/u2/clase2.html)
-* [Clase 3: Introducción a los contenedores Docker](2526/u2/d1.html)
-* [Clase 4: Docker - Creando contenedores demonios](2526/u2/d2.html)
-* [Clase 5: Imágenes Docker](2526/u2/d3.html)
-* [Clase 6: Almacenamiento en Docker](2526/u2/d4.html)
-* [Clase 7: Redes en Docker](2526/u2/d5.html)
-* [Clase 8: Docker - Ejemplos de despliegue](2526/u2/d6.html)
-* [Clase 9: Creando escenarios multicontenedor con Docker Compose](2526/u2/d7.html)
-* [Clase 10: Ejemplos de escenarios multicontenedor](2526/u2/d8.html)
-* [Tarea - Docker](2526/u2/tarea.html)
 
 ## Unidad 3: Cloud Computing IaaS. OpenStack 
 
