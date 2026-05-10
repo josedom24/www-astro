@@ -1,5 +1,5 @@
 ---
-title: "Unidad 2: Virtualización en contenedores"
+title: "Unidad 2: Virtualización en contenedores. LXC / Docker"
 toc: false
 ---
 

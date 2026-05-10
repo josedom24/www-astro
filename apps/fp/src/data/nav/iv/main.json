@@ -7,11 +7,11 @@
         "url": "/iv/main/"
       },
       {
-        "title": "Virtualización Linux",
+        "title": "KVM / QEMU / Libvirt",
         "url": "/iv/main/u1/"
       },
       {
-        "title": "Contenedores",
+        "title": "LXC / Docker",
         "url": "/iv/main/u2/"
       },
       {
