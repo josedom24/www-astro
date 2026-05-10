@@ -17,11 +17,11 @@ toc: false
 ## Unidad 2: Virtualización en contenedores
 
 
-* [Presentación: Introducción a los contenedores](2526/pdf/contenedores.pdf)
-* Presentación: Contenedores LXC
+* [Presentación: Introducción a los contenedores](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/contenedores.pdf)
+* [Presentación: Contenedores LXC](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/lxc.pdf)
   * Ejercicio 1: Contenedores LXC
-* Presentación: Contenedores Docker
-* Curso docker
+* [Presentación: Contenedores Docker](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/docker.pdf)
+* [Curso docker](https://github.com/josedom24/curso_docker_ies)
   * Ejercicio 2: Introducción a los contenedores Docker
   * Ejercicio 3: Almacenamiento en Docker
   * Ejercicio 4: Ejemplos de despliegue en Docker
