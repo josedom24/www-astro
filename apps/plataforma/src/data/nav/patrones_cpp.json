@@ -1,0 +1,97 @@
+[
+  {
+    "title": "Curso de Patrones de Diseño con C++ moderno",
+    "children": [
+      {
+        "title": "Índice",
+        "url": "/pledin/cursos/patrones_cpp/"
+      }
+    ]
+  },
+  {
+    "title": "1. Principios SOLID y patrones de diseño",
+    "children": [
+      { "title": "Principios básicos de diseño", "url": "/pledin/cursos/patrones_cpp/contenido/modulo01/basicos/" },
+      { "title": "SOLID: Principios de diseño orientado a objetos", "url": "/pledin/cursos/patrones_cpp/contenido/modulo01/solid/" },
+      { "title": "Patrones de diseño", "url": "/pledin/cursos/patrones_cpp/contenido/modulo01/patrones/" },
+      { "title": "Conceptos de C++ Moderno para Patrones de Diseño", "url": "/pledin/cursos/patrones_cpp/contenido/modulo01/c++/" }
+    ]
+  },
+  {
+    "title": "2. Patrones Creacionales",
+    "children": [
+      { "title": "Patrón Factory Method", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/factory_method/" },
+      { "title": "Implementación de Factory Method con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/factory_method2/" },
+      { "title": "Ejemplo: Sistema de registros", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/factory_method3/" },
+      { "title": "Abstract Factory", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/abstract_factory/" },
+      { "title": "Implementación de Abstract Factory con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/abstract_factory2/" },
+      { "title": "Ejemplo: Interfaz gráfica multiplataforma", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/abstract_factory3/" },
+      { "title": "Patrón Builder", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/builder/" },
+      { "title": "Implementación del patrón Builder con C++ moderno", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/builder2/" },
+      { "title": "Ejemplo: Construcción de solicitudes HTTP", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/builder3/" },
+      { "title": "Patrón Prototype", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/prototype/" },
+      { "title": "Implementación de Prototype en C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/prototype2/" },
+      { "title": "Ejemplo: Editor de formas gráficas", "url": "/pledin/cursos/patrones_cpp/contenido/modulo02/prototype3/" }
+    ]
+  },
+  {
+    "title": "3. Patrones Estructurales",
+    "children": [
+      { "title": "Patrón Adapter", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/adapter/" },
+      { "title": "Implementación de Adapter con C++ moderno", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/adapter2/" },
+      { "title": "Ejemplo: Integración de una API de pagos antigua", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/adapter3/" },
+      { "title": "Patrón Bridge", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/bridge/" },
+      { "title": "Implementación de Bridge con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/bridge2/" },
+      { "title": "Ejemplo: Sistema de notificaciones con múltiples canales", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/bridge3/" },
+      { "title": "Patrón Composite", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/composite/" },
+      { "title": "Implementación de Composite en C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/composite2/" },
+      { "title": "Ejemplo: Sistema de archivos", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/composite3/" },
+      { "title": "Patrón Decorator", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/decorator/" },
+      { "title": "Implementación de Decorator con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/decorator2/" },
+      { "title": "Ejemplo: Generador de Markdown", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/decorator3/" },
+      { "title": "Patrón Facade", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/facade/" },
+      { "title": "Implementación de Facade con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/facade2/" },
+      { "title": "Ejemplo: Sistema de gestión de tareas", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/facade3/" },
+      { "title": "Patrón Proxy", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/proxy/" },
+      { "title": "Implementación de Proxy con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/proxy2/" },
+      { "title": "Ejemplo: Acceso controlado a un servicio de datos", "url": "/pledin/cursos/patrones_cpp/contenido/modulo03/proxy3/" }
+    ]
+  },
+  {
+    "title": "4. Patrones de Comportamiento",
+    "children": [
+      { "title": "Patrón Chain of Responsibility", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/chainofresponsibility/" },
+      { "title": "Implementación de Chain of Responsibility con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/chainofresponsibility2/" },
+      { "title": "Ejemplo: Sistema de validación de solicitudes", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/chainofresponsibility3/" },
+      { "title": "Patrón Mediator", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/mediator/" },
+      { "title": "Implementación de Mediator con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/mediator2/" },
+      { "title": "Ejemplo: Sistema de chat entre usuarios", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/mediator3/" },
+      { "title": "Patrón Memento", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/memento/" },
+      { "title": "Implementación de Memento con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/memento2/" },
+      { "title": "Ejemplo: Editor de texto con historial (undo)", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/memento3/" },
+      { "title": "Patrón Observer", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/observer/" },
+      { "title": "Implementación de Observer con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/observer2/" },
+      { "title": "Ejemplo: Sistema de monitoreo de temperatura", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/observer3/" },
+      { "title": "Patrón State", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/state/" },
+      { "title": "Implementación de State con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/state2/" },
+      { "title": "Ejemplo: Estados de un reproductor multimedia", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/state3/" },
+      { "title": "Patrón Visitor", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/visitor/" },
+      { "title": "Implementación de Visitor con C++", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/visitor2/" },
+      { "title": "Ejemplo: Sistema de procesamiento de documentos", "url": "/pledin/cursos/patrones_cpp/contenido/modulo04/visitor3/" }
+    ]
+  },
+  {
+    "title": "5. Patrones clásicos y alternativas modernas en C++",
+    "children": [
+      { "title": "Por qué algunos patrones se simplifican en C++ moderno", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/introduccion/" },
+      { "title": "Patrón Singleton", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/singleton/" },
+      { "title": "Ejemplo: Logger global del sistema", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/singleton2/" },
+      { "title": "Patrón Strategy", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/strategy/" },
+      { "title": "Ejemplo: Sistema de cálculo flexible", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/strategy2/" },
+      { "title": "Patrón Command", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/command/" },
+      { "title": "Ejemplo: Sistema de control remoto", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/command2/" },
+      { "title": "Patrón Template Method", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/templatemethod/" },
+      { "title": "Ejemplo: Proceso de documentos", "url": "/pledin/cursos/patrones_cpp/contenido/modulo05/templatemethod2/" }
+    ]
+  }
+]
