@@ -3,7 +3,7 @@ title: "Infraestructura virtual (2026-2027)"
 toc: false
 ---
 
-## Unidad 1: Virtualización Linux
+## Unidad 1: Virtualización de máquinas virtuales. KVM/QEMU/Libvirt
 
 * [Presentación: Introducción a la virtualización](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/virtualización.pdf)
 * [Presentación: Introducción QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_intro.pdf)
@@ -14,7 +14,7 @@ toc: false
   * [Ejercicio 3: Gestión de redes en QEMU/KVM + libvirt](u1/ejercicio3/)
 * [Práctica: QEMU/KVM + libvirt](u1/practica/)
 
-## Unidad 2: Virtualización en contenedores
+## Unidad 2: Virtualización en contenedores. LXC / Docker
 
 * [Presentación: Introducción a los contenedores](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/contenedores.pdf)
 * [Presentación: Contenedores LXC](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/lxc.pdf)
