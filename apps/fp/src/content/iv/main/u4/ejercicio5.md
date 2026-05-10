@@ -1,124 +1,45 @@
 ---
-title: "Ejercicio 5: Acceso a las aplicaciones"
+title: "Ejercicio 5: Despliegues parametrizados"
 ---
 
 Los siguientes apartados los encuentras en el [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies):
 
-* [Services. Tipos de Services](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/services.md)
-* [Describiendo Services](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/describiendo_services.md) - [Vídeo](https://www.youtube.com/watch?v=kI2rZmqA7TI)
-* [Gestionando los Services](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/gestionando_services.md) - [Vídeo](https://www.youtube.com/watch?v=UAaBzXG13XU)
-* [Servicio DNS en Kubernetes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/dns.md) - [Vídeo](https://www.youtube.com/watch?v=nxnyRvdHpsI)
-* [Ingress Controller](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/ingress.md) - [Vídeo](https://www.youtube.com/watch?v=X2dW9UbfU88)
-* [Ejemplo completo: Desplegando y accediendo a la aplicación Temperaturas](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/temperaturas.md)
+* [Variables de entorno](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/variables_entorno.md) - [Vídeo](https://www.youtube.com/watch?v=MazyA8LP8Oc)
+* [ConfigMaps](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/configmaps.md) - [Vídeo](https://www.youtube.com/watch?v=QVC9TsHpXvc)
+* [Secrets](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/secrets.md) - [Vídeo](https://www.youtube.com/watch?v=lckojEFiUiw)
+* [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/wordpress.md) - [Vídeo](https://www.youtube.com/watch?v=Iy6MaixXSrw)
 
-## Ejercicio 1: Despliegue y acceso de la aplicación GuestBook
+## Ejercicio 1: Configurando nuestra aplicación Temperaturas 
 
-Una vez que tenemos creado el despliegue de la aplicación GuestBook, que realizamos en el anterior taller, vamos a crear los Services correspondientes para acceder a ella:
+En un ejemplo anterior: [Ejemplo completo: Desplegando y accediendo a la aplicación Temperaturas](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/temperaturas.md) habíamos desplegado una aplicación formada por dos microservicios que nos permitía visualizar las temperaturas de municipios.
 
-### Service para acceder a la aplicación
+Recordamos que el componente `frontend` hace peticiones al componente `backend` utilizando el nombre `temperaturas-backend`, que es el nombre que asignamos al Service ClusterIP para el acceso al `backend`.
 
-El primer Service que vamos a crear nos va a permitir acceder a la aplicación GuestBook desde el exterior, para ello crea un fichero yaml con la definición del Service a partir de la siguiente plantilla:
+Vamos a cambiar la configuración de la aplicación para indicar otro nombre.
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: guestbook
-  labels:
-    app: guestbook
-    tier: frontend
-spec:
-  type: 
-  ports:
-  - port: 
-    targetPort: 
-  selector:
-    app: guestbook
-    tier: frontend
+Podemos configurar el nombre del servidor `backend` al que vamos acceder desde el `frontend` modificando la variable de entorno **TEMP_SERVER** a la hora de crear el despliegue del `frontend`.
+
+Por defecto el valor de esa variable es:
+
+```
+TEMP_SERVER temperaturas-backend:5000
 ```
 
-Tienes que poner el tipo del Service, el puerto del servicio será el 80 y el nombre del puerto de la aplicación que hemos asignado en el Deployment es `http-server`.
+Vamos a modificar esta variable en el despliegue del `frontend` y cambiaremos el nombre del Service del `backend` para que coincidan, para ello realiza los siguientes pasos:
 
-Realiza los siguientes pasos:
+1. Crea un recurso `ConfigMap` con un dato que tenga como clave `SERVIDOR_TEMPERATURAS` y como contenido `servidor-temperaturas:5000`.
+2. Modifica el fichero de despliegue del `frontend`: [`frontend-deployment.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/files/temperaturas/frontend-deployment.yaml) para añadir la modificación de la variable `TEMP_SERVER` con el valor que hemos guardado en el `ConfigMap`.
+3. Realiza el despliegue y crea el Service para acceder al `frontend`.
+4. Despliega el microservicio `backend`.
+5. Modifica el fichero [`backend-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/files/temperaturas/backend-srv.yaml) para cambiar el nombre del Service por `servidor-temperaturas` y crea el Service.
+6. Accede a la aplicación usando el puerto asignado al Service NodePort del `frontend` o creando el recurso `Ingress`.
 
-1. Elabora el fichero yaml con la definición del Service, y créalo.
-2. Comprueba el puerto que le han asignado al Service para acceder desde el exterior.
-3. Accede a la ip del nodo master y al puerto asignado desde un navegador web para ver la aplicación.
-4. Responde la siguiente pregunta: ¿Por qué aparece el mensaje de error: **Waiting for database connection...**?
 
-### Service para acceder a la base de datos
+## Ejercicio 2: Despliegue y acceso de la aplicación Nextcloud
 
-A continuación vamos a crear el Service para acceder a la base de datos. Vamos a crear el fichero yaml para su definición a partir de la siguiente plantilla:
+Basándonos en el [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/wordpress.md) vamos a realizar el despliegue de la aplicación NextCloud + MariaDB. Para ello ten en cuenta lo siguiente:
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: redis
-  labels:
-    app: redis
-    tier: backend
-spec:
-  type: 
-  ports:
-  - port: 
-    targetPort: 
-  selector:
-    app: redis
-    tier: backend
-```
-Tienes que poner el tipo del Service, el puerto del servicio será el 6379 y el nombre del puerto de la base de datos que hemos asignado en el Deployment es `redis-server`. **Nota: No cambies el nombre del Service, ya que la aplicación guestbook va a acceder por defecto a la base de datos usando el nombre `redis`**.
-
-Realiza los siguientes pasos:
-
-1. Elabora el fichero yaml con la definición del Service, y créalo.
-2. Lista los Services que has creado.
-3. Accede a la ip del nodo master y al puerto asignado desde un navegador web para ver la aplicación. Comprueba que funciona sin ningún problema.
-
-### Acceso a la aplicación usando Ingress
-
-Vamos a crear el fichero yaml de definición del recurso Ingress para acceder a la aplicación a partir de la siguiente plantilla:
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: guestbook
-spec:
-  rules:
-  - host: 
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: 
-            port:
-              number: 80
-```
-Indica un host del tipo *www.tunombre.org*, indica el nombre del Service que creaste para acceder a la aplicación guestbook y ten en cuenta que el puerto de dicho servicio era el 80.
-
-Realiza los siguientes pasos:
-
-1. Activa el *addon* ingress en minikube para instalar el Ingress Controller.
-2. Crea La definición del recurso Ingress con los datos sugeridos, y crea el recurso Ingress.
-3. Modifica el fichero `/etc/hosts` de tu ordenador para configurar la resolución estática.
-4. Accede a la aplicación usando el nombre que has asignado.
-
-## Ejercicio 2: Despliegue y acceso de la Aplicación Lets-Chat
-
-[Let's Chat](https://github.com/sdelements/lets-chat) es una aplicación web escrita en Node.js que utilizando una base de datos MongoDB nos posibilita la creación de salas de chats.
-
-Vamos a realiza el despliegue y acceso a esta aplicación teniendo en cuenta los siguientes aspectos:
-
-* La imagen docker que vamos a usar para el despliegue de Let's Chat es `sdelements/lets-chat` y para desplegar mongoDB utilizaremos la imagen `mongo`. **Nota: utiliza imagen `mongo:4`, Let's Chat es una aplicación antigua y no funciona con las últimas versiones de mongo.**
-* Al crear el despliegue de Let's Chat podemos poner varias replicas, pero el despliegue de la base de datos, sólo creará una replica.
-* El puerto en el que responde la aplicación es el 8080. La base de datos utiliza el puerto 27017.
-* Vamos acceder desde el exterior a la aplicación. Sin embargo, no es necesario acceder desde el exterior a la base de datos.
-* El nombre del Service para acceder a la base de datos debe ser `mongo` ya que por defecto la aplicación va a conectar a la base de datos usando ese nombre.
-* Queremos acceder a la aplicación usando un nombre del tipo *www.chat-tunombre.org*.
-
-Realiza los siguientes pasos:
-
-1. Utilizando como modelos los ficheros yaml de la actividad anterior, crea los ficheros necesarios para crear los recursos en tu cluster de Kubernetes para desplegar esta aplicación.
+* El despliegue de la base de datos se haría de la misma forma que encontramos en el ejemplo de Wordpress, pero para esta actividad vamos a usar la imagen `mariadb:10.5`.
+* Según la documentación de [NextCloud en DockerHub](https://hub.docker.com/_/nextcloud) las variables de entorno que tienes que modificar serían: `MYSQL_DATABASE`, `MYSQL_USER`, `MYSQL_PASSWORD` y `MYSQL_HOST`.
+* Al igual que en el ejemplo utiliza un recurso ConfigMap para guardar los valores de configuración no sensibles, y un recurso Secret para los datos sensibles.
+* Utiliza los ficheros yaml del ejemplo haciendo las modificaciones oportunas.

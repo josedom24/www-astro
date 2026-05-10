@@ -1,46 +1,114 @@
 ---
-title: "Ejercicio 6: Despliegues parametrizados"
+title: "Ejercicio 6: Almacenamiento en Kubernetes"
 ---
 
 Los siguientes apartados los encuentras en el [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies):
 
-* [Variables de entorno](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/variables_entorno.md) - [Vídeo](https://www.youtube.com/watch?v=MazyA8LP8Oc)
-* [ConfigMaps](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/configmaps.md) - [Vídeo](https://www.youtube.com/watch?v=QVC9TsHpXvc)
-* [Secrets](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/secrets.md) - [Vídeo](https://www.youtube.com/watch?v=lckojEFiUiw)
-* [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/wordpress.md) - [Vídeo](https://www.youtube.com/watch?v=Iy6MaixXSrw)
+* [Consideraciones sobre el almacenamiento](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/consideraciones.md)
+* [Volúmenes en Kubernetes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/volumenes.md) - [Vídeo](https://www.youtube.com/watch?v=g1Elyt_OuqA)
+* [Aprovisionamiento de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/aprovisionamiento.md) - [Vídeo](https://www.youtube.com/watch?v=7D9R0_f60-Q)
+* [Solicitud de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/solicitud.md) - [Vídeo](https://www.youtube.com/watch?v=YV21W_hjo0Q)
+* [Uso de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/uso.md) 
+* [Ejemplo: Gestión dinámica de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/ejemplo2.md) - [Vídeo](https://www.youtube.com/watch?v=hxeizzHQsHw)
+* [Ejemplo: Wordpress con almacenamiento persistente](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/wordpress.md#ejemplo-3-wordpress-con-almacenamiento-persistente) - [Vídeo](https://www.youtube.com/watch?v=fLMALdJ905E)
 
-## Ejercicio 1: Configurando nuestra aplicación Temperaturas 
+## Ejercicio 1: Desplegando un servidor web persistente
 
-En un ejemplo anterior: [Ejemplo completo: Desplegando y accediendo a la aplicación Temperaturas](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/temperaturas.md) habíamos desplegado una aplicación formada por dos microservicios que nos permitía visualizar las temperaturas de municipios.
 
-Recordamos que el componente `frontend` hace peticiones al componente `backend` utilizando el nombre `temperaturas-backend`, que es el nombre que asignamos al Service ClusterIP para el acceso al `backend`.
+Siguiendo la guía explicada en el [Ejemplo: Gestión dinámica de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/ejemplo2.md), vamos a crear un servidor web que permita la ejecución de scripts PHP con almacenamiento persistente.
 
-Vamos a cambiar la configuración de la aplicación para indicar otro nombre.
+Para realizar esta actividad vamos a usar asignación dinámica de volúmenes y puedes usar, como modelos, los ficheros del ejemplo 2.
 
-Podemos configurar el nombre del servidor `backend` al que vamos acceder desde el `frontend` modificando la variable de entorno **TEMP_SERVER** a la hora de crear el despliegue del `frontend`.
+Realiza los siguientes pasos:
 
-Por defecto el valor de esa variable es:
+1. Crea un fichero yaml para definir un recurso PersistentVolumenClaim que se llame `pvc-webserver` y para solicitar un volumen de 2Gb.
+2. Crea el recurso y comprueba que se ha asociado un volumen de forma dinámica a la solicitud.
+3. Crea un fichero yaml para desplegar un servidor web desde la imagen `php:7.4-apache`, asocia el volumen al Pod que se va a crear e indica el punto de montaje en el *DocumentRoot* del servidor: `/var/www/html`.
+4. Despliega el servidor y crea un fichero `info.php` en `/var/www/html`, con el siguiente contenido: `<?php phpinfo(); ?>`.
+5. Define y crea un Service NodePort, accede desde un navegador al fichero `info.php` y comprueba que se visualiza de forma correcta.
+6. Comprobemos la persistencia: elimina el Deployment, vuelve a crearlo y vuelve a acceder desde el navegador al fichero `info.php`. ¿Se sigue visualizando?
+
+
+## Ejercicio 2: Haciendo persistente la aplicación GuestBook
+
+En este ejercicio vamos a volver a desplegar nuestra aplicación GuestBook, que realizamos en el taller 4 y 5, para añadirle persistencia a la base de datos redis.
+
+Por lo tanto necesitaremos solicitar un volumen, que se asociará de forma dinámica.
+
+### Creando el despliegue de redis para que guarde la información en un directorio
+
+Si estudiamos la documentación de la imagen redis en [Docker Hub](https://hub.docker.com/_/redis), para que la información de la base de datos se guarde en un directorio `/data` del contenedor hay que ejecutar con docker:
 
 ```
-TEMP_SERVER temperaturas-backend:5000
+docker run --name some-redis -d redis redis-server --appendonly yes
 ```
 
-Vamos a modificar esta variable en el despliegue del `frontend` y cambiaremos el nombre del Service del `backend` para que coincidan, para ello realiza los siguientes pasos:
+Es decir, hay que crear el contenedor ejecutando el proceso `redis-server` con los argumentos `--appendonly yes`.
 
-1. Crea un recurso `ConfigMap` con un dato que tenga como clave `SERVIDOR_TEMPERATURAS` y como contenido `servidor-temperaturas:5000`.
-2. Modifica el fichero de despliegue del `frontend`: [`frontend-deployment.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/files/temperaturas/frontend-deployment.yaml) para añadir la modificación de la variable `TEMP_SERVER` con el valor que hemos guardado en el `ConfigMap`.
-3. Realiza el despliegue y crea el Service para acceder al `frontend`.
-4. Despliega el microservicio `backend`.
-5. Modifica el fichero [`backend-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo6/files/temperaturas/backend-srv.yaml) para cambiar el nombre del Service por `servidor-temperaturas` y crea el Service.
-6. Accede a la aplicación usando el puerto asignado al Service NodePort del `frontend` o creando el recurso `Ingress`.
+Por lo tanto tenemos que cambiar el fichero de definición del Deployment de redis, [`redis-deployment.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/plantilla-redis-deployment.yaml) de la siguiente manera:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: redis
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: redis
+        tier: backend
+    spec:
+      volumes:
+        - name: volumen-redis
+          persistentVolumeClaim:
+            claimName: xxxxxxxxxxxx
+      containers:
+        - name: contenedor-redis
+          image: redis
+          command: ["redis-server"]
+          args: ["--appendonly", "yes"]
+          ports:
+            - name: redis-server
+              containerPort: 6379
+          volumeMounts:
+            - mountPath: xxxxxxxxxxxx
+              name: volumen-redis
+```
+Hemos usado el parámetro `command` para ejecutar el proceso, y el parámetro `args` para indicar los argumentos.
+
+**Nota**: Los valores `xxxxxxxxxxxx` tendrás que rellenarlos durante la realización de la actividad.
+
+### Pasos a seguir
+
+Realiza los siguientes pasos:
+
+1. Crea un fichero yaml para definir un recurso PersistentVolumenClaim que se llame `pvc-redis` y para solicitar un volumen de 3Gb.
+2. Crea el recurso y comprueba que se ha asociado un volumen de forma dinámica a la solicitud.
+3. Modifica el fichero del despliegue de redis, modificando las `xxxxxxxxxxxx` por los valores correctos: el nombre del PersistentVolumenClaim y el directorio de montaje en el contenedor (como hemos visto anteriormente es `/data`).
+4. Crea el despliegue de redis. El despliegue de la aplicación `guestbook` y la creación de los Services de acceso se hace con los ficheros que ya utilizamos anteriormente: [`guestbook-deployment.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/guestbook-deployment.yaml), [`guestbook-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/guestbook-srv.yaml) y [`redis-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/redis-srv.yaml).
+5. Accede a la aplicación y escribe algunos mensajes.
+6. Comprobemos la persistencia: elimina el despliegue de redis, vuelve a crearlo, vuelve a acceder desde el navegador y comprueba que los mensajes no se han perdido.
 
 
-## Ejercicio 2: Despliegue y acceso de la aplicación Nextcloud
+## Ejercicio 3: Haciendo persistente la aplicación Nextcloud 
 
-Basándonos en el [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo7/wordpress.md) vamos a realizar el despliegue de la aplicación NextCloud + MariaDB. Para ello ten en cuenta lo siguiente:
+Esta actividad es la continuación de la actividad realizada en el taller 5.
 
-* El despliegue de la base de datos se haría de la misma forma que encontramos en el ejemplo de Wordpress, pero para esta actividad vamos a usar la imagen `mariadb:10.5`.
-* Según la documentación de [NextCloud en DockerHub](https://hub.docker.com/_/nextcloud) las variables de entorno que tienes que modificar serían: `MYSQL_DATABASE`, `MYSQL_USER`, `MYSQL_PASSWORD` y `MYSQL_HOST`.
-* Al igual que en el ejemplo utiliza un recurso ConfigMap para guardar los valores de configuración no sensibles, y un recurso Secret para los datos sensibles.
-* Utiliza los ficheros yaml del ejemplo haciendo las modificaciones oportunas.
+Siguiendo la guía que hemos desarrollado en [Ejemplo 3: Wordpress con almacenamiento persistente](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/wordpress.md) vamos a configurar el despliegue de Nextcloud para que use volúmenes (vamos a usar dos volúmenes, uno para la aplicación y otro para la base de datos) para que la información no se pierda.
 
+Realiza los siguientes pasos:
+
+1. Crea los ficheros yaml para definir los recursos PersistentVolumenClaim para solicitar dos volúmenes de 4Gb.
+2. Crea esos recursos y comprueba que se ha asociado un volumen de forma dinámica a cada solicitud.
+3. Modifica los ficheros de despliegue de la aplicación y la base de datos para asociar los volúmenes a cada uno. Según la documentación de la imagen [Nextcloud](https://hub.docker.com/_/nextcloud) en Docker Hub, la forma más sencilla de hacer persistente la aplicación es montar el volumen en el directorio`/var/www/html/`.
+5. Accede a la aplicación, configúrala y sube un fichero.
+6. Comprobemos la persistencia: elimina los despliegues, vuelve a crearlos y vuelve a acceder desde el navegador y comprueba que la aplicación está configurada y mantiene el fichero que habías subido.

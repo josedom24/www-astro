@@ -1,27 +1,25 @@
 ---
-title: "Ejercicio 2: Trabajando con Pods"
+title: "Ejercicio 2: Trabajando con ReplicaSet"
 ---
 
 Los siguientes apartados los encuentras en el [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies):
 
-* [Pod](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo3/pods.md) 
-* [Describiendo un Pod](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo3/describiendo_pod.md) - [Vídeo](https://www.youtube.com/watch?v=zMkXnENOBBc)
-* [Gestionando los Pods](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo3/gestionando_pod.md) - [Vídeo](https://www.youtube.com/watch?v=OA0OheCtrXo)
+* [ReplicaSet](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo4/replicaset.md)
+* [Describiendo un ReplicaSet](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo4/describiendo_replicaset.md)  - [Vídeo](https://www.youtube.com/watch?v=VL3J63JqV5o)
+* [Gestionando los ReplicaSet](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo4/gestionando_replicaset.md)  - [Vídeo](hhttps://www.youtube.com/watch?v=MeCraOsxRPo)
 
 ## Ejercicio
 
-Vamos a crear nuestro primer Pod, y para ellos vamos a desplegar una imagen que nos ofrece un servidor web con una página estática. Para ello realiza los siguientes pasos:
+Como indicamos en el contenido de este módulo, no se va  a trabajar directamente con los Pods (realmente tampoco vamos a trabajar directamente con los ReplicaSet, en el siguiente módulo explicaremos los Deployments que serán el recurso con el que trabajaremos).  En este ejercicio vamos a crear un ReplicaSet que va a controlar un conjunto de Pods. Para ello, realiza los siguientes pasos:
 
-1. Crea un fichero yaml con la descripción del recurso Pod, teniendo en cuenta los siguientes aspectos:
-    * Indica nombres distintos para el Pod y para el contenedor.
+1. Crea un fichero yaml con la descripción del recurso ReplicaSet, teniendo en cuenta los siguientes aspectos:
+    * Indica nombres distintos para el ReplicaSet y para el contenedor de los Pods que va a controlar.
+    * El ReplicaSet va a crear 3 réplicas.
     * La imagen que debes desplegar es `iesgn/test_web:latest`.
-    * Indica una etiqueta en la descripción del Pod.
-2. Crea el Pod.
-3. Comprueba que el Pod se ha creado y está corriendo.
-4. Obtén información detallada del Pod creado.
-5. Accede de forma interactiva al Pod y comprueba los ficheros que están en el DocumentRoot (`usr/local/apache2/htdocs/`).
-6. Crea una redirección con `kubectl port-forward` utilizando el puerto de localhost 8888 y sabiendo que el Pod ofrece el servicio en el puerto 80. Accede a la aplicación desde un navegador.
-7. Muestra los logs del Pod y comprueba que se visualizan los logs de los accesos que hemos realizado en el punto anterior.
-8. Elimina el Pod, y comprueba que ha sido eliminado.
-
-Por último si quieres practicar con un pod multicontendor puedes realizar el siguiente [ejercicio](https://fp.josedomingo.org/sri/8_k8s/ejercicio2.html).
+    * Indica de manera adecuada una etiqueta en la especificación del Pod que vas a definir que coincida con el *selector* del ReplicaSet.
+2. Crea el ReplicaSet.
+3. Comprueba que se ha creado el ReplicaSet y los 3 Pods.
+4. Obtén información detallada del ReplicaSet creado.
+5. Vamos a probar la tolerancia a fallos: Elimina uno de los 3 Pods, y comprueba que inmediatamente se ha vuelto a crear un nuevo Pod.
+6. Vamos a comprobar la escalabilidad: escala el ReplicaSet para tener 6 Pods de la aplicación.
+7. Elimina el ReplicaSet y comprueba que se han borrado todos los Pods.
