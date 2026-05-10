@@ -1,5 +1,5 @@
 ---
-title: "Contenedores LXC"
+title: "Ejercicio 1: Contenedores LXC"
 ---
 
 En este ejercicio vas a instalar y gestionar contenedores LXC, configurar sus recursos, conectarlos a distintas redes y construir un escenario de router/NAT con almacenamiento compartido desde el host. Todas las operaciones se realizan desde la línea de comandos.

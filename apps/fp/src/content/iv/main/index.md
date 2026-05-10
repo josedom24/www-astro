@@ -30,31 +30,19 @@ toc: false
 
 ## Unidad 3: Cloud Computing IaaS. OpenStack 
 
-* Presentación: Introducción al Cloud Computing y a OpenStack
-* Curso de OpenStack
-  * Ejercicio 1: Primeros pasos con OpenStack
-* Presentación: OpenStack client (OSC)
-  * Ejercicio 2: Uso de OpenStack client (OSC)
-  * Ejercicio 3: Red interna conectada con un router OpenStack
-  * Ejercicio 4: Red interna conectada con un router linux en OpenStack
-* Practica: Escenario en OpenStack
+* [Presentación: Introducción al Cloud Computing y a OpenStack](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/cloudcomputing.pdf)
+* [Curso de OpenStack](https://github.com/josedom24/curso_openstack_ies)
+  * [Ejercicio 1: Primeros pasos con OpenStack](u3/ejericio1/)
+* [Presentación: OpenStack client (OSC)](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/osc.pdf)
+  * [Ejercicio 2: Uso de OpenStack client (OSC)](u3/ejericio2/)
+  * [Ejercicio 3: Red interna conectada con un router OpenStack](u3/ejericio3/)
+  * [Ejercicio 4: Red interna conectada con un router linux en OpenStack](u3/ejericio4/)
+* [Practica: Escenario en OpenStack](u3/practica/)
 
-
-
-* [Clase 1: Primeros pasos con OpenStack](2526/u3/clase1.html)
-* [Clase 2: Configuración del cliente VPN](2526/u3/clase2.html) 
-* [Presentación: Introducción al Cloud Computing y a OpenStack](2526/u3/pdf/cloudcomputing2526.pdf)
-* [Clase 3: Instalación y uso básico de OpenStack client (OSC)](2526/u3/os1.html)
-* [Clase 4: Creación de una instancia desde el CLI](2526/u3/os2.html)
-* [Clase 5: Almacenamiento en OpenStack desde el CLI](2526/u3/os3.html)
-* [Clase 6: Redes NAT en OpenStack desde el CLI](2526/u3/os4.html)
-* [Clase 7: Red interna conectada con un router OpenStack](2526/u3/os5.html)
-* [Clase 8: Red interna conectada con un router linux en OpenStack](2526/u3/os6.html)
-* [Practica: Escenario en OpenStack](2526/u3/practica.html)
 
 ## Unidad 4: Orquestadores de contenedores. Kubernetes
 
-* Presentación: Introducción a Kubernetes
+* [Presentación: Introducción a Kubernetes](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kubernetes.pdf)
 * Curso de Kubernetes
 
 

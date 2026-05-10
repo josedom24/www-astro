@@ -12,7 +12,7 @@ En este ejercicio vas a gestionar el almacenamiento en QEMU/KVM + libvirt, traba
 4. Responde: ¿qué diferencia hay entre un *pool* de tipo `dir` y uno de tipo `logical`? ¿Qué ventaja ofrece cada uno como almacenamiento de discos para máquinas virtuales?
 
 :::note[Ejercicio optativo]
-En lugar de ficheros de imagen (tipo `dir`), es posible usar volúmenes lógicos LVM o particiones de disco directamente como discos de máquinas virtuales. Crea un *pool* de tipo `lvm` o `disk` y arranca una máquina virtual que use un volumen de ese *pool* como disco principal.
+En lugar de ficheros de imagen (tipo `dir`), es posible usar volúmenes lógicos LVM o particiones de disco directamente como discos de máquinas virtuales. Crea un *pool* de tipo `logical` o `disk` y arranca una máquina virtual que use un volumen de ese *pool* como disco principal.
 :::
 
 ## Ejercicio 2: Gestión de volúmenes en el pool default

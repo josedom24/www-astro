@@ -1,5 +1,5 @@
 ---
-title: "Escenarios multicontenedor con Docker Compose"
+title: "Ejercicio 5: Escenarios multicontenedor con Docker Compose"
 ---
 
 En este ejercicio vas a usar Docker Compose para definir y desplegar escenarios multicontenedor de forma declarativa. Trabajarás con ficheros `docker-compose.yaml` para gestionar aplicaciones formadas por varios servicios. Todas las operaciones se realizan desde la línea de comandos.

@@ -1,5 +1,5 @@
 ---
-title: "Introducción a los contenedores Docker"
+title: "Ejercicio 2: Introducción a los contenedores Docker"
 ---
 
 En este ejercicio vas a instalar Docker, trabajar con contenedores interactivos y en segundo plano, usar variables de entorno, gestionar imágenes y desplegar aplicaciones web. Todas las operaciones se realizan desde la línea de comandos.
