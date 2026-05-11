@@ -39,10 +39,6 @@ Nos situamos en el directorio `02_opentofu/ejemplo5`. En este ejemplo vamos a co
 
 En este ejemplo, `ej5-server1` (Debian) está conectado a la red `nat-dhcp` y a la red `muy-aislada` (actúa como gateway). `ej5-server2` (Ubuntu) se conecta únicamente a la red `muy-aislada`.
 
-**Limitación** de esta solución para crear escenarios:
-
-* Es **repetitiva**: si queremos crear un escenario con 3 máquinas necesitamos añadir los recursos de la tercera máquina en `main.tf`, sus ficheros en `cloud-init/` y modificar `output.tf` para mostrar su información.
-
 :::tip[¿Qué tienes que entregar?]
 1. Configura tu escenario de forma adecuada para crear las máquinas virtuales del ejemplo 5. Accede a `ej5-server1` por ssh y comprueba que puedes hacer ping a `ej5-server2` (`10.0.0.2`). Desde `ej5-server1` accede por ssh a `ej5-server2`. Destruye el escenario.
 2. Modifica lo necesario para crear una tercera máquina conectada a la red `muy-aislada`. Comprueba que todo funciona de manera adecuada. Destruye el escenario.
