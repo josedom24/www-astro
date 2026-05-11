@@ -2,7 +2,7 @@
 title: "Ejercicio 2: Ejecución de Playbooks"
 ---
 
-1. Haz un fork del repositorio [taller_ansible_vagrant](https://github.com/josedom24/taller_ansible_vagrant) y realiza una clonación en el ordenador donde has instalado ansible. Vamos a trabajar en el directorio **Taller1**.
+1. Haz un fork del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) y realiza una clonación en el ordenador donde has instalado ansible. Vamos a trabajar en el directorio **u1_iac/ejercicio2**.
 
 2. Rellena de manera adecuada el inventario y la configuración de ansible.
 
