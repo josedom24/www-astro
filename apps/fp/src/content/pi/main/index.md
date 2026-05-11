@@ -1,9 +1,19 @@
 ---
-title: "Proyecto intermodular (2025-2026)"
+title: "Proyecto intermodular (2026-2027)"
 toc: false
 ---
 
-## Proyecto 1: Infraestructura como código
+## Unidad 1: Infraestructura como código
+
+* Presentación: Infraestructura como Código
+* Presentación: Introducción a ansible
+  * [Ejercicio 1: Introducción a ansible](u1/ejercicio1/)
+  * [Ejercicio 2: Ejecución de Playbooks](u1/ejercicio2/)
+  * [Ejercicio 3: Playbooks con Roles](u1/ejercicio3/)
+
+
+<!--
+
 
 * [Clase 1: Introducción a ansible](2526/u1/clase1.html)
 * [Clase 2: Ansible. Ejecución de Playbooks](2526/u1/clase2.html)
@@ -16,3 +26,4 @@ toc: false
 
 * [Orquestación con Heat en OpenStack](2526/u2/heat.html)
 * [Orquestación con OpenTofu en OpenStack](2526/u2/opentofu.html)
+*-->
