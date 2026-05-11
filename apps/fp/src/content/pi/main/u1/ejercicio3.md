@@ -5,7 +5,7 @@ title: "Ejercicio 3: Playbooks con Roles"
 En este taller vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
 
 1. Crear dos máquinas virtuales (con las características indicadas en el ejercicio 1).
-2. Vamos a trabajar con el directorio **u1_iac/ejercicio3** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
+2. Vamos a trabajar con el directorio **01_ansible/ejercicio3** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
 3. Rellena el inventario de forma adecuada para definir los dos equipos que vamos a configurar. Debes indicar los nombres de tus máquinas y los parámetros de acceso.
 4. Prueba de conectividad. Ejecuta el comando `ansible -m ping all` para asegurarte que puedes conectar con las máquinas.
 5. Estudia la nueva definición del playbook en el fichero `site.yaml`:
