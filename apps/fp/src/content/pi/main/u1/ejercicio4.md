@@ -19,29 +19,29 @@ title: "Ejercicio 4: Introducción a OpenTofu + libvirt"
     qemu-img resize ubuntu2404-base.qcow2 10G
     ```
 
-2. Instala OpenTofu y haz un fork del repositorio de ejemplos: [https://github.com/josedom24/opentofu-libvirt/](https://github.com/josedom24/opentofu-libvirt/).
+2. Instala OpenTofu. Vamos a trabajar con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) que ya tienes en tu equipo. Nos situamos en el directorio **02_opentofu/ejemplo1**.
 
 ## Ejemplo 1: Máquina virtual conectada a la red "default"
 
-Empezamos a trabajar en el directorio `ejemplo1`. En este ejemplo vamos a crear una máquina virtual conectada a la red `default`. OpenTofu trabaja con ficheros **tf** que se pueden llamar como queramos. Veamos los ficheros con los que vamos a trabajar:
+En este ejemplo vamos a crear una máquina virtual conectada a la red `default`. OpenTofu trabaja con ficheros **tf** que se pueden llamar como queramos. Veamos los ficheros con los que vamos a trabajar:
 
-* `provider.tf`: Configura el provider que vamos a usar y lo configura. El plugin del provider se instala en el directorio `.terraform` cuando ejecutamos `tofu init`. Este comando normalmente **sólo se ejecuta una vez**. Este fichero **no hay que modificarlo**.
+* `provider.tf`: Configura el provider `dmacvicar/libvirt` y la URI de conexión (`qemu:///system`). El plugin del provider se instala en el directorio `.terraform` cuando ejecutamos `tofu init`. Este comando normalmente **sólo se ejecuta una vez**. Este fichero **no hay que modificarlo**.
 * `variables.tf`: Se declaran variables globales, que podemos usar en nuestras definiciones. En este caso se definen:
-  * `var.libvirt_pool_name`: donde guardamos el nombre del pool en el que queremos crear la máquina virtual. Su valor por defecto es `default`.
-  * `var.libvirt_pool_path`: donde se guarda el directorio correspondiente al pool `default`, normalmente es `/var/lib/libvirt/images`.
-  Este fichero **se modifica una vez** indicando vuestros datos particulares.
-* `cloud-init/base.yaml`: Fichero para configurar la máquina instalando los paquetes y configurando lo necesario para que el teclado esté en español cuando accedemos a la máquina. **No hay que modificarlo**.
-* `cloud-init/server1/user-data.yaml`: Fichero para configurar la máquina virtual con el mecanismo de cloud-init. En este ejemplo:
-  * Se indica el hostname.
-  * Se configura el usuario `debian` y se le pone una contraseña.
-  * Se ejecuta una `apt update`.
-* `main.tf`: Aquí está la definición de los recursos con los que queremos trabajar. En este fichero se definen los siguientes recursos:
-  * `resource "libvirt_volume" "server1-disk"`: Un volumen creado con clonación enlazada cuya imagen base está indicada con el parámetro `base_volume_id`.
-  * `resource "libvirt_cloudinit_disk" "server1-cloudinit"`: Un disco con formato ISO donde se guarda el fichero de configuración de cloud-init.
-  * `resource "libvirt_domain" "server1"`: Una máquina virtual, donde se indica el nombre, la memoria, el número de CPUs, la red a la que está conectada y los discos que tiene.
-* `output.tf`: Se define la información que se mostrará al terminar de crear el escenario. Este fichero **no tienes que modificarlo**.
+  * `var.libvirt_pool_name`: nombre del pool de almacenamiento donde se crean los volúmenes. Su valor por defecto es `default`.
+  * `var.base_image`: nombre de la imagen base en el pool. Su valor por defecto es `debian13-base.qcow2`.
+* `cloud-init/user-data1.yaml`: Fichero para configurar la máquina virtual con el mecanismo de cloud-init. En este ejemplo:
+  * Se indica el hostname, zona horaria, locale y teclado.
+  * Se configura el usuario `debian` con acceso sudo sin contraseña, clave ssh y contraseña.
+  * Se instala `qemu-guest-agent` y se actualiza el sistema.
 
-Realiza los cambios que creas convenientes en los siguientes ficheros: `variables.tf` para ajustar las variables, `cloud-init/server1/user-data.yaml` para cambiar la configuración de la máquina, por ejemplo **indicar tu clave pública** y `main.tf` por si quieres cambiar la imagen base, cambiar la memoria o cpus o conectarlo a otra red.
+  **Debes modificar este fichero para añadir tu clave pública** en el campo `ssh-authorized-keys`.
+* `main.tf`: Aquí está la definición de los recursos con los que queremos trabajar. En este fichero se definen los siguientes recursos:
+  * `resource "libvirt_volume" "ej1-server1-disk"`: Un clon ligero sobre la imagen base indicada por `var.base_image`, usando `base_volume_name` y `base_volume_pool`.
+  * `resource "libvirt_cloudinit_disk" "ej1-server1-cloudinit"`: Un disco con formato ISO donde se guarda el fichero `cloud-init/user-data1.yaml`.
+  * `resource "libvirt_domain" "ej1-server1"`: Una máquina virtual con 1024 MB de RAM, 2 vCPUs, conectada a la red `default` y con consola serie habilitada.
+* `output.tf`: Se define la información que se mostrará al terminar de crear el escenario (nombre e IP de la máquina). Este fichero **no hay que modificarlo**.
+
+Modifica `cloud-init/user-data1.yaml` para **añadir tu clave pública** y, si lo deseas, `main.tf` para cambiar la memoria o el número de CPUs.
 
 Una vez hechos los cambios, **los comandos se ejecutan en el directorio del proyecto**:
 
@@ -55,7 +55,7 @@ Una vez hechos los cambios, **los comandos se ejecutan en el directorio del proy
 **¿Qué tienes que realizar?**
 
 1. Configura tu escenario de forma adecuada para crear una máquina virtual con debian13. Conecta por ssh con la máquina. Destruye el escenario.
-2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu: `cloud-init/server1/user-data.yaml` y `main.tf`. Conecta por ssh con la máquina. Destruye el escenario.
+2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu: cambia `var.base_image` en `variables.tf` a `ubuntu2404-base.qcow2` y adapta `cloud-init/user-data1.yaml` (el usuario por defecto en Ubuntu es `ubuntu`). Conecta por ssh con la máquina. Destruye el escenario.
 
 ## Ejemplo 2: Máquina virtual con disco adicional
 
