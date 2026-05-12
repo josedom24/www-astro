@@ -5,12 +5,12 @@ toc: false
 
 ## Unidad 1: Infraestructura como código
 
-* Presentación: Infraestructura como Código
-* Presentación: Introducción a ansible
+* [Presentación: Infraestructura como Código](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/iac.pdf)
+* [Presentación: Introducción a ansible](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/ansible.pdf)
   * [Ejercicio 1: Introducción a ansible](u1/ejercicio1/)
   * [Ejercicio 2: Ejecución de Playbooks](u1/ejercicio2/)
   * [Ejercicio 3: Playbooks con Roles](u1/ejercicio3/)
-* Presentación: Introducción a OpenTofu
+* [Presentación: Introducción a OpenTofu](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/opentofu.pdf)
   * [Ejercicio 4: Introducción a OpenTofu + libvirt](u1/ejercicio4/)
   * [Ejercicio 5: Creación de escenarios con OpenTofu](u1/ejercicio5/)
 
