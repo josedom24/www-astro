@@ -2,7 +2,7 @@
 title: "Ejercicio 1: Configuración básica de apache2"
 ---
 
-Utilizando el **escenario 1** del repositorio [opentofu-libvirt](https://github.com/josedom24/opentofu-libvirt) vas a crear un escenario donde existe una máquina **servidorweb** y un **cliente**. Los dos están conectados a una red NAT, por lo que tienen internet. Simulamos que el cliente accede al servidor web por una red muy aislada (`servidorweb` 10.0.0.1, y `cliente` 10.0.0.2). Modifica los ficheros de configuración de cloud-init para ajustar tu configuración.
+Utilizando el **escenario 1** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) vas a crear un escenario donde existe una máquina **servidorweb** y un **cliente**. Los dos están conectados a una red NAT, por lo que tienen internet. Simulamos que el cliente accede al servidor web por una red muy aislada (`servidorweb` 10.0.0.1, y `cliente` 10.0.0.2). Modifica los ficheros de configuración de cloud-init para ajustar tu configuración.
 
 Una vez creado el escenario:
 

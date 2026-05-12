@@ -4,7 +4,7 @@ title: "Ejercicio 4: HAproxy como balanceador de carga"
 
 ### Ejercicio 1: Configuración de haproxy
 
-Vamos a usar los ficheros del **escenario4** del repositorio [opentofu-libvirt](https://github.com/josedom24/opentofu-libvirt/tree/main) para crear un escenario para trabajar con el balanceador de carga. Para ello crea el escenario y posteriormente pasa el playbook de ansible.
+Vamos a usar los ficheros del **escenario3** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) para crear un escenario para trabajar con el balanceador de carga. Para ello crea el escenario y posteriormente pasa el playbook de ansible.
 
 En este escenario los servidores web ejecutan php, y se ha copiado en el DocumentRoot un fichero `app.php` que utilizaremos posteriormente.
 
