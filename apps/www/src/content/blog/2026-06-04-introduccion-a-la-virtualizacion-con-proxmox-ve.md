@@ -24,6 +24,8 @@ En el proyecto participan los siguientes centros educativos:
 - **Centro colaborador:** I.E.S. Modesto Navarro (La Solana, Ciudad Real)
 - **Centro colaborador:** I.E.S. Valdehierro (Madridejos, Toledo)
 
+<!--more-->
+
 ## El curso de formación
 
 Para apoyar el proyecto, se me encargó impartir un curso de formación dirigido al profesorado de los centros participantes, estructurado en **4 sesiones** en las que se cubrieron los conceptos fundamentales y el uso práctico de Proxmox VE.
