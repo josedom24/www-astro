@@ -72,7 +72,7 @@
     "courses": [
       {
         "title": "Curso: Introducción a la virtualización con Proxmox VE (2026)",
-        "url": "https://github.com/josedom24/curso_proxmox_2026",
+        "url": "https://josedom24.github.io/curso_proxmox_2026",
         "year": "2026",
         "external": "web",
         "ow": false
