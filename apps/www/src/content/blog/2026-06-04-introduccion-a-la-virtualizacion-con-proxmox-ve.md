@@ -8,7 +8,7 @@ tags:
   - "Curso"
 ---
 
-![Introducción a la virtualización con Proxmox VE](/pledin/assets/2026/06/proxmox.)
+![Introducción a la virtualización con Proxmox VE](/pledin/assets/2026/06/proxmox.png)
 
 En estas últimas semanas he tenido la oportunidad de impartir un curso sobre virtualización con Proxmox VE, dentro del marco del proyecto de innovación **"Igualdad Digital a través de la Virtualización de un Centro de Procesamiento de Datos Educativo" (IDVCPDE)**, cofinanciado por la Unión Europea y el Ministerio de Educación, Formación Profesional y Deportes, en el marco del programa de Formación Profesional.
 
