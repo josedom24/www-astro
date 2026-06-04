@@ -192,3 +192,25 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
 
 
 </style>
+
+<script>
+  const btn = document.getElementById('sidebar-toggle') as HTMLButtonElement | null;
+  const wrapper = btn?.closest('.page-wrapper');
+
+  function applyState(collapsed: boolean) {
+    wrapper?.classList.toggle('sidebar-collapsed', collapsed);
+    if (btn) {
+      btn.textContent = collapsed ? '›' : '‹';
+      btn.title = collapsed ? 'Mostrar barra lateral' : 'Ocultar barra lateral';
+      btn.setAttribute('aria-label', collapsed ? 'Mostrar barra lateral' : 'Ocultar barra lateral');
+    }
+  }
+
+  applyState(localStorage.getItem('sidebar-collapsed') === '1');
+
+  btn?.addEventListener('click', () => {
+    const collapsed = !wrapper?.classList.contains('sidebar-collapsed');
+    applyState(collapsed);
+    localStorage.setItem('sidebar-collapsed', collapsed ? '1' : '0');
+  });
+</script>
