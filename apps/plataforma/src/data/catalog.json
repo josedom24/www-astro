@@ -71,6 +71,13 @@
     "title": "Virtualización",
     "courses": [
       {
+        "title": "Curso: Introducción a la virtualización con Proxmox VE (2026)",
+        "url": "https://github.com/josedom24/curso_proxmox_2026",
+        "year": "2026",
+        "external": "web",
+        "ow": false
+      },
+      {
         "title": "Curso: Profundización a la virtualización con KVM/libvirt (2025)",
         "url": "cursos/kvm2/",
         "year": "2025",
@@ -85,7 +92,7 @@
         "ow": true
       },
       {
-        "title": "Curso: Introducción a Proxmox VE. CEP Castilleja de la Cuesta. (2022)",
+        "title": "Curso: Introducción a Proxmox VE. CEP Castilleja de la Cuesta (2022)",
         "url": "https://github.com/iesgn/curso_proxmox_cep",
         "year": "2022",
         "external": "github",
