@@ -1,5 +1,5 @@
 ---
-title: "Introducción a la virtualización con Proxmox VE"
+title: "Curso: Introducción a la virtualización con Proxmox VE"
 date: 2026-06-04
 slug: "blog/2026/06/introduccion-a-la-virtualizacion-con-proxmox-ve"
 tags:
