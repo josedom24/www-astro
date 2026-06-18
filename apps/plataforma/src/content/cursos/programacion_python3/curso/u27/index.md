@@ -39,7 +39,7 @@ permalink: /cursos/programacion_python3/curso/u27/index.html
 	>>> lista
 	[1, 2, 3, 4, 5]
 
-`remove()`: Elimina el elemento de la lista indicado por la posición:
+`remove()`: Elimina la primera aparición del elemento indicado por su valor:
 
 	>>> lista.remove(3)
 	>>> lista
