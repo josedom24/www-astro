@@ -186,7 +186,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         history.scrollRestoration = 'manual';
       }
       window.addEventListener('DOMContentLoaded', () => {
-        window.scrollTo(0, 0);
+        if (!location.hash) {
+          window.scrollTo(0, 0);
+        }
       });
       const btn = document.getElementById('back-to-top');
       window.addEventListener('scroll', () => {

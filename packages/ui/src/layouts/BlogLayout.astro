@@ -60,6 +60,20 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
     padding-right: 2rem;
   }
 
+  /* Collapsed state */
+  .page-wrapper.sidebar-collapsed {
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  .page-wrapper.sidebar-collapsed.with-toc {
+    grid-template-columns: 2.5rem 1fr 14rem;
+  }
+
+  .page-wrapper.sidebar-collapsed .sidebar {
+    padding-right: 0;
+    border-right: none;
+  }
+
   .main-content {
     min-width: 0;
   }
@@ -138,3 +152,4 @@ const filteredHeadings = headings.filter(h => h.depth <= 3);
 
 
 </style>
+

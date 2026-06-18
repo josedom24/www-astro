@@ -26,10 +26,15 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav class="blog-sidebar">
-  <a href="/pledin/blog/"
-     class:list={['sidebar-all', { active: currentPath === '/pledin/blog/' }]}>
-    Todas las entradas
-  </a>
+  <div class="sidebar-top">
+    <a href="/pledin/blog/"
+       class:list={['sidebar-all', { active: currentPath === '/pledin/blog/' }]}>
+      Todas las entradas
+    </a>
+    <button class="sidebar-toggle" id="sidebar-toggle" title="Ocultar barra lateral" aria-label="Ocultar barra lateral">
+      ‹
+    </button>
+  </div>
 
   <div class="sidebar-section">
     <h3>Entradas recientes</h3>
@@ -99,7 +104,14 @@ const currentPath = Astro.url.pathname;
   display: none; /* Chrome, Safari */
 }
 
+  .sidebar-top {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   .sidebar-all {
+    flex: 1;
     display: block;
     font-weight: 700;
     font-size: 0.9rem;
@@ -116,6 +128,43 @@ const currentPath = Astro.url.pathname;
     background: var(--color-accent-high);
     text-decoration: none;
     color: var(--color-bg);
+  }
+
+  .sidebar-toggle {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-sidebar);
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .sidebar-toggle:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+
+  /* Collapsed: hide everything except the toggle button */
+  .blog-sidebar.collapsed .sidebar-all {
+    display: none;
+  }
+
+  .blog-sidebar.collapsed .sidebar-section {
+    display: none;
+  }
+
+  .blog-sidebar.collapsed > a {
+    display: none;
   }
 
   .sidebar-section h3 {
@@ -188,3 +237,27 @@ ul.tags li a.active {
   border-color: var(--color-accent);
 }
 </style>
+
+<script>
+  const btn = document.getElementById('sidebar-toggle') as HTMLButtonElement | null;
+  const sidebarNav = btn?.closest('.blog-sidebar');
+  const wrapper = document.querySelector('.page-wrapper');
+
+  function applyState(collapsed: boolean) {
+    sidebarNav?.classList.toggle('collapsed', collapsed);
+    wrapper?.classList.toggle('sidebar-collapsed', collapsed);
+    if (btn) {
+      btn.textContent = collapsed ? '›' : '‹';
+      btn.title = collapsed ? 'Mostrar barra lateral' : 'Ocultar barra lateral';
+      btn.setAttribute('aria-label', collapsed ? 'Mostrar barra lateral' : 'Ocultar barra lateral');
+    }
+  }
+
+  applyState(localStorage.getItem('sidebar-collapsed') === '1');
+
+  btn?.addEventListener('click', () => {
+    const collapsed = !sidebarNav?.classList.contains('collapsed');
+    applyState(collapsed);
+    localStorage.setItem('sidebar-collapsed', collapsed ? '1' : '0');
+  });
+</script>
