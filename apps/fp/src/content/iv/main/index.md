@@ -14,6 +14,8 @@ toc: false
   * [Ejercicio 3: Gestión de redes en QEMU/KVM + libvirt](u1/ejercicio3/)
 * [Práctica: QEMU/KVM + libvirt](u1/practica/)
 
+<!--
+
 ## Unidad 2: Virtualización en contenedores. LXC / Docker
 
 * [Presentación: Introducción a los contenedores](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/contenedores.pdf)
@@ -53,3 +55,5 @@ toc: false
   * [Ejercicio 6: Almacenamiento en Kubernetes](u4/ejercicio6/)
   * [Ejercicio 7: Instalación de un CMS con Helm](u4/ejercicio7/)
 * [Práctica: Kubernetes](/u4/practica/)
+
+-->

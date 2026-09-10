@@ -9,6 +9,7 @@ toc: false
 * [DHCP. Servidor Kea DHCP](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/dhcp.pdf)
   * [Práctica: Configuración de un router (SNAT y DNAT)](u1/practica/)
   
+<!--
 
 ## Unidad 2: Protocolo HTTP y sistemas de almacenamiento
 
@@ -44,3 +45,5 @@ toc: false
   * [Caso 5: Recepción de correo electrónico usando nuestro servidor de correos](u4/ejercicio7/)
   * [Caso 6: Envío de correo electrónico usando nuestro servidor de correos](u4/ejercicio8/)
   * [Práctica: Servidor de correos](u4/practica/)
+
+-->

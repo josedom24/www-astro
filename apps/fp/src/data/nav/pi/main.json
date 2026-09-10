@@ -1,0 +1,15 @@
+[
+  {
+    "title": "Proyecto intermodular (2026-2027)",
+    "children": [
+      {
+        "title": "Inicio",
+        "url": "/pi/main/"
+      },
+      {
+        "title": "Proyecto 1: Infraestructura como código",
+        "url": "/pi/main/u1/"
+      }
+    ]
+  }
+]
