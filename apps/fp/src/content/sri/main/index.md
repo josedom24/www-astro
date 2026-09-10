@@ -8,6 +8,7 @@ toc: false
 * [Configuración inicial de un servidor](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/configuracion_inicial.pdf)
 * [DHCP. Servidor Kea DHCP](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/dhcp.pdf)
   * [Práctica: Configuración de un router (SNAT y DNAT)](u1/practica/)
+  * [Práctica optativa: SSH hardening y fail2ban](u1/practica_opcional_ssh/)
   
 <!--
 
