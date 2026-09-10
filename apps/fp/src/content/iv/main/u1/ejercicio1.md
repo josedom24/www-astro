@@ -41,19 +41,10 @@ Vas a crear una máquina virtual con un sistema Windows (cualquier versión 10/1
     * Añade un segundo disco de 5 GB. Para ello, primero crea el volumen en el *pool* `default` y después añade el bloque `<disk>` correspondiente en el XML del dominio.
 2. Arranca la máquina y comprueba dentro de ella que ve la nueva memoria, los nuevos vCPUs y el nuevo disco.
 
-## Ejercicio 4: Acceso desde el exterior
-
-La red `default` es de tipo NAT, por lo que las máquinas no son accesibles directamente desde fuera del host. Vas a configurar un acceso desde otro equipo de tu red local:
-
-1. En el host, crea una regla de **DNAT** que redirija un puerto del host (por ejemplo 2222) al puerto 22 de la máquina Linux. Asegúrate de que la regla persiste y de que el reenvío de paquetes está habilitado.
-2. Desde otro equipo de tu red local accede por SSH a la máquina Linux usando la IP del host y el puerto redirigido.
-3. Repite el procedimiento con la máquina Windows redirigiendo otro puerto del host al 3389 de la VM y comprobando el acceso por RDP desde otro equipo.
-
-:::tip[¿Qué tienes que entregar?]
-1. Información de la red `default` y del *pool* de almacenamiento `default`.
-2. Captura de la instalación finalizada de la máquina Linux y de la máquina Windows.
-3. Para cada máquina: información del dominio, interfaces, discos y la definición XML completa.
-4. Captura del acceso por SSH a la máquina Linux y por RDP a la máquina Windows desde el host.
-5. Pruebas del ejercicio 3: cambios de memoria/vCPUs y nuevo disco visibles dentro de la VM Linux.
-6. Captura del acceso desde otro equipo de la red local (a través de las reglas DNAT) tanto a la VM Linux (SSH) como a la VM Windows (RDP).
+:::tip[Comprueba que...]
+1. Conoces la red `default` y el *pool* de almacenamiento `default`: rango de IPs, modo NAT y ruta del *pool*.
+2. Las máquinas Linux y Windows se han instalado y arrancan correctamente.
+3. Para cada máquina sabes obtener la información del dominio, las interfaces, los discos y la definición XML completa.
+4. Puedes acceder por SSH a la máquina Linux y por RDP a la máquina Windows desde el host.
+5. Los cambios del ejercicio 3 (memoria, vCPUs y nuevo disco) son visibles dentro de la VM Linux.
 :::
