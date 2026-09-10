@@ -11,10 +11,6 @@ En este ejercicio vas a gestionar el almacenamiento en QEMU/KVM + libvirt, traba
 3. Muestra los volúmenes que contiene cada *pool*. ¿Qué tipo de volúmenes almacena el *pool* `default`? ¿Y el resto de *pools*?
 4. Responde: ¿qué diferencia hay entre un *pool* de tipo `dir` y uno de tipo `logical`? ¿Qué ventaja ofrece cada uno como almacenamiento de discos para máquinas virtuales?
 
-:::note[Ejercicio optativo]
-En lugar de ficheros de imagen (tipo `dir`), es posible usar volúmenes lógicos LVM o particiones de disco directamente como discos de máquinas virtuales. Crea un *pool* de tipo `logical` o `disk` y arranca una máquina virtual que use un volumen de ese *pool* como disco principal.
-:::
-
 ## Ejercicio 2: Gestión de volúmenes en el pool default
 
 1. Lista los volúmenes existentes en el *pool* `default` con `virsh`.
@@ -65,13 +61,13 @@ Aunque podemos crear plantillas manualmente (puedes aprender cómo en el curso d
 3. Borra el directorio que creaste en el paso 1.
 4. Recupera la instantánea para volver al estado anterior y comprueba que el directorio ha reaparecido.
 
-:::tip[¿Qué tienes que entregar?]
-1. Del ejercicio 1: salida de los comandos que muestran los *pools* y sus volúmenes. Responde a las preguntas sobre tipos de *pool* y diferencias entre ellos.
-2. Del ejercicio 2: instrucciones usadas para crear `disco1.qcow2` con `virsh` y `disco2.qcow2` con `qemu-img`. Salida que muestra los volúmenes del *pool* `default` con los dos nuevos volúmenes.
-3. Del ejercicio 3: salida que muestra la capacidad y el tamaño real de cada volumen. Responde a las preguntas sobre las diferencias entre qcow2 y raw.
-4. Del ejercicio 4: instrucción usada para añadir `disco1` a la máquina y salida que muestra los dispositivos de bloque conectados. Instrucciones usadas para redimensionar discos y sistemas de ficheros.
-5. Del ejercicio 5: instrucción `virt-install` usada. Fragmento del XML de la máquina donde se comprueba el volumen que usa como disco principal.
-6. Del ejercicio 6: instrucción `virt-clone` usada. Responde a las preguntas sobre los problemas de identidad al clonar y la solución. Instrucciones ejecutadas para corregir el *hostname* y las claves SSH.
-7. Del ejercicio 7: contenido del fichero `cloud.yaml`. Instrucción usada para crear la clonación enlazada. Instrucción `virt-install` usada. Captura de la conexión por consola que muestre el *prompt* con el nombre de la máquina configurado.
-8. Del ejercicio 8: instrucciones para crear y revertir la instantánea. Salida de `virsh snapshot-list`. Capturas o salidas que demuestren que el directorio desaparece y reaparece tras la reversión.
+:::tip[Comprueba que...]
+1. Sabes listar los *pools* de tu sistema y explicar las diferencias entre los tipos de *pool*.
+2. Puedes crear volúmenes en el *pool* `default` tanto con `virsh` como con `qemu-img`.
+3. Entiendes por qué un fichero raw ocupa todo el espacio desde el principio y uno qcow2 no.
+4. Sabes añadir discos a una MV y redimensionarlos, tanto el volumen como el sistema de ficheros dentro de la MV.
+5. Puedes instalar una MV usando un volumen ya existente como disco principal.
+6. Entiendes qué problemas de identidad aparecen al clonar una MV y sabes corregirlos.
+7. Sabes desplegar una MV a partir de una imagen cloud personalizada con `cloud-init`.
+8. Sabes crear, listar y revertir una instantánea de una MV.
 :::
