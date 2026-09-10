@@ -65,12 +65,14 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
     * `www.tunombre.org/game`: Accedemos a la aplicación `2048`.
     * `app.tunombre.org`: Accedemos a al balanceador de carga.
 
+**Pregunta**: El proxy inverso y el balanceador de carga son dos piezas distintas que trabajan juntas. ¿Qué función cumple cada una? ¿Qué pasaría si detuvieras el servicio web en uno de los dos backends (`backend1` o `backend2`)? Compruébalo en tu escenario y explica lo que observas.
+
 :::tip[Entrega del protocolo HTTP]
 1. Indica el escenario que has escogido.
 2. Configuración del balanceador de carga y del proxy inverso.
-3. Comprobación de que se produce una redireción al acceder a la aplicación web `nas.tunombre.org` desde el proxy inverso.
-4. Capturas de pantallas accediendo a las distintas aplicaciones.
-5. Captura de pantalla accediendo con `hatop` al balanceador de carga.
+3. Capturas de pantalla accediendo a `www.tunombre.org/shop` y `www.tunombre.org/game`.
+4. Captura de pantalla accediendo con `hatop` al balanceador de carga.
+5. Contesta la pregunta, comprobándolo en tu escenario.
 :::
 
 ## Servidor de almacenamiento
@@ -119,17 +121,28 @@ Ahora vamos a crear un servidor NAS en nuestro servidor de almacenamiento, para 
 2. La salida de la instrucción en el cliente iSCSI para ver las sesiones que tienes activas.
 3. La lista de dispositivos en el cliente iSCSI, para ver los dispositivos que se han compartido.
 4. El fichero de configuración de la unidad de montaje.
-5. Después de un reinicio, entrega las pruebas necesarias para comprobar que sigue funcionando el sistema.
-6. Contesta la pregunta, después de buscar información.
+5. Contesta la pregunta, después de buscar información.
 
 ### Del servidor NAS
 
 1. El fichero de configuración de la unidad de montaje en el servidor.
 2. El fichero de configuración del servidor NFS.
-3. Prueba de que has montado el directorio en los servidores **backend1** y **backend2**.
-4. Acceso a la página `app.tunombre.org` para acceder a la nueva página balanceada.
-5. Contesta la pregunta, después de buscar información.
+3. Acceso a la página `app.tunombre.org` que sirve el contenido compartido mediante el alias del virtualhost.
+4. Contesta la pregunta, después de buscar información.
 :::
+
+## Vídeo de demostración
+
+Además de las capturas y ficheros de configuración, debes grabar un **vídeo de 2 a 5 minutos** mostrando tu escenario **funcionando en directo**, con **narración en voz** explicando qué está pasando y por qué. No repitas en el vídeo el contenido de los ficheros de configuración: eso ya se entrega por escrito.
+
+:::tip[Qué debe mostrar el vídeo]
+1. Acceso a `nas.tunombre.org` desde el proxy inverso: la redirección a `/documentos`, la autenticación y la descarga de un PDF.
+2. Varios refrescos de `app.tunombre.org`, comentando en voz que el hostname mostrado va alternando entre `backend1` y `backend2` — el balanceo de carga ocurriendo en vivo.
+3. Tras reiniciar las máquinas, comprobación de que el montaje iSCSI en `servidorWeb` y el montaje NFS en `backend1`/`backend2` siguen activos sin intervención manual (las unidades de montaje de systemd funcionando solas).
+4. Una demostración en directo de la pregunta del servidor NAS: modifica un fichero desde `backend1` y comprueba que el cambio aparece inmediatamente en `backend2`.
+:::
+
+Se valorará que la explicación hablada demuestre que entiendes lo que ocurre en cada paso, no solo que el resultado en pantalla sea el esperado. Sube el vídeo a YouTube (puede ser como **oculto** / **no listado**) y añade la URL en la incidencia de Redmine junto con el resto de la entrega.
 
 ## netplan en lxc debian/ubuntu
 

@@ -40,15 +40,16 @@ Tendremos 3 redes:
 5. Configura la máquina router para que permita que las máquinas internas tenga acceso a internet. Las reglas que has configurado deben ser persistentes. ¿Es necesario usar *enmascaramiento*?
 6. Instala un servidor web en la máquina **Servidor Web**: `sudo apt install apache2`. Crea la regla necesaria para acceder desde el exterior al servidor web con un navegador. Usa resolución estática para acceder a la página web usando el nombre `www.tunombre.org`, para acceder desde el exterior, y desde las máquinas conectadas a la red **muy aislada**. **Nota**: Desde el exterior se debe acceder a la máquina **router** para acceder a la página web.
 
+**Pregunta**: ¿Para qué sirve `ssh -A` al acceder al router y desde ahí a las máquinas internas? ¿Qué problema de seguridad evita frente a copiar tu clave privada dentro del router?
+
 :::tip[Entrega Parte 1]
 
 1. Configuración de red de las máquinas. Comprobación de que las máquinas que están conectadas en distintas redes hacen ping entre ellas (usa una de las máquinas conectada a la red **muy aislada**).
 2. Comprobación de que el nombre FQDN está bien configurado en las máquinas.
 3. Comprobación de que al ejecutar sudo no se pide la contraseña en las máquinas Linux.
-4. Comprobación del acceso a la máquina **cliente1** y **Servidor Web** con ssh desde el exterior.
-5. Comprobación de que las máquinas internas tienen acceso a internet y resolución DNS.
-6. Comprobación del acceso a la página web con un navegador desde el exterior y desde alguna de las máquinas conectadas a la red **muy aislada**.
-7. ¿Se puede acceder a la máquina **Servidor Web** desde el exterior sin acceder por el router? Razona tu respuesta.
+4. Comprobación de que las máquinas internas tienen acceso a internet y resolución DNS.
+5. ¿Se puede acceder a la máquina **Servidor Web** desde el exterior sin acceder por el router? Razona tu respuesta.
+6. Contesta la pregunta sobre `ssh -A`.
 
 :::
 
@@ -78,11 +79,24 @@ Vamos a seguir trabajando con el escenario de la parte anterior.
 1. Entrega el fichero de configuración que tienes que realizar en el apartado 1 del servidor DHCP.
 2. Muestra la configuración de los clientes para que tomen direccionamiento dinámico. Muestra la configuración de red (dirección ip, puerta de enlace, DNS,...) con la que se han configurado. Muestra la lista de concesiones.
 3. Una comprobación donde se comprueba que los dos clientes tienen conectividad al exterior.
-4. Comprobación donde se vean los 4 paquetes que se transmite en la negociación de la concesión, del apartado 3.
-5. Explica, con pruebas de funcionamiento, el motivo del comportamiento que se indica en los puntos 4 y 5. Muestra al profesor el funcionamiento del punto 4 y 5.
-6. La configuración del servidor DHCP que se solicita en el apartado 6. Muestra la configuración del **servidorWeb** después de cambiar su configuración de red. Comprueba que puedes seguir accediendo a la página web desde el exterior y desde los clientes.
-7. Muestra el cambio que has realizado en la configuración de la interface "pública" del **router**. Muestra la configuración de red que ha tomado.
-8. Muestras las nuevas reglas SNAT.
-9. Comprueba que los clientes y el **servidorWeb** siguen teniendo conectividad con el exterior.
+4. Explica, con pruebas de funcionamiento, el motivo del comportamiento que se indica en los puntos 4 y 5.
+5. La configuración del servidor DHCP que se solicita en el apartado 6. Muestra la configuración del **servidorWeb** después de cambiar su configuración de red. Comprueba que puedes seguir accediendo a la página web desde el exterior y desde los clientes.
+6. Muestra el cambio que has realizado en la configuración de la interface "pública" del **router**. Muestra la configuración de red que ha tomado.
+7. Muestras las nuevas reglas SNAT.
+8. Comprueba que los clientes y el **servidorWeb** siguen teniendo conectividad con el exterior.
 
 :::
+
+## Vídeo de demostración
+
+Además de las capturas y ficheros de configuración, debes grabar un **vídeo de 3 a 6 minutos** mostrando tu escenario **funcionando en directo**, con **narración en voz** explicando qué está pasando y por qué. No repitas en el vídeo el contenido de los ficheros de configuración: eso ya se entrega por escrito.
+
+:::tip[Qué debe mostrar el vídeo]
+1. Acceso por SSH a `cliente1` o al `Servidor Web` desde el exterior, a través del router, usando `ssh -A`, explicando por qué hace falta el reenvío del agente.
+2. Acceso a `www.tunombre.org` desde el exterior y desde un cliente de la red **muy aislada**.
+3. Captura en directo con `tcpdump` de los cuatro paquetes `DISCOVER`/`OFFER`/`REQUEST`/`ACK` mientras un cliente obtiene su configuración por DHCP.
+4. Apagar el servidor DHCP con una concesión activa y mostrar la reacción del cliente Windows y del cliente Linux, explicando la diferencia.
+5. Cambiar el rango del servidor DHCP con una concesión activa y mostrar de nuevo la reacción de ambos clientes.
+:::
+
+Se valorará que la explicación hablada demuestre que entiendes lo que ocurre en cada paso, no solo que el resultado en pantalla sea el esperado. Sube el vídeo a YouTube (puede ser como **oculto** / **no listado**) y añade la URL en la incidencia de Redmine junto con el resto de la entrega.
