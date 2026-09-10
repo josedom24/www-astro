@@ -1,5 +1,5 @@
 ---
-title: "Práctica optativa: SSH hardening y fail2ban"
+title: "Práctica optativa 1: SSH hardening y fail2ban"
 ---
 
 Sobre el escenario ya montado en la [Práctica: Configuración de un router (SNAT, DNAT y DHCP)](practica/), vamos a reforzar la seguridad del acceso SSH y a proteger el servicio frente a ataques de fuerza bruta.
