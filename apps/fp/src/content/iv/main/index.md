@@ -5,7 +5,7 @@ toc: false
 
 ## Unidad 1: Virtualización de máquinas virtuales. KVM/QEMU/Libvirt
 
-* [Presentación: Introducción a la virtualización](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/virtualización.pdf)
+* [Presentación: Introducción a la virtualización](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/virtualizacion.pdf)
 * [Presentación: Introducción QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_intro.pdf)
   * [Ejercicio 1: Creación de máquinas virtuales desde la línea de comandos](u1/ejercicio1/)
 * [Presentación: Almacenamiento en QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_almacenamiento.pdf)
