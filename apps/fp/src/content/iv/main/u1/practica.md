@@ -20,14 +20,14 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 * Máquinas virtuales:
 	* `router`:
 		* Máquina virtual con Debian 13.
-		* Realiza la instalación por red.
+		* Realiza la instalación por red, siguiendo [este manual](https://github.com/josedom24/curso_kvm_ow/blob/main/curso2/contenidos/unidad07/clase1.md).
 		* Está conectada a la red **default** y la **red_intra**.
 		* El hostname de esta máquina debe ser `router-tunombre`.
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).
 		* El usuario `user` debe poder ejecutar el comando `sudo` sin que te pida contraseña.
 		* Esta máquina se debe iniciar cada vez que arrancamos el host.
 	* `servidorNAS`:
-		* Máquina virtual con Alpine 3.22.
+		* Máquina virtual con Alpine 3.24.
 		* Realiza la instalación desde una imagen ISO.
 		* Esta máquina debe tener un disco extra de 1Gb que deberás montar en el directorio `/srv/data`.
 		* El hostname de esta máquina debe ser `nas-tunombre`.
@@ -41,15 +41,13 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 		* Esta máquina se debe iniciar cada vez que arrancamos el host.
 * Configura la máquina **router** para que haga SNAT y permita que las máquinas tengan acceso al exterior (**la configuración debe ser persistente**).
 
-**Pregunta**: ¿Por qué `servidorWeb` se crea con clonación enlazada y `cloud-init` en vez de una instalación tradicional desde ISO, como las otras dos máquinas? ¿Qué ventaja aporta en este escenario?
+**Pregunta**: hemos instalado cada máquina de una forma distinta: `router` por red, `servidorNAS` desde ISO y `servidorWeb` mediante clonación enlazada con `cloud-init`. De las tres, ¿cuál es la gran ventaja de la clonación enlazada frente a las otras dos formas de instalación, y por qué?
 
 :::tip[Entrega: Infraestructura]
-1. Comandos `virsh net-define` / `virt-install` (o equivalentes) usados para crear la red `red_intra` y las tres máquinas virtuales.
-2. Salida de `virsh net-list --all` y `virsh list --all` mostrando las redes y las máquinas activas.
-3. Comprobación del hostname y del acceso SSH sin contraseña (con tu usuario) en las tres máquinas.
-4. Salida de `virsh domiflist` de cada máquina mostrando las redes a las que está conectada.
-5. Comprobación de que las tres máquinas tienen acceso a Internet a través del **router** (SNAT).
-6. Respuesta a la pregunta sobre `servidorWeb`.
+1. Salida de `virsh net-list --all` y `virsh list --all` mostrando las redes y las máquinas activas.
+2. Comprobación del hostname y del acceso SSH sin contraseña (con tu usuario) en las tres máquinas.
+3. Comprobación de que las tres máquinas tienen acceso a Internet a través del **router** (SNAT).
+4. Respuesta a la pregunta sobre la clonación enlazada.
 :::
 
 ## Instalación de servicios
@@ -62,8 +60,8 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 **Pregunta**: ¿Por qué montamos por NFS el directorio del `servidorNAS` en el `servidorWeb` en vez de copiar los ficheros directamente al `servidorWeb`? ¿Qué ocurre si cambias el contenido de la página en el `servidorNAS`?
 
 :::tip[Entrega: Servicios]
-1. Comando usado para exportar el recurso NFS en el `servidorNAS` y para montarlo en el `servidorWeb`.
-2. Regla/comando usado en el `router` para permitir el acceso externo al puerto 80.
+1. Comprobación de que el recurso NFS está compartido y montado correctamente.
+2. Comprobación de que se puede acceder al puerto 80 del `router` desde el exterior del escenario.
 3. Comprobación de acceso a la página web desde el exterior del escenario, mostrando tu nombre y la fecha.
 4. Respuesta a la pregunta sobre el uso de NFS.
 :::
@@ -76,8 +74,8 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 **Pregunta**: ¿en qué momento del proceso conviene hacer el snapshot de cada máquina, antes o después de instalar y configurar los servicios? Razona la respuesta.
 
 :::tip[Entrega: Otras operaciones]
-1. Comandos usados para redimensionar el disco y el sistema de ficheros del `servidorNAS`, y comprobación del nuevo tamaño.
-2. Comandos usados para crear el snapshot de cada máquina, y salida de `virsh snapshot-list` de cada una.
+1. Comprobación de que el disco y el sistema de ficheros del `servidorNAS` tienen el nuevo tamaño.
+2. Lista de snapshots de cada máquina.
 3. Respuesta a la pregunta sobre el momento del snapshot.
 :::
 
