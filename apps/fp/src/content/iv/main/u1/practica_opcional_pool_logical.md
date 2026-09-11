@@ -27,3 +27,15 @@ Esta práctica es **optativa**: solo puede mejorar tu nota, nunca perjudicarla.
 3. Fragmento de la definición XML de la máquina virtual donde se vea que el disco es ese volumen lógico.
 4. Respuesta a la pregunta sobre la diferencia entre pool `dir` y `logical`.
 :::
+
+## Vídeo de demostración
+
+Además de las capturas, graba un **vídeo de 2 a 4 minutos** mostrando la MV creada sobre el *pool* `logical` funcionando en directo, con **narración en voz** explicando qué está pasando y por qué.
+
+:::tip[Qué debe mostrar el vídeo]
+1. El *pool* `logical` y el volumen creado dentro de él (`virsh pool-list`, `virsh vol-list`).
+2. La MV arrancada, mostrando en su definición XML que el disco es ese volumen lógico (no un fichero).
+3. Una explicación breve de la diferencia entre un *pool* `dir` y uno `logical`, y qué ventaja de rendimiento ofrece este último.
+:::
+
+Se valorará que la explicación hablada demuestre que entiendes qué diferencia hay entre almacenar un disco en un fichero y en un volumen lógico, no solo que la máquina arranque en pantalla. Sube el vídeo a YouTube (puede ser como **oculto** / **no listado**) y añade la URL en la incidencia de Redmine junto con el resto de la entrega.

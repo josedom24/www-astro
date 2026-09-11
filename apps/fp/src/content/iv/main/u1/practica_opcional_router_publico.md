@@ -27,3 +27,15 @@ Esta práctica es **optativa**: solo puede mejorar tu nota, nunca perjudicarla.
 3. Salida de `virsh domiflist router` mostrando la interfaz conectada al bridge.
 4. Comprobación del acceso SSH al `router` desde otro equipo del aula distinto al tuyo, con la clave pública del profesor ya añadida.
 :::
+
+## Vídeo de demostración
+
+Además de las capturas, graba un **vídeo de 2 a 4 minutos** mostrando el acceso al `router` desde la red pública del aula, con **narración en voz** explicando qué está pasando y por qué.
+
+:::tip[Qué debe mostrar el vídeo]
+1. El bridge externo `br0` y la interfaz del `router` conectada a él (`virsh domiflist`, `ip a` en el host).
+2. Un acceso SSH en directo al `router`, realizado desde **otro equipo del aula** distinto al tuyo, usando su IP de la red pública.
+3. Una explicación breve de qué es un bridge externo y en qué se diferencia de las redes NAT/aisladas que usa el resto del escenario.
+:::
+
+Se valorará que la explicación hablada demuestre que entiendes la diferencia entre un bridge externo y las redes virtuales NAT/aisladas, no solo que el acceso SSH funcione en pantalla. Sube el vídeo a YouTube (puede ser como **oculto** / **no listado**) y añade la URL en la incidencia de Redmine junto con el resto de la entrega.

@@ -24,3 +24,15 @@ Esta práctica es **optativa**: solo puede mejorar tu nota, nunca perjudicarla.
 3. Captura mostrando la comprobación de conectividad con el resto del escenario (ping o acceso web) desde dentro de Windows.
 4. Explica qué problema ocurre si se usa `bus=virtio` sin proporcionar los drivers durante la instalación, y cómo se soluciona.
 :::
+
+## Vídeo de demostración
+
+Además de las capturas, graba un **vídeo de 2 a 4 minutos** mostrando la MV Windows funcionando en directo, con **narración en voz** explicando qué está pasando y por qué.
+
+:::tip[Qué debe mostrar el vídeo]
+1. Conexión en directo a la MV Windows (por RDP o consola gráfica).
+2. Una comprobación de conectividad en directo desde dentro de Windows (ping al `router`, o acceso web al `servidorWeb`).
+3. Una explicación breve de qué son los drivers VirtIO y por qué han sido necesarios para poder instalar el sistema.
+:::
+
+Se valorará que la explicación hablada demuestre que entiendes por qué Windows necesita esos drivers, no solo que la máquina funcione en pantalla. Sube el vídeo a YouTube (puede ser como **oculto** / **no listado**) y añade la URL en la incidencia de Redmine junto con el resto de la entrega.
