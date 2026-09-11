@@ -1,5 +1,5 @@
 ---
-title: "Práctica optativa 2: Router en red pública"
+title: "Optativa 1.2: Router en red pública"
 ---
 
 Sobre el escenario ya montado en la [Práctica: QEMU/KVM + libvirt](practica/), vamos a dar acceso al `router` desde la red física del aula, además de las redes virtuales que ya tenía.

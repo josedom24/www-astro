@@ -1,5 +1,5 @@
 ---
-title: "Práctica optativa 3: MV con pool logical (LVM)"
+title: "Optativa 1.3: MV con pool logical (LVM)"
 ---
 
 Sobre el mismo host donde tienes montado el escenario de la [Práctica: QEMU/KVM + libvirt](practica/), vamos a crear el disco de una máquina virtual directamente sobre un volumen lógico LVM, en lugar de sobre un fichero de imagen.

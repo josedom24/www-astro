@@ -1,5 +1,5 @@
 ---
-title: "Práctica optativa 1: MV Windows con drivers VirtIO"
+title: "Optativa 1.1: MV Windows con drivers VirtIO"
 ---
 
 Sobre el escenario ya montado en la [Práctica: QEMU/KVM + libvirt](practica/), vamos a añadir una máquina virtual Windows y comprobar el problema de los dispositivos paravirtualizados VirtIO.
