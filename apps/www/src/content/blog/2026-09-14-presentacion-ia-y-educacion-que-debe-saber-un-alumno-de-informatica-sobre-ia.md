@@ -25,7 +25,7 @@ También dejamos clara una distinción que se presta a confusión: la IA actual 
 
 Este bloque entra en el mecanismo real: el **aprendizaje automático (machine learning)**, en sus tres modalidades — supervisado (con ejemplos ya etiquetados), no supervisado (el sistema descubre patrones solo) y por refuerzo (aprendizaje por ensayo y error con recompensas).
 
-Explicamos qué es una **red neuronal artificial**: neuronas conectadas en capas que reciben números, los multiplican por unos *pesos* y producen una salida que pasa a la siguiente capa. Y recorremos el ciclo de entrenamiento paso a paso — se muestra un ejemplo, la red predice (al principio casi al azar), se compara con la respuesta correcta, se mide el error, y un algoritmo (no una persona) ajusta los pesos para reducirlo. Se repite con millones de ejemplos hasta que el error es muy pequeño.
+Explicamos qué es una **red neuronal artificial**: neuronas conectadas en capas que reciben números, los multiplican por unos *pesos* y producen una salida que pasa a la siguiente capa. Y recorremos el ciclo de entrenamiento del **aprendizaje supervisado** paso a paso, que es de donde toma su nombre: hacen falta muchos ejemplos y, para cada uno, la respuesta correcta ya conocida de antemano — se muestra un ejemplo, la red predice (al principio casi al azar), se compara la predicción con la respuesta correcta, se mide el error, y un algoritmo (no una persona) ajusta los pesos para reducirlo. Se repite con millones de ejemplos hasta que el error es muy pequeño.
 
 De ahí llegamos al **aprendizaje profundo (deep learning)**: una red con muchas capas apiladas, el tipo que hay detrás de casi todos los avances recientes, desde el reconocimiento facial hasta ChatGPT o Claude.
 
@@ -53,7 +53,7 @@ Este es el bloque central de la presentación, y el motivo real por el que la pr
 
 2. **Formulación precisa de la consulta.** Se entrena aquí una habilidad nueva: saber hablar con la IA con precisión técnica. El nivel de detalle de la pregunta determina la calidad de la respuesta — no es lo mismo pedir "configura DNS" que especificar el servidor, la distribución, el dominio y el comportamiento exacto que necesitas.
 
-3. **Análisis crítico de la respuesta.** La IA responde, pero no se ejecuta nada todavía. Toca preguntarse si se entiende lo que ha generado, si tiene sentido para el entorno concreto, y qué dice la documentación oficial de la herramienta. Es la etapa que más diferencia a quien aprende de quien copia — y la que permite detectar cuándo la IA se ha equivocado, algo que solo puedes hacer si sabes más o menos lo mismo que ella.
+3. **Análisis crítico de la respuesta.** La IA responde, pero no se ejecuta nada todavía. Toca preguntarse si se entiende lo que ha generado, si tiene sentido para el entorno concreto, y qué dice la documentación oficial de la herramienta. Es la etapa que más diferencia a quien aprende de quien copia — y la que permite detectar cuándo la IA se ha equivocado, algo que solo puedes hacer si tienes la base técnica suficiente: si sabes menos que ella, no hay forma de notarlo.
 
 4. **Experimentación controlada.** Ahora sí se ejecuta, pero de forma progresiva, en un entorno de pruebas y con un plan de vuelta atrás. Si algo falla, el error se convierte en material de aprendizaje y la IA en herramienta de diagnóstico. Generar no es lo mismo que ejecutar: entre una cosa y otra sigue siendo el alumno quien decide.
 
