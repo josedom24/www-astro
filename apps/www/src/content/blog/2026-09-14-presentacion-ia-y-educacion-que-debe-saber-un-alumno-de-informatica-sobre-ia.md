@@ -7,7 +7,7 @@ tags:
   - "Educación"
 ---
 
-![Presentación: IA y educación — Qué debe saber un alumno de informática sobre IA](/pledin/assets/2024/09/ia.png)
+![Presentación: IA y educación — Qué debe saber un alumno de informática sobre IA](/pledin/assets/2026/09/ia.png)
 
 He desarrollado **IA y educación**, una presentación pensada para mi alumnado de ASIR, con dos objetivos que me parecen igual de importantes. El primero, que tengan los **conceptos fundamentales** de cómo funciona realmente la IA: qué es, cómo aprende una máquina, qué es la IA generativa, el vocabulario básico de agentes y seguridad, y cuáles son sus límites y su marco legal. El segundo, y el que más me importa, que aprendan a **usarla como herramienta educativa** de verdad, integrada en su forma de estudiar y de trabajar — no como una curiosidad, y desde luego no como un atajo para copiar sin entender.
 
