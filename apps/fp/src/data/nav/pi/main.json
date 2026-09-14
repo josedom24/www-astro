@@ -5,10 +5,6 @@
       {
         "title": "Inicio",
         "url": "/pi/main/"
-      },
-      {
-        "title": "Proyecto 1: Infraestructura como código",
-        "url": "/pi/main/u1/"
       }
     ]
   }
