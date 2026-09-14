@@ -85,19 +85,15 @@ title: "Ejercicio 3: Introducción a ansible"
         ansible all -m user -a "name=demo shell=/bin/bash groups=sudo state=present" --become
         ```
 
-:::tip[¿Qué tienes que entregar?]
-1. Entrega el contenido del fichero de inventario y la configuración de tu proyecto ansible.
-2. Prueba la conectividad con el servidor remoto y muestra la salida.
-3. Ejecuta en el servidor remoto la instrucción `hostname`.
-4. Responde: ¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?
-5. Copia un fichero desde tu ordenador al servidor remoto. ¿Qué pone la primera línea de la salida de la ejecución del comando? ¿De qué color se muestra la salida?
-6. Vuelve a ejecutar la copia del fichero. ¿Qué pone la primera línea de la salida de la ejecución del comando? ¿De qué color se muestra la salida? ¿Por qué?
-7. Modifica el fichero en tu ordenador o en el servidor remoto y vuelve a ejecutar la copia. ¿Qué sucede ahora?
-8. Crea un directorio en el servidor remoto y comprueba que se ha creado.
-9. Instala el servidor nginx en el servidor remoto. Comprueba que se ha realizado la instalación.
-10. Intenta volver a ejecutar nginx en el servidor remoto. ¿Qué ocurre?
-11. ¿Qué módulo de ansible tienes que usar para gestionar el servicio que acabas de instalar? Para el servicio nginx. Comprueba que has parado el servicio.
-12. Desinstala el servidor nginx. Comprueba la desinstalación.
-13. Crea un usuario en el servicio remoto. Comprueba que el usuario se ha creado.
-14. Elimina el usuario que has creado. Comprueba que se ha eliminado de forma correcta.
+:::tip[Comprueba que...]
+1. Tienes el inventario y la configuración de tu proyecto ansible bien definidos, y puedes probar la conectividad con el servidor remoto.
+2. Sabes ejecutar comandos en el nodo remoto con `command`/`shell` (por ejemplo `hostname`).
+3. Sabes cómo se llama la propiedad que hace que una tarea ya realizada no se repita al volver a ejecutarla (idempotencia).
+4. Sabes copiar un fichero al servidor remoto con `copy`, y puedes explicar qué color de salida aparece la primera vez y cuál la segunda, y por qué.
+5. Entiendes qué ocurre si modificas el fichero de origen y vuelves a copiarlo.
+6. Sabes crear un directorio remoto con `file` y comprobar que se ha creado.
+7. Sabes instalar, comprobar y volver a instalar un paquete (nginx) con `apt`, y entiendes qué ocurre al repetir la instalación.
+8. Sabes qué módulo gestiona un servicio, y sabes pararlo y comprobarlo.
+9. Sabes desinstalar el paquete y comprobar la desinstalación.
+10. Sabes crear y eliminar un usuario remoto con `user`, comprobando cada paso.
 :::

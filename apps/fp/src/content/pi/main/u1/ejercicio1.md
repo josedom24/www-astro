@@ -19,7 +19,7 @@ title: "Ejercicio 1: Introducción a OpenTofu + libvirt"
     qemu-img resize ubuntu2404-base.qcow2 10G
     ```
 
-2. Instala OpenTofu. Vamos a trabajar con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) que ya tienes en tu equipo. Para cada ejemplo nos situamos en el directorio **02_opentofu/ejemploX** correspondiente.
+2. Instala OpenTofu. Vamos a trabajar con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) que ya tienes en tu equipo. Para cada ejemplo nos situamos en el directorio **opentofu/ejemploX** correspondiente.
 
 ## Ejemplo 1: Máquina virtual conectada a la red "default"
 
@@ -59,7 +59,7 @@ Una vez hechos los cambios, **los comandos se ejecutan en el directorio del proy
 
 ## Ejemplo 2: Máquina virtual con disco adicional
 
-Nos situamos en el directorio `02_opentofu/ejemplo2`. Este ejemplo es similar al anterior, pero en esta ocasión la máquina virtual tiene un disco adicional de 1 GB. En el fichero `main.tf` se declaran 4 recursos:
+Nos situamos en el directorio `opentofu/ejemplo2`. Este ejemplo es similar al anterior, pero en esta ocasión la máquina virtual tiene un disco adicional de 1 GB. En el fichero `main.tf` se declaran 4 recursos:
 
 * `libvirt_volume "ej2-server1-disk"`: el disco principal creado con clonación enlazada.
 * `libvirt_volume "ej2-server1-disk-extra1"`: un disco adicional vacío de 1 GB (el tamaño se indica en bytes: `1 * 1024 * 1024 * 1024`).
@@ -74,25 +74,25 @@ Nos situamos en el directorio `02_opentofu/ejemplo2`. Este ejemplo es similar al
 
 ## Ejemplo 3: Máquina virtual conectada a dos redes con DHCP
 
-Nos situamos en el directorio `02_opentofu/ejemplo3`. En este ejemplo vamos a comenzar a trabajar con las redes. En los dos ejemplos anteriores habíamos conectado la máquina virtual a la red `default`, que no es gestionada por OpenTofu. En este ejemplo vamos a crear redes gestionadas por OpenTofu, que se crearán con `tofu apply` y se eliminarán con `tofu destroy`.
+Nos situamos en el directorio `opentofu/ejemplo3`. En este ejemplo vamos a comenzar a trabajar con las redes. En los dos ejemplos anteriores habíamos conectado la máquina virtual a la red `default`, que no es gestionada por OpenTofu. En este ejemplo vamos a crear redes gestionadas por OpenTofu, que se crearán con `tofu apply` y se eliminarán con `tofu destroy`.
 
 Se ha añadido el fichero `network.tf` donde se define la red:
 
-* `resource "libvirt_network" "nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`. Estudia los parámetros que hemos indicado.
+* `resource "libvirt_network" "ej3-nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`. Estudia los parámetros que hemos indicado.
 
 A continuación estudia la definición del recurso de la máquina virtual en el fichero `main.tf` y comprueba que la máquina está conectada a dos redes. Recuerda que cuando conectamos a una red con servidor DHCP indicamos el parámetro `wait_for_lease = true`.
 
 * Cuando la red no es creada por OpenTofu, por ejemplo `default`, indicamos el nombre con el parámetro `network_name`.
-* Cuando la red es gestionada por OpenTofu, indicamos su id con el parámetro `network_id`, por ejemplo: `network_id = libvirt_network.nat-dhcp.id`.
+* Cuando la red es gestionada por OpenTofu, indicamos su id con el parámetro `network_id`, por ejemplo: `network_id = libvirt_network.ej3-nat-dhcp.id`.
 
 El hecho de que conectemos una máquina virtual a dos redes **no significa que netplan configure las dos interfaces**. Tenemos que configurarlo nosotros, para ello:
 
 * Creamos el fichero `cloud-init/network-config1.yaml` donde guardaremos la configuración netplan de la máquina.
 * Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml`. Esto se hace con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej3-server1-cloudinit"` en el fichero `main.tf`.
 
-:::tip[¿Qué tienes que entregar?]
-1. Configura tu escenario de forma adecuada y créalo. Conecta por ssh con la máquina. Comprueba con `ip a` que está conectado a dos redes. Destruye el escenario.
-2. Crea una nueva red de tipo NAT con servidor DHCP. Modifica la definición de la máquina para conectarla a esta nueva red. Modifica la configuración de red (fichero `cloud-init/network-config1.yaml`) para configurar la tercera interfaz y finalmente modifica el fichero `output.tf` para que salga información de la tercera IP.
-3. Crea el escenario, comprueba que la máquina tiene 3 interfaces configuradas. Destruye el escenario.
+:::tip[Comprueba que...]
+1. Sabes crear un escenario con la máquina conectada a dos redes y comprobarlo con `ip a`.
+2. Sabes crear una nueva red NAT con DHCP, conectar la máquina a ella y configurar la tercera interfaz tanto en cloud-init como en `output.tf`.
+3. La máquina arranca con sus 3 interfaces correctamente configuradas.
 :::
 

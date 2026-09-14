@@ -2,16 +2,16 @@
 title: "Ejercicio 2: Creación de escenarios con OpenTofu"
 ---
 
-Seguimos trabajando con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi). Para cada ejemplo nos situamos en el directorio **02_opentofu/ejemploX** correspondiente.
+Seguimos trabajando con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi). Para cada ejemplo nos situamos en el directorio **opentofu/ejemploX** correspondiente.
 
 ## Ejemplo 4: Máquina virtual conectada a dos redes: una con DHCP y otra con direccionamiento estático
 
-Nos situamos en el directorio `02_opentofu/ejemplo4`. En este ejemplo seguimos trabajando con redes. En esta ocasión vamos a aprender a **configurar una interfaz de red de forma estática**.
+Nos situamos en el directorio `opentofu/ejemplo4`. En este ejemplo seguimos trabajando con redes. En esta ocasión vamos a aprender a **configurar una interfaz de red de forma estática**.
 
 En el fichero `network.tf` se definen dos redes:
 
-* `resource "libvirt_network" "nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`.
-* `resource "libvirt_network" "aislada-static"`: una red **aislada sin DHCP** (`mode = "none"`) en el rango `192.168.130.0/24`. Estudia los parámetros que hemos indicado.
+* `resource "libvirt_network" "ej4-nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`.
+* `resource "libvirt_network" "ej4-aislada-static"`: una red **aislada sin DHCP** (`mode = "none"`) en el rango `192.168.130.0/24`. Estudia los parámetros que hemos indicado.
 
 Recuerda: el hecho de que conectemos una máquina virtual a dos redes **no significa que netplan configure las dos interfaces**. Tenemos que configurarlo nosotros, para ello:
 
@@ -25,7 +25,7 @@ Recuerda: el hecho de que conectemos una máquina virtual a dos redes **no signi
 
 ## Ejemplo 5: Dos máquinas virtuales conectadas entre sí
 
-Nos situamos en el directorio `02_opentofu/ejemplo5`. En este ejemplo vamos a comenzar a crear escenarios, es decir, a crear varias máquinas interconectadas. En este ejemplo concreto tenemos dos máquinas que están conectadas entre sí. Para conseguirlo tenemos los siguientes ficheros:
+Nos situamos en el directorio `opentofu/ejemplo5`. En este ejemplo vamos a comenzar a crear escenarios, es decir, a crear varias máquinas interconectadas. En este ejemplo concreto tenemos dos máquinas que están conectadas entre sí. Para conseguirlo tenemos los siguientes ficheros:
 
 * `main.tf`: contiene la definición de las dos máquinas virtuales (`ej5-server1` y `ej5-server2`) en un único fichero.
 * En el directorio `cloud-init` encontramos los ficheros de configuración para cada máquina:
@@ -33,13 +33,13 @@ Nos situamos en el directorio `02_opentofu/ejemplo5`. En este ejemplo vamos a co
   * `user-data2.yaml`: configura `ej5-server2` (Ubuntu, usuario `ubuntu`).
   * `network-config1.yaml`: configura las interfaces de red de `ej5-server1` (`ens3` con DHCP, `ens4` con IP estática `10.0.0.1/24`).
   * `network-config2.yaml`: configura la interfaz de red de `ej5-server2` (`ens3` con IP estática `10.0.0.2/24` y gateway `10.0.0.1`).
-* `network.tf`: define dos redes: `nat-dhcp` (NAT con DHCP) y `muy-aislada` (`mode = "none"`, sin rango de direcciones).
+* `network.tf`: define dos redes: `ej5-nat-dhcp` (NAT con DHCP) y `ej5-muy-aislada` (`mode = "none"`, sin rango de direcciones).
 * `variables.tf`: define tres variables: `libvirt_pool_name`, `base_image_debian` (`debian13-base.qcow2`) y `base_image_ubuntu` (`ubuntu2404-base.qcow2`).
 * El fichero `output.tf` devuelve información de las dos máquinas.
 
 En este ejemplo, `ej5-server1` (Debian) está conectado a la red `nat-dhcp` y a la red `muy-aislada` (actúa como gateway). `ej5-server2` (Ubuntu) se conecta únicamente a la red `muy-aislada`.
 
-:::tip[¿Qué tienes que entregar?]
-1. Configura tu escenario de forma adecuada para crear las máquinas virtuales del ejemplo 5. Accede a `ej5-server1` por ssh y comprueba que puedes hacer ping a `ej5-server2` (`10.0.0.2`). Desde `ej5-server1` accede por ssh a `ej5-server2`. Destruye el escenario.
-2. Modifica lo necesario para crear una tercera máquina conectada a la red `muy-aislada`. Comprueba que todo funciona de manera adecuada. Destruye el escenario.
+:::tip[Comprueba que...]
+1. Sabes crear el escenario del ejemplo 5, acceder por SSH a `ej5-server1`, hacer ping desde ahí a `ej5-server2` (`10.0.0.2`) y acceder por SSH de una máquina a otra.
+2. Sabes añadir una tercera máquina conectada a la red `muy-aislada` y comprobar que todo funciona correctamente.
 :::
