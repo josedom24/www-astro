@@ -1,56 +1,103 @@
 ---
-title: "Ejercicio 3: Playbooks con Roles"
+title: "Ejercicio 3: Introducción a ansible"
 ---
 
-En este taller vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
+1. Realiza la instalación de ansible. Puedes usar los repositorios oficiales de Debian, o realizar una instalación con `pip` en un entorno virtual python.
+2. Crea una máquina virtual que vamos a configurar con ansible. Esta máquina debe tener las siguientes características:
 
-1. Crear dos máquinas virtuales (con las características indicadas en el ejercicio 1).
-2. Vamos a trabajar con el directorio **01_ansible/ejercicio3** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
-3. Rellena el inventario de forma adecuada para definir los dos equipos que vamos a configurar. Debes indicar los nombres de tus máquinas y los parámetros de acceso.
-4. Prueba de conectividad. Ejecuta el comando `ansible -m ping all` para asegurarte que puedes conectar con las máquinas.
-5. Estudia la nueva definición del playbook en el fichero `site.yaml`:
+    * Debe tener creado un usuario sin privilegios con el que podamos acceder a la máquina usando claves ssh.
+    * Debe tener instalado `sudo` y el usuario que estamos usando para acceder debe estar configurado para poder usar `sudo` sin que le pida la contraseña.
 
-    * El campo `hosts`: es el nombre del grupo o máquina en la que se van a ejecutar las tareas del rol.
-    * El campo `roles/role` es el nombre del rol que se va a ejecutar.
-
-    **Modifica el fichero `site.yaml`** para conseguir que se ejecuten los roles como se indica a continuación:
-
-    * El rol `commons` (tareas comunes a todos los nodos) para todos los nodos (grupo `all`).
-    * El rol `apache2` (instalación y configuración de apache2) para todos los nodos del grupo `servidores_web`.
-    * El rol `mariadb` (instalación y configuración de mariadb) para todos los nodos del grupo `servidores_bd`.
-
-6. Los roles se van a definir en el directorio `roles`. Se creará un directorio para cada rol con las carpetas:
-
-    * `tasks`: Contiene el yaml con las tareas.
-    * `files`: Contiene los ficheros que vamos a copiar a los nodos con el módulo `copy`.
-    * `templates`: Contiene las plantillas que vamos a copiar a los nodos con el módulo `template`.
-    * `handlers`: Contiene los manejadores para gestionar los servicios instalados.
-
-7. El rol `commons` se ejecuta en todos los nodos. **Modifica la tarea que está definida para que se actualice el sistema de todas las máquinas.**
-
-8. El rol `apache2` instala apache2 y copia algunos ficheros al servidor. Uno de los ficheros es un fichero de configuración, por lo que debemos reiniciar apache2 cada vez que se copia. En la tarea **Copiar fichero de configuración y reiniciar el servicio**:
-
-    **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
-
-9. El rol `mariadb` instala el servidor de base de datos mariadb, crea una base de datos y un usuario, y modifica la configuración del servicio.
-
-    * **Modifica las variables `cambia_nombre_variable` por las variables correctas. ¿En qué fichero tienes que buscar el nombre de las variables correctas?**
-    * **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
-
-10. Ejecuta el playbook:
+3. El **inventario** es el fichero donde definimos los equipos que vamos a configurar. Crea un directorio y dentro un fichero llamado `hosts`, con el siguiente contenido:
 
     ```
-    ansible-playbook site.yaml
+    all:
+      children:
+        servidores:
+          hosts:
+            nodo1: 
+              ansible_ssh_host: 
+              ansible_ssh_user:  
+              ansible_ssh_private_key_file: 
     ```
 
-    * **Si tienes errores, repasa las modificaciones que has realizado para corregirlos.**
-    * **Cuando funcione la ejecución de la receta, cambia una de las tareas que notifican un reinicio para comprobar que se produce de nuevo el reinicio del servicio.**
-    * **Comprobación del funcionamiento: Accede desde el navegador web y comprueba los ficheros que hemos subido al servidor. Accede a la base de datos.**
+    En el inventario se clasifican los equipos por grupos:
+
+    * El grupo `all` corresponde a todos los equipos definidos.
+    * En este ejemplo hemos creado un grupo `servidores`, donde hemos definido nuestra máquina.
+    * A la máquina la hemos llamado `nodo1` (**cambia el nombre y pon el de tu máquina**), además **debes rellenar la siguiente información del nodo**:
+        * `ansible_ssh_host`: Dirección IP del equipo que queremos configurar.
+        * `ansible_ssh_user`: Usuario sin privilegios con el que vamos a acceder por ssh.
+        * `ansible_ssh_private_key_file`: Fichero con la clave privada que vamos a usar para el acceso.
+
+4. Crea un **fichero de configuración** llamado `ansible.cfg` en el directorio del proyecto, con el siguiente contenido:
+
+    ```
+    [defaults]
+    inventory = hosts
+    host_key_checking = False
+    ```
+
+5. Comprueba la conectividad con el nodo usando el módulo `ping`:
+
+    * `ansible all -m ping`: Comprueba la conectividad con **todos** los equipos del inventario.
+    * `ansible servidores -m ping`: Comprueba la conectividad con los equipos del **grupo servidores**.
+    * `ansible nodo1 -m ping`: Comprueba la conectividad con el equipo **nodo1**.
+
+    Debe salir el mensaje "pong" en verde.
+
+6. Practica con los siguientes módulos de ansible:
+
+    * **command**: Ejecuta comandos en el nodo remoto. Con `-a` indicamos los parámetros del módulo.
+
+        ```
+        ansible all -m command -a "uptime"
+        ansible all -m shell -a "echo $HOME | wc -c"
+        ```
+
+    * **copy**: Permite copiar ficheros desde nuestro ordenador al nodo remoto.
+
+        ```
+        ansible all -m copy -a "src=./index.html dest=/tmp/index.html mode=0644"
+        ```
+
+    * **file**: Gestiona archivos, directorios y permisos.
+
+        ```
+        ansible all -m file -a "path=/tmp/ansible_demo state=directory mode=0755"
+        ```
+
+    * **apt**: Instala, actualiza o elimina paquetes.
+
+        ```
+        ansible nodo1 -m apt -a "name=apache2 state=present" --become
+        ```
+
+    * **service**: Gestiona servicios del sistema.
+
+        ```
+        ansible nodo1 -m service -a "name=apache2 state=started enabled=yes" --become
+        ```
+
+    * **user**: Crea, modifica o elimina usuarios.
+
+        ```
+        ansible all -m user -a "name=demo shell=/bin/bash groups=sudo state=present" --become
+        ```
 
 :::tip[¿Qué tienes que entregar?]
-1. Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.
-2. Captura de pantalla donde se vea el acceso desde el navegador al servidor web, y se vea el contenido del fichero `index.html`.
-3. Captura de pantalla donde se vea el acceso a la base de datos.
-4. Realiza un cambio en la receta que necesite ejecutar el reinicio del servicio. Ejecuta de nuevo el playbook y comprueba que se ha ejecutado el handler correspondiente.
-5. Entrega la URL de tu repositorio con el que estás trabajando.
+1. Entrega el contenido del fichero de inventario y la configuración de tu proyecto ansible.
+2. Prueba la conectividad con el servidor remoto y muestra la salida.
+3. Ejecuta en el servidor remoto la instrucción `hostname`.
+4. Responde: ¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?
+5. Copia un fichero desde tu ordenador al servidor remoto. ¿Qué pone la primera línea de la salida de la ejecución del comando? ¿De qué color se muestra la salida?
+6. Vuelve a ejecutar la copia del fichero. ¿Qué pone la primera línea de la salida de la ejecución del comando? ¿De qué color se muestra la salida? ¿Por qué?
+7. Modifica el fichero en tu ordenador o en el servidor remoto y vuelve a ejecutar la copia. ¿Qué sucede ahora?
+8. Crea un directorio en el servidor remoto y comprueba que se ha creado.
+9. Instala el servidor nginx en el servidor remoto. Comprueba que se ha realizado la instalación.
+10. Intenta volver a ejecutar nginx en el servidor remoto. ¿Qué ocurre?
+11. ¿Qué módulo de ansible tienes que usar para gestionar el servicio que acabas de instalar? Para el servicio nginx. Comprueba que has parado el servicio.
+12. Desinstala el servidor nginx. Comprueba la desinstalación.
+13. Crea un usuario en el servicio remoto. Comprueba que el usuario se ha creado.
+14. Elimina el usuario que has creado. Comprueba que se ha eliminado de forma correcta.
 :::

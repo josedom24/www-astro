@@ -1,103 +1,98 @@
 ---
-title: "Ejercicio 1: Introducción a ansible"
+title: "Ejercicio 1: Introducción a OpenTofu + libvirt"
 ---
 
-1. Realiza la instalación de ansible. Puedes usar los repositorios oficiales de Debian, o realizar una instalación con `pip` en un entorno virtual python.
-2. Crea una máquina virtual que vamos a configurar con ansible. Esta máquina debe tener las siguientes características:
-
-    * Debe tener creado un usuario sin privilegios con el que podamos acceder a la máquina usando claves ssh.
-    * Debe tener instalado `sudo` y el usuario que estamos usando para acceder debe estar configurado para poder usar `sudo` sin que le pida la contraseña.
-
-3. El **inventario** es el fichero donde definimos los equipos que vamos a configurar. Crea un directorio y dentro un fichero llamado `hosts`, con el siguiente contenido:
+1. Vamos a descargar las imágenes cloud con las que vamos a trabajar. Las vamos a copiar en el directorio correspondiente al pool `default`:
 
     ```
-    all:
-      children:
-        servidores:
-          hosts:
-            nodo1: 
-              ansible_ssh_host: 
-              ansible_ssh_user:  
-              ansible_ssh_private_key_file: 
+    cd /var/lib/libvirt/images
+    sudo wget https://cloud.debian.org/images/cloud/trixie/daily/latest/debian-13-genericcloud-amd64-daily.qcow2 -O debian13-base.qcow2
+    sudo wget https://cloud-images.ubuntu.com/noble/20251001/noble-server-cloudimg-amd64.img -O ubuntu2404-base.qcow2
     ```
 
-    En el inventario se clasifican los equipos por grupos:
+    Las imágenes bases se llaman `debian13-base.qcow2` y `ubuntu2404-base.qcow2`.
 
-    * El grupo `all` corresponde a todos los equipos definidos.
-    * En este ejemplo hemos creado un grupo `servidores`, donde hemos definido nuestra máquina.
-    * A la máquina la hemos llamado `nodo1` (**cambia el nombre y pon el de tu máquina**), además **debes rellenar la siguiente información del nodo**:
-        * `ansible_ssh_host`: Dirección IP del equipo que queremos configurar.
-        * `ansible_ssh_user`: Usuario sin privilegios con el que vamos a acceder por ssh.
-        * `ansible_ssh_private_key_file`: Fichero con la clave privada que vamos a usar para el acceso.
-
-4. Crea un **fichero de configuración** llamado `ansible.cfg` en el directorio del proyecto, con el siguiente contenido:
+    Estos discos son muy pequeños, por lo tanto antes de empezar a utilizarlos vamos a redimensionarlos:
 
     ```
-    [defaults]
-    inventory = hosts
-    host_key_checking = False
+    qemu-img resize debian13-base.qcow2 10G
+    qemu-img resize ubuntu2404-base.qcow2 10G
     ```
 
-5. Comprueba la conectividad con el nodo usando el módulo `ping`:
+2. Instala OpenTofu. Vamos a trabajar con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) que ya tienes en tu equipo. Para cada ejemplo nos situamos en el directorio **02_opentofu/ejemploX** correspondiente.
 
-    * `ansible all -m ping`: Comprueba la conectividad con **todos** los equipos del inventario.
-    * `ansible servidores -m ping`: Comprueba la conectividad con los equipos del **grupo servidores**.
-    * `ansible nodo1 -m ping`: Comprueba la conectividad con el equipo **nodo1**.
+## Ejemplo 1: Máquina virtual conectada a la red "default"
 
-    Debe salir el mensaje "pong" en verde.
+En este ejemplo vamos a crear una máquina virtual conectada a la red `default`. OpenTofu trabaja con ficheros **tf** que se pueden llamar como queramos. Veamos los ficheros con los que vamos a trabajar:
 
-6. Practica con los siguientes módulos de ansible:
+* `provider.tf`: Configura el provider `dmacvicar/libvirt` y la URI de conexión (`qemu:///system`). El plugin del provider se instala en el directorio `.terraform` cuando ejecutamos `tofu init`. Este comando normalmente **sólo se ejecuta una vez**. Este fichero **no hay que modificarlo**.
+* `variables.tf`: Se declaran variables globales, que podemos usar en nuestras definiciones. En este caso se definen:
+  * `var.libvirt_pool_name`: nombre del pool de almacenamiento donde se crean los volúmenes. Su valor por defecto es `default`.
+  * `var.base_image`: nombre de la imagen base en el pool. Su valor por defecto es `debian13-base.qcow2`.
+* `cloud-init/user-data1.yaml`: Fichero para configurar la máquina virtual con el mecanismo de cloud-init. En este ejemplo:
+  * Se indica el hostname, zona horaria, locale y teclado.
+  * Se configura el usuario `debian` con acceso sudo sin contraseña, clave ssh y contraseña.
+  * Se instala `qemu-guest-agent` y se actualiza el sistema.
 
-    * **command**: Ejecuta comandos en el nodo remoto. Con `-a` indicamos los parámetros del módulo.
+  **Debes modificar este fichero para añadir tu clave pública** en el campo `ssh-authorized-keys`.
+* `main.tf`: Aquí está la definición de los recursos con los que queremos trabajar. En este fichero se definen los siguientes recursos:
+  * `resource "libvirt_volume" "ej1-server1-disk"`: Un clon ligero sobre la imagen base indicada por `var.base_image`, usando `base_volume_name` y `base_volume_pool`.
+  * `resource "libvirt_cloudinit_disk" "ej1-server1-cloudinit"`: Un disco con formato ISO donde se guarda el fichero `cloud-init/user-data1.yaml`.
+  * `resource "libvirt_domain" "ej1-server1"`: Una máquina virtual con 1024 MB de RAM, 2 vCPUs, conectada a la red `default` y con consola serie habilitada.
+* `output.tf`: Se define la información que se mostrará al terminar de crear el escenario (nombre e IP de la máquina). Este fichero **no hay que modificarlo**.
 
-        ```
-        ansible all -m command -a "uptime"
-        ansible all -m shell -a "echo $HOME | wc -c"
-        ```
+Modifica `cloud-init/user-data1.yaml` para **añadir tu clave pública** y, si lo deseas, `main.tf` para cambiar la memoria o el número de CPUs.
 
-    * **copy**: Permite copiar ficheros desde nuestro ordenador al nodo remoto.
+Una vez hechos los cambios, **los comandos se ejecutan en el directorio del proyecto**:
 
-        ```
-        ansible all -m copy -a "src=./index.html dest=/tmp/index.html mode=0644"
-        ```
+* Ejecutamos **una sola vez** el comando `tofu init` para instalar el plugin del provider.
+* Ejecutamos el comando `tofu plan` para ver las acciones que se van a realizar.
+* Para aplicar el escenario descrito ejecutamos `tofu apply`.
+* Una vez creado el escenario nos saldrá la información definida en `output.tf`. Esta información siempre se puede mostrar ejecutando `tofu output`.
+* Podemos ver el estado de los recursos ejecutando `tofu show`.
+* Para eliminar todos los recursos creados, ejecutamos `tofu destroy`.
 
-    * **file**: Gestiona archivos, directorios y permisos.
+**¿Qué tienes que realizar?**
 
-        ```
-        ansible all -m file -a "path=/tmp/ansible_demo state=directory mode=0755"
-        ```
+1. Configura tu escenario de forma adecuada para crear una máquina virtual con debian13. Conecta por ssh con la máquina. Destruye el escenario.
+2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu: cambia `var.base_image` en `variables.tf` a `ubuntu2404-base.qcow2` y adapta `cloud-init/user-data1.yaml` (el usuario por defecto en Ubuntu es `ubuntu`). Conecta por ssh con la máquina. Destruye el escenario.
 
-    * **apt**: Instala, actualiza o elimina paquetes.
+## Ejemplo 2: Máquina virtual con disco adicional
 
-        ```
-        ansible nodo1 -m apt -a "name=apache2 state=present" --become
-        ```
+Nos situamos en el directorio `02_opentofu/ejemplo2`. Este ejemplo es similar al anterior, pero en esta ocasión la máquina virtual tiene un disco adicional de 1 GB. En el fichero `main.tf` se declaran 4 recursos:
 
-    * **service**: Gestiona servicios del sistema.
+* `libvirt_volume "ej2-server1-disk"`: el disco principal creado con clonación enlazada.
+* `libvirt_volume "ej2-server1-disk-extra1"`: un disco adicional vacío de 1 GB (el tamaño se indica en bytes: `1 * 1024 * 1024 * 1024`).
+* `libvirt_cloudinit_disk "ej2-server1-cloudinit"`: el disco ISO con la configuración cloud-init.
+* `libvirt_domain "ej2-server1"`: la máquina virtual, con dos entradas `disk` para el disco principal y el extra.
 
-        ```
-        ansible nodo1 -m service -a "name=apache2 state=started enabled=yes" --become
-        ```
+**¿Qué tienes que realizar?**
 
-    * **user**: Crea, modifica o elimina usuarios.
+1. Modifica el fichero `main.tf` para crear otro disco de 5 GB y añadirlo a la máquina virtual.
+2. Accede a la máquina virtual por ssh y comprueba con `lsblk` los discos que se han añadido.
+3. Destruye el escenario.
 
-        ```
-        ansible all -m user -a "name=demo shell=/bin/bash groups=sudo state=present" --become
-        ```
+## Ejemplo 3: Máquina virtual conectada a dos redes con DHCP
+
+Nos situamos en el directorio `02_opentofu/ejemplo3`. En este ejemplo vamos a comenzar a trabajar con las redes. En los dos ejemplos anteriores habíamos conectado la máquina virtual a la red `default`, que no es gestionada por OpenTofu. En este ejemplo vamos a crear redes gestionadas por OpenTofu, que se crearán con `tofu apply` y se eliminarán con `tofu destroy`.
+
+Se ha añadido el fichero `network.tf` donde se define la red:
+
+* `resource "libvirt_network" "nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`. Estudia los parámetros que hemos indicado.
+
+A continuación estudia la definición del recurso de la máquina virtual en el fichero `main.tf` y comprueba que la máquina está conectada a dos redes. Recuerda que cuando conectamos a una red con servidor DHCP indicamos el parámetro `wait_for_lease = true`.
+
+* Cuando la red no es creada por OpenTofu, por ejemplo `default`, indicamos el nombre con el parámetro `network_name`.
+* Cuando la red es gestionada por OpenTofu, indicamos su id con el parámetro `network_id`, por ejemplo: `network_id = libvirt_network.nat-dhcp.id`.
+
+El hecho de que conectemos una máquina virtual a dos redes **no significa que netplan configure las dos interfaces**. Tenemos que configurarlo nosotros, para ello:
+
+* Creamos el fichero `cloud-init/network-config1.yaml` donde guardaremos la configuración netplan de la máquina.
+* Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml`. Esto se hace con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej3-server1-cloudinit"` en el fichero `main.tf`.
 
 :::tip[¿Qué tienes que entregar?]
-1. Entrega el contenido del fichero de inventario y la configuración de tu proyecto ansible.
-2. Prueba la conectividad con el servidor remoto y muestra la salida.
-3. Ejecuta en el servidor remoto la instrucción `hostname`.
-4. Responde: ¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?
-5. Copia un fichero desde tu ordenador al servidor remoto. ¿Qué pone la primera línea de la salida de la ejecución del comando? ¿De qué color se muestra la salida?
-6. Vuelve a ejecutar la copia del fichero. ¿Qué pone la primera línea de la salida de la ejecución del comando? ¿De qué color se muestra la salida? ¿Por qué?
-7. Modifica el fichero en tu ordenador o en el servidor remoto y vuelve a ejecutar la copia. ¿Qué sucede ahora?
-8. Crea un directorio en el servidor remoto y comprueba que se ha creado.
-9. Instala el servidor nginx en el servidor remoto. Comprueba que se ha realizado la instalación.
-10. Intenta volver a ejecutar nginx en el servidor remoto. ¿Qué ocurre?
-11. ¿Qué módulo de ansible tienes que usar para gestionar el servicio que acabas de instalar? Para el servicio nginx. Comprueba que has parado el servicio.
-12. Desinstala el servidor nginx. Comprueba la desinstalación.
-13. Crea un usuario en el servicio remoto. Comprueba que el usuario se ha creado.
-14. Elimina el usuario que has creado. Comprueba que se ha eliminado de forma correcta.
+1. Configura tu escenario de forma adecuada y créalo. Conecta por ssh con la máquina. Comprueba con `ip a` que está conectado a dos redes. Destruye el escenario.
+2. Crea una nueva red de tipo NAT con servidor DHCP. Modifica la definición de la máquina para conectarla a esta nueva red. Modifica la configuración de red (fichero `cloud-init/network-config1.yaml`) para configurar la tercera interfaz y finalmente modifica el fichero `output.tf` para que salga información de la tercera IP.
+3. Crea el escenario, comprueba que la máquina tiene 3 interfaces configuradas. Destruye el escenario.
 :::
+
