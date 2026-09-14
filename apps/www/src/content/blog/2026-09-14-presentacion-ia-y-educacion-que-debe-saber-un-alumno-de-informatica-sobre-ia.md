@@ -43,7 +43,7 @@ Dedicamos tiempo especial a la seguridad: qué es el **prompt injection** (instr
 
 ## Límites y marco legal
 
-Antes de confiar en la IA hay que conocer sus límites: **alucinaciones** (genera lo plausible, no necesariamente lo verdadero), **sesgo** heredado de sus datos de entrenamiento, **corte de conocimiento** y **no determinismo** (la misma pregunta puede dar respuestas distintas). Hablamos también de su **coste ambiental**, con cifras orientativas del INTEF, y del marco normativo vigente en 2026: el **Reglamento Europeo de IA (AI Act)**, el **RGPD**, la **LOPDGDD** y la zona gris de la **propiedad intelectual** sobre contenido generado.
+Antes de confiar en la IA hay que conocer sus límites: **alucinaciones** (genera lo plausible, no necesariamente lo verdadero), **sesgo** heredado de sus datos de entrenamiento, **corte de conocimiento** y **no determinismo** (la misma pregunta puede dar respuestas distintas). Hablamos también de su **coste ambiental**, con cifras orientativas del [INTEF](https://www.josedomingo.org/pledin/microblog/2026/09/presentacion-ia-y-educacion-que-debe-saber-un-alumno-de-informatica-sobre-ia/), y del marco normativo vigente en 2026: el **Reglamento Europeo de IA (AI Act)**, el **RGPD**, la **LOPDGDD** y la zona gris de la **propiedad intelectual** sobre contenido generado.
 
 ## Usar la IA para aprender: una metodología de 6 etapas
 
