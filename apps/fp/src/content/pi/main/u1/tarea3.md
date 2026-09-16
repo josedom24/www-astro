@@ -1,10 +1,10 @@
 ---
-title: "Ejercicio 3: Playbooks con Roles"
+title: "Tarea 3: Playbooks con Roles"
 ---
 
 En este taller vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
 
-1. Crear dos máquinas virtuales (con las características indicadas en el ejercicio 1).
+1. Crear dos máquinas virtuales (con las características indicadas en la tarea 1).
 2. Vamos a trabajar con el directorio **ansible/ejercicio5** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
 3. Rellena el inventario de forma adecuada para definir los dos equipos que vamos a configurar. Debes indicar los nombres de tus máquinas y los parámetros de acceso.
 4. Prueba de conectividad. Ejecuta el comando `ansible -m ping all` para asegurarte que puedes conectar con las máquinas.
@@ -47,9 +47,11 @@ En este taller vamos a trabajar con dos servidores. Uno será el servidor web y 
     * **Cuando funcione la ejecución de la receta, cambia una de las tareas que notifican un reinicio para comprobar que se produce de nuevo el reinicio del servicio.**
     * **Comprobación del funcionamiento: Accede desde el navegador web y comprueba los ficheros que hemos subido al servidor. Accede a la base de datos.**
 
-:::tip[Comprueba que...]
-1. El playbook `site.yaml` se ejecuta correctamente usando los tres roles (`commons`, `apache2`, `mariadb`).
-2. Puedes acceder desde el navegador al servidor web y ver el contenido de `index.html`.
-3. Puedes acceder a la base de datos creada por el rol `mariadb`.
-4. Sabes provocar un cambio que dispare un handler (reinicio de servicio) y comprobar que solo se ejecuta cuando hay un cambio real.
+:::tip[¿Qué tienes que entregar?]
+1. Entrega el fichero `site.yaml` y el contenido del directorio `roles` con los tres roles completados (`commons`, `apache2`, `mariadb`).
+2. Captura de pantalla de la ejecución del playbook sin errores.
+3. Captura de pantalla del acceso desde el navegador al servidor web, donde se vea el contenido de `index.html`.
+4. Captura de pantalla del acceso a la base de datos creada por el rol `mariadb`.
+5. Provoca un cambio que dispare un handler (reinicio de servicio). Entrega la captura donde se vea que el reinicio solo se ejecuta cuando hay un cambio real.
+6. Entrega la URL de tu repositorio (fork) con el que has trabajado.
 :::

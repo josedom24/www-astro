@@ -1,5 +1,5 @@
 ---
-title: "Ejercicio 2: Ejecución de Playbooks"
+title: "Tarea 2: Ejecución de Playbooks"
 ---
 
 1. Haz un fork del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) y realiza una clonación en el ordenador donde has instalado ansible. Vamos a trabajar en el directorio **ansible/ejercicio4**.
@@ -36,10 +36,11 @@ title: "Ejercicio 2: Ejecución de Playbooks"
         * **Modifica la plantilla `index.j2` para indicar los nombres correctos de las variables. Tienes que cambiar las variables `modifica_el_nombre` por el nombre correcto de las variables.**
         * **Modifica la tarea para guardar el template en el directorio `/var/www/html/index.html` de la máquina que estamos configurando.**
 
-:::tip[Comprueba que...]
-1. Tu playbook `site.yaml` completa correctamente las cuatro tareas pedidas (actualizar sistema, instalar paquetes, copiar fichero y desplegar la plantilla).
-2. El playbook se ejecuta sin errores y crea el fichero `foo.conf` y la página `index.html` en el servidor.
-3. Al volver a ejecutar el playbook no se repiten las tareas ya hechas, y sabes explicar por qué (idempotencia).
-4. Si modificas o borras `foo.conf` en el servidor y vuelves a ejecutar el playbook, entiendes qué ocurre y por qué.
-5. Puedes acceder desde el navegador al servidor web y ver el contenido correcto de `index.html`.
+:::tip[¿Qué tienes que entregar?]
+1. Entrega los ficheros `site.yaml`, `hosts` y `templates/index.j2` con las cuatro tareas completadas.
+2. Captura de pantalla de la ejecución del playbook sin errores.
+3. Vuelve a ejecutar el playbook. Entrega la captura y explica por qué no se repiten las tareas ya hechas (idempotencia).
+4. Modifica o borra `foo.conf` en el servidor y vuelve a ejecutar el playbook. Entrega la captura y explica qué ha ocurrido.
+5. Captura de pantalla del acceso desde el navegador al servidor, donde se vea el contenido de `index.html`.
+6. Entrega la URL de tu repositorio (fork) con el que has trabajado.
 :::

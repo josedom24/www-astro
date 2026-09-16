@@ -1,5 +1,5 @@
 ---
-title: "Ejercicio 1: Introducción a ansible"
+title: "Tarea 1: Introducción a ansible"
 ---
 
 1. Realiza la instalación de ansible. Puedes usar los repositorios oficiales de Debian, o realizar una instalación con `pip` en un entorno virtual python.
@@ -85,15 +85,15 @@ title: "Ejercicio 1: Introducción a ansible"
         ansible all -m user -a "name=demo shell=/bin/bash groups=sudo state=present" --become
         ```
 
-:::tip[Comprueba que...]
-1. Tienes el inventario y la configuración de tu proyecto ansible bien definidos, y puedes probar la conectividad con el servidor remoto.
-2. Sabes ejecutar comandos en el nodo remoto con `command`/`shell` (por ejemplo `hostname`).
-3. Sabes cómo se llama la propiedad que hace que una tarea ya realizada no se repita al volver a ejecutarla (idempotencia).
-4. Sabes copiar un fichero al servidor remoto con `copy`, y puedes explicar qué color de salida aparece la primera vez y cuál la segunda, y por qué.
-5. Entiendes qué ocurre si modificas el fichero de origen y vuelves a copiarlo.
-6. Sabes crear un directorio remoto con `file` y comprobar que se ha creado.
-7. Sabes instalar, comprobar y volver a instalar un paquete (nginx) con `apt`, y entiendes qué ocurre al repetir la instalación.
-8. Sabes qué módulo gestiona un servicio, y sabes pararlo y comprobarlo.
-9. Sabes desinstalar el paquete y comprobar la desinstalación.
-10. Sabes crear y eliminar un usuario remoto con `user`, comprobando cada paso.
+:::tip[¿Qué tienes que entregar?]
+1. Entrega el contenido del fichero de inventario y de la configuración (`ansible.cfg`) de tu proyecto ansible.
+2. Captura de pantalla probando la conectividad con el servidor remoto (`ping`).
+3. Ejecuta en el nodo remoto la instrucción `hostname` con `command`/`shell` y entrega la captura de la salida.
+4. Copia un fichero al servidor remoto con `copy`. Entrega la captura de la primera ejecución y de la segunda (sin cambios). ¿De qué color se muestra la salida en cada caso y por qué? ¿Cómo se llama esa propiedad?
+5. Modifica el fichero de origen y vuelve a copiarlo. Entrega la captura de la salida y explica qué ha ocurrido.
+6. Crea un directorio remoto con `file`. Entrega la captura donde se compruebe que se ha creado.
+7. Instala el paquete nginx con `apt`. Entrega la captura de la instalación y de un segundo intento de instalación (¿qué ocurre?).
+8. Para el servicio nginx con `service`. Entrega la captura donde se compruebe que se ha parado.
+9. Desinstala el paquete nginx. Entrega la captura de la desinstalación.
+10. Crea y después elimina un usuario remoto con `user`. Entrega la captura de cada paso.
 :::

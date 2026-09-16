@@ -1,5 +1,5 @@
 ---
-title: "Ejercicio 4: Introducción a OpenTofu + libvirt"
+title: "Tarea 4: Introducción a OpenTofu + libvirt"
 ---
 
 1. Vamos a descargar las imágenes cloud con las que vamos a trabajar. Las vamos a copiar en el directorio correspondiente al pool `default`:
@@ -52,10 +52,10 @@ Una vez hechos los cambios, **los comandos se ejecutan en el directorio del proy
 * Podemos ver el estado de los recursos ejecutando `tofu show`.
 * Para eliminar todos los recursos creados, ejecutamos `tofu destroy`.
 
-**¿Qué tienes que realizar?**
-
-1. Configura tu escenario de forma adecuada para crear una máquina virtual con debian13. Conecta por ssh con la máquina. Destruye el escenario.
-2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu: cambia `var.base_image` en `variables.tf` a `ubuntu2404-base.qcow2` y adapta `cloud-init/user-data1.yaml` (el usuario por defecto en Ubuntu es `ubuntu`). Conecta por ssh con la máquina. Destruye el escenario.
+:::tip[¿Qué tienes que entregar?]
+1. Configura tu escenario para crear una máquina virtual con debian13. Entrega el fichero `cloud-init/user-data1.yaml` modificado y una captura de pantalla del acceso por ssh a la máquina. Destruye el escenario.
+2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu (cambia `var.base_image` en `variables.tf` y adapta `cloud-init/user-data1.yaml`). Entrega los ficheros modificados y una captura del acceso por ssh a la máquina. Destruye el escenario.
+:::
 
 ## Ejemplo 2: Máquina virtual con disco adicional
 
@@ -66,11 +66,11 @@ Nos situamos en el directorio `opentofu/ejemplo2`. Este ejemplo es similar al an
 * `libvirt_cloudinit_disk "ej2-server1-cloudinit"`: el disco ISO con la configuración cloud-init.
 * `libvirt_domain "ej2-server1"`: la máquina virtual, con dos entradas `disk` para el disco principal y el extra.
 
-**¿Qué tienes que realizar?**
-
-1. Modifica el fichero `main.tf` para crear otro disco de 5 GB y añadirlo a la máquina virtual.
-2. Accede a la máquina virtual por ssh y comprueba con `lsblk` los discos que se han añadido.
+:::tip[¿Qué tienes que entregar?]
+1. Entrega el fichero `main.tf` con el disco adicional de 5 GB añadido.
+2. Captura de pantalla del resultado de `lsblk` en la máquina, donde se vean los discos añadidos.
 3. Destruye el escenario.
+:::
 
 ## Ejemplo 3: Máquina virtual conectada a dos redes con DHCP
 
@@ -90,9 +90,9 @@ El hecho de que conectemos una máquina virtual a dos redes **no significa que n
 * Creamos el fichero `cloud-init/network-config1.yaml` donde guardaremos la configuración netplan de la máquina.
 * Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml`. Esto se hace con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej3-server1-cloudinit"` en el fichero `main.tf`.
 
-:::tip[Comprueba que...]
-1. Sabes crear un escenario con la máquina conectada a dos redes y comprobarlo con `ip a`.
-2. Sabes crear una nueva red NAT con DHCP, conectar la máquina a ella y configurar la tercera interfaz tanto en cloud-init como en `output.tf`.
-3. La máquina arranca con sus 3 interfaces correctamente configuradas.
+:::tip[¿Qué tienes que entregar?]
+1. Configura el escenario y crea la máquina conectada a las dos redes. Entrega una captura de pantalla de `ip a`.
+2. Crea una nueva red NAT con DHCP y conecta la máquina a ella, configurando la tercera interfaz en cloud-init y en `output.tf`. Entrega los ficheros modificados (`network.tf`, `main.tf`, `cloud-init/network-config1.yaml`, `output.tf`).
+3. Entrega una captura de pantalla de `ip a` mostrando la máquina con sus 3 interfaces correctamente configuradas.
 :::
 

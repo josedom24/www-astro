@@ -1,5 +1,5 @@
 ---
-title: "Ejercicio 5: Creación de escenarios con OpenTofu"
+title: "Tarea 5: Creación de escenarios con OpenTofu"
 ---
 
 Seguimos trabajando con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi). Para cada ejemplo nos situamos en el directorio **opentofu/ejemploX** correspondiente.
@@ -18,10 +18,10 @@ Recuerda: el hecho de que conectemos una máquina virtual a dos redes **no signi
 * Creamos el fichero `cloud-init/network-config1.yaml` donde guardaremos la configuración netplan de la máquina. En este ejemplo puedes observar cómo se ha configurado `ens4` de forma estática con la dirección `192.168.130.10/24`. Si fuera necesario podríamos indicar la puerta de enlace, el servidor DNS o cualquier otra configuración de red.
 * Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml` con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej4-server1-cloudinit"` en el fichero `main.tf`.
 
-**¿Qué tienes que realizar?**
-
-1. Configura tu escenario de forma adecuada para crear una máquina virtual con debian13. Ejecuta la configuración del ejemplo 4 y comprueba que efectivamente las dos interfaces están configuradas. ¿Puedes hacer ping a la dirección que hemos configurado de forma estática? Razona la respuesta. Destruye el escenario.
-2. Crea una nueva **red muy aislada** (`mode = "none"` sin rango de direcciones) y cambia la configuración para conectar la máquina virtual a esta red. Configúrala con una dirección en el direccionamiento `172.16.0.0/16`. ¿Puedes hacer ping a esta dirección que hemos configurado? Razona la respuesta. Destruye el escenario.
+:::tip[¿Qué tienes que entregar?]
+1. Configura el escenario, crea la máquina virtual con debian13 y comprueba que las dos interfaces están configuradas. Entrega una captura de pantalla haciendo ping a la dirección estática. ¿Funciona? Razona la respuesta. Destruye el escenario.
+2. Crea una nueva **red muy aislada** (`mode = "none"`) y conecta la máquina a ella con una dirección en `172.16.0.0/16`. Entrega los ficheros modificados y una captura haciendo ping a esa dirección. ¿Funciona? Razona la respuesta. Destruye el escenario.
+:::
 
 ## Ejemplo 5: Dos máquinas virtuales conectadas entre sí
 
@@ -39,7 +39,7 @@ Nos situamos en el directorio `opentofu/ejemplo5`. En este ejemplo vamos a comen
 
 En este ejemplo, `ej5-server1` (Debian) está conectado a la red `nat-dhcp` y a la red `muy-aislada` (actúa como gateway). `ej5-server2` (Ubuntu) se conecta únicamente a la red `muy-aislada`.
 
-:::tip[Comprueba que...]
-1. Sabes crear el escenario del ejemplo 5, acceder por SSH a `ej5-server1`, hacer ping desde ahí a `ej5-server2` (`10.0.0.2`) y acceder por SSH de una máquina a otra.
-2. Sabes añadir una tercera máquina conectada a la red `muy-aislada` y comprobar que todo funciona correctamente.
+:::tip[¿Qué tienes que entregar?]
+1. Crea el escenario del ejemplo 5. Entrega una captura de pantalla accediendo por SSH a `ej5-server1`, haciendo ping desde ahí a `ej5-server2` (`10.0.0.2`) y accediendo por SSH de una máquina a otra.
+2. Añade una tercera máquina conectada a la red `muy-aislada`. Entrega los ficheros modificados y una captura donde se compruebe que todo funciona correctamente. Destruye el escenario.
 :::
