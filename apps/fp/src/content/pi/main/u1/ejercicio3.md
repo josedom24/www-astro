@@ -1,99 +1,55 @@
 ---
-title: "Ejercicio 3: Introducción a ansible"
+title: "Ejercicio 3: Playbooks con Roles"
 ---
 
-1. Realiza la instalación de ansible. Puedes usar los repositorios oficiales de Debian, o realizar una instalación con `pip` en un entorno virtual python.
-2. Crea una máquina virtual que vamos a configurar con ansible. Esta máquina debe tener las siguientes características:
+En este taller vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
 
-    * Debe tener creado un usuario sin privilegios con el que podamos acceder a la máquina usando claves ssh.
-    * Debe tener instalado `sudo` y el usuario que estamos usando para acceder debe estar configurado para poder usar `sudo` sin que le pida la contraseña.
+1. Crear dos máquinas virtuales (con las características indicadas en el ejercicio 1).
+2. Vamos a trabajar con el directorio **ansible/ejercicio5** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
+3. Rellena el inventario de forma adecuada para definir los dos equipos que vamos a configurar. Debes indicar los nombres de tus máquinas y los parámetros de acceso.
+4. Prueba de conectividad. Ejecuta el comando `ansible -m ping all` para asegurarte que puedes conectar con las máquinas.
+5. Estudia la nueva definición del playbook en el fichero `site.yaml`:
 
-3. El **inventario** es el fichero donde definimos los equipos que vamos a configurar. Crea un directorio y dentro un fichero llamado `hosts`, con el siguiente contenido:
+    * El campo `hosts`: es el nombre del grupo o máquina en la que se van a ejecutar las tareas del rol.
+    * El campo `roles/role` es el nombre del rol que se va a ejecutar.
+
+    **Modifica el fichero `site.yaml`** para conseguir que se ejecuten los roles como se indica a continuación:
+
+    * El rol `commons` (tareas comunes a todos los nodos) para todos los nodos (grupo `all`).
+    * El rol `apache2` (instalación y configuración de apache2) para todos los nodos del grupo `servidores_web`.
+    * El rol `mariadb` (instalación y configuración de mariadb) para todos los nodos del grupo `servidores_bd`.
+
+6. Los roles se van a definir en el directorio `roles`. Se creará un directorio para cada rol con las carpetas:
+
+    * `tasks`: Contiene el yaml con las tareas.
+    * `files`: Contiene los ficheros que vamos a copiar a los nodos con el módulo `copy`.
+    * `templates`: Contiene las plantillas que vamos a copiar a los nodos con el módulo `template`.
+    * `handlers`: Contiene los manejadores para gestionar los servicios instalados.
+
+7. El rol `commons` se ejecuta en todos los nodos. **Modifica la tarea que está definida para que se actualice el sistema de todas las máquinas.**
+
+8. El rol `apache2` instala apache2 y copia algunos ficheros al servidor. Uno de los ficheros es un fichero de configuración, por lo que debemos reiniciar apache2 cada vez que se copia. En la tarea **Copiar fichero de configuración y reiniciar el servicio**:
+
+    **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
+
+9. El rol `mariadb` instala el servidor de base de datos mariadb, crea una base de datos y un usuario, y modifica la configuración del servicio.
+
+    * **Modifica las variables `cambia_nombre_variable` por las variables correctas. ¿En qué fichero tienes que buscar el nombre de las variables correctas?**
+    * **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
+
+10. Ejecuta el playbook:
 
     ```
-    all:
-      children:
-        servidores:
-          hosts:
-            nodo1: 
-              ansible_ssh_host: 
-              ansible_ssh_user:  
-              ansible_ssh_private_key_file: 
+    ansible-playbook site.yaml
     ```
 
-    En el inventario se clasifican los equipos por grupos:
-
-    * El grupo `all` corresponde a todos los equipos definidos.
-    * En este ejemplo hemos creado un grupo `servidores`, donde hemos definido nuestra máquina.
-    * A la máquina la hemos llamado `nodo1` (**cambia el nombre y pon el de tu máquina**), además **debes rellenar la siguiente información del nodo**:
-        * `ansible_ssh_host`: Dirección IP del equipo que queremos configurar.
-        * `ansible_ssh_user`: Usuario sin privilegios con el que vamos a acceder por ssh.
-        * `ansible_ssh_private_key_file`: Fichero con la clave privada que vamos a usar para el acceso.
-
-4. Crea un **fichero de configuración** llamado `ansible.cfg` en el directorio del proyecto, con el siguiente contenido:
-
-    ```
-    [defaults]
-    inventory = hosts
-    host_key_checking = False
-    ```
-
-5. Comprueba la conectividad con el nodo usando el módulo `ping`:
-
-    * `ansible all -m ping`: Comprueba la conectividad con **todos** los equipos del inventario.
-    * `ansible servidores -m ping`: Comprueba la conectividad con los equipos del **grupo servidores**.
-    * `ansible nodo1 -m ping`: Comprueba la conectividad con el equipo **nodo1**.
-
-    Debe salir el mensaje "pong" en verde.
-
-6. Practica con los siguientes módulos de ansible:
-
-    * **command**: Ejecuta comandos en el nodo remoto. Con `-a` indicamos los parámetros del módulo.
-
-        ```
-        ansible all -m command -a "uptime"
-        ansible all -m shell -a "echo $HOME | wc -c"
-        ```
-
-    * **copy**: Permite copiar ficheros desde nuestro ordenador al nodo remoto.
-
-        ```
-        ansible all -m copy -a "src=./index.html dest=/tmp/index.html mode=0644"
-        ```
-
-    * **file**: Gestiona archivos, directorios y permisos.
-
-        ```
-        ansible all -m file -a "path=/tmp/ansible_demo state=directory mode=0755"
-        ```
-
-    * **apt**: Instala, actualiza o elimina paquetes.
-
-        ```
-        ansible nodo1 -m apt -a "name=apache2 state=present" --become
-        ```
-
-    * **service**: Gestiona servicios del sistema.
-
-        ```
-        ansible nodo1 -m service -a "name=apache2 state=started enabled=yes" --become
-        ```
-
-    * **user**: Crea, modifica o elimina usuarios.
-
-        ```
-        ansible all -m user -a "name=demo shell=/bin/bash groups=sudo state=present" --become
-        ```
+    * **Si tienes errores, repasa las modificaciones que has realizado para corregirlos.**
+    * **Cuando funcione la ejecución de la receta, cambia una de las tareas que notifican un reinicio para comprobar que se produce de nuevo el reinicio del servicio.**
+    * **Comprobación del funcionamiento: Accede desde el navegador web y comprueba los ficheros que hemos subido al servidor. Accede a la base de datos.**
 
 :::tip[Comprueba que...]
-1. Tienes el inventario y la configuración de tu proyecto ansible bien definidos, y puedes probar la conectividad con el servidor remoto.
-2. Sabes ejecutar comandos en el nodo remoto con `command`/`shell` (por ejemplo `hostname`).
-3. Sabes cómo se llama la propiedad que hace que una tarea ya realizada no se repita al volver a ejecutarla (idempotencia).
-4. Sabes copiar un fichero al servidor remoto con `copy`, y puedes explicar qué color de salida aparece la primera vez y cuál la segunda, y por qué.
-5. Entiendes qué ocurre si modificas el fichero de origen y vuelves a copiarlo.
-6. Sabes crear un directorio remoto con `file` y comprobar que se ha creado.
-7. Sabes instalar, comprobar y volver a instalar un paquete (nginx) con `apt`, y entiendes qué ocurre al repetir la instalación.
-8. Sabes qué módulo gestiona un servicio, y sabes pararlo y comprobarlo.
-9. Sabes desinstalar el paquete y comprobar la desinstalación.
-10. Sabes crear y eliminar un usuario remoto con `user`, comprobando cada paso.
+1. El playbook `site.yaml` se ejecuta correctamente usando los tres roles (`commons`, `apache2`, `mariadb`).
+2. Puedes acceder desde el navegador al servidor web y ver el contenido de `index.html`.
+3. Puedes acceder a la base de datos creada por el rol `mariadb`.
+4. Sabes provocar un cambio que dispare un handler (reinicio de servicio) y comprobar que solo se ejecuta cuando hay un cambio real.
 :::

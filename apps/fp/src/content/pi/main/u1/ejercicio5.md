@@ -1,55 +1,45 @@
 ---
-title: "Ejercicio 5: Playbooks con Roles"
+title: "Ejercicio 5: Creación de escenarios con OpenTofu"
 ---
 
-En este taller vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
+Seguimos trabajando con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi). Para cada ejemplo nos situamos en el directorio **opentofu/ejemploX** correspondiente.
 
-1. Crear dos máquinas virtuales (con las características indicadas en el ejercicio 3).
-2. Vamos a trabajar con el directorio **ansible/ejercicio5** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
-3. Rellena el inventario de forma adecuada para definir los dos equipos que vamos a configurar. Debes indicar los nombres de tus máquinas y los parámetros de acceso.
-4. Prueba de conectividad. Ejecuta el comando `ansible -m ping all` para asegurarte que puedes conectar con las máquinas.
-5. Estudia la nueva definición del playbook en el fichero `site.yaml`:
+## Ejemplo 4: Máquina virtual conectada a dos redes: una con DHCP y otra con direccionamiento estático
 
-    * El campo `hosts`: es el nombre del grupo o máquina en la que se van a ejecutar las tareas del rol.
-    * El campo `roles/role` es el nombre del rol que se va a ejecutar.
+Nos situamos en el directorio `opentofu/ejemplo4`. En este ejemplo seguimos trabajando con redes. En esta ocasión vamos a aprender a **configurar una interfaz de red de forma estática**.
 
-    **Modifica el fichero `site.yaml`** para conseguir que se ejecuten los roles como se indica a continuación:
+En el fichero `network.tf` se definen dos redes:
 
-    * El rol `commons` (tareas comunes a todos los nodos) para todos los nodos (grupo `all`).
-    * El rol `apache2` (instalación y configuración de apache2) para todos los nodos del grupo `servidores_web`.
-    * El rol `mariadb` (instalación y configuración de mariadb) para todos los nodos del grupo `servidores_bd`.
+* `resource "libvirt_network" "ej4-nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`.
+* `resource "libvirt_network" "ej4-aislada-static"`: una red **aislada sin DHCP** (`mode = "none"`) en el rango `192.168.130.0/24`. Estudia los parámetros que hemos indicado.
 
-6. Los roles se van a definir en el directorio `roles`. Se creará un directorio para cada rol con las carpetas:
+Recuerda: el hecho de que conectemos una máquina virtual a dos redes **no significa que netplan configure las dos interfaces**. Tenemos que configurarlo nosotros, para ello:
 
-    * `tasks`: Contiene el yaml con las tareas.
-    * `files`: Contiene los ficheros que vamos a copiar a los nodos con el módulo `copy`.
-    * `templates`: Contiene las plantillas que vamos a copiar a los nodos con el módulo `template`.
-    * `handlers`: Contiene los manejadores para gestionar los servicios instalados.
+* Creamos el fichero `cloud-init/network-config1.yaml` donde guardaremos la configuración netplan de la máquina. En este ejemplo puedes observar cómo se ha configurado `ens4` de forma estática con la dirección `192.168.130.10/24`. Si fuera necesario podríamos indicar la puerta de enlace, el servidor DNS o cualquier otra configuración de red.
+* Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml` con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej4-server1-cloudinit"` en el fichero `main.tf`.
 
-7. El rol `commons` se ejecuta en todos los nodos. **Modifica la tarea que está definida para que se actualice el sistema de todas las máquinas.**
+**¿Qué tienes que realizar?**
 
-8. El rol `apache2` instala apache2 y copia algunos ficheros al servidor. Uno de los ficheros es un fichero de configuración, por lo que debemos reiniciar apache2 cada vez que se copia. En la tarea **Copiar fichero de configuración y reiniciar el servicio**:
+1. Configura tu escenario de forma adecuada para crear una máquina virtual con debian13. Ejecuta la configuración del ejemplo 4 y comprueba que efectivamente las dos interfaces están configuradas. ¿Puedes hacer ping a la dirección que hemos configurado de forma estática? Razona la respuesta. Destruye el escenario.
+2. Crea una nueva **red muy aislada** (`mode = "none"` sin rango de direcciones) y cambia la configuración para conectar la máquina virtual a esta red. Configúrala con una dirección en el direccionamiento `172.16.0.0/16`. ¿Puedes hacer ping a esta dirección que hemos configurado? Razona la respuesta. Destruye el escenario.
 
-    **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
+## Ejemplo 5: Dos máquinas virtuales conectadas entre sí
 
-9. El rol `mariadb` instala el servidor de base de datos mariadb, crea una base de datos y un usuario, y modifica la configuración del servicio.
+Nos situamos en el directorio `opentofu/ejemplo5`. En este ejemplo vamos a comenzar a crear escenarios, es decir, a crear varias máquinas interconectadas. En este ejemplo concreto tenemos dos máquinas que están conectadas entre sí. Para conseguirlo tenemos los siguientes ficheros:
 
-    * **Modifica las variables `cambia_nombre_variable` por las variables correctas. ¿En qué fichero tienes que buscar el nombre de las variables correctas?**
-    * **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
+* `main.tf`: contiene la definición de las dos máquinas virtuales (`ej5-server1` y `ej5-server2`) en un único fichero.
+* En el directorio `cloud-init` encontramos los ficheros de configuración para cada máquina:
+  * `user-data1.yaml`: configura `ej5-server1` (Debian, usuario `debian`).
+  * `user-data2.yaml`: configura `ej5-server2` (Ubuntu, usuario `ubuntu`).
+  * `network-config1.yaml`: configura las interfaces de red de `ej5-server1` (`ens3` con DHCP, `ens4` con IP estática `10.0.0.1/24`).
+  * `network-config2.yaml`: configura la interfaz de red de `ej5-server2` (`ens3` con IP estática `10.0.0.2/24` y gateway `10.0.0.1`).
+* `network.tf`: define dos redes: `ej5-nat-dhcp` (NAT con DHCP) y `ej5-muy-aislada` (`mode = "none"`, sin rango de direcciones).
+* `variables.tf`: define tres variables: `libvirt_pool_name`, `base_image_debian` (`debian13-base.qcow2`) y `base_image_ubuntu` (`ubuntu2404-base.qcow2`).
+* El fichero `output.tf` devuelve información de las dos máquinas.
 
-10. Ejecuta el playbook:
-
-    ```
-    ansible-playbook site.yaml
-    ```
-
-    * **Si tienes errores, repasa las modificaciones que has realizado para corregirlos.**
-    * **Cuando funcione la ejecución de la receta, cambia una de las tareas que notifican un reinicio para comprobar que se produce de nuevo el reinicio del servicio.**
-    * **Comprobación del funcionamiento: Accede desde el navegador web y comprueba los ficheros que hemos subido al servidor. Accede a la base de datos.**
+En este ejemplo, `ej5-server1` (Debian) está conectado a la red `nat-dhcp` y a la red `muy-aislada` (actúa como gateway). `ej5-server2` (Ubuntu) se conecta únicamente a la red `muy-aislada`.
 
 :::tip[Comprueba que...]
-1. El playbook `site.yaml` se ejecuta correctamente usando los tres roles (`commons`, `apache2`, `mariadb`).
-2. Puedes acceder desde el navegador al servidor web y ver el contenido de `index.html`.
-3. Puedes acceder a la base de datos creada por el rol `mariadb`.
-4. Sabes provocar un cambio que dispare un handler (reinicio de servicio) y comprobar que solo se ejecuta cuando hay un cambio real.
+1. Sabes crear el escenario del ejemplo 5, acceder por SSH a `ej5-server1`, hacer ping desde ahí a `ej5-server2` (`10.0.0.2`) y acceder por SSH de una máquina a otra.
+2. Sabes añadir una tercera máquina conectada a la red `muy-aislada` y comprobar que todo funciona correctamente.
 :::
