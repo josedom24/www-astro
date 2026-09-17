@@ -28,7 +28,7 @@ Vas a crear una máquina virtual Debian/Ubuntu **sin entorno gráfico** usando `
 Vas a crear una máquina virtual con un sistema Windows (cualquier versión 10/11 de evaluación o Windows Server). En este caso sí necesitarás interfaz gráfica para la instalación.
 
 1. Descarga la ISO de Windows.
-2. Crea la máquina con `virt-install` ajustando los recursos (Windows requiere más RAM y disco): al menos 4 GB de memoria, 2 vCPUs y un disco de 40 GB. Usa la red `default` y gráficos SPICE.
+2. Crea la máquina con `virt-install` ajustando los recursos (Windows requiere más RAM y disco): al menos 4 GB de memoria, 2 vCPUs y un disco de 40 GB. Usa la red `default` y gráficos SPICE. Recuerda configurar de manera adecuada los dispositivos VirtIO y conectaar el DCROM con la imagen de los drivers virtio.
 3. Conéctate con `virt-viewer` o `virt-manager` para completar la instalación gráfica.
 4. Una vez instalado Windows, habilita el **Escritorio remoto (RDP)** desde el sistema y abre el puerto 3389 en su firewall.
 5. Averigua su IP y comprueba que puedes acceder por RDP desde el host.
