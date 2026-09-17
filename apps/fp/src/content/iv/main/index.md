@@ -5,12 +5,12 @@ toc: false
 
 ## Unidad 1: Virtualización de máquinas virtuales. KVM/QEMU/Libvirt
 
-* [Presentación: Introducción a la virtualización](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/virtualizacion.pdf)
-* [Presentación: Introducción QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_intro.pdf)
+* [Presentación: Introducción a la virtualización](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/virtualizacion.pdf)
+* [Presentación: Introducción QEMU/KVM + libvirt](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kvm_intro.pdf)
   * [Ejercicio 1: Creación de máquinas virtuales desde la línea de comandos](u1/ejercicio1/)
-* [Presentación: Almacenamiento en QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_almacenamiento.pdf)
+* [Presentación: Almacenamiento en QEMU/KVM + libvirt](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kvm_almacenamiento.pdf)
   * [Ejercicio 2: Almacenamiento, clonación e instantáneas](u1/ejercicio2/)
-* [Presentación: Redes en QEMU/KVM + libvirt](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kvm_redes.pdf)
+* [Presentación: Redes en QEMU/KVM + libvirt](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kvm_redes.pdf)
   * [Ejercicio 3: Gestión de redes en QEMU/KVM + libvirt](u1/ejercicio3/)
 * [Práctica: QEMU/KVM + libvirt](u1/practica/)
   * [Optativa 1.1: MV Windows con drivers VirtIO](u1/practica_opcional_windows/)
@@ -21,10 +21,10 @@ toc: false
 
 ## Unidad 2: Virtualización en contenedores. LXC / Docker
 
-* [Presentación: Introducción a los contenedores](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/contenedores.pdf)
-* [Presentación: Contenedores LXC](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/lxc.pdf)
+* [Presentación: Introducción a los contenedores](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/contenedores.pdf)
+* [Presentación: Contenedores LXC](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/lxc.pdf)
   * [Ejercicio 1: Contenedores LXC](u2/ejercicio1/)
-* [Presentación: Contenedores Docker](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/docker.pdf)
+* [Presentación: Contenedores Docker](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/docker.pdf)
 * [Curso docker](https://github.com/josedom24/curso_docker_ies)
   * [Ejercicio 2: Introducción a los contenedores Docker](u2/ejercicio2/)
   * [Ejercicio 3: Almacenamiento en Docker](u2/ejercicio3/)
@@ -35,10 +35,10 @@ toc: false
 
 ## Unidad 3: Cloud Computing IaaS. OpenStack 
 
-* [Presentación: Introducción al Cloud Computing y a OpenStack](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/cloudcomputing.pdf)
+* [Presentación: Introducción al Cloud Computing y a OpenStack](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/cloudcomputing.pdf)
 * [Curso de OpenStack](https://github.com/josedom24/curso_openstack_ies)
   * [Ejercicio 1: Primeros pasos con OpenStack](u3/ejericio1/)
-* [Presentación: OpenStack client (OSC)](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/osc.pdf)
+* [Presentación: OpenStack client (OSC)](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/osc.pdf)
   * [Ejercicio 2: Uso de OpenStack client (OSC)](u3/ejericio2/)
   * [Ejercicio 3: Red interna conectada con un router OpenStack](u3/ejericio3/)
   * [Ejercicio 4: Red interna conectada con un router linux en OpenStack](u3/ejericio4/)
@@ -47,9 +47,9 @@ toc: false
 
 ## Unidad 4: Orquestadores de contenedores. Kubernetes
 
-* [Presentación: Introducción a Kubernetes](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kubernetes.pdf)
+* [Presentación: Introducción a Kubernetes](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kubernetes.pdf)
 * [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies)
-* [Presentación: Kubernetes - Recursos principales](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/iv/kubernetes2.pdf)
+* [Presentación: Kubernetes - Recursos principales](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kubernetes2.pdf)
   * [Ejercicio 1: Trabajando con Pods](u4/ejercicio1/)
   * [Ejercicio 2: Trabajando con ReplicaSet](u4/ejercicio2/)
   * [Ejercicio 3: Trabajando con Deployments](u4/ejercicio3/)

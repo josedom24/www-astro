@@ -5,8 +5,8 @@ toc: false
 
 ## Unidad 1: Configuración básica de un servidor - DHCP
 
-* [Configuración inicial de un servidor](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/configuracion_inicial.pdf)
-* [DHCP. Servidor Kea DHCP](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/dhcp.pdf)
+* [Configuración inicial de un servidor](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/configuracion_inicial.pdf)
+* [DHCP. Servidor Kea DHCP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dhcp.pdf)
   * [Práctica: Configuración de un router (SNAT y DNAT)](u1/practica/)
   * [Optativa 1.1: SSH hardening y fail2ban](u1/practica_opcional_ssh/)
   
@@ -14,20 +14,20 @@ toc: false
 
 ## Unidad 2: Protocolo HTTP y sistemas de almacenamiento
 
-* [Protocolo HTTP](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/http.pdf)
-* [Servidores web Apache y Nginx](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/apache_nginx.pdf)
+* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/http.pdf)
+* [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
   * [Ejercicio 1: Configuración básica de apache2](u2/ejercicio1/)
   * [Ejercicio 2: Configuración básica de nginx](u2/ejercicio2/)
-* [Proxy inverso y balanceador de carga](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/proxy_balanceador.pdf)
+* [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
   * [Ejercicio 3: Introducción a proxy inverso](u2/ejercicio3/)
   * [Ejercicio 4: HAproxy como balanceador de carga](u2/ejercicio4/)
-* [Protocolos de almacenamiento](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/almacenamiento.pdf)
+* [Protocolos de almacenamiento](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/almacenamiento.pdf)
   * [Práctica: Protocolo HTTP y almacenamiento](u2/practica/)
 
 
 ## Unidad 3: Protocolo DNS
 
-* [Introducción al protocolo DNS](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/dns.pdf)
+* [Introducción al protocolo DNS](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dns.pdf)
   * [Ejercicio 1: Instalación y configuración del servidor bind9 en nuestra red local](u3/ejercicio1/)
   * [Ejercicio 2: Instalación y configuración de un servidor DNS esclavo](u3/ejercicio2/)
   * [Ejercicio 3: Delegación de subdominios con bind9](u3/ejercicio3/)
@@ -36,7 +36,7 @@ toc: false
 
 ## Unidad 4: Servidor de correo electrónico
 
-* [Introducción al sistema de correo electrónico](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/sri/correo.pdf)
+* [Introducción al sistema de correo electrónico](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/correo.pdf)
   * [Caso 1:  Envío local, entre usuarios del mismo servidor](u4/ejercicio1/)
   * [Caso 2: Envío de correo desde usuarios del servidor a correos de internet (desde el escenario de OpenStack)](u4/ejercicio2/)
   * [Caso 3: Recibir correos desde internet a usuarios del servidor (desde el escenario de OpenStack)](u4/ejercicio3/)

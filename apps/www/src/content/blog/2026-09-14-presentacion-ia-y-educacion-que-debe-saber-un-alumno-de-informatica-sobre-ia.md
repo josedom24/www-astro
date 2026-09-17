@@ -63,4 +63,4 @@ Este es el bloque central de la presentación, y el motivo real por el que la pr
 
 Cerramos con los riesgos de depender demasiado de la IA sin pasar por estas etapas — externalización cognitiva, ilusión de competencia, sedentarismo cognitivo — y con una idea que resume todo lo anterior: el profesor no evalúa solo si el alumno llegó al resultado correcto, sino cómo llegó, qué entendió por el camino y qué sería capaz de hacer ante un problema distinto. Un escenario que funciona pero que el alumno no sabe explicar vale menos que uno con algún problema que sabe diagnosticar y razonar correctamente. Eso es, en definitiva, lo que el mercado laboral le va a exigir: saber qué pedirle a la IA, entender lo que devuelve, y tomar buenas decisiones cuando la IA no llega.
 
-Puedes consultar la presentación completa aquí: [IA y educación](https://cdn.jsdelivr.net/gh/josedom24/marp-presentaciones@main/ia/ia_educacion.pdf)
+Puedes consultar la presentación completa aquí: [IA y educación](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/ia/ia_educacion.pdf)
