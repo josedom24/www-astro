@@ -1,5 +1,5 @@
 ---
-title: 'EdiMarkWeb ya importa PDF'
+title: 'EdiMarkWeb, editor de Markdown con importación de PDF'
 date: 2026-09-18
 tags: 
   - Aplicación
