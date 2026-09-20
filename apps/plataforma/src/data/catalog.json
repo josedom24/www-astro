@@ -3,6 +3,13 @@
     "title": "Programación",
     "courses": [
       {
+        "title": "Curso de Introducción a C++ Moderno (2026)",
+        "url": "cursos/cpp_moderno",
+        "year": "2026",
+        "external": "none",
+        "ow": false
+      },
+      {
         "title": "Curso de preparación para el examen Python PCEP – Certified Entry-Level Python Programmer (2025)",
         "url": "cursos/python_pcep",
         "year": "2025",
