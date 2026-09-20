@@ -10,7 +10,7 @@ tags:
 
 ![Curso de Introducción a C++ Moderno](/pledin/assets/2026/09/cpp_moderno.png)
 
-Acabo de publicar en la **Plataforma Educativa Informática** un nuevo curso: **Introducción a C++ Moderno**, pensado para aprender a programar en C++ desde cero utilizando ya desde el principio las características del estándar moderno del lenguaje (C++11 en adelante, con especial atención a C++17 y C++20).
+Acabo de publicar en la **Plataforma Educativa Informática** el material del nuevo curso que he impartido en **OpenWebinars**: **Introducción a C++ Moderno**, pensado para aprender a programar en C++ desde cero utilizando ya desde el principio las características del estándar moderno del lenguaje (C++11 en adelante, con especial atención a C++17 y C++20).
 
 <!--more-->
 
@@ -34,7 +34,8 @@ Es un curso eminentemente práctico, con ejemplos comentados y ejercicios resuel
 
 ## Accede al curso
 
-* [Curso de Introducción a C++ Moderno](https://plataforma.josedomingo.org/pledin/cursos/cpp_moderno/)
+* [Accede al curso en Pledin](https://plataforma.josedomingo.org/pledin/cursos/cpp_moderno/)
 * Repositorio de ejercicios y ejemplos: [github.com/josedom24/ejercicios_curso_cpp_moderno](https://github.com/josedom24/ejercicios_curso_cpp_moderno)
+* Curso en OpenWebinars: [openwebinars.net/cursos/cpp-introduccion/](https://openwebinars.net/cursos/cpp-introduccion/)
 
 Espero que os sea de utilidad.
