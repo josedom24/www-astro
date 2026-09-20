@@ -5,7 +5,7 @@ slug: "blog/2026/06/introduccion-a-la-virtualizacion-con-proxmox-ve"
 tags:
   - "Proxmox"
   - "Virtualización"
-  - "Curso"
+  - "Cursos"
 ---
 
 ![Introducción a la virtualización con Proxmox VE](/pledin/assets/2026/06/proxmox.png)
