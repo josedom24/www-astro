@@ -52,7 +52,7 @@ Aunque podemos crear plantillas manualmente (puedes aprender cómo en el curso d
 2. Crea un fichero `cloud.yaml` con configuración `cloud-init` que establezca el nombre de la máquina, actualice los paquetes y configure las contraseñas de los usuarios `root` y `ubuntu`.
 3. Crea una clonación enlazada a partir de la imagen cloud descargada y amplía el disco a 20 GB.
 4. Crea la máquina virtual con `virt-install` usando la clonación enlazada como disco y el fichero `cloud.yaml` como configuración cloud-init.
-5. Conéctate a la máquina por consola serie. Comprueba que el nombre de la máquina y las contraseñas son los que has configurado.
+5. Accede a la máquina por SSH. Comprueba que el nombre de la máquina y las contraseñas son los que has configurado.
 
 ## Ejercicio 8: Instantáneas
 

@@ -2,7 +2,7 @@
 title: "Creación de máquinas virtuales desde la línea de comandos"
 ---
 
-En este ejercicio vas a instalar QEMU/KVM + libvirt, crear una máquina virtual Linux sin entorno gráfico y otra con un sistema Windows, y comprobar el funcionamiento, la red, el almacenamiento y la definición XML de cada una de ellas. Todas las operaciones se realizan desde la línea de comandos usando una **conexión privilegiada** a libvirt (`qemu:///system`).
+En este ejercicio vas a instalar QEMU/KVM + libvirt, crear una máquina virtual Linux y otra con un sistema Windows, y comprobar el funcionamiento, la red, el almacenamiento y la definición XML de cada una de ellas. Todas las operaciones se realizan desde la línea de comandos usando una **conexión privilegiada** a libvirt (`qemu:///system`).
 
 ## Preparación del entorno
 
@@ -11,13 +11,13 @@ En este ejercicio vas a instalar QEMU/KVM + libvirt, crear una máquina virtual 
 3. Comprueba que el servicio `libvirtd` está activo y que puedes listar las máquinas con una conexión privilegiada.
 4. Estudia la red `default` y el *pool* de almacenamiento `default` que libvirt ha creado por defecto. Anota: rango de direcciones IP de la red, modo de funcionamiento (NAT) y ruta del *pool* de almacenamiento.
 
-## Ejercicio 1: Máquina virtual Linux sin entorno gráfico
+## Ejercicio 1: Máquina virtual Linux
 
-Vas a crear una máquina virtual Debian/Ubuntu **sin entorno gráfico** usando `virt-install`.
+Vas a crear una máquina virtual Debian/Ubuntu usando `virt-install`.
 
 1. Descarga la ISO de instalación netinst de Debian (o Ubuntu Server).
-2. Crea la máquina con `virt-install` indicando: nombre, memoria (2 GB), vCPUs (2), un disco de 10 GB en formato `qcow2` dentro del *pool* `default`, la ISO como CDROM, la red `default`, sin entorno gráfico y consola serie.
-3. Realiza la instalación desde la consola serie. Configura el sistema con un usuario que tenga `sudo` y el servicio `openssh-server` instalado.
+2. Crea la máquina con `virt-install` indicando: nombre, memoria (2 GB), vCPUs (2), un disco de 10 GB en formato `qcow2` dentro del *pool* `default`, la ISO como CDROM y la red `default`.
+3. Conéctate con `virt-viewer` para completar la instalación gráfica. Configura el sistema con un usuario que tenga `sudo` y el servicio `openssh-server` instalado.
 4. Una vez instalada y arrancada, comprueba con `virsh` la información del dominio, las interfaces de red y los discos asociados.
 5. Muestra la definición XML completa de la máquina e identifica los bloques de memoria, vCPUs, dispositivos de disco e interfaces, y el tipo de gráficos.
 6. Averigua la dirección IP que ha tomado la máquina en la red `default` consultando las concesiones DHCP, y accede por SSH desde el host.
