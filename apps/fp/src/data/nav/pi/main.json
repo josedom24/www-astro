@@ -5,6 +5,10 @@
       {
         "title": "Inicio",
         "url": "/pi/main/"
+      },
+      {
+        "title": "Ansible/OpenTofu",
+        "url": "/iv/main/u1/"
       }
     ]
   }
