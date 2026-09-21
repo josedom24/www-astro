@@ -9,7 +9,7 @@ Cada alumno dispone de una **tarea en Redmine** para entregar las actividades de
 ## Estructura de la entrega
 
 - La tarea de Redmine es un *histórico* de tu trabajo: la entrega se hace **poco a poco**, según vas completando apartados.
-- Cada vez que añadas algo nuevo (un apartado nuevo, o una corrección de uno anterior), crea una **conversación (comentario) nueva**. *No* edites ni borres un comentario ya publicado para meter contenido distinto: el histórico de comentarios es la prueba de tu progreso.
+- Cada vez que añadas algo nuevo (un apartado nuevo, o una corrección de uno anterior), crea una **conversación (comentario) nueva** (Botón **Modificar**). *No* edites ni borres un comentario ya publicado para meter contenido distinto: el histórico de comentarios es la prueba de tu progreso.
 - Si necesitas corregir algo de una entrega anterior, coméntalo en una **conversación nueva** explicando qué cambia, en lugar de reescribir la antigua.
 - Al empezar cada apartado, copia el **enunciado del ejercicio** con un título de nivel 2 (`h2`), para que se sepa qué se está entregando en esa conversación. En Redmine (formato *Textile*) se escribe así: `h2. Enunciado`.
 - Entrega **solo** lo que se pide en el enunciado: no añadas de más ni de menos de lo solicitado en cada apartado.
@@ -35,12 +35,14 @@ Cada alumno dispone de una **tarea en Redmine** para entregar las actividades de
 ## Capturas de pantalla e imágenes
 
 - **No se entregan capturas del terminal.** Lo que ocurre en el terminal se documenta copiando el comando y su salida en texto (bloque `<pre>`), *no* como imagen.
-- Solo se incluyen capturas cuando de verdad son necesarias, por ejemplo para mostrar el resultado de acceder a una página web desde el navegador, una interfaz gráfica, o un panel de administración.
+- Solo se incluyen capturas **cuando de verdad son necesarias**, por ejemplo para mostrar el resultado de acceder a una página web desde el navegador, una interfaz gráfica, o un panel de administración.
 - Recorta la captura para que se vea solo lo relevante; evita capturas de pantalla completa con ventanas o pestañas innecesarias.
+- Si es una captura de un navegador accediendo a una página, **que se vea la URL**.
 - **Cómo insertar una imagen:**
   1. Sube el fichero de imagen a la tarea de Redmine (como adjunto de la conversación).
   2. Redmine genera un enlace al fichero subido; copia ese enlace.
   3. Insértalo en el texto con la sintaxis *Textile* `!nombre_imagen.png!` para que la imagen se muestre incrustada en la conversación.
+  4. También puedes probar a arrastrar la imagen al cuadro de texto de redmine.
 
 ## Ficheros adjuntos
 
@@ -52,5 +54,5 @@ Cada alumno dispone de una **tarea en Redmine** para entregar las actividades de
 
 - Puedes ir actualizando el campo **% Realizado** conforme completas apartados, no hace falta esperar al final. Cuando termines toda la tarea, ese campo debe quedar **al 100%**.
 - **No** cambies el estado de la tarea (por ejemplo, a *"Cerrada"*) salvo que se indique lo contrario; es el profesor quien gestiona el estado tras la corrección.
-- Si tienes dudas sobre un apartado, coméntalo en la tarea (conversación nueva) en lugar de dejarlo sin explicación.
-- El profesor puede escribir también algún comentario en la tarea para aclarar algo o darte alguna indicación; revisa las conversaciones *de vez en cuando* por si hay alguna respuesta.
+- Si tienes dudas sobre un apartado, pregunta al profesor.
+- El profesor puede escribir también algún comentario en la tarea para aclarar algo o darte alguna indicación; revisa el correo para ver las modificaciones de la tarea.
