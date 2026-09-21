@@ -95,6 +95,7 @@ html {
   }
 
   .doc-sidebar {
+    grid-column: 1;
     border-right: 1px solid var(--color-border);
     background: var(--color-bg-sidebar);
     position: sticky;
@@ -117,6 +118,7 @@ html {
   }
 
   .doc-main {
+    grid-column: 2;
     min-width: 0;
     padding: 2rem 2.5rem;
   }
@@ -194,6 +196,7 @@ html {
 
   /* TOC */
   .doc-toc {
+    grid-column: 3;
     position: sticky;
     top: calc(var(--nav-height) + 1rem);
     align-self: start;
@@ -262,7 +265,7 @@ html {
     }
     .doc-sidebar { display: none; }
     .doc-toc { display: none; }
-    .doc-main { padding: 1.25rem 1rem; }
+    .doc-main { grid-column: 1; padding: 1.25rem 1rem; }
   }
 
   .breadcrumb {
