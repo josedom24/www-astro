@@ -23,7 +23,7 @@ Tendremos 3 redes:
   * Está conectada la máquina **router**, y le da acceso a internet.
 * Una red de tipo **muy aislada**, cuyas características son:
   * Utiliza un bridge llamado **br-red2**.
-  * Tiene que tener un direccionamiento con masca de red /16.
+  * Tiene que tener un direccionamiento con mascara de red /16.
   * Están conectadas las máquinas **router**, **cliente1** y **cliente2**.
 * Una red de tipo **aislada**, cuyas características son:
   * Utiliza un bridge llamado **br-red1**.
@@ -36,7 +36,7 @@ Tendremos 3 redes:
 1. Configura de forma adecuada las interfaces de red de las máquinas que están conectadas a las distintas redes, comprueba que hay conectividad entre ellas.
 2. Configura el FQDN de forma correcta en las máquinas.
 3. Crea un usuario llamado `tunombre` que tenga permisos para ejecutar `sudo` sin que te pida contraseña en las máquinas Linux.
-4. Configura el acceso a todas las máquinas Linux por shh con tu clave pública para acceder con el usuario que has creado. Investiga el uso de `ssh -A` para acceder a las máquinas internas desde el exterior.
+4. Configura el acceso a todas las máquinas Linux por ssh con tu clave pública para acceder con el usuario que has creado. Investiga el uso de `ssh -A` para acceder a las máquinas internas desde el exterior.
 5. Configura la máquina router para que permita que las máquinas internas tenga acceso a internet. Las reglas que has configurado deben ser persistentes. ¿Es necesario usar *enmascaramiento*?
 6. Instala un servidor web en la máquina **Servidor Web**: `sudo apt install apache2`. Crea la regla necesaria para acceder desde el exterior al servidor web con un navegador. Usa resolución estática para acceder a la página web usando el nombre `www.tunombre.org`, para acceder desde el exterior, y desde las máquinas conectadas a la red **muy aislada**. **Nota**: Desde el exterior se debe acceder a la máquina **router** para acceder a la página web.
 
