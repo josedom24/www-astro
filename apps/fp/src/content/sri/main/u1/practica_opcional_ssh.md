@@ -8,7 +8,7 @@ Esta práctica es **optativa**: solo puede mejorar tu nota, nunca perjudicarla.
 
 ## Hardening de SSH
 
-Sobre `router.tunombre.org` (o la máquina Linux del escenario que prefieras, siempre que tenga acceso SSH desde el exterior):
+Sobre `router.tunombre.org`:
 
 * Desactiva el acceso por SSH del usuario `root`.
 * Desactiva por completo la autenticación por contraseña, dejando solo el acceso por clave pública.
@@ -17,13 +17,15 @@ Sobre `router.tunombre.org` (o la máquina Linux del escenario que prefieras, si
 
 ## fail2ban
 
+**Fail2ban** es un servicio que analiza los logs (SSH, Nginx, Postfix, etc.) en busca de patrones de ataque, como intentos fallidos de login repetidos, y banea temporalmente las IPs responsables añadiendo reglas al firewall (iptables/nftables).
+
 * Instala `fail2ban` y configura una jail para el servicio SSH, adaptada al nuevo puerto.
 * Ajusta los parámetros de baneo a valores bajos para poder hacer la demostración en poco tiempo.
 * Provoca varios intentos fallidos de conexión desde otra máquina del escenario y comprueba que la IP queda baneada.
 * Comprueba que la IP aparece en la lista de baneadas, y que tras el tiempo de baneo vuelve a poder conectar.
 
 :::tip[Entrega]
-1. Configuración de `sshd_config` con los tres cambios aplicados (`PermitRootLogin`, `PasswordAuthentication`, `Port`).
+1. Configuración de `sshd_config` con los tres cambios aplicados.
 2. Configuración de la jail de `fail2ban` para SSH.
 3. Captura de `fail2ban-client status sshd` mostrando una IP baneada.
 4. Explica, para cada medida (desactivar root, desactivar contraseña, cambiar puerto, fail2ban), qué tipo de ataque mitiga y por qué.
