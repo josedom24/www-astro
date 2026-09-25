@@ -2,7 +2,7 @@
 title: "Tarea 2: Ejecución de Playbooks"
 ---
 
-1. Haz un fork del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) y realiza una clonación en el ordenador donde has instalado ansible. Vamos a trabajar en el directorio **ansible/ejercicio4**.
+1. Haz un fork del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) y realiza una clonación en el ordenador donde has instalado ansible. Vamos a trabajar en el directorio **ansible/ejercicio1**.
 
 2. Rellena de manera adecuada el inventario y la configuración de ansible.
 
