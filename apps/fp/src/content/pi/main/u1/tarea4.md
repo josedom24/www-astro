@@ -53,8 +53,8 @@ Una vez hechos los cambios, **los comandos se ejecutan en el directorio del proy
 * Para eliminar todos los recursos creados, ejecutamos `tofu destroy`.
 
 :::tip[¿Qué tienes que entregar?]
-1. Configura tu escenario para crear una máquina virtual con debian13. Entrega el fichero `cloud-init/user-data1.yaml` modificado y una captura de pantalla del acceso por ssh a la máquina. Destruye el escenario.
-2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu (cambia `var.base_image` en `variables.tf` y adapta `cloud-init/user-data1.yaml`). Entrega los ficheros modificados y una captura del acceso por ssh a la máquina. Destruye el escenario.
+1. Configura tu escenario para crear una máquina virtual con debian13. Entrega el fichero `cloud-init/user-data1.yaml` modificado, y el comando y la salida del acceso por ssh a la máquina. Destruye el escenario.
+2. Modifica los ficheros necesarios para crear una máquina virtual con ubuntu (cambia `var.base_image` en `variables.tf` y adapta `cloud-init/user-data1.yaml`). Entrega los ficheros modificados, y el comando y la salida del acceso por ssh a la máquina. Destruye el escenario.
 :::
 
 ## Ejemplo 2: Máquina virtual con disco adicional
@@ -68,7 +68,7 @@ Nos situamos en el directorio `opentofu/ejemplo2`. Este ejemplo es similar al an
 
 :::tip[¿Qué tienes que entregar?]
 1. Entrega el fichero `main.tf` con el disco adicional de 5 GB añadido.
-2. Captura de pantalla del resultado de `lsblk` en la máquina, donde se vean los discos añadidos.
+2. Entrega la salida de `lsblk` en la máquina, donde se vean los discos añadidos.
 3. Destruye el escenario.
 :::
 
@@ -91,8 +91,8 @@ El hecho de que conectemos una máquina virtual a dos redes **no significa que n
 * Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml`. Esto se hace con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej3-server1-cloudinit"` en el fichero `main.tf`.
 
 :::tip[¿Qué tienes que entregar?]
-1. Configura el escenario y crea la máquina conectada a las dos redes. Entrega una captura de pantalla de `ip a`.
+1. Configura el escenario y crea la máquina conectada a las dos redes. Entrega la salida de `ip a`.
 2. Crea una nueva red NAT con DHCP y conecta la máquina a ella, configurando la tercera interfaz en cloud-init y en `output.tf`. Entrega los ficheros modificados (`network.tf`, `main.tf`, `cloud-init/network-config1.yaml`, `output.tf`).
-3. Entrega una captura de pantalla de `ip a` mostrando la máquina con sus 3 interfaces correctamente configuradas.
+3. Entrega la salida de `ip a` mostrando la máquina con sus 3 interfaces correctamente configuradas.
 :::
 

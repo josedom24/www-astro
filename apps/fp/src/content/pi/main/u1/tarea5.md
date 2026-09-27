@@ -19,8 +19,8 @@ Recuerda: el hecho de que conectemos una máquina virtual a dos redes **no signi
 * Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml` con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej4-server1-cloudinit"` en el fichero `main.tf`.
 
 :::tip[¿Qué tienes que entregar?]
-1. Configura el escenario, crea la máquina virtual con debian13 y comprueba que las dos interfaces están configuradas. Entrega una captura de pantalla haciendo ping a la dirección estática. ¿Funciona? Razona la respuesta. Destruye el escenario.
-2. Crea una nueva **red muy aislada** (`mode = "none"`) y conecta la máquina a ella con una dirección en `172.16.0.0/16`. Entrega los ficheros modificados y una captura haciendo ping a esa dirección. ¿Funciona? Razona la respuesta. Destruye el escenario.
+1. Configura el escenario, crea la máquina virtual con debian13 y comprueba que las dos interfaces están configuradas. Entrega el comando y la salida del ping a la dirección estática. ¿Funciona? Razona la respuesta. Destruye el escenario.
+2. Crea una nueva **red muy aislada** (`mode = "none"`) y conecta la máquina a ella con una dirección en `172.16.0.0/16`. Entrega los ficheros modificados, y el comando y la salida del ping a esa dirección. ¿Funciona? Razona la respuesta. Destruye el escenario.
 :::
 
 ## Ejemplo 5: Dos máquinas virtuales conectadas entre sí
@@ -40,6 +40,6 @@ Nos situamos en el directorio `opentofu/ejemplo5`. En este ejemplo vamos a comen
 En este ejemplo, `ej5-server1` (Debian) está conectado a la red `nat-dhcp` y a la red `muy-aislada` (actúa como gateway). `ej5-server2` (Ubuntu) se conecta únicamente a la red `muy-aislada`.
 
 :::tip[¿Qué tienes que entregar?]
-1. Crea el escenario del ejemplo 5. Entrega una captura de pantalla accediendo por SSH a `ej5-server1`, haciendo ping desde ahí a `ej5-server2` (`10.0.0.2`) y accediendo por SSH de una máquina a otra.
-2. Añade una tercera máquina conectada a la red `muy-aislada`. Entrega los ficheros modificados y una captura donde se compruebe que todo funciona correctamente. Destruye el escenario.
+1. Crea el escenario del ejemplo 5. Entrega los comandos y la salida del acceso por SSH a `ej5-server1`, del ping desde ahí a `ej5-server2` (`10.0.0.2`) y del acceso por SSH de una máquina a otra.
+2. Añade una tercera máquina conectada a la red `muy-aislada`. Entrega los ficheros modificados, y los comandos y la salida que comprueben que todo funciona correctamente. Destruye el escenario.
 :::

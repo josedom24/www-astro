@@ -38,9 +38,9 @@ title: "Tarea 2: Ejecución de Playbooks"
 
 :::tip[¿Qué tienes que entregar?]
 1. Entrega los ficheros `site.yaml`, `hosts` y `templates/index.j2` con las cuatro tareas completadas.
-2. Captura de pantalla de la ejecución del playbook sin errores.
-3. Vuelve a ejecutar el playbook. Entrega la captura y explica por qué no se repiten las tareas ya hechas (idempotencia).
-4. Modifica o borra `foo.conf` en el servidor y vuelve a ejecutar el playbook. Entrega la captura y explica qué ha ocurrido.
+2. Entrega el comando y la salida de la ejecución del playbook sin errores.
+3. Vuelve a ejecutar el playbook. Entrega la salida y explica por qué no se repiten las tareas ya hechas (idempotencia).
+4. Modifica o borra `foo.conf` en el servidor y vuelve a ejecutar el playbook. Entrega la salida y explica qué ha ocurrido.
 5. Captura de pantalla del acceso desde el navegador al servidor, donde se vea el contenido de `index.html`.
 6. Entrega la URL de tu repositorio (fork) con el que has trabajado.
 :::

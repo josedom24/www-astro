@@ -49,9 +49,9 @@ En este taller vamos a trabajar con dos servidores. Uno será el servidor web y 
 
 :::tip[¿Qué tienes que entregar?]
 1. Entrega el fichero `site.yaml` y el contenido del directorio `roles` con los tres roles completados (`commons`, `apache2`, `mariadb`).
-2. Captura de pantalla de la ejecución del playbook sin errores.
+2. Entrega el comando y la salida de la ejecución del playbook sin errores.
 3. Captura de pantalla del acceso desde el navegador al servidor web, donde se vea el contenido de `index.html`.
-4. Captura de pantalla del acceso a la base de datos creada por el rol `mariadb`.
-5. Provoca un cambio que dispare un handler (reinicio de servicio). Entrega la captura donde se vea que el reinicio solo se ejecuta cuando hay un cambio real.
+4. Entrega los comandos y la salida del acceso a la base de datos creada por el rol `mariadb`.
+5. Provoca un cambio que dispare un handler (reinicio de servicio). Entrega la salida donde se vea que el reinicio solo se ejecuta cuando hay un cambio real.
 6. Entrega la URL de tu repositorio (fork) con el que has trabajado.
 :::
