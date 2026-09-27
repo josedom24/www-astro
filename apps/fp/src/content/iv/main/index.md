@@ -13,9 +13,8 @@ toc: false
 * [Presentación: Redes en QEMU/KVM + libvirt](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kvm_redes.pdf)
   * [Ejercicio 3: Gestión de redes en QEMU/KVM + libvirt](u1/ejercicio3/)
 * [Práctica: QEMU/KVM + libvirt](u1/practica/)
-  * [Optativa 1.1: MV Windows con drivers VirtIO](u1/practica_opcional_windows/)
-  * [Optativa 1.2: Router en red pública](u1/practica_opcional_router_publico/)
-  * [Optativa 1.3: MV con pool logical (LVM)](u1/practica_opcional_pool_logical/)
+  * [Optativa 1.1: Router en red pública](u1/practica_opcional_router_publico/)
+  * [Optativa 1.2: MV con pool logical (LVM)](u1/practica_opcional_pool_logical/)
 
 <!--
 

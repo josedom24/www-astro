@@ -48,7 +48,7 @@ En este ejercicio vas a gestionar el almacenamiento en QEMU/KVM + libvirt, traba
 
 Aunque podemos crear plantillas manualmente (puedes aprender cómo en el curso de referencia), vamos a usar un enfoque más eficiente: las **imágenes cloud** junto con **cloud-init**, que es el estándar en entornos cloud para personalizar máquinas en el primer arranque.
 
-1. Descarga una imagen cloud de Ubuntu 24.04 y cópiala al directorio del *pool* `default`.
+1. Descarga una imagen cloud de Ubuntu 26.04 y cópiala al directorio del *pool* `default`.
 2. Crea un fichero `cloud.yaml` con configuración `cloud-init` que establezca el nombre de la máquina, actualice los paquetes y configure las contraseñas de los usuarios `root` y `ubuntu`.
 3. Crea una clonación enlazada a partir de la imagen cloud descargada y amplía el disco a 20 GB.
 4. Crea la máquina virtual con `virt-install` usando la clonación enlazada como disco y el fichero `cloud.yaml` como configuración cloud-init.
