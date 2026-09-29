@@ -7,7 +7,7 @@ title: "Tarea 4: Introducción a OpenTofu + libvirt"
     ```
     cd /var/lib/libvirt/images
     sudo wget https://cloud.debian.org/images/cloud/trixie/daily/latest/debian-13-genericcloud-amd64-daily.qcow2 -O debian13-base.qcow2
-    sudo wget https://cloud-images.ubuntu.com/noble/20251001/noble-server-cloudimg-amd64.img -O ubuntu2404-base.qcow2
+    sudo wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img -O ubuntu2404-base.qcow2
     ```
 
     Las imágenes bases se llaman `debian13-base.qcow2` y `ubuntu2404-base.qcow2`.
@@ -15,8 +15,8 @@ title: "Tarea 4: Introducción a OpenTofu + libvirt"
     Estos discos son muy pequeños, por lo tanto antes de empezar a utilizarlos vamos a redimensionarlos:
 
     ```
-    qemu-img resize debian13-base.qcow2 10G
-    qemu-img resize ubuntu2404-base.qcow2 10G
+    sudo qemu-img resize debian13-base.qcow2 10G
+    sudo qemu-img resize ubuntu2404-base.qcow2 10G
     ```
 
 2. Instala OpenTofu. Vamos a trabajar con el repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi) que ya tienes en tu equipo. Para cada ejemplo nos situamos en el directorio **opentofu/ejemploX** correspondiente.
@@ -67,7 +67,7 @@ Nos situamos en el directorio `opentofu/ejemplo2`. Este ejemplo es similar al an
 * `libvirt_domain "ej2-server1"`: la máquina virtual, con dos entradas `disk` para el disco principal y el extra.
 
 :::tip[¿Qué tienes que entregar?]
-1. Entrega el fichero `main.tf` con el disco adicional de 5 GB añadido.
+1. Modifica el fichero `main.tf` para crear otro disco de 5 GB y añadirlo a la máquina virtual. Entrega el fichero `main.tf` modificado.
 2. Entrega la salida de `lsblk` en la máquina, donde se vean los discos añadidos.
 3. Destruye el escenario.
 :::
@@ -80,19 +80,20 @@ Se ha añadido el fichero `network.tf` donde se define la red:
 
 * `resource "libvirt_network" "ej3-nat-dhcp"`: una red NAT con DHCP en el rango `192.168.100.0/24`. Estudia los parámetros que hemos indicado.
 
-A continuación estudia la definición del recurso de la máquina virtual en el fichero `main.tf` y comprueba que la máquina está conectada a dos redes. Recuerda que cuando conectamos a una red con servidor DHCP indicamos el parámetro `wait_for_lease = true`.
+A continuación estudia la definición del recurso de la máquina virtual en el fichero `main.tf` y comprueba que la máquina está conectada a dos redes (como en el ejemplo 2, también tiene un disco adicional de 1 GB). Recuerda que cuando conectamos a una red con servidor DHCP indicamos el parámetro `wait_for_lease = true`.
 
 * Cuando la red no es creada por OpenTofu, por ejemplo `default`, indicamos el nombre con el parámetro `network_name`.
 * Cuando la red es gestionada por OpenTofu, indicamos su id con el parámetro `network_id`, por ejemplo: `network_id = libvirt_network.ej3-nat-dhcp.id`.
 
 El hecho de que conectemos una máquina virtual a dos redes **no significa que netplan configure las dos interfaces**. Tenemos que configurarlo nosotros, para ello:
 
-* Creamos el fichero `cloud-init/network-config1.yaml` donde guardaremos la configuración netplan de la máquina.
-* Añadimos este fichero en la imagen ISO junto al fichero `cloud-init/user-data1.yaml`. Esto se hace con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej3-server1-cloudinit"` en el fichero `main.tf`.
+* Se ha creado el fichero `cloud-init/network-config1.yaml`, donde se guarda la configuración netplan de la máquina.
+* Este fichero se añade en la imagen ISO junto al fichero `cloud-init/user-data1.yaml`. Esto se hace con el parámetro `network_config` del recurso `libvirt_cloudinit_disk "ej3-server1-cloudinit"` en el fichero `main.tf`.
 
 :::tip[¿Qué tienes que entregar?]
 1. Configura el escenario y crea la máquina conectada a las dos redes. Entrega la salida de `ip a`.
 2. Crea una nueva red NAT con DHCP y conecta la máquina a ella, configurando la tercera interfaz en cloud-init y en `output.tf`. Entrega los ficheros modificados (`network.tf`, `main.tf`, `cloud-init/network-config1.yaml`, `output.tf`).
 3. Entrega la salida de `ip a` mostrando la máquina con sus 3 interfaces correctamente configuradas.
+4. Destruye el escenario.
 :::
 

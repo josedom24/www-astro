@@ -19,7 +19,7 @@ En este taller vamos a trabajar con dos servidores. Uno será el servidor web y 
     * El rol `apache2` (instalación y configuración de apache2) para todos los nodos del grupo `servidores_web`.
     * El rol `mariadb` (instalación y configuración de mariadb) para todos los nodos del grupo `servidores_bd`.
 
-6. Los roles se van a definir en el directorio `roles`. Se creará un directorio para cada rol con las carpetas:
+6. Los roles se van a definir en el directorio `roles`. Se creará un directorio para cada rol con las carpetas que necesite (por ejemplo, `commons` solo tiene `tasks`):
 
     * `tasks`: Contiene el yaml con las tareas.
     * `files`: Contiene los ficheros que vamos a copiar a los nodos con el módulo `copy`.
@@ -45,13 +45,13 @@ En este taller vamos a trabajar con dos servidores. Uno será el servidor web y 
 
     * **Si tienes errores, repasa las modificaciones que has realizado para corregirlos.**
     * **Cuando funcione la ejecución de la receta, cambia una de las tareas que notifican un reinicio para comprobar que se produce de nuevo el reinicio del servicio.**
-    * **Comprobación del funcionamiento: Accede desde el navegador web y comprueba los ficheros que hemos subido al servidor. Accede a la base de datos.**
+    * **Comprobación del funcionamiento: Accede desde el navegador web y comprueba los ficheros que hemos subido al servidor. Accede a la base de datos desde el servidor de base de datos, con el usuario que ha creado el rol `mariadb`.**
 
 :::tip[¿Qué tienes que entregar?]
 1. Entrega el fichero `site.yaml` y el contenido del directorio `roles` con los tres roles completados (`commons`, `apache2`, `mariadb`).
 2. Entrega el comando y la salida de la ejecución del playbook sin errores.
 3. Captura de pantalla del acceso desde el navegador al servidor web, donde se vea el contenido de `index.html`.
-4. Entrega los comandos y la salida del acceso a la base de datos creada por el rol `mariadb`.
+4. Entrega los comandos y la salida del acceso a la base de datos creada por el rol `mariadb`, desde el servidor de base de datos y con el usuario creado por el rol.
 5. Provoca un cambio que dispare un handler (reinicio de servicio). Entrega la salida donde se vea que el reinicio solo se ejecuta cuando hay un cambio real.
 6. Entrega la URL de tu repositorio (fork) con el que has trabajado.
 :::
