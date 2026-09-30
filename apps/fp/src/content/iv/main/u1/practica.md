@@ -16,11 +16,12 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 
 * Redes que vamos a usar:
 	* La red de tipo **NAT** `default` que ya trae libvirt por defecto.
-	* Crea con `virsh` una **red muy aislada** llamada `red_intra`.
+	* Crea con `virsh` una **red muy aislada** llamada `red_intra`, que se inicie de forma automática.
 * Máquinas virtuales:
 	* `router`:
 		* Máquina virtual con Debian 13.
 		* Realiza la instalación por red, siguiendo [este manual](https://github.com/josedom24/curso_kvm_ow/blob/main/curso2/contenidos/unidad07/clase1.md).
+			* El manual no funciona tal cual con Debian 13: en `virt-install`, el parámetro `--extra-args` debe quedar así: `--extra-args="console=ttyS0,115200n8 --- console=ttyS0,115200n8"`.
 		* Está conectada a la red **default** y la **red_intra**.
 		* El hostname de esta máquina debe ser `router-tunombre`.
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).
@@ -29,13 +30,15 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 	* `servidorNAS`:
 		* Máquina virtual con Alpine 3.24.
 		* Realiza la instalación desde una imagen ISO.
-		* Esta máquina debe tener un disco extra de 1Gb que deberás montar en el directorio `/srv/data`.
+		* Está conectada a la red **red_intra**.
+		* Esta máquina debe tener un disco extra de 1 GB, con formato qcow2, que deberás montar en el directorio `/srv/data`.
 		* El hostname de esta máquina debe ser `nas-tunombre`.
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).
 		* Esta máquina se debe iniciar cada vez que arrancamos el host.
 	* `servidorWeb`:
 		* Máquina virtual Ubuntu 26.04.
 		* Crea esta máquina usando clonación enlazada y configuración de cloud-init desde la imagen cloud.
+		* Está conectada a la red **red_intra**.
 		* El hostname de esta máquina debe ser `web-tunombre`.
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).
 		* Esta máquina se debe iniciar cada vez que arrancamos el host.
@@ -44,10 +47,11 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 **Pregunta**: hemos instalado cada máquina de una forma distinta: `router` por red, `servidorNAS` desde ISO y `servidorWeb` mediante clonación enlazada con `cloud-init`. De las tres, ¿cuál es la gran ventaja de la clonación enlazada frente a las otras dos formas de instalación, y por qué?
 
 :::tip[Entrega: Infraestructura]
-1. Salida de `virsh net-list --all` y `virsh list --all` mostrando las redes y las máquinas activas.
-2. Comprobación del hostname y del acceso SSH sin contraseña (con tu usuario) en las tres máquinas.
-3. Comprobación de que las tres máquinas tienen acceso a Internet a través del **router** (SNAT).
-4. Respuesta a la pregunta sobre la clonación enlazada.
+1. Salida de `virsh net-list --all` y `virsh list --all --autostart`, mostrando las redes y que las tres máquinas se inician con el host.
+2. En cada máquina, acceso por SSH con el usuario `user` sin contraseña y su hostname. En el `router`, comprobación de que `user` ejecuta `sudo` sin contraseña.
+3. En el `servidorNAS`, comprobación de que el disco extra está montado en `/srv/data` y de que el montaje es persistente.
+4. Comprobación de que las tres máquinas tienen acceso a Internet a través del **router** (SNAT) y de que la configuración del SNAT es persistente.
+5. Respuesta a la pregunta sobre la clonación enlazada.
 :::
 
 ## Instalación de servicios

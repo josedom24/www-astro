@@ -2,9 +2,9 @@
 title: "Tarea 3: Playbooks con Roles"
 ---
 
-En este taller vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
+En esta tarea vamos a trabajar con dos servidores. Uno será el servidor web y el otro será el servidor de base de datos.
 
-1. Crear dos máquinas virtuales (con las características indicadas en la tarea 1).
+1. Crea dos máquinas virtuales Debian con las características indicadas en la tarea 1 (usuario sin privilegios con acceso por clave ssh y `sudo` sin contraseña). Puedes reutilizar la de la tarea 1 como una de ellas. Una será el servidor web (grupo `servidores_web`) y la otra el servidor de base de datos (grupo `servidores_bd`). Las dos deben ser accesibles desde tu equipo, porque al final accederás al servidor web desde el navegador.
 2. Vamos a trabajar con el directorio **ansible/ejercicio2** del repositorio [ejercicios_pi](https://github.com/josedom24/ejercicios_pi).
 3. Rellena el inventario de forma adecuada para definir los dos equipos que vamos a configurar. Debes indicar los nombres de tus máquinas y los parámetros de acceso.
 4. Prueba de conectividad. Ejecuta el comando `ansible -m ping all` para asegurarte que puedes conectar con las máquinas.
@@ -33,6 +33,8 @@ En este taller vamos a trabajar con dos servidores. Uno será el servidor web y 
     **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
 
 9. El rol `mariadb` instala el servidor de base de datos mariadb, crea una base de datos y un usuario, y modifica la configuración del servicio.
+
+    Para crear la base de datos y el usuario usa los módulos de la colección `community.mysql`. Si instalaste ansible desde los repositorios de Debian ya la tienes; si instalaste `ansible-core` con `pip`, instálala antes con `ansible-galaxy collection install community.mysql`.
 
     * **Modifica las variables `cambia_nombre_variable` por las variables correctas. ¿En qué fichero tienes que buscar el nombre de las variables correctas?**
     * **Debes poner en el parámetro `notify` el nombre de la tarea que se encuentra en el fichero `main.yaml` del directorio `handlers`, que será el encargado de reiniciar el servicio.**
