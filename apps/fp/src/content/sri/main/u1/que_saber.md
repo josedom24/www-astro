@@ -3,7 +3,7 @@ title: "Unidad 1: ¿Qué tengo que saber?"
 description: "Lista de comprobación de lo que hay que saber y saber hacer en la unidad de configuración básica de un servidor y DHCP."
 ---
 
-Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas (lo marcado se pierde al recargar la página). Si no puedes marcar algún punto, vuelve a la presentación o a la práctica correspondiente.
+Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda en tu navegador, así que lo verás marcado cuando vuelvas desde el mismo equipo. Si no puedes marcar algún punto, vuelve a la presentación o a la práctica correspondiente.
 
 ## Acceso seguro con SSH
 
@@ -85,5 +85,19 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas (lo marcado
 - [ ] Sé comprobar que todo el escenario sigue funcionando después de reiniciar el router.
 
 <script>
-  document.querySelectorAll(".task-list-item input[type=checkbox]").forEach((c) => (c.disabled = false));
+  (() => {
+    const clave = "fp-sri-u1-que-saber";
+    let marcadas = [];
+    try { marcadas = JSON.parse(localStorage.getItem(clave)) || []; } catch (e) {}
+    const casillas = document.querySelectorAll(".task-list-item input[type=checkbox]");
+    casillas.forEach((c, i) => {
+      c.disabled = false;
+      c.checked = marcadas.includes(i);
+      c.addEventListener("change", () => {
+        const lista = [];
+        casillas.forEach((x, j) => x.checked && lista.push(j));
+        try { localStorage.setItem(clave, JSON.stringify(lista)); } catch (e) {}
+      });
+    });
+  })();
 </script>
