@@ -84,6 +84,44 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] Sé configurar la interfaz pública del router por DHCP dejando una sola ruta por defecto.
 - [ ] Sé comprobar que todo el escenario sigue funcionando después de reiniciar el router.
 
+<style>
+  .task-list-item {
+    list-style: none;
+    position: relative;
+    padding-left: 2rem;
+    margin-left: -1.25rem;
+  }
+  .task-list-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0;
+    border: 2px solid var(--color-text-muted);
+    border-radius: 0.3rem;
+    background: var(--color-bg);
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+  }
+  .task-list-item input[type="checkbox"]:hover {
+    border-color: var(--color-accent);
+  }
+  .task-list-item input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .task-list-item input[type="checkbox"]:checked {
+    border-color: var(--color-accent);
+    background: var(--color-accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 85% no-repeat;
+  }
+  .task-list-item:has(input:checked) {
+    color: var(--color-text-muted);
+  }
+</style>
+
 <script>
   (() => {
     const clave = "fp-sri-u1-que-saber";
