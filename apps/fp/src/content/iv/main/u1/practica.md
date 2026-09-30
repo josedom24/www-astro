@@ -21,6 +21,7 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 	* `router`:
 		* Máquina virtual con Debian 13.
 		* Realiza la instalación por red, siguiendo [este manual](https://github.com/josedom24/curso_kvm_ow/blob/main/curso2/contenidos/unidad07/clase1.md).
+			* El manual no funciona tal cual con Debian 13: en `virt-install`, el parámetro `--extra-args` debe quedar así: `--extra-args="console=ttyS0,115200n8 --- console=ttyS0,115200n8"`.
 		* Está conectada a la red **default** y la **red_intra**.
 		* El hostname de esta máquina debe ser `router-tunombre`.
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).
