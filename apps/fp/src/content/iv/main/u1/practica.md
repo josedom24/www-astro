@@ -34,7 +34,7 @@ Toda la práctica se debe realizar **desde la línea de comandos con `virsh`** y
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).
 		* Esta máquina se debe iniciar cada vez que arrancamos el host.
 	* `servidorWeb`:
-		* Máquina virtual Ubuntu 24.04.
+		* Máquina virtual Ubuntu 26.04.
 		* Crea esta máquina usando clonación enlazada y configuración de cloud-init desde la imagen cloud.
 		* El hostname de esta máquina debe ser `web-tunombre`.
 		* Se debe poder acceder a ella por ssh con el usuario `user` sin que te pida contraseña (configura tu clave pública y la mía).

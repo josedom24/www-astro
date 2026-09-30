@@ -87,13 +87,13 @@ title: "Tarea 1: Introducción a ansible"
 
 :::tip[¿Qué tienes que entregar?]
 1. Entrega el contenido del fichero de inventario y de la configuración (`ansible.cfg`) de tu proyecto ansible.
-2. Captura de pantalla probando la conectividad con el servidor remoto (`ping`).
-3. Ejecuta en el nodo remoto la instrucción `hostname` con `command`/`shell` y entrega la captura de la salida.
-4. Copia un fichero al servidor remoto con `copy`. Entrega la captura de la primera ejecución y de la segunda (sin cambios). ¿De qué color se muestra la salida en cada caso y por qué? ¿Cómo se llama esa propiedad?
-5. Modifica el fichero de origen y vuelve a copiarlo. Entrega la captura de la salida y explica qué ha ocurrido.
-6. Crea un directorio remoto con `file`. Entrega la captura donde se compruebe que se ha creado.
-7. Instala el paquete nginx con `apt`. Entrega la captura de la instalación y de un segundo intento de instalación (¿qué ocurre?).
-8. Para el servicio nginx con `service`. Entrega la captura donde se compruebe que se ha parado.
-9. Desinstala el paquete nginx. Entrega la captura de la desinstalación.
-10. Crea y después elimina un usuario remoto con `user`. Entrega la captura de cada paso.
+2. Comprueba la conectividad con el servidor remoto (`ping`). Entrega el comando y su salida.
+3. Ejecuta en el nodo remoto la instrucción `hostname` con `command`/`shell`. Entrega el comando y su salida.
+4. Copia un fichero al servidor remoto con `copy`. Entrega el comando y la salida de la primera ejecución y de la segunda (sin cambios). ¿Qué estado muestra ansible en cada caso (`CHANGED` o `SUCCESS`) y por qué? ¿Cómo se llama esa propiedad?
+5. Modifica el fichero de origen y vuelve a copiarlo. Entrega el comando y su salida, y explica qué ha ocurrido.
+6. Crea un directorio remoto con `file`. Entrega el comando y su salida, y una comprobación de que se ha creado.
+7. Instala el paquete nginx con `apt`. Entrega el comando y la salida de la instalación y de un segundo intento de instalación (¿qué ocurre?).
+8. Para el servicio nginx con `service`. Entrega el comando y su salida, y una comprobación de que se ha parado.
+9. Desinstala el paquete nginx. Entrega el comando y la salida de la desinstalación.
+10. Crea y después elimina un usuario remoto con `user`. Entrega el comando y la salida de cada paso.
 :::
