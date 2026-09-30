@@ -3,7 +3,7 @@ title: "Unidad 1: ¿Qué tengo que saber?"
 description: "Lista de comprobación de lo que hay que saber y saber hacer en la unidad de configuración básica de un servidor y DHCP."
 ---
 
-Usa esta lista para repasar la unidad. Si no puedes marcar algún punto con seguridad, vuelve a la presentación o a la práctica correspondiente.
+Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas (lo marcado se pierde al recargar la página). Si no puedes marcar algún punto, vuelve a la presentación o a la práctica correspondiente.
 
 ## Acceso seguro con SSH
 
@@ -83,3 +83,7 @@ Usa esta lista para repasar la unidad. Si no puedes marcar algún punto con segu
 - [ ] Sé comprobar qué ocurre en los clientes si se cambia la configuración del servidor con una concesión activa, y explicar por qué.
 - [ ] Sé configurar la interfaz pública del router por DHCP dejando una sola ruta por defecto.
 - [ ] Sé comprobar que todo el escenario sigue funcionando después de reiniciar el router.
+
+<script>
+  document.querySelectorAll(".task-list-item input[type=checkbox]").forEach((c) => (c.disabled = false));
+</script>
