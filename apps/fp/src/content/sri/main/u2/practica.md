@@ -25,7 +25,7 @@ Elige el escenario que más te guste.
 
 ### Servidor web
 
-* Elige entre el servidor web apache2 o nginx.
+* Usa el servidor web que **no** usaste en la **Tarea 2.1**: si la hiciste con apache2, aquí usarás nginx, y al revés.
 * Tendrá una página principal con hoja de estilo, con distinta información (tu nombre, ...).
 * Cuando se accede a la ruta `/nas` se redirecciona a `/documentos`.
 * En la ruta `/documentos` hay una autentificación básica.
@@ -58,7 +58,7 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
 ### Proxy inverso
 
 * En el escenario 1 y en el escenario 2 tendrá qué funciona como router/nat.
-* Elige entre el servidor web apache2 o nginx.
+* Usa el servidor que **no** usaste como proxy inverso en la **Tarea 2.2**: si la hiciste con apache2, aquí usarás nginx, y al revés.
 * Las url y las páginas a las que vamos a acceder son:
     * `nas.tunombre.org`: Accederemos al servidor web.
     * `www.tunombre.org/shop`: Accedemos a la aplicación docker `JuiceShop`.
@@ -68,10 +68,10 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
 **Pregunta**: El proxy inverso y el balanceador de carga son dos piezas distintas que trabajan juntas. ¿Qué función cumple cada una? ¿Qué pasaría si detuvieras el servicio web en uno de los dos backends (`backend1` o `backend2`)? Compruébalo en tu escenario y explica lo que observas.
 
 :::tip[Entrega del protocolo HTTP]
-1. Indica el escenario que has escogido.
+1. Indica el escenario que has escogido y qué servidor has usado como servidor web y como proxy inverso.
 2. Configuración del balanceador de carga y del proxy inverso.
 3. Capturas de pantalla accediendo a `www.tunombre.org/shop` y `www.tunombre.org/game`.
-4. Captura de pantalla accediendo con `hatop` al balanceador de carga.
+4. Captura de pantalla de la página de estadísticas de haproxy.
 5. Contesta la pregunta, comprobándolo en tu escenario.
 :::
 

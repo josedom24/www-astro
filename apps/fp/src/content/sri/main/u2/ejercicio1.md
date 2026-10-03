@@ -14,8 +14,7 @@ Las opciones básicas que vamos a usar son:
 | `curl -X POST -d "campo=valor" <url>` | Petición **POST** con datos en el cuerpo |
 | `curl -v <url>` | Modo *verbose*: muestra las cabeceras enviadas y recibidas |
 
-Realiza los siguientes ejercicios:
-
+:::tip[Ejercicios]
 1. Realiza una petición para ver las **cabeceras** de `https://dit.gonzalonazareno.org`. ¿Qué **código de estado** devuelve? ¿Qué significa? ¿En qué cabecera se encuentra la URL a la que hay que acceder para obtener el recurso?
 2. Realiza una petición **GET** a `https://dit.gonzalonazareno.org`. ¿Qué tipo de **redirección** devuelve? Realiza una nueva petición que **siga** la redirección.
 3. Con las **herramientas para desarrolladores** del navegador (en Firefox: *Herramientas para desarrolladores → Red*), inspecciona `https://dit.gonzalonazareno.org/gestiona/`. ¿Cuántas peticiones se han realizado para mostrar la página? Identifica las cabeceras más importantes.
@@ -23,6 +22,25 @@ Realiza los siguientes ejercicios:
 5. Usando el método **GET**, manda tu nombre a la página `https://http.josedomingo.org/index2.php`.
 6. Usando el método **POST** (que envía el contenido en el cuerpo), manda tu nombre a la misma página.
 
-:::tip
 Compara las dos últimas peticiones: el contenido viaja en lugares **distintos** y la página debería distinguirlas.
+:::
+
+:::tip[Pistas para resolverlos]
+```bash
+# 1 — Cabeceras (HEAD)
+curl -I https://dit.gonzalonazareno.org
+
+# 2 — GET y seguir redirección
+curl https://dit.gonzalonazareno.org
+curl -L https://dit.gonzalonazareno.org
+
+# 4 — Cuerpo de la respuesta
+curl https://dit.gonzalonazareno.org/gestiona/
+
+# 5 — GET con parámetros en la URL
+curl "https://http.josedomingo.org/index2.php?nombre=Pepe"
+
+# 6 — POST con datos en el cuerpo
+curl -X POST -d "nombre=Pepe" https://http.josedomingo.org/index2.php
+```
 :::
