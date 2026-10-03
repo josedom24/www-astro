@@ -9,6 +9,7 @@ toc: false
 * [DHCP. Servidor Kea DHCP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dhcp.pdf)
   * [Práctica: Configuración de un router (SNAT y DNAT)](u1/practica/)
   * [Optativa 1.1: SSH hardening y fail2ban](u1/practica_opcional_ssh/)
+* [¿Qué tengo que saber de esta unidad?](u1/que_saber/)
   
 <!--
 
