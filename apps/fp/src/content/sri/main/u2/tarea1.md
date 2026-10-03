@@ -12,7 +12,7 @@ Utilizando el **escenario 1** del repositorio [ejercicios_sri](https://github.co
 
 Instala el servidor web en `servidorweb` y realiza los siguientes ejercicios:
 
-1. **Virtual hosts**. Crea dos virtual hosts en la misma dirección IP: `www.sitio1.org` (contenido en `/var/www/sitio1`) y `www.sitio2.org` (contenido en `/var/www/sitio2`), cada uno con una página principal distinta. Configura la resolución estática en el `cliente` y en el anfitrión. El resto de ejercicios se hacen en `www.sitio1.org`.
+1. **Virtual hosts**. Crea dos virtual hosts en la misma dirección IP: `www.sitio1.org` (contenido en `/var/www/sitio1`) y `www.sitio2.org` (contenido en `/var/www/sitio2`), cada uno con una página principal distinta. Configura la resolución estática en el `cliente` y en el anfitrión. Haz que, al acceder al servidor por su dirección IP, responda `www.sitio2.org`. El resto de ejercicios se hacen en `www.sitio1.org`.
 2. **Control de acceso**. A la URL `www.sitio1.org/intranet` sólo se puede acceder desde la red interna (el `cliente`), no desde el anfitrión.
 3. **Control de acceso y autenticación**. A la URL `www.sitio1.org/secreto` se accede directamente desde la red interna; desde el anfitrión se pide autenticación básica.
 4. **Reescritura de URL**. Al acceder a `www.sitio1.org/blog/bienvenida` se muestra el fichero `/articulos/bienvenida.html` (y lo mismo con cualquier otro nombre), **sin que cambie la URL**: no es una redirección.
@@ -22,7 +22,7 @@ Instala el servidor web en `servidorweb` y realiza los siguientes ejercicios:
 :::tip[¿Qué tienes que entregar?]
 Las comprobaciones con `curl` se entregan como texto, con el comando y su salida.
 
-1. El servidor web que has elegido. La configuración del virtual host `www.sitio1.org` (el otro es igual). `curl` a `www.sitio1.org`, a `www.sitio2.org` y a la dirección IP del servidor. **¿Qué sitio responde cuando accedes por la IP y por qué?**
+1. El servidor web que has elegido. La configuración del virtual host `www.sitio1.org` (el otro es igual). `curl` a `www.sitio1.org` y a `www.sitio2.org`. **¿Qué sitio responde cuando accedes por la IP y por qué?** Haz que, al acceder por la IP, responda `www.sitio2.org`: explica qué has cambiado y compruébalo con `curl` a la IP.
 2. La configuración de `/intranet`. `curl -I` desde el `cliente` (200) y desde el anfitrión (403).
 3. La configuración de `/secreto`. `curl -I` desde el `cliente` (200), desde el anfitrión (401) y desde el anfitrión con usuario y contraseña (`-u`, 200).
 4. La regla de reescritura (con apache2, también lo que has cambiado para que se use el `.htaccess`). `curl -I` a `www.sitio1.org/blog/bienvenida` que muestre un 200 sin cabecera `Location`. **¿Qué diferencia hay entre una redirección y una reescritura?**
