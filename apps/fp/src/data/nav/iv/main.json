@@ -9,6 +9,18 @@
       {
         "title": "KVM / QEMU / Libvirt",
         "url": "/iv/main/u1/"
+      },
+      {
+        "title": "Contenedores LXC / Docker",
+        "url": "/iv/main/u2/"
+      },
+      {
+        "title": "OpenStack",
+        "url": "/iv/main/u3/"
+      },
+      {
+        "title": "Kubernetes",
+        "url": "/iv/main/u4/"
       }
     ]
   }

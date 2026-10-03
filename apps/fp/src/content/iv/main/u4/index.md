@@ -3,6 +3,7 @@ title: "Unidad 4: Orquestadores de contenedores. Kubernetes"
 toc: false
 ---
 
+<!--
 * [Presentación: Introducción a Kubernetes](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kubernetes.pdf)
 * [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies)
 * [Presentación: Kubernetes - Recursos principales](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/kubernetes2.pdf)
@@ -14,3 +15,4 @@ toc: false
   * [Ejercicio 6: Almacenamiento en Kubernetes](ejercicio6/)
   * [Ejercicio 7: Instalación de un CMS con Helm](ejercicio7/)
 * [Práctica: Kubernetes](practica/)
+-->

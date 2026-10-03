@@ -4,6 +4,15 @@ toc: false
 ---
 
 <!--
+* Presentación: OpenTofu en OpenStack
+  * Tarea 6: Escenario en OpenStack con OpenTofu y Ansible
+  * Tarea 7 (optativa): Importar el escenario de OpenStack en OpenTofu
+* Presentación: De las necesidades al plan del proyecto
+* Anteproyecto del Proyecto 2
+* Defensa del anteproyecto
+-->
+
+<!--
 BORRADOR (se concreta al acercarse la 2ª evaluación; fechas orientativas, 09/12 – 03/02).
 
 Parte A — OpenTofu en OpenStack (3 sesiones)

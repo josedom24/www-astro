@@ -9,6 +9,18 @@
       {
         "title": "Configuración básica - DHCP",
         "url": "/sri/main/u1/"
+      },
+      {
+        "title": "HTTP y almacenamiento",
+        "url": "/sri/main/u2/"
+      },
+      {
+        "title": "DNS",
+        "url": "/sri/main/u3/"
+      },
+      {
+        "title": "Correo electrónico",
+        "url": "/sri/main/u4/"
       }
     ]
   }

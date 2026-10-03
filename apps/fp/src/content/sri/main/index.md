@@ -3,48 +3,7 @@ title: "Servicios de Red e Internet (2026-2027)"
 toc: false
 ---
 
-## Unidad 1: Configuración básica de un servidor - DHCP
-
-* [Configuración inicial de un servidor](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/configuracion_inicial.pdf)
-* [DHCP. Servidor Kea DHCP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dhcp.pdf)
-  * [Práctica: Configuración de un router (SNAT y DNAT)](u1/practica/)
-  * [Optativa 1.1: SSH hardening y fail2ban](u1/practica_opcional_ssh/)
-* [¿Qué tengo que saber de esta unidad?](u1/que_saber/)
-  
-<!--
-
-## Unidad 2: Protocolo HTTP y sistemas de almacenamiento
-
-* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/protocolo_http.pdf)
-  * [Ejercicio 1: Peticiones HTTP con curl](u2/ejercicio1/)
-* [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
-  * [Tarea 2.1: Servidores web Apache y Nginx](u2/tarea1/)
-* [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
-  * [Tarea 2.2: Proxy inverso y balanceador de carga](u2/tarea2/)
-* [Protocolos de almacenamiento](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/almacenamiento.pdf)
-  * [Práctica: Protocolo HTTP y almacenamiento](u2/practica/)
-
-
-## Unidad 3: Protocolo DNS
-
-* [Introducción al protocolo DNS](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/dns.pdf)
-  * [Ejercicio 1: Instalación y configuración del servidor bind9 en nuestra red local](u3/ejercicio1/)
-  * [Ejercicio 2: Instalación y configuración de un servidor DNS esclavo](u3/ejercicio2/)
-  * [Ejercicio 3: Delegación de subdominios con bind9](u3/ejercicio3/)
-  * [Ejercicio 4: Vistas en bind](u3/ejercicio4/)
-  * [Práctica: Protocolo DNS](u3/practica/)
-
-## Unidad 4: Servidor de correo electrónico
-
-* [Introducción al sistema de correo electrónico](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/correo.pdf)
-  * [Caso 1:  Envío local, entre usuarios del mismo servidor](u4/ejercicio1/)
-  * [Caso 2: Envío de correo desde usuarios del servidor a correos de internet (desde el escenario de OpenStack)](u4/ejercicio2/)
-  * [Caso 3: Recibir correos desde internet a usuarios del servidor (desde el escenario de OpenStack)](u4/ejercicio3/)
-* [Técnicas para asegurar que el correo llegue a su destino](u4/ejercicio4/)
-  * [Caso 4: Envío de correo desde usuarios del servidor VPS a correos de internet](u4/ejercicio5/)
-* [Soluciones al problema del spam](u4/ejercicio6/)
-  * [Caso 5: Recepción de correo electrónico usando nuestro servidor de correos](u4/ejercicio7/)
-  * [Caso 6: Envío de correo electrónico usando nuestro servidor de correos](u4/ejercicio8/)
-  * [Práctica: Servidor de correos](u4/practica/)
-
--->
+* [Unidad 1: Configuración básica de un servidor - DHCP](u1/)
+* [Unidad 2: Protocolo HTTP y sistemas de almacenamiento](u2/)
+* [Unidad 3: Protocolo DNS](u3/)
+* [Unidad 4: Servidor de correo electrónico](u4/)
