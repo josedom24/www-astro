@@ -1,42 +1,35 @@
 ---
-title: "Ejercicio 4: HAproxy como balanceador de carga"
+title: "Ejercicio 4: Introducción a proxy inverso"
 ---
 
-### Ejercicio 1: Configuración de haproxy
+1. Vamos a a usar el **escenario2** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) para montar el siguiente escenario:
 
-Vamos a usar los ficheros del **escenario3** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) para crear un escenario para trabajar con el balanceador de carga. Para ello crea el escenario y posteriormente pasa el playbook de ansible.
+    ![img](img/proxyinverso.png)
 
-En este escenario los servidores web ejecutan php, y se ha copiado en el DocumentRoot un fichero `app.php` que utilizaremos posteriormente.
+	* Una máquina `proxy` que esta conectada al exterior por una red NAT y a una red interna muy aislada (dirección `10.0.0.1`).
+    * Una máquina `backend` que tendrá un servidor web interno, conectada a la red interna muy aislada (dirección `10.0.0.2`). También está conectado a la red NAT, pero sólo para poder configurarla con la receta ansible. 
 
-![img](img/lb.png)
+2. Tenemos a nuestra disposición un playbook de ansible que va a instalar un servidor web apache2 en la máquina `backend` y puede crear una lista de virtualhost. Para configurar los virtualhost tienes que modificar la lista de diccionarios llamada `virtualhosts` que encuentras en el fichero `groups_vars/all`.
 
-Instala en el servidor `balanceador` el balanceador haproxy y configúralo de manera adecuada para balancear la carga entre los dos servidores web `apache1` y `apache2`. Instala también la utilidad `hatop` para controlar el balanceo.
+    Configura esa variable para crear dos virtualhosts:
 
-Configura la resolución estática para acceder al balanceador con el nombre `www.example.org`.
+    * Uno en el fichero `vhost1.conf` que se acceda con el nombre `interno.example1.org`, cuyo DocumentRoot sea `/var/www/example1`.
+    * Otro en el fichero `vhost2.conf` que se acceda con el nombre `interno.example2.org`, cuyo DocumentRoot sea `/var/www/example2`.
+    
+    Además tienes que indicar en el inventario la dirección IP del servidor `backend` en la red NAT por donde vamos a realizar la configuración.
 
-:::tip
-* **Tarea 1**: Entrega capturas de pantalla que el balanceador está funcionando.
-* **Tarea 2**: Entrega una captura de pantalla donde se vea la página web de estadísticas de haproxy (abrir en un navegador web la URL `http://www.example.org/ha_stats`).
-* **Tarea 3**: Desde uno de los servidores (`apache1` o `apache2`), verificar los logs del servidor Apache. En todos los casos debería figurar como única dirección IP cliente la IP interna de la máquina balanceador `192.168.100.1`. ¿Por qué?
-:::
+    Crea el escenario y ejecuta el playbook de ansible para configurar el `backend` (recuerda que tienes que poner en el inventario la ip del servidor `backend`).
+3. Instala un servidor web apache2 en la máquina `proxy`. Vamos a configurar el proxy para acceder a las páginas del `backend`: A la primera página con la URL `www.app1.org` y a la segunda página con la URL `www.app2.org`. Recuerda que debes añadir en la resolución estática del `proxy` los nombres con los que se accede internamente a las páginas web. Cuidado con la directiva `ProxyPreserveHost On`, en este ejercicio el nombre de los host virtuales del `backend` son distintos a los que usamos accediendo al proxy inverso.
+4. Realiza la configuración para que las redirecciones funcionen: al acceder a `http://www.app1.org/directorio` se debe realizar una redirección al directorio `nuevodirectorio`. 
+5. Modifica la configuración del proxy para acceder a las páginas web con las siguientes URL: `www.servidor.org/app1` y `www.servidor.org/app2`. Debe seguir funcionando las redirecciones.
+6. Desisntala apache2 e instala nginx en el `proxy`.
+7. Configura nginx como proxy inverso para acceder a las páginas del `backend`: A la primera página con la URL `www.app1.org` y a la segunda página con la URL `www.app2.org`.
+8. Modifica la configuración del proxy para acceder a las páginas web con las siguientes URL: `www.servidor.org/app1` y `www.servidor.org/app2`.
 
-### Ejercicio 2: Aumento de rendimiento usando el balanceo de carga
-
-Como estamos repartiendo las peticiones entre varios servidores web, el rendimiento (**número de peticiones respondidas por segundos**) aumenta.
-
-La utilidad [ab](http://httpd.apache.org/docs/2.4/programs/ab.html) (Apache Benchmark) sirve para hacer pruebas de carga a un servidor web. Es un programa que forma parte del paquete `apache2-utils`.
-
-Vamos a usar `ab` para comprobar cuantas peticiones por segundos se responden. Por ejemplo:
-
-```
-ab -n 1000 -c 100 http://www.example.org/app.php
-```
-El anterior comando simula 100 usuarios al mismo tiempo haciendo 1000 peticiones. Lo realizamos sobre el fichero `app.php` que tiene ejecuta un proceso (cálculo del número pi) muy costosos computacionalmente.
-
-De la salida nos interesa el parámetro `Requests per second:`, que nos da el numero de peticiones servidas por segundos.
-
-:::tip
-* **Tarea 1**: Con `hatop` habilita un solo nodo de balanceo, ejecuta la prueba y comprueba cuantas peticiones por segundos se responden. Entrega una captura donde se vea que sólo un nodo está habilitado, y la salida de la prueba.
-* **Tarea 2**: Habilita los dos nodos y vuelve a realizar la prueba. ¿Han subido las peticiones por segundos respondidas? Entrega las mimas capturas de pantalla que en el punto anterior.
-* **Tarea 3**: Modifica el escenario opentofu y el playbook de ansible para añadir otro servidor web `apache3`. Habilita los tres nodos en el balanceo y realiza la prueba. ¿Han subido las peticiones por segundos respondidas? Entrega las mimas capturas de pantalla que en el punto anterior.
+:::tip[¿Qué tienes que entregar?]
+1. Con apache2, pantallazos donde se compruebe el acceso a las dos páginas web: `www.app1.org` y `www.app2.org`.
+2. Quita la directiva `ProxyPassReverse` y comprueba que no se sigue la redirección. Realiza una petición HEAD con `curl` a `http://www.app1.org/directorio`. ¿Qué cabecera tienes que comprobar para asegurar que la redirección no funciona?
+3. Con apache2, pantallazos donde se compruebe el acceso a las dos páginas web: `www.servidor.org/app1` y `www.servidor.org/app2`.
+4. Con nginx, pantallazos donde se compruebe el acceso a las dos páginas web: `www.app1.org` y `www.app2.org`.
+5. Con nginx, pantallazos donde se compruebe el acceso a las dos páginas web: `www.servidor.org/app1` y `www.servidor.org/app2`.
 :::

@@ -14,13 +14,14 @@ toc: false
 
 ## Unidad 2: Protocolo HTTP y sistemas de almacenamiento
 
-* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/http.pdf)
+* [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/protocolo_http.pdf)
+  * [Ejercicio 1: Peticiones HTTP con curl](u2/ejercicio1/)
 * [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
-  * [Ejercicio 1: Configuración básica de apache2](u2/ejercicio1/)
-  * [Ejercicio 2: Configuración básica de nginx](u2/ejercicio2/)
+  * [Ejercicio 2: Configuración básica de apache2](u2/ejercicio2/)
+  * [Ejercicio 3: Configuración básica de nginx](u2/ejercicio3/)
 * [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
-  * [Ejercicio 3: Introducción a proxy inverso](u2/ejercicio3/)
-  * [Ejercicio 4: HAproxy como balanceador de carga](u2/ejercicio4/)
+  * [Ejercicio 4: Introducción a proxy inverso](u2/ejercicio4/)
+  * [Ejercicio 5: HAproxy como balanceador de carga](u2/ejercicio5/)
 * [Protocolos de almacenamiento](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/almacenamiento.pdf)
   * [Práctica: Protocolo HTTP y almacenamiento](u2/practica/)
 
