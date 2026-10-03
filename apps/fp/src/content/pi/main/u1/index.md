@@ -13,5 +13,6 @@ toc: false
 <!--
   * [Tarea 5: Creación de escenarios con OpenTofu](tarea5/)
 * Prueba teórica: Ansible y OpenTofu
-* [¿Qué tengo que saber de esta unidad?](que_saber/)
 -->
+
+* [¿Qué tengo que saber de esta unidad?](que_saber/)

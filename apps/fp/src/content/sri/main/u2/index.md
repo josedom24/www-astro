@@ -14,3 +14,5 @@ toc: false
 * [Protocolos de almacenamiento](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/almacenamiento.pdf)
   * [Práctica: Protocolo HTTP y almacenamiento](practica/)
 -->
+
+* [¿Qué tengo que saber de esta unidad?](que_saber/)
