@@ -3,6 +3,7 @@ export interface NavItem {
   title: string;
   url?: string;
   children?: NavItem[];
+  separator?: boolean; // dibuja una línea encima del grupo
 }
 
 export interface Props {
@@ -26,7 +27,7 @@ function isActive(url: string): boolean {
 
 <nav class="doc-sidebar" aria-label="Navegación del curso">
   {nav.map((section) => (
-    <div class="sidebar-section">
+    <div class:list={['sidebar-section', { 'sidebar-separator': section.separator }]}>
       {section.url ? (
         <a
           href={normUrl(section.url)}
@@ -69,6 +70,11 @@ function isActive(url: string): boolean {
 
   .sidebar-section {
     margin-bottom: 1.25rem;
+  }
+
+  .sidebar-separator {
+    border-top: 1px solid var(--color-border, #e5e7eb);
+    padding-top: 1rem;
   }
 
   .sidebar-section-title {

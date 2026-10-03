@@ -44,7 +44,7 @@ const pageTitle = entry.data.title ?? slug.split('/').pop() ?? moduloName;
 const slugSegments = slug.split('/');
 
 // Prev/Next
-const flatLinks = nav.flatMap(section =>
+const flatLinks = nav.filter(section => !section.separator).flatMap(section =>
   section.children
     ? section.children.filter(c => c.url && !c.url.includes('#'))
     : (section.url && !section.url.includes('#') ? [section] : [])

@@ -23,5 +23,23 @@
         "url": "/sri/main/u4/"
       }
     ]
+  },
+  {
+    "title": "Módulos",
+    "separator": true,
+    "children": [
+      {
+        "title": "Servicios de Red e Internet",
+        "url": "/sri/main/"
+      },
+      {
+        "title": "Infraestructura Virtual",
+        "url": "/iv/main/"
+      },
+      {
+        "title": "Proyecto Intermodular",
+        "url": "/pi/main/"
+      }
+    ]
   }
 ]
