@@ -17,12 +17,12 @@ Vamos a usar el **escenario2** del repositorio [ejercicios_sri](https://github.c
 * Una máquina `proxy` que está conectada al exterior por una red NAT y a una red interna muy aislada (dirección `10.0.0.1`).
 * Una máquina `backend` que tendrá un servidor web interno, conectada a la red interna muy aislada (dirección `10.0.0.2`). También está conectada a la red NAT, pero sólo para poder configurarla con la receta ansible.
 
-El playbook de ansible instala apache2 en el `backend` y crea los virtual hosts que indiques en la variable `virtualhosts` del fichero `groups_vars/all`. Configúrala para crear dos virtual hosts:
+La receta de ansible del escenario (directorio `ansible/`) instala apache2 en el `backend` y crea los virtual hosts que indiques en la variable `virtualhosts` del fichero `ansible/group_vars/all`. Configúrala para crear dos virtual hosts:
 
 * `vhost1.conf`, con el nombre `interno.example1.org` y DocumentRoot `/var/www/example1`.
 * `vhost2.conf`, con el nombre `interno.example2.org` y DocumentRoot `/var/www/example2`.
 
-Indica en el inventario la dirección IP del `backend` en la red NAT, crea el escenario y ejecuta el playbook.
+Pon tu clave pública en los ficheros `cloud-init/user-data-*.yaml` y crea el escenario con `tofu init` y `tofu apply`. OpenTofu genera el inventario de ansible (`ansible/hosts`) con la IP del `backend` en la red NAT. Después, desde el directorio `ansible/`, ejecuta el playbook con `ansible-playbook site.yaml`.
 
 1. **Proxy inverso**. Instala el servidor elegido en el `proxy` y configúralo para acceder a la primera página con el nombre `www.app1.org` y a la segunda con `www.app2.org`. Añade en la resolución estática del `proxy` los nombres internos de las páginas.
 2. **La cabecera `Host`**. Cambia la configuración para que el proxy envíe al `backend` el nombre que ha pedido el cliente (`ProxyPreserveHost On` en apache2, `proxy_set_header Host $host` en nginx). Accede a `www.app1.org` y a `www.app2.org`, mira el log del `backend` y vuelve a dejar la configuración que funciona.
@@ -30,7 +30,7 @@ Indica en el inventario la dirección IP del `backend` en la red NAT, crea el es
 
 ## Parte 2: Balanceador de carga
 
-Vamos a usar el **escenario3** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri): crea el escenario y pasa el playbook de ansible. Los servidores web `apache1` y `apache2` ejecutan php.
+Vamos a usar el **escenario3** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri): crea el escenario con OpenTofu y, desde el directorio `ansible/`, ejecuta el playbook (el inventario también lo genera OpenTofu). La receta instala apache2 con php en `apache1` y `apache2`, con una página `index.php` que muestra el nombre del servidor.
 
 ![img](img/lb.png)
 

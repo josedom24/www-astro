@@ -8,7 +8,7 @@ En esta tarea vas a configurar un servidor web con dos sitios y distintas formas
 En la **práctica de la unidad** tendrás que usar como servidor web **el otro**: si haces esta tarea con apache2, en la práctica usarás nginx, y al revés.
 :::
 
-Utilizando el **escenario 1** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) vas a crear un escenario donde existe una máquina **servidorweb** y un **cliente**. Los dos están conectados a una red NAT, por lo que tienen internet. Simulamos que el cliente accede al servidor web por una red muy aislada (`servidorweb` 10.0.0.1, y `cliente` 10.0.0.2). Modifica los ficheros de configuración de cloud-init para ajustar tu configuración.
+Utilizando el **escenario 1** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) vas a crear un escenario donde existe una máquina **servidorweb** y un **cliente**. Los dos están conectados a una red NAT, por lo que tienen internet. Simulamos que el cliente accede al servidor web por una red muy aislada (`servidorweb` 10.0.0.1, y `cliente` 10.0.0.2). Antes de crearlo, pon tu clave pública en los ficheros `cloud-init/user-data-*.yaml`, sustituyendo la línea de ejemplo de `ssh-authorized-keys`.
 
 Instala el servidor web en `servidorweb` y realiza los siguientes ejercicios:
 
