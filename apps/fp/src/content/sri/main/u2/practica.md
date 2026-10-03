@@ -14,7 +14,7 @@ Podemos hacer la práctica en varios escenarios distintos:
 
 * **Escenario 1**: Es más real, tenemos cada servidor en una red privada.
 * **Escenario 2**: En este caso todos los servidores están en la misma red.
-* **Escenario 3**: En este caso sólo tenemos dos servidores web, uno de ellos será backend para el balanceador de cargar y servidor web para el acceso desde el proxy inverso.
+* **Escenario 3**: En este caso sólo tenemos dos servidores web, uno de ellos será backend para el balanceador de carga y servidor web para el acceso desde el proxy inverso.
 * **Escenario 4**: Todos los servicios están en un servidor, habrá que trabajar con los puertos.
 
 ![practica](img/practica.png)
@@ -34,14 +34,14 @@ Elige el escenario que más te guste.
 
 El servidor web tendrá además dos aplicaciones web implantadas en contenedores docker:
 
-* Una aplicación llamada **JuiceShop** (imagen docker `bkimminich/juice-shop`, esta aplicación sirve el contenido en el puerto 3000) que será accesible desde el proxy inverso con el nombre `www.tunombre.org/shop`.
-* Un juego llamado **2048** (imagen docker `josedom24/2048:v1`) que será accesible desde el proxy inverso con el nombre `www.tunombre.org/game`.
+* Una aplicación llamada **JuiceShop** (imagen docker `bkimminich/juice-shop`, esta aplicación sirve el contenido en el puerto 3000) que será accesible desde el proxy inverso con la URL `www.tunombre.org/shop`.
+* Un juego llamado **2048** (imagen docker `josedom24/2048:v1`) que será accesible desde el proxy inverso con la URL `www.tunombre.org/game`.
 
 ### Balanceador de carga
 
-* En el escenario 1 tendrá qué funciona como router/nat.
-* Instalaremos `haproxy` y balanceara la carga sobre los servidores `backend1` y `backend2`.
-* En los servidor web instalaremos una aplicación PHP con hoja de estilo, que tendrá en el cuero de la página, el siguiente código PHP para que muestre los nombres de los servidores en los que está accediendo:
+* En el escenario 1 también funcionará como router/NAT.
+* Instalaremos `haproxy` y balanceará la carga sobre los servidores `backend1` y `backend2`.
+* En los servidores web instalaremos una aplicación PHP con hoja de estilo, que tendrá en el cuerpo de la página el siguiente código PHP, para que muestre el nombre del servidor al que se está accediendo:
     ```php
     <?php
     // Mostrar el hostname del servidor
@@ -52,18 +52,18 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
     echo "<p>Dirección IP del cliente: " . $_SERVER['REMOTE_ADDR'] . "</p>";
     echo "<p>Fecha y hora: " . date('Y-m-d H:i:s') . "</p>";
     ?>
-    ``` 
+    ```
 * La página balanceada será accesible desde el proxy inverso con la url `app.tunombre.org`.
 
 ### Proxy inverso
 
-* En el escenario 1 y en el escenario 2 tendrá qué funciona como router/nat.
+* En el escenario 1 y en el escenario 2 también funcionará como router/NAT.
 * Usa el servidor que **no** usaste como proxy inverso en la **Tarea 2.2**: si la hiciste con apache2, aquí usarás nginx, y al revés.
 * Las url y las páginas a las que vamos a acceder son:
     * `nas.tunombre.org`: Accederemos al servidor web.
     * `www.tunombre.org/shop`: Accedemos a la aplicación docker `JuiceShop`.
     * `www.tunombre.org/game`: Accedemos a la aplicación `2048`.
-    * `app.tunombre.org`: Accedemos a al balanceador de carga.
+    * `app.tunombre.org`: Accedemos al balanceador de carga.
 
 **Pregunta**: El proxy inverso y el balanceador de carga son dos piezas distintas que trabajan juntas. ¿Qué función cumple cada una? ¿Qué pasaría si detuvieras el servicio web en uno de los dos backends (`backend1` o `backend2`)? Compruébalo en tu escenario y explica lo que observas.
 
@@ -81,20 +81,20 @@ Sobre el escenario anterior vamos a trabajar con los **protocolos de almacenamie
 
 Crea una máquina virtual que va a ser nuestro **servidor de almacenamiento** que va a ofrecer una **SAN** (protocolo **iSCSI**) y una **NAS** (protocolo **NFS**). Dicha máquina virtual tendrá las siguientes características:
 
-* Estará conectada a la red del **servidorweb**, al **backend1** y al **backend2**.  Si lo hiciéramos más real crearíamos una **red de datos** que conecta los servidores web con el servidor de almacenamiento.
+* Estará conectada a la red del **servidorweb**, al **backend1** y al **backend2**. Si lo hiciéramos más real crearíamos una **red de datos** que conecta los servidores web con el servidor de almacenamiento.
 * Estará conectada a una red de tipo NAT para que tenga salida a internet.
-* Tendrá tres discos adicionales de 3Gb.
+* Tendrá tres discos adicionales de 3 GB.
 * Crearemos un RAID5 de los tres discos con **`mdadm`**. ¿Qué tamaño tiene el dispositivo de bloque correspondiente al RAID5?
 * Crearemos un grupo de volúmenes cuyo dispositivo físico es el disco RAID5. En este grupo de volúmenes crearemos volúmenes que serán los dispositivos que vamos a compartir con otros servidores.
 
-Es importante darse cuenta que cuando tengamos el dispositivo de bloque compartido en otro servidor, todo lo que se guarde en ese disco se guardará en nuestro servidor SAN en un dispositivo disco RAID5 con lo que la información estará respaldada y se podrá recuperar aunque algunos de los discos fallen.
+Es importante darse cuenta de que cuando tengamos el dispositivo de bloque compartido en otro servidor, todo lo que se guarde en ese disco se guardará en nuestro servidor SAN en un dispositivo disco RAID5 con lo que la información estará respaldada y se podrá recuperar aunque algunos de los discos fallen.
 
 ### Servidor SAN
 
-Ya tenemos el servidor de almacenamiento preparado, vamos a añadir la funcionalidad de servidos SAN y poder empezar a compartir dispositivos de bloque:
+Ya tenemos el servidor de almacenamiento preparado, vamos a añadir la funcionalidad de servidor SAN y poder empezar a compartir dispositivos de bloque:
 
-* Crea un target con 2 LUN (correspondientes a dos volúmenes lógicos de 512Mb cada uno) y autenticación por CHAP y conéctala al **servidorweb**.
-* Explica cómo escaneas desde el **servidorweb** (cliente iSCSI) buscando los targets disponibles y utiliza uno de las unidades lógicas proporcionadas, formateándola y montándola.
+* Crea un target con 2 LUN (correspondientes a dos volúmenes lógicos de 512 MB cada uno) y autenticación por CHAP, y conéctalo al **servidorweb**.
+* Explica cómo escaneas desde el **servidorweb** (cliente iSCSI) buscando los targets disponibles y utiliza una de las unidades lógicas proporcionadas, formateándola y montándola.
 * Utiliza [systemd mount](https://eltallerdelbit.com/montar-unidades-con-systemd/) para que el target se monte automáticamente al arrancar el cliente.
 
 El sistema debe funcionar después de un reinicio de las máquinas.
@@ -106,13 +106,13 @@ El sistema debe funcionar después de un reinicio de las máquinas.
 Ahora vamos a crear un servidor NAS en nuestro servidor de almacenamiento, para compartir almacenamiento mediante **NFS**, de forma que otros servidores GNU/Linux puedan montar carpetas remotas y utilizarlas como si fueran locales.
 
 * Crea en el servidor un **volumen lógico** de 1 GB dentro del grupo de volúmenes existente (basado en el RAID5). Ese volumen será el que se compartirá mediante NFS. Formatea el volumen.
-* Crea un punto de montaje en el servidor con le volumen formateado y configura el servicio NFS para **exportar** dicho directorio a la red local, de modo que cualquier servidor del mismo segmento pueda acceder con permisos de lectura y escritura.
-* En el **backend1**,  **monta el directorio compartido** en una carpeta local.
+* Monta el volumen en un directorio del servidor (por ejemplo `/srv/nfs`) de forma **permanente**, para que siga montado después de reiniciar. Configura el servicio NFS para **exportar** dicho directorio a la red local, de modo que cualquier servidor del mismo segmento pueda acceder con permisos de lectura y escritura.
+* En el **backend1**, **monta el directorio compartido** en una carpeta local.
 * Haz lo mismo en el **backend2**.
 * Crea una página web en dicho directorio y añade un **alias** al virtualhost para que se sirva dicha página.
 * Configura los servidores backend para que el **montaje NFS se realice automáticamente al arrancar** utilizando una unidad de montaje de systemd.
 
-**Pregunta**: ¿Ha habido algún problema de que el directorio este compartido en los dos servidores? ¿Qué ocurre si modificas el fichero en uno de ellos? 
+**Pregunta**: ¿Ha habido algún problema de que el directorio esté compartido en los dos servidores? ¿Qué ocurre si modificas el fichero en uno de ellos?
 
 :::tip[Entrega del servidor de almacenamiento]
 ### Del servidor SAN
@@ -125,10 +125,11 @@ Ahora vamos a crear un servidor NAS en nuestro servidor de almacenamiento, para 
 
 ### Del servidor NAS
 
-1. El fichero de configuración de la unidad de montaje en el servidor.
+1. Cómo has montado el volumen de forma permanente en el servidor de almacenamiento (`/etc/fstab` o unidad de montaje).
 2. El fichero de configuración del servidor NFS.
-3. Acceso a la página `app.tunombre.org` que sirve el contenido compartido mediante el alias del virtualhost.
-4. Contesta la pregunta, después de buscar información.
+3. El fichero de la unidad de montaje de systemd de los backends y la comprobación de que el directorio está montado en **backend1** y en **backend2**.
+4. Acceso a la página `app.tunombre.org` que sirve el contenido compartido mediante el alias del virtualhost.
+5. Contesta la pregunta, después de buscar información.
 :::
 
 ## Vídeo de demostración
@@ -146,19 +147,19 @@ Se valorará que la explicación hablada demuestre que entiendes lo que ocurre e
 
 ## netplan en lxc debian/ubuntu
 
-En los contenedores LXC con el sistema operativo Debian, tenemos `systemd-netword` para configurar nuestras interfaces de red. Para facilitar la configuración de red podemos instalar `netplan`:
+En los contenedores LXC con el sistema operativo Debian, tenemos `systemd-networkd` para configurar nuestras interfaces de red. Para facilitar la configuración de red podemos instalar `netplan`:
 
 ```
 apt install netplan.io
 ```
 
-Y creamos un fichero de configuración de `netplan`, por ejemplo `/etc/netplan/10-lxc.conf`. Recuerda que este fichero debe tener permisos restrictivos: `chmod 600`.
+Y creamos un fichero de configuración de `netplan`, por ejemplo `/etc/netplan/10-lxc.yaml`. Recuerda que este fichero debe tener permisos restrictivos: `chmod 600`.
 
-El problema surge cuando ejecutamos `netplan apply` que nos da un error. Ese error está causado por el componente `udev` no está instalado en los contenedores LXC. Lo que podemos hacer es simular que ese componente está instalado, ejecutando:
+El problema surge cuando ejecutamos `netplan apply` que nos da un error. Ese error se debe a que el componente `udev` no está instalado en los contenedores LXC. Lo que podemos hacer es simular que ese componente está instalado, ejecutando:
 
 ```
 mkdir -p /usr/local/bin
 echo -e '#!/bin/sh\nexit 0' > /usr/local/bin/udevadm
 chmod +x /usr/local/bin/udevadm
 ```
-Y ya podremos usar `netplan` cono herramienta para configurar la red.
+Y ya podremos usar `netplan` como herramienta para configurar la red.
