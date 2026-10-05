@@ -80,7 +80,7 @@ Este curso cubre los fundamentos de la programación con C++ moderno, desde cero
 5. Programación orientada a objetos
 
     * [Introducción a la programación orientada a objetos](/pledin/cursos/cpp_moderno/contenido/modulo05/introduccion/)
-    * [Definición de clases y creación de objetos](/pledin/cursos/cpp_moderno/contenido/modulo05/poo_c++/)
+    * [Definición de clases y creación de objetos](/pledin/cursos/cpp_moderno/contenido/modulo05/poo_cpp/)
     * [Introducción al encapsulamiento](/pledin/cursos/cpp_moderno/contenido/modulo05/encapsulamiento/)
     * [Miembros estáticos de clase](/pledin/cursos/cpp_moderno/contenido/modulo05/estatico/)
     * [Composición de objetos](/pledin/cursos/cpp_moderno/contenido/modulo05/composicion/)
