@@ -19,10 +19,10 @@ Las opciones básicas que vamos a usar son:
 2. Realiza una petición **GET** a `https://dit.gonzalonazareno.org`. ¿Qué tipo de **redirección** devuelve? Realiza una nueva petición que **siga** la redirección.
 3. Con las **herramientas para desarrolladores** del navegador (en Firefox: *Herramientas para desarrolladores → Red*), inspecciona `https://dit.gonzalonazareno.org/gestiona/`. ¿Cuántas peticiones se han realizado para mostrar la página? Identifica las cabeceras más importantes.
 4. Obtén el **cuerpo** de la respuesta de `https://dit.gonzalonazareno.org/gestiona/`.
-5. Usando el método **GET**, manda tu nombre a la página `https://http.josedomingo.org/index2.php`.
+5. Usando el método **GET**, manda tu nombre a `https://httpbin.org/anything`, un servicio que devuelve en JSON la petición que ha recibido.
 6. Usando el método **POST** (que envía el contenido en el cuerpo), manda tu nombre a la misma página.
 
-Compara las dos últimas peticiones: el contenido viaja en lugares **distintos** y la página debería distinguirlas.
+Compara las dos últimas respuestas: el contenido viaja en lugares **distintos**. Fíjate en qué campo aparece tu nombre en cada caso (`args` o `form`), en el campo `method` y en la cabecera `Content-Type` de la petición POST.
 :::
 
 :::tip[Pistas para resolverlos]
@@ -38,9 +38,9 @@ curl -L https://dit.gonzalonazareno.org
 curl https://dit.gonzalonazareno.org/gestiona/
 
 # 5 — GET con parámetros en la URL
-curl "https://http.josedomingo.org/index2.php?nombre=Pepe"
+curl "https://httpbin.org/anything?nombre=Pepe"
 
 # 6 — POST con datos en el cuerpo
-curl -X POST -d "nombre=Pepe" https://http.josedomingo.org/index2.php
+curl -X POST -d "nombre=Pepe" https://httpbin.org/anything
 ```
 :::
