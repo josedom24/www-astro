@@ -3,6 +3,13 @@
     "title": "Programación",
     "courses": [
       {
+        "title": "Curso de Programación Orientada a Objetos con C++ moderno (2026)",
+        "url": "cursos/poo_cpp_moderno/",
+        "year": "2026",
+        "external": "none",
+        "ow": true
+      },
+      {
         "title": "Curso de Introducción a C++ Moderno (2026)",
         "url": "cursos/cpp_moderno/",
         "year": "2026",
