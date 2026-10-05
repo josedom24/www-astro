@@ -55,17 +55,32 @@ let prev, next;
 if (slugSegments.length >= 4) {
   // Prev/next entre clases de la misma unidad
   const allEntries = await getCollection('modulos');
-  const unitEntries = allEntries
+  const unitId = `${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}`;
+  let unitEntries = allEntries
     .filter(e =>
-      e.id.startsWith(`${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}/`) &&
+      e.id.startsWith(`${unitId}/`) &&
       !e.id.endsWith('/index') &&
-      e.id !== `${slugSegments[0]}/${slugSegments[1]}/${slugSegments[2]}`
+      e.id !== unitId
     )
     .sort((a, b) => a.id.localeCompare(b.id));
 
+  // Si el index de la unidad enlaza páginas de la unidad, se siguen esas y en ese orden
+  // (los enlaces dentro de comentarios <!-- --> son apartados ocultos)
+  const unitIndex = allEntries.find(e => e.id === unitId || e.id === `${unitId}/index`);
+  const indexBody = (unitIndex?.body ?? '').replace(/<!--[\s\S]*?-->/g, '');
+  const linkedIds = [...indexBody.matchAll(/\]\(([^)\s]+)\)/g)]
+    .map(m => m[1])
+    .filter(url => !/^([a-z]+:|\/|#)/i.test(url))
+    .map(url => `${unitId}/${url.replace(/^\.\//, '').replace(/[#?].*$/, '').replace(/\/$/, '')}`);
+  const linkedEntries = [...new Set(linkedIds)]
+    .map(id => unitEntries.find(e => e.id === id))
+    .filter(e => e !== undefined);
+  if (linkedEntries.length > 0) unitEntries = linkedEntries;
+
+  // Una página oculta no lleva anterior/siguiente
   const currentIdx = unitEntries.findIndex(e => e.id === entry.id);
-  const prevEntry = unitEntries[currentIdx - 1];
-  const nextEntry = unitEntries[currentIdx + 1];
+  const prevEntry = currentIdx >= 0 ? unitEntries[currentIdx - 1] : undefined;
+  const nextEntry = currentIdx >= 0 ? unitEntries[currentIdx + 1] : undefined;
 
   prev = prevEntry ? { url: `/${prevEntry.id}/`, title: prevEntry.data.title ?? prevEntry.id.split('/').pop() } : undefined;
   next = nextEntry ? { url: `/${nextEntry.id}/`, title: nextEntry.data.title ?? nextEntry.id.split('/').pop() } : undefined;
