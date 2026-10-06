@@ -7,10 +7,12 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 
 ## El protocolo HTTP
 
+- [ ] Sé explicar los cuatro niveles de TCP/IP (aplicación, transporte, red y enlace), qué resuelve cada uno y qué dirección usa (URL y `Host`, puerto, IP, MAC).
+- [ ] Sé explicar el encapsulamiento y qué cabecera lee cada equipo (switch, router, servidor web): por qué el router no ve la URL ni el `Host`.
 - [ ] Sé explicar qué es HTTP: un protocolo de la capa de aplicación, de petición y respuesta, y sin estado.
 - [ ] Identifico en qué puertos trabajan HTTP y HTTPS, y qué transporte usa cada versión (TCP en HTTP/1.1 y HTTP/2, QUIC sobre UDP en HTTP/3).
 - [ ] ¿Sé diferenciar HTTP/1.1, HTTP/2 y HTTP/3, y qué es lo que no cambia entre ellas (métodos, códigos de estado y cabeceras)?
-- [ ] Sé explicar qué son las conexiones persistentes (*keep-alive*).
+- [ ] Sé explicar cómo se establece una conexión TCP (saludo en tres pasos) y por qué las conexiones persistentes (*keep-alive*) ahorran tiempo.
 
 ## La URL
 
@@ -55,6 +57,7 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 
 - [ ] Sé explicar qué hace un servidor web y qué diferencia hay entre una página estática y una dinámica.
 - [ ] ¿Sé diferenciar un proxy de un proxy inverso: en nombre de quién actúa cada uno y para qué se usa?
+- [ ] ¿Sé diferenciar DNAT de un proxy inverso: en qué nivel trabaja cada uno, qué mira para decidir y cuántas conexiones TCP hay?
 - [ ] Sé explicar qué es un balanceador de carga y su relación con el proxy inverso.
 - [ ] Identifico ejemplos de software de cada uno (Squid, Apache, Nginx, HAProxy…).
 
@@ -63,6 +66,52 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] Sé hacer con `curl` una petición GET, ver solo las cabeceras (`-I`), seguir una redirección (`-L`) y ver todo el intercambio (`-v`).
 - [ ] Sé enviar datos a una página con GET (en la URL) y con POST (`-X POST -d`), y comprobar la diferencia.
 - [ ] Sé ver con las herramientas para desarrolladores del navegador cuántas peticiones hace una página y sus cabeceras.
+
+## Servidores web: conceptos comunes
+
+- [ ] Sé explicar qué es un virtual host y cómo elige el servidor el sitio que responde: por la cabecera `Host`, y el sitio por defecto si no coincide con ninguno (por ejemplo, al entrar por la IP).
+- [ ] Sé probar varios virtual hosts sin DNS: con el `/etc/hosts` del cliente o con `curl -H "Host: …"`.
+- [ ] Sé explicar qué fichero busca el servidor para una URL a partir del directorio raíz, y qué responde en cada caso: el fichero (200), el índice, el listado o un 403 si no hay índice, un 301 si falta la barra de un directorio, y un 404 si no existe.
+- [ ] Sé explicar por qué el servidor atiende las peticiones con `www-data` y qué permisos necesita (lectura en los ficheros y paso, `x`, en todos los directorios de la ruta).
+- [ ] Sé explicar para qué sirve un alias.
+- [ ] ¿Sé diferenciar una redirección (3xx con `Location`, la URL cambia) de una reescritura (interna, la URL no cambia)?
+- [ ] Sé explicar cómo funciona la autenticación básica (401, `Authorization: Basic`) y por qué Base64 no protege la contraseña.
+- [ ] Sé explicar qué criterios puede usar el control de acceso y qué código devuelve si deniega el acceso (403).
+- [ ] Sé leer una línea del `access.log` (IP, usuario, fecha, línea de petición, código de estado…) y sé para qué sirve el `error.log`.
+
+## Apache
+
+- [ ] Sé explicar qué es un MPM y en qué se diferencian prefork, worker y event, y por qué al instalar `mod_php` Debian cambia a prefork.
+- [ ] Identifico para qué sirve cada parte de `/etc/apache2/` (`ports.conf`, `sites-*`, `mods-*`, `conf-*`) y sé activar sitios y módulos (`a2ensite`, `a2enmod`).
+- [ ] Sé comprobar la configuración antes de recargar (`apache2ctl configtest`, `-S`, `-M`) y la diferencia entre `reload` y `restart`.
+- [ ] Sé crear un virtual host (`ServerName`, `ServerAlias`, `DocumentRoot`, logs propios) y explicar por qué responde `000-default` si el `Host` no coincide.
+- [ ] Sé cambiar el puerto en el que escucha un sitio.
+- [ ] Sé explicar para qué sirven `Options`, `AllowOverride` y `Require` en un `<Directory>`, y por qué un `DocumentRoot` o un alias fuera de `/var/www` da 403.
+- [ ] Sé configurar un `Alias` y una redirección con `Redirect`, y sé explicar por qué `Redirect "/"` produce un bucle y se usa `RedirectMatch "^/$"`.
+- [ ] Sé configurar la autenticación básica (`htpasswd`, `AuthType Basic`, `Require valid-user`) y el control de acceso con `Require ip`.
+- [ ] ¿Sé diferenciar `<RequireAny>` de `<RequireAll>`?
+- [ ] Sé explicar para qué sirve un `.htaccess` y por qué no funciona con `AllowOverride None`.
+- [ ] Sé escribir una reescritura con `mod_rewrite` (`RewriteRule … [L]`) y convertirla en redirección con `[R=301]`.
+- [ ] Sé ocultar la versión del servidor (`ServerTokens`, `ServerSignature`) y cambiar el formato del log (`LogFormat`).
+
+## Nginx
+
+- [ ] Sé explicar el modelo orientado a eventos de Nginx y en qué se diferencia de Apache con prefork.
+- [ ] Identifico la estructura de `/etc/nginx/` y sé activar un sitio (enlace en `sites-enabled/`, `nginx -t`, `reload`).
+- [ ] Sé crear un server block (`listen`, `server_name`, `root`, `index`) y explicar qué hace `try_files`.
+- [ ] Sé explicar qué sitio responde si el `Host` no coincide con ningún `server_name` (`default_server`).
+- [ ] Sé explicar cómo elige Nginx el bloque `location` (exacta, prefijo más largo, `^~` y expresiones regulares) y predecir cuál responde a una URL.
+- [ ] ¿Sé diferenciar `root` (añade la URL completa) de `alias` (sustituye el prefijo)?
+- [ ] Sé configurar la autenticación básica (`auth_basic`) y el control de acceso por IP (`allow`/`deny`, en orden), y combinarlos con `satisfy any`.
+- [ ] Sé redirigir con `return` (toda la web o solo la raíz con `location = /`) y reescribir con `rewrite` (`last`, `permanent`).
+- [ ] Sé explicar cómo ejecuta Nginx el PHP (PHP-FPM, FastCGI y el socket de `fastcgi_pass`).
+- [ ] Sé usar snippets y cambiar el formato del log (`log_format`, `$http_<cabecera>`).
+
+## Equivalencias y problemas frecuentes
+
+- [ ] Sé traducir la configuración básica de Apache a Nginx y al revés (sitio, nombre, raíz, sitio por defecto, alias, listado, redirección, reescritura, acceso por IP, autenticación, PHP).
+- [ ] Sé tener Apache y Nginx a la vez en puertos distintos y comprobar con `ss -tlnp` qué proceso escucha en cada uno.
+- [ ] Sé investigar un 403, un 404, un 500 o un 502, por qué sale otro sitio o por qué no arranca el servidor (sintaxis, puerto ocupado), mirando el `error.log`.
 
 <style>
   .task-list-item {
