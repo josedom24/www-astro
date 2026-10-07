@@ -37,15 +37,15 @@ En este ejemplo vamos a crear una máquina virtual conectada a la red `default`.
   * `var.libvirt_pool_name`: nombre del pool de almacenamiento donde se crean los volúmenes. Su valor por defecto es `default`.
   * `var.base_image`: nombre de la imagen base en el pool. Su valor por defecto es `debian13-base.qcow2`.
 * `cloud-init/user-data1.yaml`: Fichero para configurar la máquina virtual con el mecanismo de cloud-init. En este ejemplo:
-  * Se indica el hostname, zona horaria, locale y teclado.
+  * Se indica el hostname y la zona horaria.
   * Se configura el usuario `debian` con acceso sudo sin contraseña, clave ssh y contraseña.
-  * Se instala `qemu-guest-agent` y se actualiza el sistema.
+  * Se actualiza el sistema.
 
-  **Debes modificar este fichero para poner tu clave pública**: sustituye la línea de ejemplo del campo `ssh-authorized-keys`.
+  **Debes modificar este fichero para poner tu clave pública**: sustituye la línea de ejemplo del campo `ssh_authorized_keys`.
 * `main.tf`: Aquí está la definición de los recursos con los que queremos trabajar. En este fichero se definen los siguientes recursos:
   * `resource "libvirt_volume" "ej1-server1-disk"`: Un clon ligero sobre la imagen base indicada por `var.base_image`, usando `base_volume_name` y `base_volume_pool`.
   * `resource "libvirt_cloudinit_disk" "ej1-server1-cloudinit"`: Un disco con formato ISO donde se guarda el fichero `cloud-init/user-data1.yaml`.
-  * `resource "libvirt_domain" "ej1-server1"`: Una máquina virtual con 1024 MB de RAM, 2 vCPUs, conectada a la red `default` y con consola serie habilitada. Con `qemu_agent = true`, OpenTofu pregunta la IP de la máquina al agente `qemu-guest-agent`, que instala cloud-init.
+  * `resource "libvirt_domain" "ej1-server1"`: Una máquina virtual con 1024 MB de RAM, 2 vCPUs, conectada a la red `default` y con consola serie habilitada. En la interfaz de red se indica `wait_for_lease = true`: OpenTofu no da por creada la máquina hasta que esta obtiene una IP del servidor DHCP de la red. La IP la lee de las concesiones (*leases*) que guarda libvirt, y así la puede mostrar en la salida al terminar `tofu apply`. Sin este parámetro, OpenTofu termina en cuanto arranca la máquina, todavía sin IP, y la salida mostraría `No disponible`.
 * `output.tf`: Se define la información que se mostrará al terminar de crear el escenario (nombre e IP de la máquina). Este fichero **no hay que modificarlo**.
 
 Modifica `cloud-init/user-data1.yaml` para **poner tu clave pública** y, si lo deseas, `main.tf` para cambiar la memoria o el número de CPUs.
