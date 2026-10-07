@@ -13,3 +13,4 @@ toc: false
 * [Práctica: QEMU/KVM + libvirt](practica/)
   * [Optativa 1.1: Router en red pública](practica_opcional_router_publico/)
   * [Optativa 1.2: MV con pool logical (LVM)](practica_opcional_pool_logical/)
+* [¿Qué tengo que saber de esta unidad?](que_saber/)
