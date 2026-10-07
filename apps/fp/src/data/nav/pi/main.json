@@ -7,8 +7,42 @@
         "url": "/pi/main/"
       },
       {
-        "title": "Ansible/OpenTofu",
+        "title": "Infraestructura como código",
         "url": "/pi/main/u1/"
+      },
+      {
+        "title": "Proyecto 1",
+        "url": "/pi/main/u2/"
+      },
+      {
+        "title": "Análisis y diseño del Proyecto 2",
+        "url": "/pi/main/u3/"
+      },
+      {
+        "title": "Proyecto 2",
+        "url": "/pi/main/u4/"
+      },
+      {
+        "title": "Presentación y defensa",
+        "url": "/pi/main/u5/"
+      }
+    ]
+  },
+  {
+    "title": "Módulos",
+    "separator": true,
+    "children": [
+      {
+        "title": "Servicios de Red e Internet",
+        "url": "/sri/main/"
+      },
+      {
+        "title": "Infraestructura Virtual",
+        "url": "/iv/main/"
+      },
+      {
+        "title": "Proyecto Intermodular",
+        "url": "/pi/main/"
       }
     ]
   }

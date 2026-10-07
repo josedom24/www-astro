@@ -7,7 +7,7 @@
 
 set -e
 
-SSH_HOST="debian@endor.josedomingo.org"
+SSH_HOST="debian@bespin.josedomingo.org"
 # Colores
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -44,11 +44,11 @@ deploy_app() {
 
   case $app in
     www)        DIST_SRC="apps/www/dist/"
-                DIST_DST="/home/debian/www/blog_pledin/html/pledin/" ;;
+                DIST_DST="/var/www/www/pledin/" ;;
     plataforma) DIST_SRC="apps/plataforma/dist/"
-                DIST_DST="/home/debian/www/plataforma_pledin/html/pledin/" ;;
+                DIST_DST="/var/www/plataforma/pledin/" ;;
     fp)         DIST_SRC="apps/fp/dist/"
-                DIST_DST="/home/debian/www/fp_pledin/html/" ;;
+                DIST_DST="/var/www/fp/" ;;
     *) err "App desconocida: $app" ;;
   esac
 
@@ -59,7 +59,7 @@ deploy_app() {
   npm run build:$app
 
   # 2. rsync al servidor
-  log "[$app] sincronizando con endor..."
+  log "[$app] sincronizando con bespin..."
   rsync -az --delete $DIST_SRC ${SSH_HOST}:${DIST_DST}
 
   log "[$app] ✅ desplegado correctamente"

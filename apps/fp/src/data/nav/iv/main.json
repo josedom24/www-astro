@@ -9,6 +9,36 @@
       {
         "title": "KVM / QEMU / Libvirt",
         "url": "/iv/main/u1/"
+      },
+      {
+        "title": "Contenedores LXC / Docker",
+        "url": "/iv/main/u2/"
+      },
+      {
+        "title": "OpenStack",
+        "url": "/iv/main/u3/"
+      },
+      {
+        "title": "Kubernetes",
+        "url": "/iv/main/u4/"
+      }
+    ]
+  },
+  {
+    "title": "Módulos",
+    "separator": true,
+    "children": [
+      {
+        "title": "Servicios de Red e Internet",
+        "url": "/sri/main/"
+      },
+      {
+        "title": "Infraestructura Virtual",
+        "url": "/iv/main/"
+      },
+      {
+        "title": "Proyecto Intermodular",
+        "url": "/pi/main/"
       }
     ]
   }

@@ -69,7 +69,7 @@
     "title": "5. Programación orientada a objetos",
     "children": [
       { "title": "Introducción a la programación orientada a objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/introduccion/" },
-      { "title": "Definición de clases y creación de objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/poo_c++/" },
+      { "title": "Definición de clases y creación de objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/poo_cpp/" },
       { "title": "Introducción al encapsulamiento", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/encapsulamiento/" },
       { "title": "Miembros estáticos de clase", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/estatico/" },
       { "title": "Composición de objetos", "url": "/pledin/cursos/cpp_moderno/contenido/modulo05/composicion/" },

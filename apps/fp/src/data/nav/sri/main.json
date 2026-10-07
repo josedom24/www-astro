@@ -9,6 +9,36 @@
       {
         "title": "Configuración básica - DHCP",
         "url": "/sri/main/u1/"
+      },
+      {
+        "title": "HTTP y almacenamiento",
+        "url": "/sri/main/u2/"
+      },
+      {
+        "title": "DNS",
+        "url": "/sri/main/u3/"
+      },
+      {
+        "title": "Correo electrónico",
+        "url": "/sri/main/u4/"
+      }
+    ]
+  },
+  {
+    "title": "Módulos",
+    "separator": true,
+    "children": [
+      {
+        "title": "Servicios de Red e Internet",
+        "url": "/sri/main/"
+      },
+      {
+        "title": "Infraestructura Virtual",
+        "url": "/iv/main/"
+      },
+      {
+        "title": "Proyecto Intermodular",
+        "url": "/pi/main/"
       }
     ]
   }
