@@ -2,11 +2,7 @@
 title: "Tarea 2.2: Proxy inverso y balanceador de carga"
 ---
 
-En esta tarea vas a configurar un **proxy inverso** que da acceso a dos sitios web internos y un **balanceador de carga** que reparte las peticiones entre dos servidores web. Elige el servidor con el que vas a hacer el proxy inverso: **apache2** o **nginx**.
-
-:::caution[Elige servidor]
-En la **práctica de la unidad** tendrás que usar como proxy inverso **el otro**: si haces esta tarea con apache2, en la práctica usarás nginx, y al revés.
-:::
+En esta tarea vas a configurar un **proxy inverso** que da acceso a dos sitios web internos y un **balanceador de carga** que reparte las peticiones entre dos servidores web. El proxy inverso lo vamos a realizar con **apache2**.
 
 ## Parte 1: Proxy inverso
 
@@ -24,9 +20,9 @@ La receta de ansible del escenario (directorio `ansible/`) instala apache2 en el
 
 Pon tu clave pública en los ficheros `cloud-init/user-data-*.yaml` y crea el escenario con `tofu init` y `tofu apply`. OpenTofu genera el inventario de ansible (`ansible/hosts`) con la IP del `backend` en la red NAT. Después, desde el directorio `ansible/`, ejecuta el playbook con `ansible-playbook site.yaml`.
 
-1. **Proxy inverso**. Instala el servidor elegido en el `proxy` y configúralo para acceder a la primera página con el nombre `www.app1.org` y a la segunda con `www.app2.org`. Añade en la resolución estática del `proxy` los nombres internos de las páginas.
-2. **La cabecera `Host`**. Cambia la configuración para que el proxy envíe al `backend` el nombre que ha pedido el cliente (`ProxyPreserveHost On` en apache2, `proxy_set_header Host $host` en nginx). Accede a `www.app1.org` y a `www.app2.org`, mira el log del `backend` y vuelve a dejar la configuración que funciona.
-3. **Redirecciones**. En el `backend`, configura `interno.example1.org` para que `/directorio` redirija a `/nuevodirectorio`. Accede a `http://www.app1.org/directorio` a través del proxy con la reescritura de las redirecciones y sin ella (`ProxyPassReverse` en apache2; `proxy_redirect off;` frente al comportamiento por defecto en nginx).
+1. **Proxy inverso**. Instala apache2 en el `proxy` y configúralo para acceder a la primera página con el nombre `www.app1.org` y a la segunda con `www.app2.org`. Añade en la resolución estática del `proxy` los nombres internos de las páginas.
+2. **La cabecera `Host`**. Cambia la configuración para que el proxy envíe al `backend` el nombre que ha pedido el cliente (`ProxyPreserveHost On`). Accede a `www.app1.org` y a `www.app2.org`, mira el log del `backend` y vuelve a dejar la configuración que funciona.
+3. **Redirecciones**. En el `backend`, configura `interno.example1.org` para que `/directorio` redirija a `/nuevodirectorio`. Accede a `http://www.app1.org/directorio` a través del proxy con la reescritura de las redirecciones y sin ella (`ProxyPassReverse`).
 
 ## Parte 2: Balanceador de carga
 
@@ -51,7 +47,7 @@ Vamos a usar el **escenario3** del repositorio [ejercicios_sri](https://github.c
 :::tip[¿Qué tienes que entregar?]
 Las comprobaciones con `curl` y los logs se entregan como texto, con el comando y su salida.
 
-1. El servidor que has elegido. La configuración del proxy inverso. `curl` a `www.app1.org` y a `www.app2.org`.
+1. La configuración del proxy inverso. `curl` a `www.app1.org` y a `www.app2.org`.
 2. La página que se muestra al enviar el nombre del cliente y la línea del log del `backend`. **¿Por qué responde otro virtual host?**
 3. `curl -I` a `http://www.app1.org/directorio` con la reescritura y sin ella. **¿Qué cabecera cambia y por qué al cliente no le sirve sin la reescritura?**
 4. La configuración de haproxy y una línea del log del servidor web antes y después de configurar la IP real. **¿Por qué el servidor web ve la IP del balanceador?**

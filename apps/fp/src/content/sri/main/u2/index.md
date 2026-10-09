@@ -6,7 +6,7 @@ toc: false
 * [Protocolo HTTP](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/protocolo_http.pdf)
   * [Ejercicio 1: Peticiones HTTP con curl](ejercicio1/)
 * [Servidores web Apache y Nginx](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/apache_nginx.pdf)
-  * [Tarea 2.1: Servidores web Apache y Nginx](tarea1/)
+  * [Tarea 2.1: Servidor web](tarea1/)
 
 <!--
 * [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
