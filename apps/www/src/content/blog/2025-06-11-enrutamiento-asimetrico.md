@@ -1,9 +1,10 @@
 ---
 date: 2025-06-11
 title: 'El problema del enrutamiento asimétrico'
-slug: 2025/06/enrutamiento asimetrico
+slug: 2025/06/enrutamiento-asimetrico
 tags:
   - Redes
+  - Linux
 ---
 
 De forma general, hablamos de **enrutamiento asimétrico** cuando se da la situación donde los paquetes de ida y vuelta entre dos dispositivos no siguen el mismo camino. En el enrutamiento asimétrico, el paquete de ida toma un camino y la respuesta toma otro **distinto**.
