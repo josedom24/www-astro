@@ -25,7 +25,7 @@ Elige el escenario que más te guste. En todos ellos, el **servidor de almacenam
 
 ### Servidor web
 
-* Usa el servidor web **nginx**.
+* Usa **nginx** como servidor web.
 * Tendrá una página principal con hoja de estilo, con distinta información (tu nombre, ...).
 * Cuando se accede a la ruta `/nas` se redirecciona a `/documentos`.
 * En la ruta `/documentos` hay una autenticación básica.
@@ -59,7 +59,7 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
 ### Proxy inverso
 
 * En el escenario 1 y en el escenario 2 también funcionará como router/NAT.
-* Usa el servidor que **no** usaste como proxy inverso en la **Tarea 2.2**: si la hiciste con apache2, aquí usarás nginx, y al revés.
+* Usa **nginx** como proxy inverso.
 * Las url y las páginas a las que vamos a acceder son:
     * `nas.tunombre.org`: Accederemos al servidor web.
     * `www.tunombre.org/game`: Accedemos a la aplicación `2048`.
@@ -71,7 +71,7 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
 :::tip[Entrega del protocolo HTTP]
 Las comprobaciones con `curl` se entregan como texto, con el comando y su salida.
 
-1. Indica el escenario que has escogido, qué servidor has usado como servidor web y como proxy inverso, y qué máquinas son máquinas virtuales y cuáles contenedores.
+1. Indica el escenario que has escogido y qué máquinas son máquinas virtuales y cuáles contenedores.
 2. La configuración del sitio `nas.tunombre.org` en el servidor web. `curl -I` a `nas.tunombre.org/nas` (código de la redirección y cabecera `Location`), a `nas.tunombre.org/documentos/` sin credenciales (401) y con ellas (`-u`, 200).
 3. La configuración del balanceador de carga y del proxy inverso.
 4. Los comandos con los que has creado los contenedores de 2048 y de Grafana. Capturas de pantalla accediendo a `www.tunombre.org/game` y a `www.tunombre.org/grafana`, y `curl -I` a `www.tunombre.org/game` (sin barra final). **¿Qué has tenido que configurar en Grafana y en el proxy inverso para que funcione en `/grafana`, y por qué no hace falta con 2048?**
