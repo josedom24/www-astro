@@ -25,7 +25,7 @@ Elige el escenario que más te guste. En todos ellos, el **servidor de almacenam
 
 ### Servidor web
 
-* Usa el servidor web que **no** usaste en la **Tarea 2.1**: si la hiciste con apache2, aquí usarás nginx, y al revés.
+* Usa el servidor web **nginx**.
 * Tendrá una página principal con hoja de estilo, con distinta información (tu nombre, ...).
 * Cuando se accede a la ruta `/nas` se redirecciona a `/documentos`.
 * En la ruta `/documentos` hay una autenticación básica.
