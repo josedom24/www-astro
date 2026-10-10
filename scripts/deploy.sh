@@ -60,7 +60,7 @@ deploy_app() {
 
   # 2. rsync al servidor
   log "[$app] sincronizando con bespin..."
-  rsync -az --delete $DIST_SRC ${SSH_HOST}:${DIST_DST}
+  rsync -az --delete --chmod=D755,F644 $DIST_SRC ${SSH_HOST}:${DIST_DST}
 
   log "[$app] ✅ desplegado correctamente"
 }
