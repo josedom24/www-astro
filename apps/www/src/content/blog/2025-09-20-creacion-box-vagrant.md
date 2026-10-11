@@ -241,7 +241,7 @@ Continuamos, y en la nueva pantalla pondremos el proveedor, en nuestro caso `lib
 
 Se sube la imagen:
 
-![vagrant](/pledin/assets/2025/09/vagrant5png)
+![vagrant](/pledin/assets/2025/09/vagrant5.png)
 
 Y por último, podemos comprobar que tenemos dado de alta nuestro nuevo box en el registro:
 
