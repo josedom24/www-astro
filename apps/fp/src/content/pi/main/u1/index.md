@@ -9,10 +9,5 @@ toc: false
   * [Tarea 3: Playbooks con Roles](tarea3/)
 * [Presentación: Software de Orquestación (OpenTofu)](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/pi/software-orquestacion.pdf)
   * [Tarea 4: Introducción a OpenTofu + libvirt](tarea4/)
-
-<!--
   * [Tarea 5: Creación de escenarios con OpenTofu](tarea5/)
-* Prueba teórica: Ansible y OpenTofu
--->
-
 * [¿Qué tengo que saber de esta unidad?](que_saber/)
