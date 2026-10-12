@@ -91,13 +91,13 @@ Seguimos en el directorio `opentofu/ejemplo2`, con el escenario del ejemplo 2 cr
 
 1. **Un cambio que se aplica en el sitio.** Añade `autostart = true` al recurso `libvirt_domain`, para que la máquina arranque con el anfitrión.
 2. **Un cambio que obliga a recrear la máquina.** Antes, entra en la máquina y crea un fichero en el directorio de tu usuario. Cambia la memoria a 2048 MB y aplica. Entra otra vez en la máquina. Si el `apply` no termina porque la máquina no consigue IP, entra por la consola (`virsh -c qemu:///system console ej2-server1`) y, cuando hayas respondido a las preguntas, destruye el escenario y vuelve a crearlo (`tofu destroy` y `tofu apply`) antes del cambio 3: si no, la máquina queda marcada como *tainted* y el `plan` del cambio 3 no mostrará lo que se pide.
-3. **Un cambio en un recurso del que depende otro.** Cambia `var.base_image` por la imagen de Ubuntu. Esta variable solo la usa el disco principal, no la máquina. Fíjate en qué recursos se recrean, cuáles se modifican y qué valor aparece como `(known after apply)`.
+3. **Un cambio en un recurso del que depende otro.** Antes, comprueba que el fichero que creaste sigue en la máquina (si no, vuelve a crearlo). Cambia `var.base_image` por la imagen de Ubuntu. Esta variable solo la usa el disco principal, no la máquina. Fíjate en qué recursos se recrean, cuáles se modifican y qué valor aparece como `(known after apply)`.
 4. **Cambios hechos fuera de OpenTofu.** Borra la máquina a mano (`virsh -c qemu:///system destroy ej2-server1` y `virsh -c qemu:///system undefine ej2-server1`) y ejecuta `tofu plan`. Aplícalo y destruye el escenario.
 
 :::tip[¿Qué tienes que entregar?]
 1. Las líneas del `plan` del cambio 1 donde se ve el tipo de cambio.
 2. Las líneas del `plan` del cambio 2 donde se ve el tipo de cambio y qué lo obliga. ¿Sigue el fichero que creaste? ¿Tiene IP la máquina nueva, y es la misma que antes? **¿Por qué?** (Si no tiene IP, mira `/etc/netplan/` en la máquina.)
-3. Las líneas del `plan` del cambio 3 con los recursos que cambian y el tipo de cambio de cada uno. **¿Por qué cambia también la máquina, si no has tocado `libvirt_domain`?**
+3. Las líneas del `plan` del cambio 3 con los recursos que cambian y el tipo de cambio de cada uno. ¿Se recrea la máquina o solo se modifica? ¿Sigue el fichero que creaste en el cambio 2? **¿Por qué cambia también la máquina, si no has tocado `libvirt_domain`?**
 4. La salida de `tofu plan` después de borrar la máquina a mano. **¿Cómo sabe OpenTofu que falta, y qué papel tiene el estado (`terraform.tfstate`)?**
 :::
 
