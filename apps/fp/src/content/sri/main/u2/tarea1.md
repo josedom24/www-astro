@@ -4,7 +4,7 @@ title: "Tarea 2.1: Servidor web"
 
 En esta tarea vas a configurar un servidor web con dos sitios y distintas formas de controlar el acceso. La vamos a realizar usando el servidor web **apache2**.
 
-Utilizando el **escenario 1** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) vas a crear un escenario donde existe una máquina **servidorweb** y un **cliente**. Los dos están conectados a una red NAT, por lo que tienen internet. Simulamos que el cliente accede al servidor web por una red muy aislada (`servidorweb` 10.0.0.1, y `cliente` 10.0.0.2). Antes de crearlo, pon tu clave pública en los ficheros `cloud-init/user-data-*.yaml`, sustituyendo la línea de ejemplo de `ssh-authorized-keys`.
+Utilizando el **escenario 1** del repositorio [ejercicios_sri](https://github.com/josedom24/ejercicios_sri) vas a crear un escenario donde existe una máquina **servidorweb** y un **cliente**. Los dos están conectados a una red NAT, por lo que tienen internet. Simulamos que el cliente accede al servidor web por una red muy aislada (`servidorweb` 10.0.0.1, y `cliente` 10.0.0.2). Antes de crearlo, pon tu clave pública en los ficheros `cloud-init/user-data-*.yaml`, sustituyendo la línea de ejemplo de `ssh_authorized_keys`.
 
 Instala apache2 en `servidorweb` y realiza los siguientes ejercicios:
 
