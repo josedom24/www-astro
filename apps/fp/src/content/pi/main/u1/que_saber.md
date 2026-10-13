@@ -80,7 +80,7 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] ¿Sé diferenciar una red NAT, una aislada y una muy aislada, y si el anfitrión tiene IP en cada una?
 - [ ] ¿Sé diferenciar `network_name` de `network_id`, y cuándo se usa `wait_for_lease`?
 - [ ] Sé explicar por qué conectar una máquina a una red no basta para que tenga IP en ella (hay que configurar la interfaz en `network-config`).
-- [ ] Sé explicar por qué el `output` muestra las IP estáticas solo con `qemu_agent = true`, y qué necesita la máquina para ello.
+- [ ] Sé explicar por qué el `output` solo puede leer del dominio las IP que da el DHCP, y por qué las estáticas se escriben a mano.
 
 ## De OpenTofu a Ansible
 
