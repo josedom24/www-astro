@@ -13,6 +13,7 @@ La idea fundamental es que el escenario sea **reproducible**: en cualquier momen
 * **Qué no se sube.** Usa un `.gitignore` para no subir lo que genera OpenTofu (`terraform.tfstate`, `.terraform/`, el inventario generado). Tampoco se suben imágenes de disco, bases de datos ni ficheros grandes.
 * **Desde cero.** Puedes consultar los ejemplos de las tareas, pero el escenario y la receta los escribes tú. Todo lo que necesite el escenario tiene que salir del repositorio: nada configurado a mano en las máquinas ni copiado de otro equipo.
 * **Dos comandos.** Con el repositorio recién clonado, el escenario se levanta con `tofu apply` (en `opentofu/`) y `ansible-playbook site.yaml` (en `ansible/`).
+* **Inventario dinámico.** El inventario de Ansible lo genera siempre OpenTofu a partir de las IP del escenario, nunca se escribe a mano. Si añades o quitas máquinas, se actualiza solo con el siguiente `tofu apply`.
 * **Entregas.** Cada entrega es una tarea de Redmine distinta, con su fecha, y lleva su documentación y su vídeo.
 
 ## Entrega 1: escenario base
@@ -72,6 +73,7 @@ Reglas:
 * Cada modificación tiene que tener entidad: un rol nuevo o un cambio en la infraestructura. Cambiar un nombre o una variable no es una modificación.
 * **Al menos una de las tres modificaciones tiene que cambiar la infraestructura** (OpenTofu), no solo la configuración.
 * Después de cada modificación, el escenario se sigue levantando desde cero con los dos comandos, y la receta sigue siendo idempotente.
+* Si la modificación añade, quita o cambia máquinas, el inventario lo sigue generando OpenTofu, con las máquinas nuevas en sus grupos.
 * Las modificaciones se acumulan: cada una parte del escenario que dejó la anterior.
 
 ### Modificaciones posibles
