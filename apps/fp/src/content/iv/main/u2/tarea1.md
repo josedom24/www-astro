@@ -15,7 +15,7 @@ En esta tarea vas a instalar y gestionar contenedores LXC, configurar sus recurs
 ## 2. Red del contenedor
 
 1. Comprueba que se ha creado un bridge llamado `lxcbr0` al que está conectado el contenedor.
-2. Cambia la configuración del contenedor para desconectarlo de `lxcbr0` y conectarlo a otra red NAT con DHCP (por ejemplo a la red `default` de libvirt) que creaste en el ejercicio de redes de la unidad anterior.
+2. Cambia la configuración del contenedor para desconectarlo de `lxcbr0` y conectarlo a otra red NAT con DHCP (por ejemplo a la red `default` de libvirt).
 3. Inicia el contenedor, comprueba la nueva dirección IP que ha tomado y verifica que sigue teniendo conectividad al exterior.
 
 ## 3. Escenario router/NAT con LXC
