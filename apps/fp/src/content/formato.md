@@ -24,7 +24,7 @@ Cada alumno dispone de una **tarea en Redmine** para entregar las actividades de
     </pre>
     ```
 - No mezcles código y explicaciones dentro del mismo bloque `<pre>`: el texto explicativo va fuera, como párrafo normal.
-- Si el bloque de código es muy largo, resume o recorta la parte que no aporte nada (por ejemplo, salidas repetitivas), indicando que se ha recortado.
+- Si el bloque de código es muy largo, resume o recorta la parte que no aporte nada (por ejemplo, salidas repetitivas), indicando que se ha recortado (basta con poner `...` donde falta).
 - Para resaltar texto normal (no código) puedes usar el formato *Textile*:
   - **Negrita**: `*texto*`
   - *Cursiva*: `_texto_`
