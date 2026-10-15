@@ -15,7 +15,7 @@ En esta tarea vas a instalar y gestionar contenedores LXC, configurar sus recurs
 ## 2. Red del contenedor
 
 1. Comprueba que se ha creado un bridge llamado `lxcbr0` al que está conectado el contenedor.
-2. Cambia la configuración del contenedor para desconectarlo de `lxcbr0` y conectarlo a la red `red-nat` que creaste en el ejercicio de redes de la unidad anterior.
+2. Cambia la configuración del contenedor para desconectarlo de `lxcbr0` y conectarlo a otra red NAT con DHCP (por ejemplo a la red `default` de libvirt) que creaste en el ejercicio de redes de la unidad anterior.
 3. Inicia el contenedor, comprueba la nueva dirección IP que ha tomado y verifica que sigue teniendo conectividad al exterior.
 
 ## 3. Escenario router/NAT con LXC
@@ -23,7 +23,7 @@ En esta tarea vas a instalar y gestionar contenedores LXC, configurar sus recurs
 1. Crea un contenedor llamado **router** a partir de una plantilla de Debian. Configura su arranque automático.
 2. Crea un contenedor llamado **servidorweb** a partir de una plantilla de Ubuntu 24.04. Configura su arranque automático.
 3. Crea en el host un bridge llamado `br-contenedores` (sin usar `virsh`), de forma **persistente**, para que exista al arrancar el host y los contenedores puedan iniciarse automáticamente. Este bridge formará una red aislada entre los contenedores.
-4. Conecta el contenedor **router** a la red `red-nat` (o a la red `default`), que será su red externa, y al bridge `br-contenedores`. Si tienes el bridge externo `br0` de la optativa 1.1, puedes usarlo como red externa. Configura las interfaces de red dentro del contenedor de forma adecuada.
+4. Conecta el contenedor **router** a la una red NAT, que será su red externa, y al bridge `br-contenedores`. Si tienes el bridge externo `br0` de la optativa 1.1, puedes usarlo como red externa. Configura las interfaces de red dentro del contenedor de forma adecuada.
 5. Conecta el contenedor **servidorweb** únicamente al bridge `br-contenedores`. Configura su interfaz de red dentro del contenedor.
 6. Configura el contenedor **router** para que realice NAT y permita al contenedor **servidorweb** tener acceso a internet.
 7. Instala el servidor SSH en ambos contenedores. Crea un usuario sin privilegios y configura el acceso por clave pública/privada. Accede por SSH al contenedor **servidorweb** desde el host, usando el **router** como salto (opción `-J` de `ssh`).
