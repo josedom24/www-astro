@@ -37,10 +37,41 @@ Nos situamos en el directorio `opentofu/ejemplo5`. En este ejemplo vamos a comen
   * `network-config2.yaml`: configura la interfaz de red de `ej5-server2` (`ens3` con IP estática `10.0.0.2/24` y ruta por defecto por `10.0.0.1`, con `routes`).
 * `network.tf`: define dos redes: `ej5-nat-dhcp` (NAT con DHCP) y `ej5-muy-aislada` (`mode = "none"`, sin rango de direcciones).
 * `variables.tf`: define tres variables: `libvirt_pool_name`, `base_image_debian` (`debian13-base.qcow2`) y `base_image_ubuntu` (`ubuntu2604-base.qcow2`).
-* `inventario.tf` y `inventario.tftpl`: generan el **inventario de Ansible**. El recurso `local_file` escribe el fichero `hosts` en el directorio del proyecto, y `templatefile` rellena la plantilla `inventario.tftpl` con las IP del escenario. Así, cada vez que se crea el escenario, el inventario sale con las IP correctas. `ej5-server2` solo es accesible a través de `ej5-server1`, y por eso en el inventario se conecta con `ProxyJump`. Este fichero usa un segundo provider, `hashicorp/local`, declarado en `provider.tf`: después de añadirlo hay que volver a ejecutar `tofu init`.
+* `inventario.tf` y `inventario.tftpl`: generan el **inventario de Ansible** (el fichero `hosts`) con las IP del escenario. Lo explicamos en detalle más abajo.
 * El fichero `output.tf` devuelve información de las dos máquinas. Como en el ejemplo 4, la IP que se asigna por DHCP (`ip1` de `ej5-server1`) la obtiene OpenTofu, y las estáticas (`ip2` de `ej5-server1` e `ip1` de `ej5-server2`) están escritas a mano.
 
 En este ejemplo, `ej5-server1` (Debian) está conectado a la red `ej5-nat-dhcp` y a la red `ej5-muy-aislada`. `ej5-server2` (Ubuntu) se conecta únicamente a la red `ej5-muy-aislada` y tiene como puerta de enlace la dirección de `ej5-server1` (`10.0.0.1`). En este ejemplo no se activa en `ej5-server1` el reenvío de paquetes ni el NAT, así que `ej5-server2` no tiene salida al exterior.
+
+### El inventario de Ansible generado por OpenTofu
+
+La IP de `ej5-server1` en la red `ej5-nat-dhcp` la asigna el servidor DHCP de libvirt y puede cambiar cada vez que creamos el escenario. Si escribimos el inventario de Ansible a mano, tendríamos que corregirlo después de cada `tofu apply`. En lugar de eso, hacemos que **OpenTofu escriba el inventario** al crear el escenario. Intervienen tres piezas:
+
+* **La plantilla `inventario.tftpl`**: es el inventario con huecos `${...}` donde irán las IP:
+
+  ```
+  [servidores]
+  ej5-server1 ansible_host=${ip_server1} ansible_user=debian
+  ej5-server2 ansible_host=${ip_server2} ansible_user=ubuntu ansible_ssh_common_args='-o ProxyJump=debian@${ip_server1}'
+  ```
+
+* **La función `templatefile`**: lee la plantilla, sustituye cada hueco por el valor que le pasamos y devuelve el texto resultante. En `inventario.tf`:
+
+  ```hcl
+  content = templatefile("${path.module}/inventario.tftpl", {
+    ip_server1 = try(libvirt_domain.ej5-server1.network_interface[0].addresses[0], "")
+    ip_server2 = "10.0.0.2" # estática: está en cloud-init/network-config2.yaml
+  })
+  ```
+
+  `ip_server1` la obtiene OpenTofu del recurso `libvirt_domain`, igual que en `output.tf`; la conoce porque esa interfaz tiene `wait_for_lease = true` en `main.tf`. `ip_server2` es estática y, como en el ejemplo 4, está escrita a mano: si la cambias en `cloud-init/network-config2.yaml`, tienes que cambiarla también aquí.
+
+* **El recurso `local_file`**: escribe ese texto en el fichero `hosts` del directorio del proyecto (`path.module`), en el anfitrión. Es un recurso más del escenario: se crea con `tofu apply` (después de `ej5-server1`, porque depende de su IP) y se borra con `tofu destroy`.
+
+**¿Por qué `ProxyJump`?** `ej5-server2` solo está conectado a la red `ej5-muy-aislada`, que no tiene dirección en el anfitrión, así que desde el anfitrión no se llega a `10.0.0.2`. Solo se puede acceder a través de `ej5-server1`, que está en las dos redes. Con `-o ProxyJump=debian@<IP de ej5-server1>`, SSH (y Ansible, que lo usa por debajo) se conecta primero a `ej5-server1` y desde ahí abre un túnel hasta `ubuntu@10.0.0.2`. La autenticación de los dos saltos se hace con la clave del anfitrión.
+
+**Un segundo provider.** `local_file` no pertenece al provider de libvirt, sino al provider **`hashicorp/local`**, que gestiona ficheros locales. Por eso está declarado en `provider.tf`, dentro de `required_providers`. `tofu init` es el que descarga los providers declarados: si inicializaste el directorio antes de añadirlo, `tofu plan` y `tofu apply` darán error, y tienes que volver a ejecutar `tofu init`.
+
+Si añades una máquina al escenario, para que aparezca en el inventario tienes que añadir su línea en `inventario.tftpl` y, si usas un hueco nuevo, pasar su valor a `templatefile` en `inventario.tf`.
 
 :::tip[¿Qué tienes que entregar?]
 1. Crea el escenario del ejemplo 5. Entrega los comandos y la salida del acceso por SSH a `ej5-server1`, del ping desde ahí a `ej5-server2` (`10.0.0.2`) y del acceso por SSH de una máquina a otra (para ello, conéctate a `ej5-server1` con reenvío del agente: `ssh -A`).
