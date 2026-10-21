@@ -20,7 +20,7 @@ La idea fundamental es que el escenario sea **reproducible**: en cualquier momen
 
 ### El escenario (OpenTofu)
 
-* Dos máquinas virtuales Debian 13: `web` (servidor web) y `bd` (servidor de base de datos), creadas como clones ligeros de la imagen base.
+* Dos máquinas virtuales Debian 13 y ubuntu 26.04: `web` (servidor web, debian) y `bd` (servidor de base de datos, ubuntu), creadas como clones ligeros de la imagen base.
 * Una **red NAT con DHCP**, a la que se conectan las dos máquinas: por ella accedes al servidor web desde tu equipo y las máquinas tienen salida a internet.
 * Una **red de datos muy aislada**, con direcciones estáticas, por la que se comunican `web` y `bd`.
 * Variables, al menos, para la imagen base y la memoria de las máquinas.
