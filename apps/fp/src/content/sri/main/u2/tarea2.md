@@ -42,7 +42,7 @@ Vamos a usar el **escenario3** del repositorio [ejercicios_sri](https://github.c
     ?>
     ```
 
-    Recarga varias veces `http://www.example.org/sesion.php` y fíjate en el contador. Después, configura haproxy para que un mismo cliente vaya siempre al mismo servidor usando una cookie (`cookie SERVERID insert`) y vuelve a probar.
+    Recarga varias veces `http://www.example.org/sesion.php` y fíjate en el contador. Después, configura haproxy para que un mismo cliente vaya siempre al mismo servidor usando una cookie (`cookie SERVERID insert` en el `backend` y `cookie` en cada `server`) y vuelve a probar.
 
 :::tip[¿Qué tienes que entregar?]
 Las comprobaciones con `curl` y los logs se entregan como texto, con el comando y su salida.
