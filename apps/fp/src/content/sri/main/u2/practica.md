@@ -71,12 +71,14 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
 :::tip[Entrega del protocolo HTTP]
 Las comprobaciones con `curl` se entregan como texto, con el comando y su salida.
 
-1. Indica el escenario que has escogido y qué máquinas son máquinas virtuales y cuáles contenedores.
-2. La configuración del sitio `nas.tunombre.org` en el servidor web. `curl -I` a `nas.tunombre.org/nas` (código de la redirección y cabecera `Location`), a `nas.tunombre.org/documentos/` sin credenciales (401) y con ellas (`-u`, 200).
-3. La configuración del balanceador de carga y del proxy inverso.
-4. Los comandos con los que has creado los contenedores de 2048 y de Grafana. Capturas de pantalla accediendo a `www.tunombre.org/game` y a `www.tunombre.org/grafana`, y `curl -I` a `www.tunombre.org/game` (sin barra final). **¿Qué has tenido que configurar en Grafana y en el proxy inverso para que funcione en `/grafana`, y por qué no hace falta con 2048?**
-5. Captura de pantalla de la página de estadísticas de haproxy.
-6. Contesta la pregunta, comprobándolo en tu escenario.
+Indica el escenario que has escogido.
+
+
+1. La configuración del sitio `nas.tunombre.org` en el servidor web. `curl -I` a `nas.tunombre.org/nas` (código de la redirección y cabecera `Location`), a `nas.tunombre.org/documentos/` sin credenciales (401) y con ellas (`-u`, 200).
+2. La configuración del balanceador de carga y del proxy inverso.
+3. Los comandos con los que has creado los contenedores de 2048 y de Grafana. Capturas de pantalla accediendo a `www.tunombre.org/game` y a `www.tunombre.org/grafana`, y `curl -I` a `www.tunombre.org/game` (sin barra final). **¿Qué has tenido que configurar en Grafana y en el proxy inverso para que funcione en `/grafana`, y por qué no hace falta con 2048?**
+4. Captura de pantalla de la página de estadísticas de haproxy.
+5. Contesta la pregunta, comprobándolo en tu escenario.
 :::
 
 ## Servidor de almacenamiento
