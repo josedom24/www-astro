@@ -156,6 +156,7 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] Sé explicar cómo comprueba NFS los permisos (con el UID y el GID del cliente) y qué hacen `root_squash`, `no_root_squash` y `all_squash`.
 - [ ] Sé resolver un *Permission denied* al escribir en un directorio NFS dando permisos en el servidor, y por qué `no_root_squash` es peligroso.
 - [ ] Sé montar un directorio NFS en el cliente y servir su contenido desde un servidor web (permisos de `www-data`, `<Directory>` o alias).
+- [ ] Sé investigar un `access denied by server` al montar (el cliente no está en la red o la IP de `/etc/exports`, falta `exportfs -ra`) y un montaje que se queda colgado.
 
 ## SAN con iSCSI
 
@@ -164,6 +165,7 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] Sé descubrir los targets desde el cliente (`iscsiadm -m discovery`), configurar la autenticación CHAP en el nodo y conectarme (`--login`).
 - [ ] Sé ver las sesiones activas y los discos que ha recibido el cliente (`iscsiadm -m session`, `lsblk -S`), y desconectarme (`--logout`) desmontando antes el disco.
 - [ ] Sé hacer que el cliente vuelva a conectarse al target al arrancar (`node.startup automatic`).
+- [ ] Sé investigar un `authorization failure` al conectarme (usuario o contraseña CHAP, falta `authmethod CHAP`, `initiator-address`) y por qué no aparece ningún disco (falta el `--login` o no existe el `backing-store`).
 
 ## Montajes al arrancar con systemd
 
@@ -171,7 +173,7 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] Sé escribir una unidad `.mount` para un directorio NFS y para un disco iSCSI, y activarla (`daemon-reload`, `enable --now`).
 - [ ] Sé explicar por qué un disco iSCSI se monta por UUID y no por `/dev/sdX`.
 - [ ] Sé explicar por qué un montaje por red tiene que esperar a la red (`_netdev`, `After=network-online.target`) y, en iSCSI, al servicio `open-iscsi`.
-- [ ] Sé investigar los problemas frecuentes: `access denied by server`, `authorization failure`, el disco que no aparece o cambia de nombre y el `Where=` que no coincide con el nombre de la unidad.
+- [ ] Sé investigar por qué un disco no se monta al arrancar: cambia de nombre (se montaba por `/dev/sdX`), el `Where=` no coincide con el nombre de la unidad o, sin `_netdev`, el arranque se queda esperando.
 
 <style>
   .task-list-item {
