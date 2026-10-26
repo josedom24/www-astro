@@ -15,7 +15,6 @@ Podemos hacer la práctica en varios escenarios distintos:
 * **Escenario 1**: Es más real, tenemos cada servidor en una red privada.
 * **Escenario 2**: En este caso todos los servidores están en la misma red.
 * **Escenario 3**: En este caso sólo tenemos dos servidores web, uno de ellos será backend para el balanceador de carga y servidor web para el acceso desde el proxy inverso.
-* **Escenario 4**: Todos los servicios están en un servidor, habrá que trabajar con los puertos.
 
 ![practica](img/practica.png)
 
@@ -54,7 +53,7 @@ El servidor web tendrá además dos aplicaciones web implantadas en contenedores
     ?>
     ```
 * La página balanceada será accesible desde el proxy inverso con la url `app.tunombre.org`.
-* Configura la página de estadísticas de haproxy.
+* Configura la página de estadísticas de haproxy, con autenticación.
 
 ### Proxy inverso
 
@@ -105,7 +104,7 @@ Ya tenemos el servidor de almacenamiento preparado, vamos a añadir la funcional
 
 El sistema debe funcionar después de un reinicio de las máquinas: el cliente tiene que volver a conectarse al target y montar el disco solo.
 
-**Pregunta**: ¿Qué ocurriría si montamos el mismo dispositivo en otra máquina? ¿Podrían leer las dos máquinas del mismo disco? ¿Y escribir?
+**Pregunta**: ¿Qué ocurriría si montamos el mismo dispositivo en otra máquina? ¿Podrían leer las dos máquinas del mismo disco? ¿Y escribir? ¿Por qué?
 
 ### Servidor NAS
 
@@ -115,28 +114,28 @@ Ahora vamos a crear un servidor NAS en nuestro servidor de almacenamiento, para 
 * Monta el volumen en un directorio del servidor (por ejemplo `/srv/nfs`) de forma **permanente**, para que siga montado después de reiniciar. Configura el servicio NFS para **exportar** dicho directorio a la red local, de modo que cualquier servidor del mismo segmento pueda acceder con permisos de lectura y escritura.
 * En `backend1`, **monta el directorio compartido** en una carpeta local.
 * Haz lo mismo en `backend2`.
-* Crea una página web en dicho directorio y añade un **alias** al virtualhost para que se sirva dicha página. Si al crearla obtienes *Permission denied*, piensa por qué (recuerda la opción `root_squash` y cómo comprueba NFS los permisos) y resuélvelo dando los permisos adecuados en el servidor.
+* Crea una página web en dicho directorio y añade un **alias** en el sitio web de **los dos backends** (el que se sirve con `app.tunombre.org`) para que se sirva dicha página: como las peticiones se reparten entre los dos, si solo lo añades en uno, la mitad de las veces la página no se encontrará. Si al crearla obtienes *Permission denied*, piensa por qué (recuerda la opción `root_squash` y cómo comprueba NFS los permisos) y resuélvelo dando los permisos adecuados en el servidor.
 * Configura los servidores backend para que el **montaje NFS se realice automáticamente al arrancar** utilizando una unidad de montaje de systemd.
 
-**Pregunta**: ¿Ha habido algún problema de que el directorio esté compartido en los dos servidores? ¿Qué ocurre si modificas el fichero en uno de ellos?
+**Pregunta**: ¿Ha habido algún problema de que el directorio esté compartido en los dos servidores? ¿Qué ocurre si modificas el fichero en uno de ellos? ¿Por qué con NFS no pasa lo mismo que con el disco iSCSI montado en dos máquinas?
 
 :::tip[Entrega del servidor de almacenamiento]
 Las comprobaciones se entregan como texto, con el comando y su salida.
 
-1. El RAID5 y los volúmenes: la salida de `mdadm --detail` (o `lsblk`) donde se vea el tamaño del RAID5, con la respuesta a la pregunta, y la de `lvs` con los volúmenes creados.
+6. El RAID5 y los volúmenes: la salida de `mdadm --detail` (o `lsblk`) donde se vea el tamaño del RAID5, con la respuesta a la pregunta, y la de `lvs` con los volúmenes creados.
 
 ### Del servidor SAN
 
-2. El contenido del fichero de configuración del servidor iSCSI.
-3. En el cliente iSCSI: el descubrimiento de los targets (comando y salida), la instrucción para ver las sesiones que tienes activas y la lista de dispositivos, para ver los dispositivos que se han compartido.
-4. El fichero de la unidad de montaje y, después de reiniciar las máquinas, las pruebas de que el cliente ha vuelto a conectarse al target y el disco está montado (por ejemplo `uptime`, `iscsiadm -m session` y `findmnt`).
-5. Contesta la pregunta, después de buscar información.
+7. El contenido del fichero de configuración del servidor iSCSI.
+8. En el cliente iSCSI: el descubrimiento de los targets (comando y salida), la instrucción para ver las sesiones que tienes activas y la lista de dispositivos, para ver los dispositivos que se han compartido.
+9. El fichero de la unidad de montaje y, después de reiniciar las máquinas, las pruebas de que el cliente ha vuelto a conectarse al target y el disco está montado (por ejemplo `uptime`, `iscsiadm -m session` y `findmnt`).
+10. Contesta la pregunta, después de buscar información.
 
 ### Del servidor NAS
 
-6. Cómo has montado el volumen de forma permanente en el servidor de almacenamiento (`/etc/fstab` o unidad de montaje) y el fichero de configuración del servidor NFS.
-7. El fichero de la unidad de montaje de systemd de los backends y la comprobación, después de reiniciar, de que el directorio está montado en `backend1` y en `backend2`. Cómo has resuelto los permisos para crear la página en el directorio compartido. El acceso a la página por `app.tunombre.org`, servida mediante el alias del virtualhost.
-8. Contesta la pregunta, después de buscar información.
+11. Cómo has montado el volumen de forma permanente en el servidor de almacenamiento (`/etc/fstab` o unidad de montaje) y el fichero de configuración del servidor NFS.
+12. El fichero de la unidad de montaje de systemd de los backends y la comprobación, después de reiniciar, de que el directorio está montado en `backend1` y en `backend2`. Cómo has resuelto los permisos para crear la página en el directorio compartido. La configuración del alias en los dos backends y el acceso a la página por `app.tunombre.org`.
+13. Contesta la pregunta, después de buscar información.
 :::
 
 ## Vídeo de demostración

@@ -113,6 +113,66 @@ Usa esta lista para repasar la unidad. Ve marcando lo que ya dominas: se guarda 
 - [ ] Sé tener Apache y Nginx a la vez en puertos distintos y comprobar con `ss -tlnp` qué proceso escucha en cada uno.
 - [ ] Sé investigar un 403, un 404, un 500 o un 502, por qué sale otro sitio o por qué no arranca el servidor (sintaxis, puerto ocupado), mirando el `error.log`.
 
+## Proxy inverso
+
+- [ ] Sé explicar qué hace un proxy inverso y por qué, para el backend, el cliente es el proxy (la conexión TCP la abre el proxy).
+- [ ] Identifico casos de uso del proxy inverso: ocultar los backends, publicar varias aplicaciones con un solo nombre o IP, terminación TLS, caché…
+- [ ] Sé explicar qué problema hay con la cabecera `Host` que llega al backend cuando tiene virtual hosts por nombre, y cómo se resuelve (`ProxyPreserveHost` en Apache, `proxy_set_header Host` o `proxy_params` en Nginx).
+- [ ] Sé explicar por qué hay que reescribir la cabecera `Location` de las redirecciones del backend (`ProxyPassReverse` en Apache; en Nginx lo hace `proxy_redirect default`).
+- [ ] Sé explicar por qué una aplicación publicada en una subruta puede salir rota (rutas absolutas como `/css/estilo.css`) y por qué los enlaces relativos sí funcionan.
+- [ ] Sé configurar un proxy inverso con Apache (`mod_proxy`, `ProxyPass`, `ProxyPassReverse`) y con Nginx (`proxy_pass`, `include proxy_params`).
+- [ ] Sé explicar qué cambia la barra final de `proxy_pass` en Nginx (quitar el prefijo de la subruta o pasar la URL entera) y por qué `/shop` sin barra se redirige a `/shop/`.
+- [ ] Sé explicar para qué sirven las cabeceras `X-Forwarded-For`, `X-Real-IP` y `X-Forwarded-Proto`.
+
+## Balanceo de carga con HAProxy
+
+- [ ] ¿Sé diferenciar los algoritmos de balanceo estáticos (round robin, ponderado, afinidad, hash) de los dinámicos (conexiones mínimas, menor tiempo de respuesta)?
+- [ ] Identifico las secciones de `haproxy.cfg` (`global`, `defaults`, `frontend`, `backend`, `listen`) y sé configurar un balanceador con dos servidores.
+- [ ] Sé comprobar la configuración de haproxy antes de aplicarla (`haproxy -c -f`) y ver sus mensajes en el journal.
+- [ ] Sé explicar cómo funcionan los *health checks* (`check`, `inter`, `fall`, `rise`), qué pasa cuando cae un servidor y por qué, si caen todos, responde 503.
+- [ ] Sé explicar por qué el servidor web ve la IP del balanceador y cómo registrar la IP real del cliente (`option forwardfor` y el formato del log).
+- [ ] Sé explicar por qué se pierde una sesión de PHP sin afinidad y cómo la mantiene haproxy con una cookie (`cookie SERVERID insert`).
+- [ ] Sé configurar la página de estadísticas de haproxy con autenticación y explicar qué muestra (UP, DOWN, MAINT).
+- [ ] ¿Sé diferenciar la función del proxy inverso (decide adónde va cada petición por el nombre o la ruta) de la del balanceador (reparte entre servidores que sirven lo mismo)?
+
+## Tipos de almacenamiento
+
+- [ ] ¿Sé diferenciar DAS, NAS, SAN y almacenamiento en la nube: cómo se accede, qué se comparte (bloques, ficheros u objetos) y para qué se usa cada uno?
+- [ ] Sé explicar dónde está el sistema de ficheros en una NAS (en el servidor) y en una SAN (en el cliente, que formatea el disco).
+- [ ] Sé explicar por qué un disco de una SAN no se debe montar a la vez en dos clientes con un sistema de ficheros tradicional y por qué un directorio NFS sí se puede compartir.
+
+## RAID 5 y LVM
+
+- [ ] Sé explicar cómo funciona un RAID 5 (datos y paridad repartidos), cuántos discos necesita, cuántos pueden fallar y qué tamaño útil tiene.
+- [ ] Sé crear un RAID 5 con `mdadm`, comprobar su estado (`/proc/mdstat`, `mdadm --detail`) y hacer que se mantenga tras reiniciar (`mdadm.conf` y `update-initramfs -u`).
+- [ ] Sé explicar por qué un RAID puede aparecer como `md127` después de reiniciar.
+- [ ] Sé crear volúmenes lógicos sobre el RAID (volumen físico, grupo de volúmenes y volúmenes lógicos) y explicar qué ventaja tiene LVM.
+- [ ] Sé explicar por qué el volumen de la NAS se formatea en el servidor y los de la SAN no.
+
+## NAS con NFS
+
+- [ ] Sé explicar qué hace el servidor NFS (exporta directorios) y qué hace el cliente (los monta), y qué puerto usa NFSv4.
+- [ ] Sé exportar un directorio en `/etc/exports` a una red o a un equipo, en lectura y escritura o solo lectura, y aplicar los cambios (`exportfs -ra`, `exportfs -v`).
+- [ ] Sé explicar cómo comprueba NFS los permisos (con el UID y el GID del cliente) y qué hacen `root_squash`, `no_root_squash` y `all_squash`.
+- [ ] Sé resolver un *Permission denied* al escribir en un directorio NFS dando permisos en el servidor, y por qué `no_root_squash` es peligroso.
+- [ ] Sé montar un directorio NFS en el cliente y servir su contenido desde un servidor web (permisos de `www-data`, `<Directory>` o alias).
+
+## SAN con iSCSI
+
+- [ ] Identifico los elementos de iSCSI: target, LUN, portal, initiator e IQN.
+- [ ] Sé configurar un target con `tgt` (`backing-store`, `incominguser`, `initiator-address`) y comprobar sus LUN.
+- [ ] Sé descubrir los targets desde el cliente (`iscsiadm -m discovery`), configurar la autenticación CHAP en el nodo y conectarme (`--login`).
+- [ ] Sé ver las sesiones activas y los discos que ha recibido el cliente (`iscsiadm -m session`, `lsblk -S`), y desconectarme (`--logout`) desmontando antes el disco.
+- [ ] Sé hacer que el cliente vuelva a conectarse al target al arrancar (`node.startup automatic`).
+
+## Montajes al arrancar con systemd
+
+- [ ] Sé explicar qué es una unidad de montaje (`.mount`) y por qué su nombre tiene que coincidir con la ruta (`systemd-escape`).
+- [ ] Sé escribir una unidad `.mount` para un directorio NFS y para un disco iSCSI, y activarla (`daemon-reload`, `enable --now`).
+- [ ] Sé explicar por qué un disco iSCSI se monta por UUID y no por `/dev/sdX`.
+- [ ] Sé explicar por qué un montaje por red tiene que esperar a la red (`_netdev`, `After=network-online.target`) y, en iSCSI, al servicio `open-iscsi`.
+- [ ] Sé investigar los problemas frecuentes: `access denied by server`, `authorization failure`, el disco que no aparece o cambia de nombre y el `Where=` que no coincide con el nombre de la unidad.
+
 <style>
   .task-list-item {
     list-style: none;
