@@ -139,30 +139,9 @@ Las más importantes son:
 Las variables solo existen en el terminal donde has hecho el `source`. Si abres otro terminal, tienes que volver a cargar el fichero.
 :::
 
-### 2.4. Pide un token
+Con las credenciales cargadas ya puedes usar el cliente `openstack`.
 
-Como vimos en la presentación, para usar la API de Swift no se envían el usuario y la contraseña en cada petición. Primero se piden a **Keystone** un **token**, y después se envía ese token en cada petición. Pide uno:
-
-```bash
-openstack token issue
-```
-
-Verás algo parecido a esto:
-
-```
-+------------+-----------------------------------------+
-| Field      | Value                                   |
-+------------+-----------------------------------------+
-| expires    | 2026-11-04T10:15:02+0000                |
-| id         | gAAAAABpKx3f...                         |
-| project_id | 1a2b3c...                               |
-| user_id    | 9f8e7d...                               |
-+------------+-----------------------------------------+
-```
-
-El campo `id` es el token. Fíjate en `expires`: el token **caduca** pasado un tiempo. Si funciona, ya estás identificado y puedes usar el cliente. El cliente `openstack` pide el token automáticamente cada vez que lo usas.
-
-### 2.5. Consulta tus contenedores
+### 2.4. Consulta tus contenedores
 
 Lista tus contenedores:
 
@@ -178,7 +157,7 @@ openstack object list web
 
 Fíjate en que aparece el objeto **`img/foto.png`**: un único objeto con una barra en el nombre, no una carpeta. También aparece un objeto llamado **`img/`**: es un objeto **vacío** que Horizon creó al pulsar **+ Carpeta**, solo para poder mostrarte la carpeta aunque esté vacía.
 
-### 2.6. Crea un contenedor y sube objetos
+### 2.5. Crea un contenedor y sube objetos
 
 Crea un contenedor llamado `documentos`:
 
@@ -208,7 +187,7 @@ openstack object list --prefix textos/ documentos
 
 Así es como se simulan las carpetas: buscando los objetos que empiezan por un prefijo.
 
-### 2.7. Consulta y añade metadatos
+### 2.6. Consulta y añade metadatos
 
 Muestra la información del objeto `saludo.txt`:
 
@@ -231,7 +210,7 @@ openstack object set --property autor=Pepe documentos saludo.txt
 openstack object show documentos saludo.txt
 ```
 
-### 2.8. Descarga un objeto
+### 2.7. Descarga un objeto
 
 Borra el fichero de tu equipo y descarga el objeto:
 
@@ -241,7 +220,7 @@ openstack object save documentos saludo.txt
 cat saludo.txt
 ```
 
-### 2.9. Borra objetos y contenedores
+### 2.8. Borra objetos y contenedores
 
 Intenta borrar el contenedor `documentos`:
 
@@ -249,26 +228,7 @@ Intenta borrar el contenedor `documentos`:
 openstack container delete documentos
 ```
 
-Obtendrás un error: un contenedor **no se puede borrar si tiene objetos**. Puedes borrar los objetos uno a uno con `openstack object delete`, o borrar el contenedor con todo su contenido con `--recursive`. Todavía no lo borres: lo vamos a usar en el siguiente paso.
-
-### 2.10. ¿Qué hace el cliente por debajo?
-
-Con la opción `--debug`, el cliente muestra todo lo que hace. Ejecuta:
-
-```bash
-openstack --debug object list documentos
-```
-
-La salida es muy larga. Busca las líneas que empiezan por **`REQ:`** (las peticiones que envía el cliente) y **`RESP:`** (las respuestas que recibe). Encontrarás algo parecido a esto:
-
-```
-REQ: curl -g -i -X GET https://.../v1/AUTH_1a2b3c.../documentos?format=json -H "X-Auth-Token: {SHA256}..."
-RESP: [200] Content-Type: application/json; charset=utf-8 ...
-```
-
-El cliente `openstack` no hace nada mágico: envía una **petición HTTP `GET`** a la URL del contenedor, con el token en la cabecera **`X-Auth-Token`**, y recibe un **`200`** con la lista de objetos en formato JSON. Incluso te escribe la petición como un comando `curl`. Eso es lo que vamos a hacer en la parte 3.
-
-Ahora sí, borra el contenedor `documentos` con todo su contenido:
+Obtendrás un error: un contenedor **no se puede borrar si tiene objetos**. Puedes borrar los objetos uno a uno con `openstack object delete`, o borrar el contenedor con todo su contenido con `--recursive`:
 
 ```bash
 openstack container delete --recursive documentos
@@ -276,7 +236,6 @@ openstack container delete --recursive documentos
 
 :::tip[Piénsalo]
 * ¿Qué ventaja tiene el ETag? ¿Cuándo te serviría?
-* En el paso 2.10, ¿qué método HTTP se usa para listar un contenedor? ¿En qué cabecera viaja el token?
 :::
 
 ## Parte 3: La API REST con `curl`
@@ -291,14 +250,37 @@ Y sabrás si ha ido bien por el **código de estado** de la respuesta.
 
 Recuerda las opciones de `curl` que vas a usar: `-i` muestra las cabeceras de la respuesta, `-I` hace una petición `HEAD`, `-X` indica el método, `-H` añade una cabecera y `-T` envía un fichero en el cuerpo de la petición.
 
-### 3.1. Prepara el token y la URL
+### 3.1. Pide un token
 
-Con el fichero de credenciales cargado, guarda un token en la variable `TOKEN`:
+Como vimos en la presentación, en la API de Swift no se envían el usuario y la contraseña en cada petición. Primero se pide un **token** a **Keystone**, el servicio de identidad, y después se envía ese token en cada petición.
+
+El cliente `openstack` lo hacía por ti de forma automática cada vez que lo usabas. Ahora tienes que pedirlo tú. Con el fichero de credenciales cargado, ejecuta:
+
+```bash
+openstack token issue
+```
+
+Verás algo parecido a esto:
+
+```
++------------+-----------------------------------------+
+| Field      | Value                                   |
++------------+-----------------------------------------+
+| expires    | 2026-11-04T10:15:02+0000                |
+| id         | gAAAAABpKx3f...                         |
+| project_id | 1a2b3c...                               |
+| user_id    | 9f8e7d...                               |
++------------+-----------------------------------------+
+```
+
+El campo `id` es el token. Fíjate en `expires`: el token **caduca** pasado un tiempo. Para no tener que copiarlo a mano, guárdalo en la variable `TOKEN`:
 
 ```bash
 TOKEN=$(openstack token issue -f value -c id)
 echo $TOKEN
 ```
+
+### 3.2. Prepara la URL de tu cuenta
 
 Guarda en la variable `URL` la dirección de tu **cuenta** de Swift. Es la URL del servicio seguida de `AUTH_` y el identificador de tu proyecto:
 
@@ -307,11 +289,13 @@ URL=https://openstack.gonzalonazareno.org/swift/v1/AUTH_$OS_PROJECT_ID
 echo $URL
 ```
 
+Comprueba que coincide con el enlace que te mostró Horizon en el paso 1.6.
+
 :::caution
-Si tu token caduca, las peticiones empezarán a devolver **401**. Vuelve a ejecutar la primera instrucción para obtener otro.
+Si tu token caduca, las peticiones empezarán a devolver **401**. Vuelve a ejecutar `TOKEN=$(openstack token issue -f value -c id)` para obtener otro.
 :::
 
-### 3.2. Consulta tu cuenta (`HEAD`)
+### 3.3. Consulta tu cuenta (`HEAD`)
 
 Con una petición `HEAD` obtienes los **metadatos** de tu cuenta, sin cuerpo:
 
@@ -329,7 +313,7 @@ X-Account-Bytes-Used: 52832
 
 Los metadatos viajan en las **cabeceras** de la respuesta: el número de contenedores, de objetos y los bytes usados (tus números serán distintos). El código **204 No Content** indica que la petición ha ido bien y que la respuesta no tiene cuerpo.
 
-### 3.3. Lista los contenedores (`GET`)
+### 3.4. Lista los contenedores (`GET`)
 
 Con una petición `GET` a la cuenta obtienes la lista de contenedores:
 
@@ -343,7 +327,7 @@ Ahora el código es **200 OK** y la lista viene en el **cuerpo**, un contenedor 
 curl -H "X-Auth-Token: $TOKEN" "$URL?format=json"
 ```
 
-### 3.4. Crea un contenedor (`PUT`)
+### 3.5. Crea un contenedor (`PUT`)
 
 Para crear un contenedor se usa el método **`PUT`** sobre la URL que tendrá el contenedor:
 
@@ -353,7 +337,7 @@ curl -i -X PUT -H "X-Auth-Token: $TOKEN" $URL/api
 
 La respuesta es **201 Created**: se ha creado un recurso nuevo.
 
-### 3.5. Sube un objeto (`PUT`)
+### 3.6. Sube un objeto (`PUT`)
 
 Para subir un objeto también se usa **`PUT`**, sobre la URL que tendrá el objeto, enviando el fichero en el cuerpo de la petición:
 
@@ -364,7 +348,7 @@ curl -i -X PUT -H "X-Auth-Token: $TOKEN" -T index.html $URL/api/index.html
 
 La respuesta es otra vez **201 Created**. Fíjate en la cabecera **`Etag`**: compárala con el resultado de `md5sum index.html`.
 
-### 3.6. Lista los objetos y consulta sus metadatos
+### 3.7. Lista los objetos y consulta sus metadatos
 
 Lista los objetos del contenedor con `GET`:
 
@@ -380,7 +364,7 @@ curl -I -H "X-Auth-Token: $TOKEN" $URL/api/index.html
 
 Fíjate en las cabeceras `Content-Length`, `Content-Type`, `Etag` y `Last-Modified`. El `Content-Type` es `text/html`: como `curl` no lo ha indicado al subir el fichero, Swift lo ha **deducido por la extensión** del nombre.
 
-### 3.7. Descarga el objeto (`GET`)
+### 3.8. Descarga el objeto (`GET`)
 
 ```bash
 curl -H "X-Auth-Token: $TOKEN" $URL/api/index.html
@@ -388,7 +372,7 @@ curl -H "X-Auth-Token: $TOKEN" $URL/api/index.html
 
 El contenido del objeto viene en el **cuerpo** de la respuesta.
 
-### 3.8. Añade metadatos (`POST`)
+### 3.9. Añade metadatos (`POST`)
 
 Para modificar los metadatos de un objeto se usa **`POST`**. Los metadatos propios se envían en cabeceras que empiezan por `X-Object-Meta-`:
 
@@ -396,9 +380,9 @@ Para modificar los metadatos de un objeto se usa **`POST`**. Los metadatos propi
 curl -i -X POST -H "X-Auth-Token: $TOKEN" -H "X-Object-Meta-Autor: Pepe" $URL/api/index.html
 ```
 
-La respuesta es **202 Accepted**. Vuelve a hacer la petición `HEAD` del paso 3.6 y comprueba que aparece la cabecera `X-Object-Meta-Autor`.
+La respuesta es **202 Accepted**. Vuelve a hacer la petición `HEAD` del paso 3.7 y comprueba que aparece la cabecera `X-Object-Meta-Autor`.
 
-### 3.9. Sin token no hay acceso
+### 3.10. Sin token no hay acceso
 
 Intenta descargar el objeto **sin enviar el token**:
 
@@ -414,7 +398,7 @@ curl -i -H "X-Auth-Token: tokenfalso" $URL/api/index.html
 
 También obtienes **401**: el token no es válido.
 
-### 3.10. Haz público el contenedor (`POST`)
+### 3.11. Haz público el contenedor (`POST`)
 
 Para hacer público un contenedor, se le asigna una **ACL de lectura**. Se hace con una petición `POST` al contenedor, con la cabecera `X-Container-Read`. El valor `.r:*` significa «cualquiera puede leer los objetos»:
 
@@ -439,7 +423,7 @@ curl -i -X DELETE $URL/api/index.html
 
 Las dos peticiones se rechazan: cualquiera puede descargar un objeto si conoce su URL, pero para listar el contenido o modificarlo sigue haciendo falta identificarse.
 
-### 3.11. Borra el objeto y el contenedor (`DELETE`)
+### 3.12. Borra el objeto y el contenedor (`DELETE`)
 
 Intenta borrar el contenedor:
 
@@ -447,7 +431,7 @@ Intenta borrar el contenedor:
 curl -i -X DELETE -H "X-Auth-Token: $TOKEN" $URL/api
 ```
 
-La respuesta es **409 Conflict**: el contenedor no está vacío. Es el mismo error que te dio el cliente `openstack` en el paso 2.9. Borra primero el objeto y después el contenedor:
+La respuesta es **409 Conflict**: el contenedor no está vacío. Es el mismo error que te dio el cliente `openstack` en el paso 2.8. Borra primero el objeto y después el contenedor:
 
 ```bash
 curl -i -X DELETE -H "X-Auth-Token: $TOKEN" $URL/api/index.html
