@@ -305,13 +305,35 @@ curl -I -H "X-Auth-Token: $TOKEN" $URL
 
 ```
 HTTP/1.1 204 No Content
+Server: nginx/1.22.1
+Date: Wed, 04 Nov 2026 09:54:08 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
 X-Account-Container-Count: 1
 X-Account-Object-Count: 3
-X-Account-Bytes-Used: 52832
-...
+X-Account-Bytes-Used: 98703
+X-Timestamp: 1793784386.33060
+X-Account-Storage-Policy-Policy-0-Container-Count: 1
+X-Account-Storage-Policy-Policy-0-Object-Count: 3
+X-Account-Storage-Policy-Policy-0-Bytes-Used: 98703
+Accept-Ranges: bytes
+X-Account-Project-Domain-Id: ec71fc22b87d4c97b4bc2052ee223fa7
+Vary: Accept
+X-Trans-Id: tx27eea8e4f4b043db87669-006aeb00c0
+X-Openstack-Request-Id: tx27eea8e4f4b043db87669-006aeb00c0
 ```
 
-Los metadatos viajan en las **cabeceras** de la respuesta: el número de contenedores, de objetos y los bytes usados (tus números serán distintos). El código **204 No Content** indica que la petición ha ido bien y que la respuesta no tiene cuerpo.
+Fíjate en:
+
+* El código **204 No Content**: la petición ha ido bien y la respuesta no tiene cuerpo (`Content-Length: 0`).
+* Los **metadatos** de la cuenta viajan en las **cabeceras** que empiezan por `X-Account-`: el número de contenedores (`X-Account-Container-Count`), de objetos (`X-Account-Object-Count`) y los bytes usados (`X-Account-Bytes-Used`).
+* La cabecera `Server: nginx`: delante de Swift hay un **proxy inverso**, como los que configuraste en la tarea 2.2.
+* La cabecera `X-Trans-Id`: un identificador único de la petición, que sirve para buscarla en los *logs* del servidor si algo falla.
+
+:::note
+Es posible que el número de objetos y de bytes de la cuenta **no coincida** con lo que acabas de subir. Swift no recalcula los totales de la cuenta cada vez que se sube un objeto: lo hace un proceso en segundo plano pasado un tiempo. Es lo que se llama **consistencia eventual**: el dato acaba siendo correcto, pero no al instante. Los totales de cada **contenedor**, en cambio, sí se actualizan en el momento: lo comprobarás en el paso 3.7.
+:::
 
 ### 3.4. Lista los contenedores (`GET`)
 
@@ -335,7 +357,7 @@ Para crear un contenedor se usa el método **`PUT`** sobre la URL que tendrá el
 curl -i -X PUT -H "X-Auth-Token: $TOKEN" $URL/api
 ```
 
-La respuesta es **201 Created**: se ha creado un recurso nuevo.
+La respuesta es **201 Created**: se ha creado un recurso nuevo. Repite la misma petición: ahora la respuesta es **202 Accepted**, porque el contenedor ya existía y no se ha creado nada nuevo.
 
 ### 3.6. Sube un objeto (`PUT`)
 
@@ -355,6 +377,32 @@ Lista los objetos del contenedor con `GET`:
 ```bash
 curl -i -H "X-Auth-Token: $TOKEN" $URL/api
 ```
+
+Consulta los metadatos del contenedor con `HEAD`. Por ejemplo, para el contenedor `web` que creaste con Horizon:
+
+```bash
+curl -I -H "X-Auth-Token: $TOKEN" $URL/web
+```
+
+```
+HTTP/1.1 204 No Content
+Server: nginx/1.22.1
+Date: Wed, 04 Nov 2026 09:46:01 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+X-Container-Object-Count: 3
+X-Container-Bytes-Used: 98703
+X-Timestamp: 1793784386.38362
+Last-Modified: Wed, 04 Nov 2026 09:29:11 GMT
+Accept-Ranges: bytes
+X-Storage-Policy: Policy-0
+Vary: Accept
+X-Trans-Id: tx742a365232844e639584d-006aeafed9
+X-Openstack-Request-Id: tx742a365232844e639584d-006aeafed9
+```
+
+Ahora las cabeceras empiezan por `X-Container-`: el contenedor tiene **3 objetos** (`logo.png`, `img/` e `img/foto.png`) y ocupa 98703 bytes. Repite la petición con el contenedor `api`.
 
 Consulta los metadatos del objeto con `HEAD`:
 
@@ -421,7 +469,7 @@ curl -i $URL/api
 curl -i -X DELETE $URL/api/index.html
 ```
 
-Las dos peticiones se rechazan: cualquiera puede descargar un objeto si conoce su URL, pero para listar el contenido o modificarlo sigue haciendo falta identificarse.
+Las dos peticiones devuelven **401 Unauthorized**: cualquiera puede descargar un objeto si conoce su URL, pero para listar el contenido del contenedor o modificarlo sigue haciendo falta identificarse.
 
 ### 3.12. Borra el objeto y el contenedor (`DELETE`)
 
