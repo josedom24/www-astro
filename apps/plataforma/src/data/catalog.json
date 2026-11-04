@@ -107,9 +107,9 @@
       },
       {
         "title": "Curso: Introducción a Proxmox VE. CEP Castilleja de la Cuesta (2022)",
-        "url": "https://github.com/iesgn/curso_proxmox_cep",
+        "url": "https://git.josedomingo.org/iesgn/curso_proxmox_cep",
         "year": "2022",
-        "external": "github",
+        "external": "forja",
         "ow": false
       }
     ]
@@ -154,9 +154,9 @@
       },
       {
         "title": "Curso: Introducción a Kubernetes. CEP Castilleja de la Cuesta (2022)",
-        "url": "https://github.com/iesgn/curso_kubernetes_cep",
+        "url": "https://git.josedomingo.org/iesgn/curso_kubernetes_cep",
         "year": "2022",
-        "external": "github",
+        "external": "forja",
         "ow": false
       },
       {
@@ -187,9 +187,9 @@
       },
       {
         "title": "Curso de infraestructura Cloud con OpenStack. Universidad de Almería (2017)",
-        "url": "https://github.com/iesgn/curso-ual17",
+        "url": "https://git.josedomingo.org/iesgn/curso-ual17",
         "year": "2017",
-        "external": "github",
+        "external": "forja",
         "ow": false
       },
       {
