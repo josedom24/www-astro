@@ -10,9 +10,9 @@ toc: false
 * [Proxy inverso y balanceador de carga](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/proxy_balanceador.pdf)
   * [Tarea 2.2: Proxy inverso y balanceador de carga](tarea2/)
 * [Protocolos de almacenamiento](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/almacenamiento.pdf)
+  * [Práctica: Protocolo HTTP y almacenamiento](practica/)
 * [Almacenamiento de objetos](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/objetos.pdf)
   * [Ejercicio 2: Almacenamiento de objetos con OpenStack Swift](ejercicio2/)
   * [Añadir a la práctica: almacenamiento de objetos](practica_swift/)
-  * [Práctica: Protocolo HTTP y almacenamiento](practica/)
 * [¿Qué tengo que saber de esta unidad?](que_saber/)
 
