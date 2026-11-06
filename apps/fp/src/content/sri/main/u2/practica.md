@@ -34,7 +34,7 @@ Elige el escenario que más te guste. En todos ellos, el **servidor de almacenam
 El servidor web tendrá además dos aplicaciones web implantadas en contenedores docker:
 
 * Un juego llamado **2048** (imagen docker `josedom24/2048:v1`, que sirve el contenido en el puerto 80 del contenedor) que será accesible desde el proxy inverso con la URL `www.tunombre.org/game`.
-* La aplicación de monitorización **Grafana** (imagen docker `grafana/grafana`, que sirve el contenido en el puerto 3000) que será accesible desde el proxy inverso con la URL `www.tunombre.org/grafana`. Grafana, por defecto, espera estar en la raíz del sitio: para publicarla en una subruta hay que indicarle cuál es su URL pública y que se sirve desde una subruta, con las variables de entorno `GF_SERVER_ROOT_URL` y `GF_SERVER_SERVE_FROM_SUB_PATH`. Busca en su documentación qué valor necesitan, y piensa qué URL tiene que pasarle el proxy inverso para que funcione.
+* La aplicación de monitorización **Grafana** (imagen docker `grafana/grafana`, que sirve el contenido en el puerto 3000) que será accesible desde el proxy inverso con la URL `www.tunombre.org/grafana`. Grafana, por defecto, espera estar en la raíz del sitio: para publicarla en una subruta hay que indicarle cuál es su URL pública y que se sirve desde una subruta, con la variable de entorno `GF_SERVER_ROOT_URL`. Busca en su documentación qué valor necesitan, y piensa qué URL tiene que pasarle el proxy inverso para que funcione.
 
 ### Balanceador de carga
 
