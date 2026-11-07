@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="200" viewBox="0 0 960 200" role="img" aria-labelledby="titulo">
+  <title id="titulo">openINIT: Generador de cloud-config para cloud-init</title>
+  <rect width="960" height="200" rx="14" fill="#2a2350"/>
+  <!-- El logo de la cabecera de la web (24×24), a 4,5 aumentos: un fichero con un triángulo de «ejecutar» -->
+  <g transform="translate(46 46) scale(4.5)" fill="none" stroke="#f0a23b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/>
+    <path d="M14 2.5V8h5.5"/>
+    <path d="M10.5 12.5l4 2.5-4 2.5z" fill="#f0a23b"/>
+  </g>
+  <text x="200" y="112" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Cantarell, 'DejaVu Sans', sans-serif"
+        font-size="72" letter-spacing="1.4" fill="#ffffff">open<tspan font-weight="700" fill="#f0a23b">INIT</tspan></text>
+  <text x="203" y="152" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Cantarell, 'DejaVu Sans', sans-serif"
+        font-size="24" fill="#d3cfe6">Generador de cloud-config para cloud-init</text>
+</svg>
