@@ -151,3 +151,7 @@ Además de las capturas y ficheros de configuración, debes grabar un **vídeo d
 :::
 
 Se valorará que la explicación hablada demuestre que entiendes lo que ocurre en cada paso, no solo que el resultado en pantalla sea el esperado. Sube el vídeo a YouTube (puede ser como **oculto** / **no listado**) y añade la URL en la incidencia de Redmine junto con el resto de la entrega.
+
+:::caution[Esta práctica se amplía]
+Se va a añadir a esta práctica un último apartado sobre **almacenamiento de objetos** (OpenStack Swift), con las entregas **15 a 18**. Ve mirando esta página: cuando se publique, aparecerá **después del vídeo**.
+:::

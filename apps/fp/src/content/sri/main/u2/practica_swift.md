@@ -4,8 +4,8 @@ title: "Añadir a la práctica: almacenamiento de objetos"
 
 <!--
 BORRADOR: apartado nuevo para la «Práctica: Protocolo HTTP y almacenamiento».
-Iría después de «Servidor NAS» y antes de «Vídeo de demostración».
-Las entregas siguen la numeración de la práctica (14, 15…) y el punto del vídeo sería el 6.
+Iría después de «Vídeo de demostración» (que es la entrega 14), al final de la práctica.
+Las entregas siguen la numeración de la práctica (15, 16…). El vídeo no cambia.
 Al añadirlo a practica.md, comprobar que pruebas/asir-sri-sri_práctica_2_protocolo_http_y_almacenamiento/prueba.md (Redmine) sigue enlazando a la web.
 -->
 
@@ -35,14 +35,8 @@ Puedes repasar cómo se trabaja con Swift en el [Ejercicio 2: Almacenamiento de 
 :::tip[Entrega del almacenamiento de objetos]
 Las comprobaciones con `curl` se entregan como texto, con el comando y su salida (puedes acortar el token).
 
-14. El comando con el que has creado el contenedor, y las peticiones `curl` con las que has subido los objetos, has añadido el metadato y has hecho público el contenedor, con su **código de estado**. Explica qué método HTTP has usado en cada una y por qué.
-15. La salida de `openstack object list app-tunombre` y un `curl -I` **sin token** a la hoja de estilo, donde se vean el código de estado, el `Content-Type`, el `Etag` y el metadato `X-Object-Meta-Autor`. Un `curl -i` **sin token** al contenedor, donde se vea que no puedes listarlo.
-16. El código HTML de la aplicación donde se cargan la hoja de estilo y las imágenes desde Swift, y una captura de la pestaña *Red* de las herramientas para desarrolladores donde se vea a qué servidor se pide cada recurso.
-17. Contesta las preguntas.
+15. El comando con el que has creado el contenedor, y las peticiones `curl` con las que has subido los objetos, has añadido el metadato y has hecho público el contenedor, con su **código de estado**. Explica qué método HTTP has usado en cada una y por qué.
+16. La salida de `openstack object list app-tunombre` y un `curl -I` **sin token** a la hoja de estilo, donde se vean el código de estado, el `Content-Type`, el `Etag` y el metadato `X-Object-Meta-Autor`. Un `curl -i` **sin token** al contenedor, donde se vea que no puedes listarlo.
+17. El código HTML de la aplicación donde se cargan la hoja de estilo y las imágenes desde Swift, y una captura de la pestaña *Red* de las herramientas para desarrolladores donde se vea a qué servidor se pide cada recurso.
+18. Contesta las preguntas.
 :::
-
-<!--
-Punto nuevo para «Qué debe mostrar el vídeo»:
-
-6. Acceso a `app.tunombre.org` con las herramientas para desarrolladores abiertas, comentando en voz qué recursos llegan desde los backends y cuáles desde Swift. Haz privado el contenedor (petición `POST` con `curl` y la cabecera `X-Remove-Container-Read: x`) y recarga la página: explica qué ocurre y por qué.
--->
