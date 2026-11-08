@@ -8,8 +8,4 @@ toc: false
   * [Tarea 2.1: Contenedores LXC](tarea1/)
 * [Presentación: Contenedores Docker](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/docker.pdf)
   * [Tarea 2.2: Contenedores Docker](tarea2/)
-
-
-<!--  
 * [Práctica: LXC - Docker](practica/)
--->
