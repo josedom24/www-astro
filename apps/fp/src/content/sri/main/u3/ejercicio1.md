@@ -19,7 +19,7 @@ De principio no es necesaria ninguna configuración para que el servidor funcion
 	```
 * Además tienes que tener en cuenta que el servidor bind9 sólo permite consultas desde la misma red local, si por ejemplo estamos en casa y con la VPN queremos hacer una consulta, se estaría realizando desde otra red, en este caso, en el fichero `/etc/bind/named.conf.options` debemos configurar el parámetro `allow-query`:
 	```
-	allow-query {172.201.0.0/16; 172.22.0.0/16; localhost;};
+	allow-query {172.22.0.0/16; 100.64.0.0/10; 172.210.0.0/16; localhost;};
 	```
 
 :::caution
