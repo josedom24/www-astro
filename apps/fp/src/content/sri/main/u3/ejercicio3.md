@@ -2,9 +2,9 @@
 title: "Ejercicio 3: Delegación de subdominios con bind9"
 ---
 
-En este ejercicio vamos a crear un subdominio del dominio principal, y vamos a configurar el servidor DNS c on autoridad para el subdominio.
+En este ejercicio vamos a crear un subdominio del dominio principal, y vamos a configurar el servidor DNS con autoridad para el subdominio.
 
-Por ejemplo, tenemos el dominio `example.com` y queremos crear un subdomimio `es.example.com` por lo que podríamos tener los siguientes nombres:
+Por ejemplo, tenemos el dominio `example.com` y queremos crear un subdominio `es.example.com` por lo que podríamos tener los siguientes nombres:
 
 * Nombre de dominio principal: `example.com`
 * Nombre de un host en el dominio principal: `www.example.com`
@@ -15,7 +15,9 @@ Para conseguir configurar subdominios vamos a **delegar el subdominio**, es deci
 
 ### Creación del servidor DNS delegado
 
-Crea una nueva máquina e instala un servidor DNS bind9, será el servidor DNS con autoridad para la zona delegada que será `informatica.tunombre.org`. Nombra de manera adecuada esta máquina para que tenga el nombre `dns.informatica.tunombre.org`. Voy a suponer que la dirección de esta nueva máquina es la `172.22.200.120`.
+Crea una nueva **instancia de OpenStack** con su **IP flotante** e instala un servidor DNS bind9, será el servidor DNS con autoridad para la zona delegada que será `informatica.tunombre.org`. Nombra de manera adecuada esta máquina para que tenga el nombre `dns.informatica.tunombre.org`. En este ejercicio usaremos el marcador `IP_DNS_INFORMATICA` para la **IP flotante** de esta nueva instancia: sustitúyelo por su valor real.
+
+En el grupo de seguridad de la nueva instancia abre el puerto **53 en UDP y en TCP**, y configura `/etc/default/named` (`OPTIONS="-4 -u bind"`) y `allow-query` en `/etc/bind/named.conf.options`, igual que en el ejercicio 1.
 
 * Tendremos el servidor `dns1.tunombre.org` (y el esclavo `dns2.tunombre.org`) con autoridad para la zona `tunombre.org`. En esta zona, por ejemplo, puede existir el nombre `www.tunombre.org`.
 * Tendremos el servidor `dns.informatica.tunombre.org` con autoridad sobre el subdominio delegado, es decir tendrá autoridad para la zona `informatica.tunombre.org`.  En esta zona, por ejemplo, puede existir el nombre `www.informatica.tunombre.org`.
@@ -27,7 +29,7 @@ Vamos a realizar la delegación de autoridad para el subdominio en el servidor D
 	...
 	$ORIGIN informatica.tunombre.org.
 	@		IN	 NS		dns
-	dns 	IN	 A 		172.22.200.120
+	dns 	IN	 A 		IP_DNS_INFORMATICA
 
 * El parámetro `$ORIGIN` nos permite usar nombres no cualificados totalmente.
 * Indicamos que el servidor con autoridad para la zona `informatica.tunombre.org` (registro `NS`), es `dns.informatica.tunombre.org`.
@@ -56,7 +58,7 @@ Y creamos la zona en el fichero `db.informatica.tunombre.org`:
 	@	IN	NS		dns.informatica.tunombre.org.
 	@	IN	MX	10	mail.informatica.tunombre.org.
 	$ORIGIN informatica.tunombre.org.
-	dns			IN	A		172.22.200.120
+	dns			IN	A		IP_DNS_INFORMATICA
 	mail			IN	A		172.22.200.121 
 	web			IN	A 		172.22.200.122
 	www			IN 	CNAME 		web
@@ -65,8 +67,8 @@ Y creamos la zona en el fichero `db.informatica.tunombre.org`:
 
 
 :::caution[¿Qué tienes que hacer?]
-* No modifiques el fichero `/etc/resolv.conf` del cliente, es decir, las consultas se hacen al servidor DNS principal, cuando preguntemos por un nombre en la zona delegada el servidor DNS principal, preguntará al servidor DNS delegado y guardara la respuesta en su caché. Pregunta por la dirección ip del nombre `www.informatica.tunombre.org`. ¿Quién ha respondido?. 
-* Realiza una consulta consulta para averiguar el servidor DNS con autoridad para la zona del dominio `informatica.tunombre.org`. ¿Es el mismo que el servidor DNS con autoridad para la zona `tunombre.org`?
+* No modifiques el fichero `/etc/resolv.conf` del cliente, es decir, las consultas se hacen al servidor DNS principal, cuando preguntemos por un nombre en la zona delegada el servidor DNS principal, preguntará al servidor DNS delegado y guardará la respuesta en su caché. Pregunta por la dirección ip del nombre `www.informatica.tunombre.org`. ¿Quién ha respondido?. 
+* Realiza una consulta para averiguar el servidor DNS con autoridad para la zona del dominio `informatica.tunombre.org`. ¿Es el mismo que el servidor DNS con autoridad para la zona `tunombre.org`?
 * Realiza una consulta para averiguar el servidor de correo configurado para `informatica.tunombre.org`.
 :::
 

@@ -2,30 +2,31 @@
 title: "Ejercicio 1: Instalación y configuración del servidor bind9 en nuestra red local"
 ---
 
-Crea una máquina (configúrala para que se llame `dns1.tunombre.org`). Ejecuta el comando `hostname -f` para comprobar que el nombre FQDN se ha configurado de forma adecuada.
-En esta máquina vamos a instalar un servidor DNS `bind9`.
+Crea una **instancia de OpenStack** y asígnale una **IP flotante** (configúrala para que se llame `dns1.tunombre.org`). Ejecuta el comando `hostname -f` para comprobar que el nombre FQDN se ha configurado de forma adecuada.
+En esta instancia vamos a instalar un servidor DNS `bind9`. Los clientes (tu ordenador, otra máquina) le harán las consultas usando su **IP flotante**.
+
+:::caution
+Para que el servidor DNS pueda recibir consultas, en el **grupo de seguridad** de la instancia tienes que abrir el puerto **53 en UDP y en TCP**.
+:::
 
 ### Configuración inicial del servidor DNS
 
-De principio no es necesario ninguna configuración para que el servidor funcione como servidor recursivo/caché. Sin embargo vamos a hacer una pequeña configuración:
+De principio no es necesaria ninguna configuración para que el servidor funcione como servidor recursivo/caché. Sin embargo vamos a hacer una pequeña configuración:
 
-* Para que no se intente resolver usando la dirección ipv6 de los servidores DNS, vamos a modificar la opción `OPTION` en el fichero de configuración `/etc/default/named` con las siguientes opciones:
+* Para que no se intente resolver usando la dirección ipv6 de los servidores DNS, vamos a modificar la variable `OPTIONS` en el fichero de configuración `/etc/default/named` con las siguientes opciones:
 	```
-	OPTIONS="-4 -f -u bind"
+	OPTIONS="-4 -u bind"
 	```
 * Además tienes que tener en cuenta que el servidor bind9 sólo permite consultas desde la misma red local, si por ejemplo estamos en casa y con la VPN queremos hacer una consulta, se estaría realizando desde otra red, en este caso, en el fichero `/etc/bind/named.conf.options` debemos configurar el parámetro `allow-query`:
 	```
-	allow-query {172.201.0.0/16; 172.22.0.0/16;};
-	```
-* Desactivamos, en el mismo fichero, la validación DNSSEC, que es un sistema de seguridad para proteger nuestro servidor, para ello cambiamos la siguiente directiva:
-	```
-	dnssec-validation no;
+	allow-query {172.22.0.0/16; 100.64.0.0/10; 172.210.0.0/16; localhost;};
 	```
 
 :::caution
-Reiniciamos el servidor, y ya  está funcionando, para ello realiza la siguiente consulta desde tu ordenador: `dig @<IP de tu servidor DNS> www.josedomingo.org`.
-* ¿Cuánto ha tardado en realizar la consulta? ¿Qué consultas se han realizado para averiguar la dirección IP? 
-* Realiza de nuevo la consulta. ¿Cuánto ha tardado ahora? ¿Por qué ha tardado menos? ¿Qué consultas se han realizado para averiguar la dirección IP?
+Reiniciamos el servidor (`systemctl restart bind9`) y ya está funcionando. Para comprobarlo, realiza la siguiente consulta desde tu ordenador: `dig @<IP de tu servidor DNS> www.josedomingo.org`.
+* ¿Cuánto ha tardado en realizar la consulta?
+* Para ver qué consultas se realizan para averiguar la dirección IP, ejecuta **en la instancia** `dig +trace www.josedomingo.org`. ¿Qué servidores se han preguntado y en qué orden?
+* Realiza de nuevo la consulta desde tu ordenador. ¿Cuánto ha tardado ahora? ¿Por qué ha tardado menos?
 :::
 
 ### Creación de la zona de resolución directa
@@ -38,9 +39,9 @@ Vamos a crear una zona directa para el dominio `tunombre.org`, para ello vamos a
 	};
 
 * Es una zona de tipo maestra.
-* La información de la zona se guardará en el fichero `db.tunombre.org` que estará en `/var/cache/bind9`.
+* La información de la zona se guardará en el fichero `db.tunombre.org` que estará en `/var/cache/bind`.
 
-Vamos a crear el fichero de zona en el fichero `/var/cache/bind/db.tunombre.org`. El contenido de este fichero quedaría (**Cambia la dirección de tu servidor `dns1.tunombre.org` para poner la dirección IP real**):
+Vamos a crear el fichero de zona en el fichero `/var/cache/bind/db.tunombre.org`. El contenido de este fichero quedaría (**Cambia la dirección de tu servidor `dns1.tunombre.org` para poner su IP flotante**):
 
 	$TTL    86400
 	@       IN      SOA     dns1.tunombre.org. root.tunombre.org. (
@@ -58,12 +59,12 @@ Vamos a crear el fichero de zona en el fichero `/var/cache/bind/db.tunombre.org`
 	asterix		IN	A	172.22.200.102
 	obelix			IN	A	172.22.200.103
 	www			IN	CNAME	asterix
-	informatica		IN	CNAME	asterix
+	intranet		IN	CNAME	asterix
 	ftp			IN	CNAME	obelix
 
 * **Todos los nombres de dominios acaban en PUNTO.**
 * `$TTL`: Tiempo en segundos (24 horas) que la resolución se va a guardar en una caché intermedia. 
-* Registro `SOA`: *Start of Authoritive*, contiene información sobre la zona: el nombre del servidor DNS maestro, el correo de la persona responsable de la zona (sin la @), un número de serie (que ya estudiaremos) y unos tiempos que ya estudiaremos.
+* Registro `SOA`: *Start of Authority*, contiene información sobre la zona: el nombre del servidor DNS maestro, el correo de la persona responsable de la zona (sin la @), un número de serie (que ya estudiaremos) y unos tiempos que ya estudiaremos.
 * La `@` sustituye al nombre de dominio. 
 * Por lo tanto el servidor DNS con autoridad (registro `NS`) para **este dominio** (ya que tiene la `@` delante) es `dns1.tunombre.org`.
 * Registro `MX`: Es el nombre del servidor de correo electrónico al que hay que mandar el correo cuando el destinatario es del dominio `tunombre.org`. Podemos tener varios registros `MX`, siendo el número que indicamos la prioridad de envío (más pequeño más prioritario).
@@ -71,13 +72,14 @@ Vamos a crear el fichero de zona en el fichero `/var/cache/bind/db.tunombre.org`
 * A continuación se van añadiendo los registros: `A` para indicar direcciones IPv4, `CNAME` para indicar alias.
 * Los nombres de las **máquinas físicas** (que tienen dirección IP) se suelen indicar usando registros `A`.
 * Los nombres de los **servicios** se suelen indicar con registros `CNAME`.
-* Por ejemplo, tenemos una máquina física que se llama `asterix` que tiene dos servicios (parece que es un servidor web) `www` y `informatica`.
+* Por ejemplo, tenemos una máquina física que se llama `asterix` que tiene dos servicios (por ejemplo, un servidor web) `www` e `intranet`.
 * Por ejemplo, el servicio `ftp` está alojado en la máquina física `obelix`.
 
 
 :::caution[¿Qué tienes que hacer?]
-* Modifica la zona para que el servidor DNS tenga la IP real de tu máquina.
-* Configura tu DNS en otra máquina, y realiza las siguientes consultas a tu servidor DNS:
+* Modifica la zona para que el servidor DNS tenga la IP flotante de tu instancia.
+* Comprueba la configuración y la zona antes de reiniciar: `named-checkconf` y `named-checkzone tunombre.org /var/cache/bind/db.tunombre.org`. Si no hay errores, la zona se carga y aparece `OK`.
+* Reinicia el servidor y, desde otra máquina, realiza las siguientes consultas a tu servidor DNS (`dig @<IP de tu servidor DNS> ...`):
 	* Dirección IP de una máquina o servicio de tu dominio.
 	* Servidor DNS con autoridad del dominio.
 	* Servidor de correo del dominio.
@@ -121,14 +123,16 @@ Vamos a crear el fichero de zona inversa en el fichero `/var/cache/bind/db.172.2
 * El registro `NS` es **igual que el de la zona de resolución directa.**
 * No tiene registro `MX`.
 * El nombre de la máquina en la zona inversa está formado por los números de la IP que corresponden al host colocados de forma inversa. Por ejemplo, si tengo la IP `172.22.200.100` de la red `172.22.0.0/16`, su nombre en la zona inversa será `100.200.22.172.in-addr.arpa`. Como hemos puesto la directiva `$ORIGIN`, el nombre lo ponemos sin dominio, es decir `100.200`. 
+* En el registro de `dns1`, sustituye `XX.XX` por los dos últimos números de su IP flotante **en orden inverso**. Por ejemplo, si la IP flotante es `172.22.200.13`, el nombre es `13.200`.
 * Otro ejemplo, si tuviéramos una máquina con IP `192.168.0.50` de la red `192.168.0.0/24`, su nombre en la zona inversa será `50.0.168.192.in-addr.arpa`. El dominio sería `0.168.192.in-addr.arpa` y el nombre `50`.
 * Tenemos un registro `PTR` por cada registro `A` en la zona de resolución directa.
 * Los nombres de los servicios (`CNAME`) en la zona de resolución directa no se definen en esta zona.
 
 :::caution[¿Qué tienes que hacer?]
+* Comprueba la zona inversa antes de reiniciar: `named-checkzone 22.172.in-addr.arpa /var/cache/bind/db.172.22.0.0`. Reinicia el servidor.
 * Realiza varias consultas inversas sobre el servidor DNS.
 	* Utiliza en algunas `dig -x`.
-	* Y en otras `dit ptr`.
+	* Y en otras `dig ptr`.
 :::
 
 
