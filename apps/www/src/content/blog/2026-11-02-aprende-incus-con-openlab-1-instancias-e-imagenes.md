@@ -1,6 +1,6 @@
 ---
 title: "Aprende Incus con openLAB: instancias e imágenes"
-date: 2026-11-02
+date: 2026-11-11
 slug: "blog/2026/11/aprende-incus-con-openlab-1-instancias-e-imagenes"
 tags:
   - "Incus"
