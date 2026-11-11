@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="200" viewBox="0 0 960 200" role="img" aria-labelledby="titulo">
+  <title id="titulo">Aprende Incus con openLAB: instancias e imágenes</title>
+  <rect width="960" height="200" rx="14" fill="#1f2b3a"/>
+  <!-- El icono de la cabecera de la web (24×24), a 4,5 aumentos: dos redes y tres instancias -->
+  <g transform="translate(56 46) scale(4.5)" fill="#f0a23b" stroke="#ffffff">
+    <rect x="3" y="2" width="3" height="20" rx="1.5"/>
+    <rect x="18" y="2" width="3" height="20" rx="1.5"/>
+    <path d="M6 7h5M13 12h5M6 17h5" fill="none" stroke-width="2"/>
+    <rect x="10" y="5" width="4" height="4" rx="1"/>
+    <rect x="10" y="10" width="4" height="4" rx="1"/>
+    <rect x="10" y="15" width="4" height="4" rx="1"/>
+  </g>
+  <text x="200" y="103" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Cantarell, 'DejaVu Sans', sans-serif"
+        font-size="52" letter-spacing="0.4" fill="#ffffff">Aprende Incus con open<tspan font-weight="700" fill="#f0a23b">LAB</tspan></text>
+  <text x="203" y="148" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Cantarell, 'DejaVu Sans', sans-serif"
+        font-size="26" fill="#c9d3df">Instancias e imágenes</text>
+</svg>
