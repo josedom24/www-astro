@@ -59,7 +59,7 @@ Vamos a crear el fichero de zona en el fichero `/var/cache/bind/db.tunombre.org`
 	asterix		IN	A	172.22.200.102
 	obelix			IN	A	172.22.200.103
 	www			IN	CNAME	asterix
-	informatica		IN	CNAME	asterix
+	intranet		IN	CNAME	asterix
 	ftp			IN	CNAME	obelix
 
 * **Todos los nombres de dominios acaban en PUNTO.**
@@ -72,7 +72,7 @@ Vamos a crear el fichero de zona en el fichero `/var/cache/bind/db.tunombre.org`
 * A continuación se van añadiendo los registros: `A` para indicar direcciones IPv4, `CNAME` para indicar alias.
 * Los nombres de las **máquinas físicas** (que tienen dirección IP) se suelen indicar usando registros `A`.
 * Los nombres de los **servicios** se suelen indicar con registros `CNAME`.
-* Por ejemplo, tenemos una máquina física que se llama `asterix` que tiene dos servicios (parece que es un servidor web) `www` y `informatica`.
+* Por ejemplo, tenemos una máquina física que se llama `asterix` que tiene dos servicios (por ejemplo, un servidor web) `www` e `intranet`.
 * Por ejemplo, el servicio `ftp` está alojado en la máquina física `obelix`.
 
 
