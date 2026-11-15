@@ -9,4 +9,5 @@ toc: false
 * [Ejercicio 3: Volúmenes](ejercicio3/)
 * [Ejercicio 4: Redes privadas en OpenStack](ejercicio4/)
 * [Ejercicio 5: Red aislada y router Linux en OpenStack](ejercicio5/)
+* [Ejercicio 6: DNS en OpenStack (Designate)](ejercicio6/)
 * [Practica: Escenario en OpenStack](practica/)
