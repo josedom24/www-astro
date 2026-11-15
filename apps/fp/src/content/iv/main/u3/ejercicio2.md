@@ -101,6 +101,8 @@ chpasswd:
       type: text
 ```
 
+Si prefieres no escribir el YAML a mano, puedes generarlo con **openINIT**, un formulario web que produce el `cloud-config` y lo valida con avisos que te ayudan a aprender: [openinit.josedomingo.org](https://openinit.josedomingo.org) (elige «Para: OpenStack»). En **Ejemplos…** hay uno, **«Teclado en español y caché de paquetes del aula»**, que deja la consola de Horizon con el teclado en español y las instalaciones de paquetes usando la caché del aula; te vendrá bien para tus instancias.
+
 El fichero se indica con el parámetro `--user-data`:
 
 ```

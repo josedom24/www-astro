@@ -43,6 +43,10 @@ Prepara un fichero `cloud-config.yaml` que sirva para **todas** las instancias, 
 
 Comprueba qué cambia en Rocky Linux respecto a Debian (por ejemplo, el usuario que crea la imagen por defecto o el gestor de paquetes) y adapta la plantilla si es necesario.
 
+Puedes generar y validar el fichero con **openINIT**, un formulario web que produce el `cloud-config` y avisa de los errores: [openinit.josedomingo.org](https://openinit.josedomingo.org) (elige «Para: OpenStack»).
+
+En **Ejemplos…** tienes uno llamado **«Teclado en español y caché de paquetes del aula»**: deja la consola de Horizon con el teclado en español y las instalaciones de paquetes usando la caché del aula (cada paquete se descarga una sola vez para todas las máquinas), así que va muy bien como punto de partida para tu plantilla. Fíjate en lo que hace, porque pone una contraseña a `root` que tienes que cambiar.
+
 :::tip[Entrega]
 1. El fichero `cloud-config.yaml` base y los cambios que has necesitado para cada sistema.
 :::
@@ -125,22 +129,36 @@ Configura `router` de forma **permanente**:
 
 **Importante**: crea las demás instancias **después** de que `router` esté funcionando. Su cloud-init actualiza e instala paquetes, y para eso necesitan acceso a Internet a través de `router`.
 
+### Grupos de seguridad
+
+Antes de crear las instancias, crea **un grupo de seguridad por función**. Cada instancia usará solo el suyo (no el grupo `default`):
+
+| Grupo | Para | Reglas de entrada |
+|:--|:--|:--|
+| `sg_dns` | `dns` | SSH e ICMP desde `192.168.0.0/24` |
+| `sg_web` | `web` | SSH e ICMP desde `192.168.0.0/24`; HTTP (puerto 80) desde cualquier origen |
+| `sg_bd` | `bd` | SSH e ICMP desde `172.16.0.0/16`; MariaDB (puerto 3306) desde `192.168.0.0/24` |
+
+Piensa por qué los orígenes son distintos: a las máquinas de la DMZ se entra desde `router` (`192.168.0.1`), y a `bd` desde su interfaz de `Red_Intra` (`172.16.0.1`), mientras que a la base de datos solo conectan las máquinas de la DMZ. El puerto del servidor DNS lo abrirás en el módulo de SRI.
+
+Como las instancias usan puertos que creas tú con una dirección fija, el grupo de seguridad se indica **al crear el puerto** (`--security-group`), porque pertenece al puerto y no a la instancia.
+
 Como las redes no tienen DHCP, las instancias necesitan el **config drive**, y como no tienen puerta de enlace, tendrás que configurarla tú dentro de cada máquina, de forma permanente. Investiga cómo se hace en cada sistema (en Debian y en Ubuntu se usa netplan; en Rocky Linux, NetworkManager). La puerta de enlace es `192.168.0.1` para las máquinas de la DMZ y `172.16.0.1` para las de la red interna.
 
 ### `dns`
 
-* Debian 13, con un sabor `m1`, conectada a `Red_DMZ` con la dirección `192.168.0.2`.
+* Debian 13, con un sabor `m1` y el grupo `sg_dns`, conectada a `Red_DMZ` con la dirección `192.168.0.2`.
 * Por ahora solo la dejas preparada: el servidor DNS (bind9) lo instalarás en SRI.
 
 ### `web`
 
-* Rocky Linux 10 sobre el volumen de la fase 2, con un sabor `vol.medium`, conectada a `Red_DMZ` con la dirección `192.168.0.3`.
+* Rocky Linux 10 sobre el volumen de la fase 2, con un sabor `vol.medium` y el grupo `sg_web`, conectada a `Red_DMZ` con la dirección `192.168.0.3`.
 * Instala el servidor web `httpd` y publica una página de prueba.
 * **Mantén SELinux y firewalld activados.** Para que la página se sirva tienes que abrir el puerto en firewalld.
 
 ### `bd`
 
-* Ubuntu 24.04, con un sabor `m1`, conectada a `Red_Intra` con la dirección `172.16.0.200`.
+* Ubuntu 24.04, con un sabor `m1` y el grupo `sg_bd`, conectada a `Red_Intra` con la dirección `172.16.0.200`.
 * Instala MariaDB, que debe escuchar solo en su dirección de `Red_Intra`.
 * Crea una base de datos y un usuario al que se le permita conectar desde la red `192.168.0.0/24`.
 
@@ -151,14 +169,15 @@ Como las redes no tienen DHCP, las instancias necesitan el **config drive**, y c
 * Desde `router`, la página de `web` se ve con `curl`.
 
 :::tip[Entrega]
-1. Las instrucciones para crear las instancias y los puertos.
-2. Los ficheros `cloud-config.yaml` que has usado.
-3. La configuración de red permanente de `dns` y de `web`.
-4. Prueba de que los FQDN son correctos en las cuatro máquinas.
-5. Prueba de que se accede por SSH a las cuatro máquinas, y cómo lo haces.
-6. Prueba de que las tres máquinas tienen acceso a Internet usando un nombre de dominio.
-7. En `web`: la salida de `getenforce` y `firewall-cmd --list-all`, y una captura de la página de prueba obtenida desde `router`.
-8. Una captura de la Topología de red de Horizon.
+1. Las instrucciones para crear los grupos de seguridad y sus reglas.
+2. Las instrucciones para crear las instancias y los puertos.
+3. Los ficheros `cloud-config.yaml` que has usado.
+4. La configuración de red permanente de `dns` y de `web`.
+5. Prueba de que los FQDN son correctos en las cuatro máquinas.
+6. Prueba de que se accede por SSH a las cuatro máquinas, y cómo lo haces.
+7. Prueba de que las tres máquinas tienen acceso a Internet usando un nombre de dominio.
+8. En `web`: la salida de `getenforce` y `firewall-cmd --list-all`, y una captura de la página de prueba obtenida desde `router`.
+9. Una captura de la Topología de red de Horizon.
 :::
 
 ## Fase 6: Comprobar las capas
