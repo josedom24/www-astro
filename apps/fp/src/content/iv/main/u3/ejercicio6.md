@@ -5,7 +5,7 @@ title: "Ejercicio 6: DNS en OpenStack (Designate)"
 En este ejercicio vas a descubrir que OpenStack también puede gestionar nombres de dominio: cuando creas una instancia o una IP flotante, OpenStack puede publicar su nombre en un servidor DNS **sin que tengas que configurar nada**. **No hay que entregar nada**, y no forma parte de la práctica.
 
 :::note[También desde Horizon]
-En este ejercicio vamos a gestionar el DNS con la línea de comandos, pero todo lo que se hace aquí con `openstack zone`, `openstack recordset` y `openstack ptr` se puede hacer también desde **Horizon**, en el apartado **DNS**: allí puedes ver tus zonas y sus registros, crear y borrar registros y, desde las IP flotantes, gestionar su DNS inverso.
+En este ejercicio vamos a gestionar el DNS con la línea de comandos, pero todo lo que se hace aquí con `openstack zone`, `openstack recordset` y `openstack ptr` se puede hacer también desde **Horizon**, en el apartado **DNS**: tiene dos opciones. En **Zonas** ves tus zonas y, dentro de cada una, la pestaña **Record Sets** con sus registros, que puedes crear, modificar y borrar. En **DNS inverso** gestionas el nombre (PTR) de tus IP flotantes.
 :::
 
 :::caution[No lo confundas con el DNS de SRI]
