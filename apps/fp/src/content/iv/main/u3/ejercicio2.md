@@ -1,50 +1,161 @@
 ---
-title: "Ejercicio 2: Uso de OpenStack client (OSC)"
+title: "Ejercicio 2: Instancias con OpenStack client (OSC)"
 ---
 
-En este ejercicio vas a gestionar OpenStack desde la línea de comandos usando el cliente OSC: instalar instancias con cloud-init, gestionar almacenamiento con volúmenes y trabajar con redes NAT. Todas las operaciones se realizan desde el CLI.
+A partir de este ejercicio vamos a gestionar OpenStack desde la línea de comandos, con **OpenStack client (OSC)**. Todo lo que hiciste con Horizon en el ejercicio 1 se puede hacer con el comando `openstack`, porque los dos hacen lo mismo: peticiones a la **API** de OpenStack.
 
-## Ejercicio 1: Instalación y uso básico de OSC
+En este ejercicio vas a crear instancias desde el CLI, configurarlas con cloud-init y crear instantáneas.
 
-1. Instala el cliente de OpenStack y configúralo con el fichero de credenciales que debes descargar desde Horizon.
-2. Muestra con OSC los distintos recursos de tu proyecto: instancias, claves SSH, imágenes, redes, sabores y reglas del grupo de seguridad.
-3. Abre el puerto 443 en el grupo de seguridad `default`.
+## El cliente de OpenStack
 
-## Ejercicio 2: Creación de instancias con cloud-init
+Ya has instalado y usado el cliente en el módulo de SRI, al trabajar con Swift. Si necesitas repasar la instalación y el fichero de credenciales, lo tienes en ese [ejercicio](https://fp.josedomingo.org/sri/main/u2/ejercicio2/). En resumen:
 
-1. Crea un fichero `cloud-config.yaml` que al iniciarse la instancia: actualice los paquetes, instale Apache2, cree un usuario con tu nombre y contraseña, y configure el FQDN a `maquina1.example.org`.
-2. Crea una instancia Linux usando ese fichero de cloud-init. Solicita una IP flotante y asígnala a la instancia.
-3. Accede por SSH a la instancia y comprueba que la configuración se ha aplicado correctamente.
-4. Para la instancia, arráncala de nuevo y finalmente elimínala.
+```
+$ source os/bin/activate
+(os)$ source "Proyecto de usuario-openrc.sh"
+Please enter your OpenStack Password ...:
+```
 
-## Ejercicio 3: Instantáneas de instancias
+Con las credenciales cargadas podemos consultar los recursos del proyecto:
 
-1. Crea una instantánea de la instancia que has creado.
-2. Crea una nueva instancia a partir de esa instantánea y comprueba que tiene la misma configuración (Apache2, usuario, etc.).
+* Instancias: `openstack server list`
+* Pares de claves: `openstack keypair list`
+* Imágenes: `openstack image list`
+* Sabores: `openstack flavor list`
+* Redes: `openstack network list`
+* Reglas del grupo de seguridad `default`: `openstack security group rule list default`
 
-## Ejercicio 4: Gestión de volúmenes
+Casi todos los recursos tienen los mismos subcomandos: `list`, `show`, `create`, `set` y `delete`.
 
-1. Crea un volumen, asócialo a una instancia, fórmatelo y móntalo dentro de la instancia.
-2. Intenta eliminar el volumen mientras está asociado. ¿Puedes hacerlo? ¿Por qué? Desasócialo y elimínalo.
-3. Crea un volumen arrancable de 10 GB desde una imagen. Crea una instancia cuyo disco principal sea ese volumen (usa un sabor de tipo `vol`).
-4. Instala algún servicio en la instancia. Elimínala y crea una nueva instancia a partir del mismo volumen. Comprueba que la información no se ha perdido.
-5. Crea un volumen, asócialo a una instancia y añade algún fichero. Desasócialo, crea una instantánea del volumen y elimínalo. Crea un nuevo volumen desde la instantánea, vuelve a asociarlo a la instancia y comprueba que los ficheros siguen ahí.
-6. Redimensiona un volumen asociado a una instancia y redimensiona también el sistema de ficheros dentro de la instancia.
+También podemos crear recursos. Por ejemplo, para abrir un puerto en el grupo de seguridad:
 
-## Ejercicio 5: Redes NAT
+```
+openstack security group rule create --protocol tcp --remote-ip 0.0.0.0/0 --dst-port 22 default
+```
 
-1. Crea un router conectado a la red externa.
-2. Crea una red (`red1`) con subred de tipo NAT con DHCP, DNS `172.22.0.1` y direccionamiento `192.168.0.0/24`. Conéctala al router.
-3. Crea una instancia (`maquina1`) conectada a `red1`. Comprueba que la IP fija está en el rango de la red. ¿Puedes asignarle una IP flotante? ¿Por qué? Comprueba en la configuración de netplan que la interfaz se ha configurado por DHCP.
-4. Crea una instancia (`maquina2`) en `red1` con la IP fija `192.168.0.200` usando un puerto. Comprueba que la IP asignada es la reservada y que netplan la ha configurado por DHCP.
-5. Crea una red (`red2`) de tipo NAT **sin DHCP** con el mismo router y direccionamiento `192.168.10.0/24`. Crea una instancia (`maquina3`) conectada a ella usando `--config-drive True`. Asígnale una IP flotante y comprueba que netplan ha configurado la interfaz de forma estática.
-6. Crea una instancia (`maquina4`) en `red2` con la IP fija `192.168.10.100` usando un puerto. Comprueba que netplan ha configurado la IP de forma estática.
-7. Elimina todas las instancias, puertos, subredes, redes y el router siguiendo el orden correcto.
+Si añades la opción `--debug` a cualquier comando, verás las peticiones HTTP que el cliente hace a la API.
 
-:::tip[¿Qué tienes que entregar?]
-1. Del ejercicio 1: instrucción usada para instalar OSC. Salidas de los comandos que muestran los recursos del proyecto. Instrucción para abrir el puerto 443.
-2. Del ejercicio 2: contenido del fichero `cloud-config.yaml`. Instrucción `openstack server create` usada. Captura del acceso SSH a la instancia con la configuración aplicada.
-3. Del ejercicio 3: instrucciones para crear la instantánea y la nueva instancia. Captura que comprueba que la nueva instancia tiene la misma configuración.
-4. Del ejercicio 4: instrucciones usadas en cada paso. Responde a la pregunta sobre por qué no se puede eliminar un volumen asociado. Captura que demuestra la persistencia de datos tras recrear la instancia desde el volumen. Captura de la instantánea del volumen restaurada con los ficheros.
-5. Del ejercicio 5: instrucciones para crear la infraestructura de red. Para cada instancia: dirección IP obtenida y comprobación del fichero de netplan. Responde a las preguntas sobre IP flotante y configuración estática vs dinámica. Instrucciones de limpieza de la infraestructura.
+:::caution[Ejercicio]
+1. Carga tus credenciales y muestra las instancias, las claves, las imágenes, los sabores y las redes de tu proyecto.
+2. Abre el puerto 80 en el grupo de seguridad `default` y comprueba que la regla se ha creado.
+:::
+
+## Creación de instancias
+
+Para crear una instancia hay que indicar lo mismo que en Horizon: sabor, imagen, grupo de seguridad, par de claves y red.
+
+```
+openstack server create --flavor m1.normal \
+    --image "Debian 13 Trixie" \
+    --security-group default \
+    --key-name jdmr \
+    --network "Red de josedom" \
+    instancia_prueba
+```
+
+Para acceder desde fuera necesitamos una IP flotante:
+
+* Ver las IP flotantes del proyecto: `openstack floating ip list`
+* Solicitar una nueva: `openstack floating ip create ext-net`
+* Asociarla a la instancia: `openstack server add floating ip instancia_prueba 172.22.201.111`
+* Quitarla de la instancia: `openstack server remove floating ip instancia_prueba 172.22.201.111`
+
+Las operaciones más habituales sobre la instancia:
+
+* Información detallada: `openstack server show instancia_prueba`
+* Parar e iniciar: `openstack server stop instancia_prueba` y `openstack server start instancia_prueba`
+* Reiniciar: `openstack server reboot instancia_prueba` (con `--hard` para un reinicio forzado)
+* Suspender y reanudar: `openstack server suspend instancia_prueba` y `openstack server resume instancia_prueba`
+* Ver la salida del arranque: `openstack console log show instancia_prueba`
+* Eliminar: `openstack server delete instancia_prueba`
+
+## Configuración de instancias con cloud-init
+
+Ya conoces **cloud-init** de la unidad 1: es el programa que configura la máquina en el primer arranque. En libvirt le pasábamos la configuración al crear la máquina con `virt-install`. En OpenStack la instancia obtiene los datos de dos sitios:
+
+* **Metadatos**: los proporciona OpenStack a través del **servidor de metadatos** (`http://169.254.169.254`). Incluyen el nombre de la instancia, la configuración de red y la clave pública del par de claves. Por eso una instancia tiene nombre y clave SSH aunque no le pasemos ningún fichero.
+* **Datos de usuario** (*user-data*): nuestro fichero `cloud-config.yaml`, con la configuración adicional. Es opcional.
+
+Por ejemplo, este fichero actualiza los paquetes, instala Apache2, configura el nombre y crea un usuario:
+
+```yaml
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - apache2
+fqdn: maquina.example.org
+hostname: maquina
+manage_etc_hosts: true
+users:
+  - name: usuario
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2E... usuario@equipo
+chpasswd:
+  expire: False
+  users:
+    - name: usuario
+      password: asdasd
+      type: text
+```
+
+El fichero se indica con el parámetro `--user-data`:
+
+```
+openstack server create --flavor m1.normal \
+    --image "Debian 13 Trixie" \
+    --security-group default \
+    --key-name jdmr \
+    --network "Red de josedom" \
+    --user-data cloud-config.yaml \
+    instancia_prueba
+```
+
+Ten en cuenta dos cosas:
+
+* Si defines la sección `users`, **no se crea el usuario por defecto** de la imagen (`debian`), y la clave del par de claves no se inyecta en tus usuarios: tienes que indicarla en `ssh_authorized_keys`.
+* La instancia obtiene los metadatos por la red. Si la conectamos a una red sin DHCP no tendrá red al arrancar y no podrá leerlos. Lo veremos en el ejercicio 5.
+
+:::caution[Ejercicio]
+1. Crea un fichero `cloud-config.yaml` que actualice los paquetes, instale Apache2, cree un usuario con tu nombre (con tu clave pública y una contraseña) y configure el FQDN `maquina1.example.org`.
+2. Crea una instancia con ese fichero.
+3. Solicita una IP flotante y asóciala a la instancia.
+4. Accede por SSH con tu usuario y comprueba que la configuración se ha aplicado.
+5. Para la instancia y vuelve a iniciarla.
+:::
+
+## Instantáneas de instancias
+
+Al hacer una instantánea de una instancia, OpenStack crea una **imagen nueva** con el contenido de su disco. No es una copia incremental: es una imagen más, que aparece junto a las demás y de la que se pueden crear instancias.
+
+* Crear la instantánea: `openstack server image create --name snapshot-instancia instancia_prueba`
+* Verla (está lista cuando el estado es `active`): `openstack image list`
+* Eliminarla: `openstack image delete snapshot-instancia`
+
+Para crear una instancia a partir de la instantánea se indica como imagen:
+
+```
+openstack server create --flavor m1.normal \
+    --image snapshot-instancia \
+    --security-group default \
+    --network "Red de josedom" \
+    instancia_prueba2
+```
+
+:::caution[Ejercicio]
+1. Crea una instantánea de la instancia del apartado anterior.
+2. Crea una instancia nueva a partir de la instantánea y asóciale una IP flotante.
+3. Comprueba que tiene la misma configuración: Apache2 instalado y tu usuario creado.
+4. Elimina las dos instancias y la instantánea.
+:::
+
+:::tip[Entrega]
+Lo que tienes que entregar de este ejercicio en la [Tarea 3.1](../tarea1/):
+
+1. El contenido de tu fichero `cloud-config.yaml`.
+2. La instrucción con la que has creado la instancia y las que has usado para asociarle la IP flotante.
+3. Una captura del acceso por SSH con tu usuario donde se vea el FQDN de la máquina y que Apache2 está instalado.
+4. La salida de `openstack image list` donde se vea la instantánea, y una captura que demuestre que la instancia creada a partir de ella tiene la misma configuración.
 :::
