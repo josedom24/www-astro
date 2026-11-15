@@ -4,6 +4,10 @@ title: "Ejercicio 6: DNS en OpenStack (Designate)"
 
 En este ejercicio vas a descubrir que OpenStack también puede gestionar nombres de dominio: cuando creas una instancia o una IP flotante, OpenStack puede publicar su nombre en un servidor DNS **sin que tengas que configurar nada**. **No hay que entregar nada**, y no forma parte de la práctica.
 
+:::note[También desde Horizon]
+En este ejercicio vamos a gestionar el DNS con la línea de comandos, pero todo lo que se hace aquí con `openstack zone`, `openstack recordset` y `openstack ptr` se puede hacer también desde **Horizon**, en el apartado **DNS**: allí puedes ver tus zonas y sus registros, crear y borrar registros y, desde las IP flotantes, gestionar su DNS inverso.
+:::
+
 :::caution[No lo confundas con el DNS de SRI]
 El servicio de DNS de OpenStack se llama **Designate** y lo gestiona la propia nube. **No tiene ninguna relación** con el servidor DNS (bind9) que vas a montar en el módulo de Servicios de Red e Internet: ni la zona que usas aquí, ni los nombres, ni la configuración tienen que ver con los de esa práctica. Por eso el dominio de la práctica de SRI no puede coincidir con tu usuario de OpenStack, que es el nombre que usa Designate.
 :::
