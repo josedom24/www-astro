@@ -125,14 +125,8 @@ Un puerto sin seguridad no tiene cortafuegos: la instancia queda expuesta y es e
 5. Elimina toda la infraestructura que has creado en los ejercicios 4 y 5, en el orden correcto: instancias, puertos, redes y router.
 :::
 
-:::tip[Entrega]
-Lo que tienes que entregar de este ejercicio en la [Tarea 3.1](../tarea1/):
+:::tip[En la práctica]
+Con lo que acabas de aprender ya puedes hacer las **Fases 4 y 5** de la [práctica](../practica/): las redes `Red_DMZ` y `Red_Intra`, el router Linux con sus tres interfaces y el resto de las instancias.
 
-1. Las instrucciones para crear la red aislada, los puertos y las dos instancias.
-2. La configuración de `maquina_router` como router: reenvío de paquetes y regla de SNAT.
-3. El fichero de netplan de `maquina2` con la puerta de enlace.
-4. Las instrucciones para desactivar la seguridad de los puertos.
-5. Una captura de la Topología de red de Horizon.
-6. Una captura en `maquina2` donde se vea su tabla de rutas y que tiene acceso a Internet usando un nombre de dominio.
-7. Responde: ¿por qué `maquina2` no tiene acceso a Internet hasta que se desactiva la seguridad de los puertos, si el router está bien configurado?
+Recuerda que los recursos de prueba de los ejercicios 4 y 5 deben estar eliminados antes de crear las redes de la práctica, porque reutilizan algunos de sus direccionamientos.
 :::

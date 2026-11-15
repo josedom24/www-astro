@@ -2,106 +2,191 @@
 title: "Práctica: Escenario en OpenStack"
 ---
 
+En esta práctica vas a construir, con OpenStack, el escenario de red de una pequeña organización: un **router Linux** que protege tres redes, dos servidores accesibles desde Internet (en una **DMZ**) y una base de datos que solo se alcanza desde la DMZ (en una **red interna**). Este escenario lo vas a reutilizar en el módulo de **Servicios de Red e Internet**, donde instalarás el servidor DNS y el servidor de correo.
 
-Para nombrar las máquinas se van a utilizar los siguientes nombres: **ra, anubis, isis, horus**. Estos nombres pertenecen a la mitología griega.
+La práctica **se hace poco a poco**: cada fase indica después de qué ejercicio puedes empezar a hacerla. No esperes al final de la unidad.
 
-Además el dominio será un subdominio de la forma `tunombre.gonzalonazareno.org`. De esta forma tendremos:
+## El escenario
 
-* Máquina 1: Instancia en OpenStack con **Debian 13** que se llama `ra.tunombre.gonzalonazareno.org`.
-* Máquina 2: Instancia en OpenStack con **Rocky Linux 10** que se llama `anubis.tunombre.gonzalonazareno.org`.
-* Máquina 3: Contenedor LXC con **Ubuntu 24.04** que se llama `isis.tunombre.gonzalonazareno.org`.
-* Máquina 4: Contenedor LXC con **Ubuntu 24.04** que se llama `horus.tunombre.gonzalonazareno.org`.
+![escenario](img/escenario-practica.png)
 
-Todas las operaciones que realices sobre recursos de OpenStack lo tienes que hacer usando OSC.
+Los nombres de las máquinas son provisionales: los elegiremos entre todos en clase. Mientras tanto usamos el papel que juega cada una.
 
-## Escenario
+| Máquina | Sistema | Red | IP | Papel |
+|:--|:--|:--|:--|:--|
+| `router` | Debian 13, sobre un volumen de 15 GB | `Red_Proyecto`, `Red_DMZ` y `Red_Intra` | `Red_DMZ`: `192.168.0.1`<br>`Red_Intra`: `172.16.0.1` | Router, SNAT, DNAT y cortafuegos. Tiene la IP flotante |
+| `dns` | Debian 13 | `Red_DMZ` | `192.168.0.2` | Servidor DNS (se instala en SRI) |
+| `web` | Rocky Linux 10, sobre un volumen de 15 GB | `Red_DMZ` | `192.168.0.3` | Servidor web (`httpd`) |
+| `bd` | Ubuntu 24.04 | `Red_Intra` | `172.16.0.200` | Servidor de base de datos (MariaDB) |
 
-![os](img/os.drawio.png)
+La dirección `192.168.0.4` queda **reservada** para el servidor de correo, que añadirás en SRI.
 
+El dominio de las máquinas será `tunombre.gonzalonazareno.org`: por ejemplo, `router.tunombre.gonzalonazareno.org`. **`tunombre` no puede coincidir con tu usuario de OpenStack**: OpenStack ya usa ese nombre para su propio DNS (**Designate**), que no tiene ninguna relación con el servidor DNS que montarás en SRI.
 
-## Creación de la infraestructura de red
+## Normas
 
-* Crea un nuevo router llamado **RouterProyecto** conectado a la red externa.
-* Crea una red NAT que se llame **Red_Proyecto**, con las siguientes características:
-	* Está conectada al router que has creado en el punto anterior.
-	* Direccionamiento: `10.0.200.0/24`
-	* Con DHCP y DNS (`172.22.0.1`).
-	* La puerta de enlace de los dispositivos conectados a esta red será el `10.0.200.1`.
-* Crea una red interna que se llame **Red_Intra**, con las siguientes características:
-	* Direccionamiento: `172.16.0.0/16`
-	* **Sin DHCP**.
-	* **Deshabilitamos la puerta de enlace.** Esto es para que *cloud-init* no configure la puerta de enlace en las instancias conectada a esta red.
-	* La puerta de enlace de los dispositivos conectados a esta red será el `172.16.0.1`.
+* Todas las operaciones sobre recursos de OpenStack tienes que hacerlas con **OSC**. Horizon solo lo puedes usar para comprobar el resultado y para las capturas de la Topología de red.
+* Los recursos que creas en los ejercicios son de prueba y usan otros nombres. **Elimínalos al terminar cada ejercicio**, y siempre antes de crear las redes de la fase 4, que reutilizan algunos de sus direccionamientos.
+* Todas las instancias tendrán dos usuarios: un usuario sin privilegios (con el nombre que quieras, **el mismo en todas**, al que accedes con tu clave SSH) y un usuario `profesor`, que puede usar `sudo` sin contraseña. Copia mi clave pública en el usuario `profesor`.
+* **No elimines el escenario cuando termines la práctica**: lo vas a necesitar en SRI.
+
+## Fase 1: Plantilla de cloud-init
+
+*Después del ejercicio 2.*
+
+Prepara un fichero `cloud-config.yaml` que sirva para **todas** las instancias, cambiando solo el nombre. Debe:
+
+* Actualizar los paquetes de la distribución.
+* Configurar el nombre (`hostname`) y el FQDN, con el dominio `tunombre.gonzalonazareno.org`.
+* Crear el usuario sin privilegios y el usuario `profesor`, como se indica en las normas.
+* Cambiar la contraseña del usuario `root`.
+
+Comprueba qué cambia en Rocky Linux respecto a Debian (por ejemplo, el usuario que crea la imagen por defecto o el gestor de paquetes) y adapta la plantilla si es necesario.
 
 :::tip[Entrega]
-1. Las instrucciones para crear el router y las redes.
-2. Una captura de pantalla donde se vea la Topología de Red en Horizon que has creado.
+1. El fichero `cloud-config.yaml` base y los cambios que has necesitado para cada sistema.
 :::
 
+## Fase 2: Volúmenes
 
-## Instalación de las instancias de OpenStack
+*Después del ejercicio 3.*
 
-### Configuración de las instancias
+Crea los dos volúmenes arrancables de 15 GB a partir de imágenes:
 
-Las dos instancias que vamos a crear se van a configurar con `cloud-init` de la siguiente manera:
+* Uno con **Debian 13**, para `router`.
+* Uno con **Rocky Linux 10**, para `web`.
 
-* Deben actualizar los paquetes de la distribución de la instancia.
-* El dominio utilizado será del tipo `tunombre.gonzalonazareno.org`. Por lo tanto en la configuración con `cloud-init` habrá que indicar el hostname y el FQDN.
-* Se crearán dos usuarios: 
-	* Un usuario sin privilegios. Se puede llamar como quieras (pero el nombre será el mismo en todas las máquinas) y accederás a las máquinas usando tu clave ssh privada.
-	* Un usuario `profesor`, que puede utilizar `sudo` sin contraseña. Copia mi clave pública en las instancias para que puedan acceder con el usuario `profesor`.
-* Cambia la contraseña al usuario `root`.
-
-### Creación de las instancias
-
-#### máquina1 (ra)
-
-* Crea una instancia sobre un volumen de 15Gb (el volumen se crea durante la creación de la instancia), usando una imagen de **Debian 13**. Elige el sabor `vol.medium`. Y configúrala con `cloud-init` como se ha indicado anteriormente.
-* Está instancia estará conectada a las dos redes. Recuerda que en la red **Red_Intra** debe tomar la dirección `172.16.0.1` (puerta de enlace las máquinas conectadas a esta red). Asigna a la instancia una IP flotante.
-* Deshabilita la seguridad de los puertos en las dos interfaces de red para que funcione de manera adecuada el NAT.
-* Configura de forma permanente la regla SNAT para que las máquinas de la **Red_Intra** tengan acceso a internet.
-
-#### maquina2 (anubis)
-
-* Crea un volumen de 15Gb con la imagen **Rocky Linux 10**.
-* Crea la instancia a partir de este volumen. Elige el sabor `vol.medium`. Y configúrala con `cloud-init` como se ha indicado anteriormente.
-* Esta instancia estará conectada a la red **Red_Intra**, a la dirección `172.16.0.200`.
-* Deshabilita la seguridad de los puertos en la interfaz de red para que funcione de manera adecuada el NAT.
-* Comprueba que tiene acceso a internet.
+`dns` y `bd` no usan volumen: se crean con un sabor `m1`. Las instancias con volumen usan un sabor `vol.medium`.
 
 :::tip[Entrega]
-1. Las instrucciones para crear y configurar las máquinas.
-2. Los ficheros `cloud-config.yaml` que has usado para crear las instancias.
-3. La IP flotante de la **máquina1 (ra)**.
-4. Una captura de pantalla donde se vea la Topología de Red en Horizon que has creado.
-5. Prueba de funcionamiento de qué los FQDN están bien configurados en las dos máquinas.
-6. Prueba de funcionamiento de que se pueden acceder a todas las máquinas por ssh.
-7. Prueba de funcionamiento de que las máquinas tienen acceso a internet accediendo a un nombre de dominio, para comprobar que funciona el DNS.
+1. Las instrucciones para crear los volúmenes.
 :::
 
-## Instalación de los contenedores
+## Fase 3: La red con salida
 
-En **máquina1 (ra)** vamos a crear dos contenedores en un red interna, para ello:
+*Después del ejercicio 4.*
 
-* Vamos a crear una red virtual **Red_DMZ**, para ello crea en **máquina1 (ra)** un linux bridge llamado `br-dmz` y asigna una dirección IP estática `192.168.0.1`. Esta será la IP de **máquina1 (ra)** conectada a este switch virtual y será la puerta de enlace de los contenedores. Tienes que tener en cuenta que la imagen de Debian 13 de OpenStack tiene **netplan** para la configuración de las redes, por lo tanto tienes que configurar el bridge usando el fichero de configuración de netplan. **No olvides poner la mtu a 1442 al crear el bridge.**
-* Instala LXC y crea dos contenedores con la distribución **Ubuntu 24.04**. Estos contenedores serán la **máquina3 (isis)** y la **máquina4 (horus)**.
-* Configura de forma permanente la regla SNAT para que los contenedores tengan acceso a internet.
-* Conecta los contenedores al bridge `br-dmz` y configúralo de forma estática con las siguientes direcciones: **máquina3 (isis)** la `192.168.0.2` y **máquina4 (horus)** la `192.168.0.3`. Su DNS será el `172.22.0.1`.
-* Para que la red de OpenStack funcione de forma adecuada las imágenes que usamos tienen configurado la mtu (*Unidad máxima de transferencia*) a 1442 bytes. Tenemos que adecuar los contenedores a este tamaño de trama. Para ello introduce en la configuración de los contenedores la línea: `lxc.net.0.mtu = 1442`.
-* Configura los contenedores para que se auto inicien al reiniciar la instancia. 
-* Los contenedores tendrán características parecidas a las instancias anteriormente:
-	* Debes actualizar los paquetes de la distribución instalada.
-	* El dominio utilizado será del tipo `tunombre.gonzalonazareno.org`. Por lo tanto configura de manera adecuada el hostname y el FQDN.
-	* Para acceder a los contenedores vamos a usar ssh.
-	* Crea dos usuarios: 
-		* Un usuario sin privilegios. Se puede llamar como quieras (el nombre de usuario que usaste en las instancias) y accederás a los contenedores usando tu clave ssh privada.
-		* Un usuario `profesor`, que puede utilizar `sudo` sin contraseña. Copia de las claves públicas de todos los profesores en los contenedores para que puedan acceder con el usuario `profesor`.
-	* Cambia la contraseña al usuario `root`.
+Los proyectos de OpenStack ya traen un router y una red. **No los uses**: vas a crear los tuyos.
+
+* Crea un **nuevo** router llamado **RouterProyecto**, conectado a la red externa.
+* Crea una red **Red_Proyecto**, conectada a ese router, con estas características:
+    * Direccionamiento: `10.0.200.0/24`.
+    * Con DHCP y DNS `172.22.0.1`.
+    * La puerta de enlace es `10.0.200.1`.
+
+Esta es la red por la que `router` sale a Internet y recibe su IP flotante.
 
 :::tip[Entrega]
-1. El fichero de configuración de uno de los contenedores.
-2. La salida del comando `sudo lxc-ls -f`.
-3. Prueba de funcionamiento de qué los FQDN están bien configurados en los dos contenedores.
-4. Prueba de funcionamiento de que se pueden acceder a los contenedores por ssh.
-5. Prueba de funcionamiento de que los contenedores tienen acceso a internet accediendo a un nombre de dominio, para comprobar que funciona el DNS.
+1. Las instrucciones para crear el router y la red.
+2. Una captura de la Topología de red de Horizon.
+:::
+
+## Fase 4: El router Linux
+
+*Después del ejercicio 5.*
+
+### Las redes aisladas
+
+Crea las dos redes que no tienen salida por sí mismas:
+
+* **Red_DMZ**: `192.168.0.0/24`.
+* **Red_Intra**: `172.16.0.0/16`.
+
+Las dos **sin DHCP** y **sin puerta de enlace** (para que cloud-init no configure dos rutas por defecto en `router`), y con DNS `172.22.0.1`.
+
+### La instancia `router`
+
+Crea la instancia `router` sobre el volumen de Debian, con tu plantilla de cloud-init y un sabor `vol.medium`. Tiene tres interfaces:
+
+* `Red_Proyecto`: una dirección cualquiera, por DHCP.
+* `Red_DMZ`: `192.168.0.1`.
+* `Red_Intra`: `172.16.0.1`.
+
+Asóciale una **IP flotante**. Desactiva la **seguridad de los puertos** (y los grupos de seguridad) en sus tres puertos.
+
+### Configuración del router
+
+Configura `router` de forma **permanente**:
+
+* El reenvío de paquetes.
+* Una regla de **SNAT** para que las máquinas de `Red_DMZ` y de `Red_Intra` tengan acceso a Internet.
+* Un **cortafuegos mínimo** para el propio router: política por defecto restrictiva y solo permite el acceso por SSH (además de las conexiones ya establecidas y de ICMP).
+
+:::tip[Entrega]
+1. Las instrucciones para crear las redes y la instancia.
+2. La IP flotante de `router`.
+3. La configuración permanente del reenvío, el SNAT y el cortafuegos.
+4. Una captura de la Topología de red de Horizon.
+:::
+
+## Fase 5: Los servidores
+
+*Cuando `router` ya tenga salida a Internet.*
+
+**Importante**: crea las demás instancias **después** de que `router` esté funcionando. Su cloud-init actualiza e instala paquetes, y para eso necesitan acceso a Internet a través de `router`.
+
+Como las redes no tienen DHCP, las instancias necesitan el **config drive**, y como no tienen puerta de enlace, tendrás que configurarla tú dentro de cada máquina, de forma permanente. Investiga cómo se hace en cada sistema (en Debian y en Ubuntu se usa netplan; en Rocky Linux, NetworkManager). La puerta de enlace es `192.168.0.1` para las máquinas de la DMZ y `172.16.0.1` para las de la red interna.
+
+### `dns`
+
+* Debian 13, con un sabor `m1`, conectada a `Red_DMZ` con la dirección `192.168.0.2`.
+* Por ahora solo la dejas preparada: el servidor DNS (bind9) lo instalarás en SRI.
+
+### `web`
+
+* Rocky Linux 10 sobre el volumen de la fase 2, con un sabor `vol.medium`, conectada a `Red_DMZ` con la dirección `192.168.0.3`.
+* Instala el servidor web `httpd` y publica una página de prueba.
+* **Mantén SELinux y firewalld activados.** Para que la página se sirva tienes que abrir el puerto en firewalld.
+
+### `bd`
+
+* Ubuntu 24.04, con un sabor `m1`, conectada a `Red_Intra` con la dirección `172.16.0.200`.
+* Instala MariaDB, que debe escuchar solo en su dirección de `Red_Intra`.
+* Crea una base de datos y un usuario al que se le permita conectar desde la red `192.168.0.0/24`.
+
+### Comprobaciones
+
+* Las tres máquinas tienen el FQDN bien configurado y acceso a Internet por nombre de dominio.
+* Puedes acceder por SSH a todas ellas. A las que no tienen IP flotante se accede a través de `router`.
+* Desde `router`, la página de `web` se ve con `curl`.
+
+:::tip[Entrega]
+1. Las instrucciones para crear las instancias y los puertos.
+2. Los ficheros `cloud-config.yaml` que has usado.
+3. La configuración de red permanente de `dns` y de `web`.
+4. Prueba de que los FQDN son correctos en las cuatro máquinas.
+5. Prueba de que se accede por SSH a las cuatro máquinas, y cómo lo haces.
+6. Prueba de que las tres máquinas tienen acceso a Internet usando un nombre de dominio.
+7. En `web`: la salida de `getenforce` y `firewall-cmd --list-all`, y una captura de la página de prueba obtenida desde `router`.
+8. Una captura de la Topología de red de Horizon.
+:::
+
+## Fase 6: Comprobar las capas
+
+*Cuando estén las cuatro máquinas.*
+
+La red interna debe ser **realmente interna**: solo la DMZ puede llegar a la base de datos. Añade en `router`, de forma permanente, las reglas de reenvío necesarias para que:
+
+* Las máquinas de `Red_DMZ` puedan conectar a `bd` **solo por el puerto de MariaDB**.
+* `bd` no pueda iniciar conexiones hacia la DMZ.
+* Las máquinas de las dos redes sigan teniendo acceso a Internet.
+
+Para comprobarlo, instala el cliente de MariaDB en `dns` y conecta con la base de datos.
+
+:::tip[Entrega]
+1. Las reglas del cortafuegos de `router`.
+2. Una captura de la conexión a la base de datos desde `dns`.
+3. Una prueba de que no se puede conectar a `bd` desde fuera ni intentando otro puerto.
+:::
+
+## Fase 7: Cierre del escenario
+
+Este escenario es la base de las prácticas de SRI, así que déjalo preparado:
+
+* Crea una **instantánea** de los dos volúmenes (`router` y `web`) y de las instancias `dns` y `bd`. Es tu punto de restauración.
+* Anota en una tabla los nombres, las direcciones y los sistemas de las cuatro máquinas, y la dirección `192.168.0.4` reservada para el correo.
+
+:::tip[Entrega]
+1. La salida de los comandos que muestran las instantáneas.
+2. La tabla con el resumen del escenario.
 :::

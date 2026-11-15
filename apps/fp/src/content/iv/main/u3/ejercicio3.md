@@ -106,11 +106,8 @@ El volumen crece, pero el sistema de ficheros que contiene no: hay que redimensi
 3. Elimina las instancias, las instantáneas y los volúmenes que has creado.
 :::
 
-:::tip[Entrega]
-Lo que tienes que entregar de este ejercicio en la [Tarea 3.1](../tarea1/):
+:::tip[En la práctica]
+Con lo que acabas de aprender ya puedes hacer la **Fase 2** de la [práctica](../practica/): crear los volúmenes arrancables de 15 GB para las instancias del escenario, uno a partir de Debian y otro a partir de Rocky Linux.
 
-1. Las instrucciones para crear el volumen arrancable y la instancia sobre él.
-2. Una captura que demuestre que, después de eliminar la instancia y crear otra con el mismo volumen, el servicio que instalaste sigue ahí.
-3. Las instrucciones para crear la instantánea del volumen y el volumen nuevo, y una captura donde se vea el fichero en el volumen nuevo.
-4. Responde: ¿qué diferencia hay entre el disco de una instancia creada con un sabor `m1` y el de una creada sobre un volumen cuando eliminamos la instancia?
+Antes de seguir, elimina los recursos de prueba que has creado en este ejercicio.
 :::

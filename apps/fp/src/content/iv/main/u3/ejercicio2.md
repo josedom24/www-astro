@@ -151,11 +151,8 @@ openstack server create --flavor m1.normal \
 4. Elimina las dos instancias y la instantánea.
 :::
 
-:::tip[Entrega]
-Lo que tienes que entregar de este ejercicio en la [Tarea 3.1](../tarea1/):
+:::tip[En la práctica]
+Con lo que acabas de aprender ya puedes hacer la **Fase 1** de la [práctica](../practica/): preparar la plantilla de cloud-init que usarás en todas las instancias del escenario (usuarios, `profesor`, FQDN, actualización de paquetes y contraseña de `root`).
 
-1. El contenido de tu fichero `cloud-config.yaml`.
-2. La instrucción con la que has creado la instancia y las que has usado para asociarle la IP flotante.
-3. Una captura del acceso por SSH con tu usuario donde se vea el FQDN de la máquina y que Apache2 está instalado.
-4. La salida de `openstack image list` donde se vea la instantánea, y una captura que demuestre que la instancia creada a partir de ella tiene la misma configuración.
+Recuerda que si defines la sección `users` no se crea el usuario por defecto de la imagen, y que Rocky Linux no se comporta igual que Debian: compruébalo cuando lo necesites.
 :::

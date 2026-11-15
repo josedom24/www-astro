@@ -196,12 +196,8 @@ Los recursos de red hay que eliminarlos en orden, porque no se puede eliminar un
 2. **No elimines** `mi_router`, `red1` ni `maquina1`: los vas a usar en el ejercicio 5.
 :::
 
-:::tip[Entrega]
-Lo que tienes que entregar de este ejercicio en la [Tarea 3.1](../tarea1/):
+:::tip[En la práctica]
+Con lo que acabas de aprender ya puedes hacer la **Fase 3** de la [práctica](../practica/): crear el router `RouterProyecto` y la red `Red_Proyecto`. No interfiere con lo que has creado en este ejercicio, porque usan otros nombres y otro direccionamiento.
 
-1. Las instrucciones para crear el router, las dos redes con sus subredes, el puerto y las dos instancias.
-2. Una captura de la Topología de red de Horizon con las dos redes y las dos instancias.
-3. Las instrucciones para crear los dos grupos de seguridad y sus reglas.
-4. Una captura del acceso por SSH a `backend` a través de `maquina1`, donde se vea su dirección IP y que tiene acceso a Internet.
-5. Responde: `backend` tiene acceso a Internet pero no se puede acceder a ella desde fuera. ¿Quién hace posible lo primero y por qué no es posible lo segundo?
+No elimines todavía `mi_router`, `red1` ni `maquina1`: los necesitas en el ejercicio 5.
 :::
