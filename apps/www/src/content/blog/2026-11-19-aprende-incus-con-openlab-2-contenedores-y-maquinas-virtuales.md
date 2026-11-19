@@ -12,13 +12,6 @@ tags:
 
 En la [primera entrada](https://www.josedomingo.org/pledin/2026/11/aprende-incus-con-openlab-1-instancias-e-imagenes/) de esta serie vimos qué es Incus y cómo crea [openLAB](https://git.josedomingo.org/josedom24/openlab) sus instancias, y trabajamos solo con contenedores. Incus gestiona también **máquinas virtuales**, y lo hace con las mismas órdenes. En esta entrada creamos un escenario que mezcla los dos tipos de instancia y miramos, con las herramientas de Incus y del propio anfitrión, en qué se parecen y en qué se diferencian.
 
-Esta es la segunda entrada de una serie de cuatro sobre Incus y openLAB:
-
-1. [Instancias e imágenes](https://www.josedomingo.org/pledin/2026/11/aprende-incus-con-openlab-1-instancias-e-imagenes/).
-2. **Contenedores y máquinas virtuales** (esta).
-3. Redes.
-4. Almacenamiento.
-
 ## Contenedores y máquinas virtuales
 
 Incus llama **instancias** tanto a los contenedores como a las máquinas virtuales, pero por dentro son cosas muy distintas:
