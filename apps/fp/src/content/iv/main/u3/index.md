@@ -3,7 +3,7 @@ title: "Unidad 3: Cloud Computing IaaS. OpenStack"
 toc: false
 ---
 
-* [Presentación: Introducción al Cloud Computing y a OpenStack](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/cloudcomputing.pdf)
+* [Presentación: Introducción al Cloud Computing y a OpenStack](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/cloudcomputing.pdf)
 * [Ejercicio 1: Primeros pasos con OpenStack](ejercicio1/)
 <!--
 * [Ejercicio 2: Instancias con OpenStack client (OSC)](ejercicio2/)

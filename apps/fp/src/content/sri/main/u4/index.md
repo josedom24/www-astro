@@ -4,7 +4,7 @@ toc: false
 ---
 
 <!--
-* [Introducción al sistema de correo electrónico](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/sri/correo.pdf)
+* [Introducción al sistema de correo electrónico](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/sri/correo.pdf)
   * [Caso 1: Envío local, entre usuarios del mismo servidor](ejercicio1/)
   * [Caso 2: Envío de correo desde usuarios del servidor a correos de internet (desde el escenario de OpenStack)](ejercicio2/)
   * [Caso 3: Recibir correos desde internet a usuarios del servidor (desde el escenario de OpenStack)](ejercicio3/)
