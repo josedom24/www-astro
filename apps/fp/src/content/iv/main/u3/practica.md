@@ -16,7 +16,7 @@ Los nombres de las máquinas son provisionales: los elegiremos entre todos en cl
 |:--|:--|:--|:--|:--|
 | `router` | Debian 13, sobre un volumen de 15 GB | `Red_Proyecto`, `Red_DMZ` y `Red_Intra` | `Red_DMZ`: `192.168.0.1`<br>`Red_Intra`: `172.16.0.1` | Router, SNAT, DNAT y cortafuegos. Tiene la IP flotante |
 | `dns` | Debian 13 | `Red_DMZ` | `192.168.0.2` | Servidor DNS (se instala en SRI) |
-| `web` | Rocky Linux 10, sobre un volumen de 15 GB | `Red_DMZ` | `192.168.0.3` | Servidor web (`httpd`) |
+| `web` | Rocky Linux 9, sobre un volumen de 15 GB | `Red_DMZ` | `192.168.0.3` | Servidor web (`httpd`) |
 | `bd` | Ubuntu 24.04 | `Red_Intra` | `172.16.0.200` | Servidor de base de datos (MariaDB) |
 
 La dirección `192.168.0.4` queda **reservada** para el servidor de correo, que añadirás en SRI.
@@ -58,7 +58,7 @@ En **Ejemplos…** tienes uno llamado **«Teclado en español y caché de paquet
 Crea los dos volúmenes arrancables de 15 GB a partir de imágenes:
 
 * Uno con **Debian 13**, para `router`.
-* Uno con **Rocky Linux 10**, para `web`.
+* Uno con **Rocky Linux 9**, para `web`.
 
 `dns` y `bd` no usan volumen: se crean con un sabor `m1`. Las instancias con volumen usan un sabor `vol.medium`.
 
@@ -152,7 +152,7 @@ Como las redes no tienen DHCP, las instancias necesitan el **config drive**, y c
 
 ### `web`
 
-* Rocky Linux 10 sobre el volumen de la fase 2, con un sabor `vol.medium` y el grupo `sg_web`, conectada a `Red_DMZ` con la dirección `192.168.0.3`.
+* Rocky Linux 9 sobre el volumen de la fase 2, con un sabor `vol.medium` y el grupo `sg_web`, conectada a `Red_DMZ` con la dirección `192.168.0.3`.
 * Instala el servidor web `httpd` y publica una página de prueba.
 * **Mantén SELinux y firewalld activados.** Para que la página se sirva tienes que abrir el puerto en firewalld.
 
