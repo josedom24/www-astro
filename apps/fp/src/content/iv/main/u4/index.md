@@ -10,6 +10,8 @@ toc: false
   * [Ejercicio 1: Trabajando con Pods](ejercicio1/)
 * [Presentación: Kubernetes - ReplicaSet](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/replicaset.pdf)
   * [Ejercicio 2: Trabajando con ReplicaSet](ejercicio2/)
+* [Presentación: Kubernetes - Deployments](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/deployment.pdf)
+* [Presentación: Kubernetes - Actualización y rollback de Deployments](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/deployment-rollout.pdf)
   * [Ejercicio 3: Trabajando con Deployments](ejercicio3/)
   * [Ejercicio 4: Acceso a las aplicaciones](ejercicio4/)
   * [Ejercicio 5: Despliegues parametrizados](ejercicio5/)
