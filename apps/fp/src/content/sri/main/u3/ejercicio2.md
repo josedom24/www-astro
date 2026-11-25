@@ -40,7 +40,7 @@ Modificamos la definición de las zona en el servidor DNS maestro. Modificamos e
 	};
 
 * `allow-transfer`: Se permite las transferencias de zonas al servidor DNS esclavo (`IP_DNS2`).
-* `notify yes`: Cuando se reinicie el servidor DNS maestro se notificará al esclavo que ha habido cambios para que solicite una transferencia de zona.
+* `notify yes`: Cuando el servidor DNS maestro carga la zona con un **número de serie mayor** (al arrancar, con `rndc reload`…) avisa a los esclavos (mensaje `NOTIFY`, por 53/udp) para que soliciten una transferencia de zona.
 
 Modificamos la definición de las zona en el servidor DNS esclavo. Modificamos el fichero `/etc/bind/named.conf.local`:
 
@@ -132,8 +132,9 @@ Si al reiniciar los servidores DNS tienes algún error, puedes detectar errores 
 * Los esclavos interrogan al maestro periódicamente, esto es el "**Intervalo de actualización" (refresh interval)**, para obtener actualizaciones.
 * El maestro también puede notificar a los esclavos cuando hay cambios (**`notify yes;`**), pero como puede haber pérdida de paquetes sigue siendo necesario interrogar periódicamente.
 * El esclavo sólo iniciará la copia cuando el número de serie, configurado en el registro SOA de la zona, **AUMENTE**.
-* Formato recomendado: **YYMMDDNN**
+* Formato recomendado: **AAAAMMDDNN** (año, mes, día y número de cambio del día; por ejemplo `2026112301`)
 * Si se decrementa el número de serie, los esclavos nunca se actualizarán hasta que el número sea mayor que el valor anterior.
+* Con `notify yes;` el aviso llega por UDP y puede perderse: por eso el esclavo consulta además cada *refresh*.
 
 ## Información en el registro SOA
 
@@ -146,12 +147,14 @@ Si al reiniciar los servidores DNS tienes algún error, puedes detectar errores 
 
 * El **intervalo de actualización (refresh)**: frecuencia con la que el esclavo debe revisar el número de serie del maestro para hacer una transferencia de zona.
 * **Intervalo de reintento (retry)**: frecuencia con la que reintenta si el servidor maestro no responde.
-* **Tiempo de caducidad (expiry)**: Si el esclavo no puede comunicarse con el maestro durante este intervalo, debe borrar su copia de la zona.
-* **TTL negativo (negative)**: Significa tiempo de vida negativo, el tiempo durante el cual se debe almacenar en la cache de cualquier otro servidor DNS una respuesta negativa. Eso significa que si otro servidor DNS preguntas por `no-existe.example.com` y esa entrada no existe, ese servidor DNS considerará como válida esa respuesta (no existe) durante el tiempo indicado.
+* **Tiempo de caducidad (expiry)**: Si el esclavo no puede comunicarse con el maestro durante este intervalo, deja de responder por esa zona (devuelve `SERVFAIL`) hasta que vuelva a contactar con el maestro.
+* **TTL negativo (negative)**: Significa tiempo de vida negativo, el tiempo durante el cual se debe almacenar en la cache de cualquier otro servidor DNS una respuesta negativa. Es el menor entre este campo y el TTL del propio registro SOA. Eso significa que si otro servidor DNS pregunta por `no-existe.example.com` y esa entrada no existe, ese servidor DNS considerará como válida esa respuesta (no existe) durante el tiempo indicado.
+
+Los valores de este ejercicio son de ejemplo. El RFC 1912 recomienda un *refresh* entre 20 minutos y 12 horas (con *retry* menor) y un *expire* de 2 a 4 semanas: con un *refresh* de una semana, si se pierde el `NOTIFY` el esclavo tardaría días en enterarse de un cambio.
 
 ## Algunos trucos adicionales
 
-* Puedes manejar el servidor DNS con el comando `rndc`. Por ejemplo `rndc reload`: reinicia el servicio; `rndc reload tunombre.org`: Reinicia sólo esa zona; `rndc flush`: Borra la caché de resoluciones guardadas en el servidor.
+* Puedes manejar el servidor DNS con el comando `rndc`. Por ejemplo `rndc reload`: recarga la configuración y las zonas sin parar el servicio; `rndc reload tunombre.org`: recarga sólo esa zona; `rndc retransfer tunombre.org` (en el esclavo): fuerza una nueva transferencia de la zona; `rndc flush`: Borra la caché de resoluciones guardadas en el servidor.
 * Realiza una consulta al servidor maestro y el esclavo para comprobar que las respuestas son autorizadas (bit `AA`), además asegúrate que coinciden los números de serie:
 
 	dig +norec @x.x.x.x tunombre.org. soa

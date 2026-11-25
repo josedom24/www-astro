@@ -1,173 +1,113 @@
 ---
-title: "Ejercicio 3: Red interna conectada con un router OpenStack"
+title: "Ejercicio 3: Volúmenes"
 ---
 
-En este apartado vamos a realiza el ejercicio de tener una red interna conectada por un router a un red NAT en Openstack. Realizamos los siguientes pasos:
+En este ejercicio vas a trabajar con el almacenamiento persistente de OpenStack: crear volúmenes, asociarlos a instancias, crear instancias cuyo disco es un volumen, y hacer instantáneas de volúmenes.
 
+## Almacenamiento efímero y persistente
 
-## Creación de la red NAT
+Las instancias que hemos creado hasta ahora tienen un disco cuyo tamaño lo indica el sabor. Ese disco es **efímero**: cuando se elimina la instancia, el disco se elimina con ella.
 
-Creamos una nueva red de tipo NAT conectada a un nuevo router:
+Un **volumen** es un disco independiente de las instancias:
 
-        openstack router create mi_router
-        openstack router set mi_router --external-gateway ext-net
+* Es un **dispositivo de bloques** que se puede asociar a una instancia y desasociar cuando queramos.
+* Es **persistente**: sigue existiendo aunque se elimine la instancia a la que estaba asociado.
+* El componente de OpenStack que gestiona los volúmenes se llama **Cinder**.
 
-        openstack network create red1
-        openstack subnet create --network red1 --subnet-range 192.168.0.0/24 --dns-nameserver 172.22.0.1 subred1
+Los volúmenes se usan de dos formas: como **disco adicional** para guardar datos, o como **disco raíz** de la instancia, para que el sistema completo sobreviva a la instancia.
 
-        openstack router add subnet mi_router subred1
+## Gestión de volúmenes
 
-A continuación conectamos una instancia a esa red y le asociamos una IP flotante:
+Los volúmenes se gestionan con los comandos `openstack volume`:
 
-        openstack server create --flavor m1.mini \
-        --image "Debian 13 Trixie" \
-        --security-group default \
-        --key-name jdmr \
-        --network red1 \
-        maquina1
+* Crear un volumen de 1 GB: `openstack volume create --size 1 mi_disco1`
+* Listar los volúmenes: `openstack volume list`
+* Asociar el volumen a una instancia: `openstack server add volume instancia_prueba mi_disco1`
+* Desasociarlo: `openstack server remove volume instancia_prueba mi_disco1`
+* Eliminarlo: `openstack volume delete mi_disco1`
 
-        openstack floating ip create ext-net
-        openstack server add floating ip maquina1 172.22.200.50
+Dentro de la instancia el volumen aparece como un disco nuevo (compruébalo con `lsblk`), sin particiones ni sistema de ficheros.
 
+:::caution[Ejercicio]
+1. Crea una instancia y un volumen de 1 GB.
+2. Asocia el volumen a la instancia. Dentro de la instancia, formatéalo, móntalo y crea algún fichero en él.
+3. Intenta eliminar el volumen. ¿Puedes hacerlo? ¿Por qué?
+4. Desmonta el volumen dentro de la instancia y desasócialo. No lo elimines: lo usaremos más adelante.
+:::
 
-## Creación de la red interna
+## Instancias con el disco raíz en un volumen
 
-Ahora vamos a crear una red interna (red que no estará conectada a un router conectado a la red externa). Podríamos crearlo de dos formas:
+Podemos crear un volumen **arrancable** que contenga una imagen:
 
-* Con servidor DHCP: cloud-init configurará la instancia con direccionamiento dinámico. Podríamos conectar la instancia directamente a la red o usar un puerto para configurar una reserva.
-* Sin servidor DHCP: cloud-init configurará la instancia de forma estática, pero necesitará leer la información de un CDROM (`-config-drive True`). Si usamos un puerto, podremos configurar un IP fija estática.
+```
+openstack volume create --bootable --size 8 --image "Debian 13 Trixie" disco_debian
+```
 
-En este caso crearemos una red interna con servidor DHCP:
+Y crear una instancia cuyo disco raíz sea ese volumen. En lugar de la imagen se indica el volumen:
 
-        openstack network create red2
-        openstack subnet create --network red2 --subnet-range 192.168.10.0/24 --dns-nameserver 172.22.0.1 subred2
+```
+openstack server create --flavor vol.mini \
+    --volume disco_debian \
+    --security-group default \
+    --key-name jdmr \
+    --network "Red de josedom" \
+    instancia_volumen
+```
 
-A continuación, crearemos un router al que vamos a conectar a la red1 y a la red2:
+Los sabores cuyo nombre empieza por `vol` tienen 0 GB de disco, porque el disco lo aporta el volumen.
 
-* A la red2 lo conectaremos a la primera dirección de red (`192.168.10.1`), que será la puerta de enlace de las instancias que conectaremos a esta red.
-* Las instancias de la red1 tienen su puerta de enlace que es el router anterior con dirección (`192.168.0.1`) por lo que vamos aconectar este nuevo router a la última dirección (`192.168.0.254`).
+Al eliminar la instancia el volumen no se elimina, de forma que podemos crear otra instancia a partir de él y recuperar el sistema tal como estaba.
 
-Para realizar esta configuración:
+:::caution[Ejercicio]
+1. Crea un volumen arrancable de 10 GB a partir de una imagen.
+2. Crea una instancia cuyo disco raíz sea ese volumen, con un sabor de tipo `vol`.
+3. Accede a la instancia e instala algún servicio.
+4. Elimina la instancia y crea otra nueva a partir del mismo volumen.
+5. Comprueba que el servicio que instalaste sigue ahí.
+:::
 
-        openstack router create mi_router2
-        
-        openstack port create --network red1 --fixed-ip ip-address=192.168.0.254 port_router2
-        openstack router add port mi_router2 port_router2
+## Instantáneas de volúmenes
 
-        openstack router add subnet mi_router2 subred2
+Una instantánea guarda el estado de un volumen en un momento dado. A partir de ella se pueden crear volúmenes nuevos. No es recomendable hacerla con el volumen asociado a una instancia, porque puede quedar corrupta.
 
-Y creamos una instancia en esa red, vamos a crear una reserva para que tenga la IP `192.168.10.100`:
+* Crear la instantánea: `openstack volume snapshot create --volume mi_disco1 copia_mi_disco1`
+* Listar las instantáneas: `openstack volume snapshot list`
+* Crear un volumen a partir de la instantánea: `openstack volume create --snapshot copia_mi_disco1 mi_disco2`
+* Eliminar la instantánea: `openstack volume snapshot delete copia_mi_disco1`
 
-        openstack port create --network red2 --fixed-ip ip-address=192.168.10.100 port_maquina2
+Un volumen que tiene instantáneas no se puede eliminar: hay que eliminar primero las instantáneas.
 
-        openstack server create --flavor m1.mini \
-        --image "Debian 13 Trixie" \
-        --security-group default \
-        --key-name jdmr \
-        --port port_maquina2 \
-        maquina2
+```
+$ openstack volume delete mi_disco1
+Invalid volume: Volume still has 1 dependent snapshots. (HTTP 400)
+```
 
+:::caution[Ejercicio]
+1. Crea una instantánea del volumen del primer apartado (el que tiene el fichero).
+2. Crea un volumen nuevo a partir de la instantánea.
+3. Asocia el volumen nuevo a una instancia, móntalo y comprueba que el fichero está.
+:::
 
-El escenario quedaría de esta forma:
+## Ampliar un volumen
 
-![escenario](img/escenario.png)
+Para cambiar el tamaño de un volumen, este tiene que estar **desasociado** de la instancia:
 
-El router **mi_router2** no hace **SNAT**, simplemente enruta tráfico de una red a otra.
-El router **mi_router2** no hace **DNAT** por lo tanto no podemos asignar una **IP flotante** a las máquinas conectadas a dicha red:
+```
+openstack server remove volume instancia_prueba mi_disco2
+openstack volume set --size 2 mi_disco2
+openstack server add volume instancia_prueba mi_disco2
+```
 
-        openstack server add floating ip maquina2 172.22.200.210
-        NotFoundException: 404: Client Error for url:..., External network...  is not reachable from subnet...  Therefore, cannot associate Port ... with a Floating IP.
+El volumen crece, pero el sistema de ficheros que contiene no: hay que redimensionarlo dentro de la instancia (por ejemplo, con `resize2fs` si es ext4).
 
-## Acceder a la máquina interna
+:::caution[Ejercicio]
+1. Desmonta y desasocia el volumen del apartado anterior, amplíalo a 2 GB y vuelve a asociarlo a la instancia.
+2. Redimensiona el sistema de ficheros, móntalo y comprueba el nuevo tamaño con `df -h`.
+3. Elimina las instancias, las instantáneas y los volúmenes que has creado.
+:::
 
-Para acceder a la máquina interna, tendríamos que acceder por SSH a la `maquina1` y desde ella accedemos a `maquina2`:
+:::tip[En la práctica]
+Con lo que acabas de aprender ya puedes hacer la **Fase 2** de la [práctica](../practica/): crear los volúmenes arrancables de 15 GB para las instancias del escenario, uno a partir de Debian y otro a partir de Rocky Linux.
 
-        ssh -A debian@172.22.200.50
-        ...
-        debian@maquina1:~$ ip r
-        default via 192.168.0.1 dev ens3 proto dhcp src 192.168.0.112 metric 100 
-        169.254.169.254 via 192.168.0.2 dev ens3 proto dhcp src 192.168.0.112 metric 100 
-        172.22.0.1 via 192.168.0.1 dev ens3 proto dhcp src 192.168.0.112 metric 100 
-        192.168.0.0/24 dev ens3 proto kernel scope link src 192.168.0.112 metric 100 
-        192.168.0.1 dev ens3 proto dhcp scope link src 192.168.0.112 metric 100 
-        192.168.0.2 dev ens3 proto dhcp scope link src 192.168.0.112 metric 100 
-
-Sin embargo comprobamos que no tenemos una ruta que permita conectar la `maquina1` a la `maquina2`, por lo que no podemos hacer ssh a la segunda máquina. Necesitamos que el servidor DHCP de la red mande una **ruta estática** a la instancia para que pueda llegar a la **red2**, para ello añadimos la ruta a la subred para que se envíe por DHCP, elimina la instancia y volvemos a crearla:
-
-        openstack subnet set --host-route destination=192.168.10.0/24,gateway=192.168.0.254 subred1
-        openstack server delete maquina1
-
-        openstack server create --flavor m1.mini \
-        --image "Debian 13 Trixie" \
-        --security-group default \
-        --key-name jdmr \
-        --network red1 \
-        maquina1
-
-        openstack server add floating ip maquina1 172.22.200.50
-
-Ahora accedemos de nuevo a la primera máquina y comprobamos que ya tiene la ruta necesaria y que podemos hacer ssh a la segunda máquina:
-
-        ssh -A debian@172.22.200.50
-        ...
-        debian@maquina1:~$ ip r
-        ...
-        192.168.10.0/24 via 192.168.0.254 dev ens3 proto dhcp src 192.168.0.226 metric 100 
-
-        ssh 192.168.10.100
-        ...
-        debian@maquina2:~$ 
-
-
-## Conectividad desde la instancia interna
-
-Una vez que hemos conectado a la segunda instancia, veamos a que dispositivos tiene conectividad:
-
-Al la **maquina1** tenemos, evidentemente conectividad:
-
-        ping -c1 192.168.0.226
-        PING 192.168.0.226 (192.168.0.226) 56(84) bytes of data.
-        64 bytes from 192.168.0.226: icmp_seq=1 ttl=63 time=3.72 ms
-
-A la interfaz de **mi_router2** que está conectada a la **red1** también tiene conectividad:
-
-        ping -c1 192.168.0.254
-        PING 192.168.0.254 (192.168.0.254) 56(84) bytes of data.
-        64 bytes from 192.168.0.254: icmp_seq=1 ttl=254 time=2.73 ms
-
-Sin embargo, a la IP del **mi_router** no tiene conectividad:
-
-        ping -c1 192.168.0.1
-        PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
-
-Eso es debido, que necesitamos configurar **mi_router** con un ruta estática para que sepa como devolver el ping, para ello:
-
-        openstack router set --route destination=192.168.10.0/24,gateway=192.168.0.254 mi_router
-
-Y ya podemos hacer ping al **mi_router**:
-
-        ping -c1 192.168.0.1
-        PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
-        64 bytes from 192.168.0.1: icmp_seq=1 ttl=253 time=11.2 ms
-
-Por último, vamos a comprobar si esta instancia tiene conectividad al exterior:
-
-        ping -c1 1.1.1.1
-        PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
-
-La primera solución necesaria sería configurar una ruta por defecto en **mi_router2** para que redirja el paque al primer router, para ello:
-
-        openstack router set --route destination=0.0.0.0/0,gateway=192.168.0.1 mi_router2
-
-Volvemos a probar, y parece que sigue sin funcionar:
-
-        ping -c1 1.1.1.1
-        PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
-
-El problema está que **mi_router** solo realiza el SNAT para las redes que tiene conectada, es decir **red1** (`192.168.0.0/24`), pero como **mi_router2** no hace SNAT ese paquete viene con IP origen una dirección de la **red2** (`192.168.10.0/24`). Por lo tanto ese paque **no es enrutable en internet**, y la respuesta se pierde.
-
-## ¿Qué soluciones tenemos?
-
-* Conectar **mi_router2** directamente a la red externa.
-* Conectar directamente la **red2** al **mi_router**.
-* Quitar el router y poner una instancia que haga de router/nat y configurarla para que haga SNAT.
+Antes de seguir, elimina los recursos de prueba que has creado en este ejercicio.
+:::

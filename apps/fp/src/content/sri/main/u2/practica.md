@@ -8,7 +8,7 @@ Posteriormente, sobre ese mismo escenario, añadiremos un **servidor de almacena
 
 ## Infraestructura
 
-Podemos usar contenedores LXC para crear las distintas máquinas, **aunque `servidorweb`, `backend1` y `backend2` tienen que ser máquinas virtuales**: en la segunda parte, `servidorweb` será cliente iSCSI y los backends montarán un directorio por NFS, y eso no se puede hacer en un contenedor LXC sin cambiar su configuración de seguridad. Para configurar la red de los contenedores con netplan, tienes las indicaciones en la [presentación de contenedores LXC](https://raw.githubusercontent.com/josedom24/marp-presentaciones/main/iv/lxc.pdf) de Infraestructura Virtual.
+Podemos usar contenedores LXC para crear las distintas máquinas, **aunque `servidorweb`, `backend1` y `backend2` tienen que ser máquinas virtuales**: en la segunda parte, `servidorweb` será cliente iSCSI y los backends montarán un directorio por NFS, y eso no se puede hacer en un contenedor LXC sin cambiar su configuración de seguridad. Para configurar la red de los contenedores con netplan, tienes las indicaciones en la [presentación de contenedores LXC](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/lxc.pdf) de Infraestructura Virtual.
 
 Podemos hacer la práctica en varios escenarios distintos:
 
