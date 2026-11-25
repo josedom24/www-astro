@@ -122,3 +122,74 @@ Un vídeo de **2 a 4 minutos**, con **explicación hablada**, que demuestre que 
 
 * **Entrega 1**: el escenario levantándose desde cero (puedes cortar las esperas) y la aplicación funcionando.
 * **Modificaciones**: el cambio funcionando, explicando qué has modificado.
+
+## El informe de pruebas
+
+Al final del proyecto harás en clase una **prueba de funcionamiento**: partiendo de un clon nuevo de tu repositorio, levantarás el escenario desde cero y comprobarás que la aplicación y las tres modificaciones funcionan. Como cada uno ha hecho modificaciones distintas, las pruebas de las modificaciones las preparas tú antes, en un **informe de pruebas**.
+
+El informe es un fichero **`PRUEBAS.md`** en la raíz de tu repositorio, en Markdown. Es un plan: dice qué vas a comprobar, cómo y qué tiene que salir. Lo escribes antes de la prueba y en la prueba lo ejecutas entero.
+
+### Qué tiene que tener
+
+* **Solo las modificaciones.** Lo común (levantar el escenario, la idempotencia, el inventario y la aplicación) ya se pide en la prueba para todos.
+* **Exactamente dos comprobaciones por cada modificación**:
+    1. Una que demuestre que la modificación **está y funciona** (por ejemplo, que HAProxy reparte entre las dos webs o que el directorio del NFS está montado).
+    2. Otra que demuestre **para qué sirve**: lo que justifica haberla hecho (por ejemplo, que si cae una web la aplicación sigue, que una copia se restaura o que una conexión que debe rechazarse se rechaza). Que un servicio esté `active` no es una prueba de para qué sirve.
+* **Cada comprobación lleva**: qué se comprueba, dónde se ejecuta (en tu equipo, en una máquina del escenario o en el navegador), la **orden exacta** y el **resultado esperado**, concreto: el código HTTP, la línea o el valor que tiene que aparecer.
+* **Nada que dependa de esperar.** Si algo lo lanza un temporizador (por ejemplo, una copia diaria), en la prueba se lanza a mano (`systemctl start …`).
+* **Nada preparado a mano.** Todo lo que necesite la comprobación tiene que haberlo dejado la receta.
+* **Que se pueda hacer rápido.** Las seis comprobaciones tienen que caber en unos **10 minutos**.
+
+### Modelo
+
+````markdown
+# Informe de pruebas
+
+## Modificación 1: dos servidores web con HAProxy
+
+Qué demuestra: las peticiones se reparten entre las dos webs y la aplicación
+sigue funcionando aunque se caiga una.
+
+### 1.1. HAProxy reparte entre las dos webs
+
+* Dónde: en mi equipo
+* Orden:
+
+  ```
+  for i in 1 2 3 4; do curl -sI http://www.tunombre.org | grep X-Servidor; done
+  ```
+
+* Resultado esperado: las respuestas alternan entre `X-Servidor: web1` y `X-Servidor: web2`.
+
+### 1.2. Si se cae una web, la aplicación sigue
+
+* Dónde: en mi equipo, en el directorio `ansible/`
+* Orden:
+
+  ```
+  ansible web2 -b -a "systemctl stop apache2"
+  for i in 1 2 3 4; do curl -sI http://www.tunombre.org | grep -E "^HTTP|X-Servidor"; done
+  ```
+
+* Resultado esperado: todas las respuestas son `HTTP/1.1 200 OK` con `X-Servidor: web1`; ninguna es un `502` ni un `503`.
+
+## Modificación 2: ...
+
+### 2.1. ...
+
+### 2.2. ...
+
+## Modificación 3: ...
+
+### 3.1. ...
+
+### 3.2. ...
+````
+
+### Cómo se usa en la prueba
+
+En la prueba de funcionamiento ejecutas **todas** las comprobaciones del informe, tal como están escritas, y entregas la salida de cada una indicando si coincide con el resultado esperado (✅) o no (❌). Si alguna no coincide, explica qué ha salido y por qué crees que falla: también se valora.
+
+:::caution
+El `PRUEBAS.md` tiene que estar en el repositorio **antes de la prueba**. Si una comprobación no demuestra nada (por ejemplo, solo mira que un paquete está instalado), no puntúa.
+:::
