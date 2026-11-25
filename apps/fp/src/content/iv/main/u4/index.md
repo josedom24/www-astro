@@ -13,6 +13,8 @@ toc: false
 * [Presentación: Kubernetes - Deployments](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/deployment.pdf)
 * [Presentación: Kubernetes - Actualización y rollback de Deployments](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/deployment-rollout.pdf)
   * [Ejercicio 3: Trabajando con Deployments](ejercicio3/)
+* [Presentación: Kubernetes - Services](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/services.pdf)
+* [Presentación: Kubernetes - Ingress](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/ingress.pdf)
   * [Ejercicio 4: Acceso a las aplicaciones](ejercicio4/)
   * [Ejercicio 5: Despliegues parametrizados](ejercicio5/)
   * [Ejercicio 6: Almacenamiento en Kubernetes](ejercicio6/)
