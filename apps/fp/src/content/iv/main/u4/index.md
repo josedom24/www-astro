@@ -5,8 +5,7 @@ toc: false
 
 <!--
 * [Presentación: Introducción a Kubernetes](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/kubernetes.pdf)
-* [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies)
-* [Presentación: Kubernetes - Recursos principales](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/kubernetes2.pdf)
+* [Presentación: Kubernetes - minikube y kubectl](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/minikube-kubectl.pdf)
   * [Ejercicio 1: Trabajando con Pods](ejercicio1/)
   * [Ejercicio 2: Trabajando con ReplicaSet](ejercicio2/)
   * [Ejercicio 3: Trabajando con Deployments](ejercicio3/)
