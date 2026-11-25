@@ -188,7 +188,7 @@ sigue funcionando aunque se caiga una.
 
 ### Cómo se usa en la prueba
 
-En la prueba de funcionamiento ejecutas **todas** las comprobaciones del informe, tal como están escritas, y entregas la salida de cada una indicando si coincide con el resultado esperado (✅) o no (❌). Si alguna no coincide, explica qué ha salido y por qué crees que falla: también se valora.
+En la prueba de funcionamiento ejecutas **todas** las comprobaciones del informe, tal como están escritas, y entregas capturas de cada una con su salida. No tienes que indicar si el resultado es el correcto: el informe lo usa el profesor para corregir, comparando lo que se ve en tus capturas con el resultado esperado que escribiste. Por eso el resultado esperado tiene que ser concreto.
 
 :::caution
 El `PRUEBAS.md` tiene que estar en el repositorio **antes de la prueba**. Si una comprobación no demuestra nada (por ejemplo, solo mira que un paquete está instalado), no puntúa.
