@@ -8,6 +8,7 @@ toc: false
 * [Presentación: Kubernetes - minikube y kubectl](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/minikube-kubectl.pdf)
 * [Presentación: Kubernetes - Pods](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/pods.pdf)
   * [Ejercicio 1: Trabajando con Pods](ejercicio1/)
+* [Presentación: Kubernetes - ReplicaSet](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/replicaset.pdf)
   * [Ejercicio 2: Trabajando con ReplicaSet](ejercicio2/)
   * [Ejercicio 3: Trabajando con Deployments](ejercicio3/)
   * [Ejercicio 4: Acceso a las aplicaciones](ejercicio4/)
