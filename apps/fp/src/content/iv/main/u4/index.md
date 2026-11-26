@@ -16,6 +16,7 @@ toc: false
 * [Presentación: Kubernetes - Services](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/services.pdf)
 * [Presentación: Kubernetes - Ingress](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/ingress.pdf)
   * [Ejercicio 4: Acceso a las aplicaciones](ejercicio4/)
+* [Presentación: Kubernetes - ConfigMaps y Secrets](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/configmap-secret.pdf)
   * [Ejercicio 5: Despliegues parametrizados](ejercicio5/)
   * [Ejercicio 6: Almacenamiento en Kubernetes](ejercicio6/)
   * [Ejercicio 7: Instalación de un CMS con Helm](ejercicio7/)
