@@ -2,50 +2,95 @@
 title: "Ejercicio 6: Almacenamiento en Kubernetes"
 ---
 
-Los siguientes apartados los encuentras en el [Curso de Kubernetes](https://github.com/josedom24/curso_kubernetes_ies):
+Al final del ejercicio anterior, al eliminar el Pod de Nextcloud se perdía su configuración: el nuevo Pod se creaba desde la imagen, con el directorio de la aplicación vacío. Sin embargo, la base de datos seguía teniendo la cuenta de administración, por lo que al repetir la instalación aparecía el error **The Login is already being used**. Si se hubiera eliminado el Pod de MariaDB, se habría perdido la base de datos.
 
-* [Consideraciones sobre el almacenamiento](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/consideraciones.md)
-* [Volúmenes en Kubernetes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/volumenes.md) - [Vídeo](https://www.youtube.com/watch?v=g1Elyt_OuqA)
-* [Aprovisionamiento de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/aprovisionamiento.md) - [Vídeo](https://www.youtube.com/watch?v=7D9R0_f60-Q)
-* [Solicitud de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/solicitud.md) - [Vídeo](https://www.youtube.com/watch?v=YV21W_hjo0Q)
-* [Uso de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/uso.md) 
-* [Ejemplo: Gestión dinámica de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/ejemplo2.md) - [Vídeo](https://www.youtube.com/watch?v=hxeizzHQsHw)
-* [Ejemplo: Wordpress con almacenamiento persistente](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/wordpress.md#ejemplo-3-wordpress-con-almacenamiento-persistente) - [Vídeo](https://www.youtube.com/watch?v=fLMALdJ905E)
+En este ejercicio vamos a usar **volúmenes persistentes** para que la información de las aplicaciones no se pierda al eliminar los Pods. Usaremos **aprovisionamiento dinámico**: al crear un PersistentVolumeClaim (PVC), la StorageClass `standard` de minikube crea automáticamente el PersistentVolume (PV) y lo asocia a la solicitud.
 
 ## Ejercicio 1: Desplegando un servidor web persistente
 
+Vamos a desplegar un servidor web que ejecute scripts PHP, con la imagen `php:8.5-apache`, guardando el contenido de su *DocumentRoot* (`/var/www/html`) en un volumen persistente.
 
-Siguiendo la guía explicada en el [Ejemplo: Gestión dinámica de volúmenes](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/ejemplo2.md), vamos a crear un servidor web que permita la ejecución de scripts PHP con almacenamiento persistente.
+### La solicitud del volumen
 
-Para realizar esta actividad vamos a usar asignación dinámica de volúmenes y puedes usar, como modelos, los ficheros del ejemplo 2.
+Crea un fichero `pvc-webserver.yaml` a partir de la siguiente plantilla, sustituyendo cada `<...>` por el valor que corresponda:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-webserver
+spec:
+  accessModes:
+    - <modo-de-acceso>
+  resources:
+    requests:
+      storage: <tamaño>
+```
+
+Solicita un volumen de 2 GiB (`2Gi`) con el modo de acceso `ReadWriteOnce`. Como no indicamos `storageClassName`, se usará la StorageClass por defecto.
+
+### El despliegue del servidor web
+
+Crea un fichero `webserver-deployment.yaml` a partir de la siguiente plantilla:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver
+  labels:
+    app: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      volumes:
+        - name: volumen-webserver
+          persistentVolumeClaim:
+            claimName: <nombre-del-pvc>
+      containers:
+        - name: contenedor-php
+          image: php:8.5-apache
+          ports:
+            - name: http-server
+              containerPort: 80
+          volumeMounts:
+            - name: volumen-webserver
+              mountPath: <punto-de-montaje>
+```
+
+* En `volumes` se define un volumen llamado `volumen-webserver` que usa el PVC que has creado (`claimName`).
+* En `volumeMounts` se monta ese volumen en el directorio del contenedor que indiques en `mountPath`: el *DocumentRoot* del servidor.
 
 Realiza los siguientes pasos:
 
-1. Crea un fichero yaml para definir un recurso PersistentVolumenClaim que se llame `pvc-webserver` y para solicitar un volumen de 2Gb.
-2. Crea el recurso y comprueba que se ha asociado un volumen de forma dinámica a la solicitud.
-3. Crea un fichero yaml para desplegar un servidor web desde la imagen `php:7.4-apache`, asocia el volumen al Pod que se va a crear e indica el punto de montaje en el *DocumentRoot* del servidor: `/var/www/html`.
-4. Despliega el servidor y crea un fichero `info.php` en `/var/www/html`, con el siguiente contenido: `<?php phpinfo(); ?>`.
-5. Define y crea un Service NodePort, accede desde un navegador al fichero `info.php` y comprueba que se visualiza de forma correcta.
-6. Comprobemos la persistencia: elimina el Deployment, vuelve a crearlo y vuelve a acceder desde el navegador al fichero `info.php`. ¿Se sigue visualizando?
+1. Crea el PVC. Comprueba que su estado es `Bound` y que se ha creado de forma dinámica un PV asociado a él: `kubectl get pv,pvc`. ¿Qué política de reciclaje (`RECLAIM POLICY`) tiene el PV?
+2. Crea el Deployment y comprueba que el Pod está funcionando. Lista el contenido del directorio `/var/www/html` del contenedor (`kubectl exec deploy/webserver -- ls -l /var/www/html`). ¿Qué contiene? ¿Por qué?
+3. Crea en el volumen un fichero `info.php`:
 
+    ```bash
+    kubectl exec deploy/webserver -- sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
+    ```
+
+4. Crea un Service de tipo `NodePort` llamado `webserver`, con el puerto 80 y el nombre de puerto `http-server`, que seleccione los Pods con la etiqueta `app: webserver`. Obtén la URL con `minikube service webserver --url` y accede desde un navegador a `info.php`. Comprueba que se muestra la información de PHP.
+5. Comprobemos la persistencia: elimina el Deployment, comprueba que el PVC sigue existiendo y vuelve a crear el Deployment. Accede de nuevo a `info.php`. ¿Se sigue mostrando? ¿Por qué?
+6. Elimina el Deployment, el Service y el PVC. Comprueba que también se ha eliminado el PV. ¿Qué habría pasado con el fichero `info.php` si hubieras eliminado el PVC en el paso 5?
 
 ## Ejercicio 2: Haciendo persistente la aplicación GuestBook
 
-En este ejercicio vamos a volver a desplegar nuestra aplicación GuestBook, que realizamos en el taller 4 y 5, para añadirle persistencia a la base de datos redis.
+Vamos a volver a desplegar la aplicación GuestBook de los ejercicios 3 y 4, añadiendo persistencia a la base de datos Redis.
 
-Por lo tanto necesitaremos solicitar un volumen, que se asociará de forma dinámica.
+### Redis con almacenamiento persistente
 
-### Creando el despliegue de redis para que guarde la información en un directorio
+Según la documentación de la imagen `redis`, para que la base de datos guarde cada cambio en el directorio `/data` del contenedor hay que ejecutar el proceso `redis-server` con los argumentos `--appendonly yes`.
 
-Si estudiamos la documentación de la imagen redis en [Docker Hub](https://hub.docker.com/_/redis), para que la información de la base de datos se guarde en un directorio `/data` del contenedor hay que ejecutar con docker:
-
-```
-docker run --name some-redis -d redis redis-server --appendonly yes
-```
-
-Es decir, hay que crear el contenedor ejecutando el proceso `redis-server` con los argumentos `--appendonly yes`.
-
-Por lo tanto tenemos que cambiar el fichero de definición del Deployment de redis, [`redis-deployment.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/plantilla-redis-deployment.yaml) de la siguiente manera:
+Crea un fichero `redis-deployment.yaml` a partir de la siguiente plantilla:
 
 ```yaml
 apiVersion: apps/v1
@@ -57,6 +102,8 @@ metadata:
     tier: backend
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: redis
@@ -70,45 +117,86 @@ spec:
       volumes:
         - name: volumen-redis
           persistentVolumeClaim:
-            claimName: xxxxxxxxxxxx
+            claimName: <nombre-del-pvc>
       containers:
         - name: contenedor-redis
-          image: redis
+          image: redis:8.12
           command: ["redis-server"]
           args: ["--appendonly", "yes"]
           ports:
             - name: redis-server
               containerPort: 6379
           volumeMounts:
-            - mountPath: xxxxxxxxxxxx
-              name: volumen-redis
+            - name: volumen-redis
+              mountPath: <punto-de-montaje>
 ```
-Hemos usado el parámetro `command` para ejecutar el proceso, y el parámetro `args` para indicar los argumentos.
 
-**Nota**: Los valores `xxxxxxxxxxxx` tendrás que rellenarlos durante la realización de la actividad.
-
-### Pasos a seguir
+* Con `command` indicamos el proceso que ejecuta el contenedor y con `args`, sus argumentos.
+* Con `strategy: Recreate`, al actualizar el Deployment se elimina el Pod antiguo **antes** de crear el nuevo. Así nunca hay dos servidores Redis usando los mismos ficheros, algo que sí ocurriría con la estrategia `RollingUpdate`.
 
 Realiza los siguientes pasos:
 
-1. Crea un fichero yaml para definir un recurso PersistentVolumenClaim que se llame `pvc-redis` y para solicitar un volumen de 3Gb.
-2. Crea el recurso y comprueba que se ha asociado un volumen de forma dinámica a la solicitud.
-3. Modifica el fichero del despliegue de redis, modificando las `xxxxxxxxxxxx` por los valores correctos: el nombre del PersistentVolumenClaim y el directorio de montaje en el contenedor (como hemos visto anteriormente es `/data`).
-4. Crea el despliegue de redis. El despliegue de la aplicación `guestbook` y la creación de los Services de acceso se hace con los ficheros que ya utilizamos anteriormente: [`guestbook-deployment.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/guestbook-deployment.yaml), [`guestbook-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/guestbook-srv.yaml) y [`redis-srv.yaml`](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/files/guestbook/redis-srv.yaml).
-5. Accede a la aplicación y escribe algunos mensajes.
-6. Comprobemos la persistencia: elimina el despliegue de redis, vuelve a crearlo, vuelve a acceder desde el navegador y comprueba que los mensajes no se han perdido.
+1. Crea un fichero `pvc-redis.yaml` con un PVC llamado `pvc-redis` que solicite un volumen de 3 GiB, y créalo. Comprueba que se ha asociado un PV de forma dinámica.
+2. Completa el fichero `redis-deployment.yaml`: el nombre del PVC y el punto de montaje (`/data`).
+3. Crea el Deployment de Redis. El Deployment `guestbook` y los Services `guestbook` y `redis` son los mismos de los ejercicios 3 y 4: créalos también.
+4. Accede a la aplicación y escribe algunos mensajes.
+5. Comprueba que Redis ha guardado los datos en el volumen: `kubectl exec deploy/redis -- ls -l /data`.
+6. Comprobemos la persistencia: elimina el Deployment de Redis y vuelve a crearlo. Accede de nuevo a la aplicación y comprueba que los mensajes no se han perdido.
+7. Elimina los recursos que has creado en este ejercicio, incluido el PVC.
 
+## Ejercicio 3: Haciendo persistente la aplicación Nextcloud
 
-## Ejercicio 3: Haciendo persistente la aplicación Nextcloud 
+Vamos a modificar el despliegue de Nextcloud y MariaDB del ejercicio anterior para que use dos volúmenes persistentes: uno para la aplicación y otro para la base de datos.
 
-Esta actividad es la continuación de la actividad realizada en el taller 5.
+**Antes de empezar**, elimina los Deployments de Nextcloud y MariaDB del ejercicio anterior, si todavía existen: su base de datos no estaba en un volumen y queremos empezar con una instalación limpia. Puedes mantener (o volver a crear) el ConfigMap, el Secret, los Services y el Ingress.
 
-Siguiendo la guía que hemos desarrollado en [Ejemplo 3: Wordpress con almacenamiento persistente](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/wordpress.md) vamos a configurar el despliegue de Nextcloud para que use volúmenes (vamos a usar dos volúmenes, uno para la aplicación y otro para la base de datos) para que la información no se pierda.
+Según la documentación de las imágenes:
+
+* Nextcloud guarda la aplicación, su configuración y los ficheros de los usuarios en `/var/www/html`. Si al arrancar encuentra el directorio vacío, copia en él la aplicación.
+* MariaDB guarda las bases de datos en `/var/lib/mysql`.
+
+### Los volúmenes en los Deployments
+
+Copia los ficheros `mariadb-deployment.yaml` y `nextcloud-deployment.yaml` del ejercicio anterior y añade a cada uno:
+
+* La estrategia `Recreate`, en `spec`.
+* El volumen, en `spec.template.spec`.
+* El punto de montaje, en la definición del contenedor, al mismo nivel que `image` y `ports`.
+
+Por ejemplo, para MariaDB:
+
+```yaml
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  ...
+  template:
+    ...
+    spec:
+      volumes:
+        - name: volumen-mariadb
+          persistentVolumeClaim:
+            claimName: <nombre-del-pvc>
+      containers:
+        - name: contenedor-mariadb
+          image: mariadb:11.8
+          ports:
+            - name: db-port
+              containerPort: 3306
+          volumeMounts:
+            - name: volumen-mariadb
+              mountPath: <punto-de-montaje>
+          env:
+            ...
+```
 
 Realiza los siguientes pasos:
 
-1. Crea los ficheros yaml para definir los recursos PersistentVolumenClaim para solicitar dos volúmenes de 4Gb.
-2. Crea esos recursos y comprueba que se ha asociado un volumen de forma dinámica a cada solicitud.
-3. Modifica los ficheros de despliegue de la aplicación y la base de datos para asociar los volúmenes a cada uno. Según la documentación de la imagen [Nextcloud](https://hub.docker.com/_/nextcloud) en Docker Hub, la forma más sencilla de hacer persistente la aplicación es montar el volumen en el directorio`/var/www/html/`.
-5. Accede a la aplicación, configúrala y sube un fichero.
-6. Comprobemos la persistencia: elimina los despliegues, vuelve a crearlos y vuelve a acceder desde el navegador y comprueba que la aplicación está configurada y mantiene el fichero que habías subido.
+1. Crea los ficheros `pvc-nextcloud.yaml` y `pvc-mariadb.yaml` con dos PVC llamados `pvc-nextcloud` y `pvc-mariadb`, que soliciten 4 GiB cada uno. Créalos y comprueba que se ha asociado un PV de forma dinámica a cada uno.
+2. Modifica los dos Deployments como se ha indicado y créalos. Crea también el ConfigMap, el Secret, los Services y el Ingress del ejercicio anterior, si no existen.
+3. Comprueba que Nextcloud ha copiado la aplicación en su volumen: `kubectl exec deploy/nextcloud -- ls /var/www/html`.
+4. Accede a Nextcloud con el navegador usando el nombre del Ingress, completa el asistente de instalación y sube algún fichero.
+5. Comprobemos la persistencia: elimina los dos Deployments y vuelve a crearlos. Accede de nuevo a la aplicación y comprueba que no tienes que instalarla otra vez, que puedes entrar con tu cuenta y que el fichero que subiste sigue ahí.
+6. ¿Por qué ahora no aparece el error **The Login is already being used**?
+7. Elimina los recursos que has creado en este ejercicio, incluidos los PVC.

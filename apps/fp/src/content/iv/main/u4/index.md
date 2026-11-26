@@ -18,6 +18,7 @@ toc: false
   * [Ejercicio 4: Acceso a las aplicaciones](ejercicio4/)
 * [Presentación: Kubernetes - ConfigMaps y Secrets](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/configmap-secret.pdf)
   * [Ejercicio 5: Despliegues parametrizados](ejercicio5/)
+* [Presentación: Kubernetes - Volúmenes](https://git.josedomingo.org/josedom24/marp-presentaciones/raw/branch/main/iv/k8s/volumenes.pdf)
   * [Ejercicio 6: Almacenamiento en Kubernetes](ejercicio6/)
   * [Ejercicio 7: Instalación de un CMS con Helm](ejercicio7/)
 * [Práctica: Kubernetes](practica/)
